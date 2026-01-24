@@ -982,7 +982,7 @@ export default function App() {
                   <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-white">
                     <Github size={20} />
                   </a>
-                  <a href="https://www.linkedin.com/company/latsib-utem" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-white">
+                  <a href="https://www.linkedin.com/in/latsib-utem-b87337396/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-white">
                     <Linkedin size={20} />
                   </a>
                 </div>
