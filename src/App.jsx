@@ -453,7 +453,7 @@ const EQUIPO = [
     nombre: "Andrés Vega Moraga",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
-    img: "https://media.licdn.com/dms/image/v2/D4D03AQH_QIFtEodbdg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729120261309?e=1770249600&v=beta&t=7mVtAjjmHL90LzEpiVaNkXMA5tD53BSXft4UdXnQ3JI",
+    img: "AndrésPERFIL.JPG",
     contactos: {
       linkedin: "https://www.linkedin.com/in/andres-nicolas-vega-moraga-950b3128b/",
       github: "",
