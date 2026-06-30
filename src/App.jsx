@@ -526,6 +526,17 @@ const EQUIPO = [
       email: "cguajardo@utem.cl"
       }
     },
+    {
+    nombre: "Ignacio López Concha",
+    rol: "Asistente Investigador",
+    bio: "Estudiante de Ingeniería Civil en Computación mención Informática",
+    img: "https://i.postimg.cc/gJx7BqNz/IMG-0584.jpg",
+    contactos: {
+      linkedin: "",
+      github: "",
+      email: "ilopezc@utem.cl"
+      }
+    },
 ];
 
 
