@@ -536,7 +536,7 @@ const EQUIPO = [
       github: "",
       email: "ilopez@utem.cl"
     }
-    }
+    },
 ];
 
 
