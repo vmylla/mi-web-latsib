@@ -519,7 +519,7 @@ const EQUIPO = [
     nombre: "Camila Guajardo Bravo",
     rol: "Asistente Investigadora",
     bio: "Estudiante de Ingeniería Civil en Computación mención Informática",
-    img: "https://i.postimg.cc/gJx7BqNz/IMG-0584.jpg",
+    img: "/equipo/CamilaPERFIL.JPG",
     contactos: {
       linkedin: "https://www.linkedin.com/in/camila-millaray-guajardo-bravo-b94297293/",
       github: "https://github.com/vmylla",
