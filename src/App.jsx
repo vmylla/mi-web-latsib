@@ -420,7 +420,7 @@ const EQUIPO = [
     nombre: "Matías Gajardo De La Fuente",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería civil en computación menc. informática, Apasionado por la Inteligencia Artificial y Tecnologías Emergentes",
-    img: "https://media.licdn.com/dms/image/v2/D4D03AQG7oprZ143SaA/profile-displayphoto-shrink_800_800/B4DZdQjpimHAAc-/0/1749403212415?e=1770249600&v=beta&t=fqzRqp9wRYXnDAFbbVQqb6CUHEjcvX-wkgA0LCSJVn4",
+    img: "/equipo/MatiasPERFIL.JPG",
     contactos: {
       linkedin: "https://www.linkedin.com/in/matias-adrian-gajardo-de-la-fuente/",
       github: "https://github.com/xhorus11",
@@ -431,7 +431,7 @@ const EQUIPO = [
     nombre: "Juan Toledo Fierro",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
-    img: "https://media.licdn.com/dms/image/v2/D4E03AQGzquT_MTkXLw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724364381476?e=1770249600&v=beta&t=1iCBhNeRXb0uSqGZmv92sBzDdba-kt9tpndj_RJ0VXQ",
+    img: "/equipo/JuanPERFIL.JPG",
     contactos: {
       linkedin: "https://www.linkedin.com/in/juan-crist%C3%B3bal-toledo-fierro-83787129b/",
       github: "",
@@ -442,7 +442,7 @@ const EQUIPO = [
     nombre: "David Sepulveda Velásquez",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
-    img: "https://media.licdn.com/dms/image/v2/D4E03AQEqV3t5l_8XBA/profile-displayphoto-crop_800_800/B4EZrzvRZ2KMAI-/0/1765025848478?e=1770249600&v=beta&t=x5sA34yp36bo99Ow6YCwfsqh9BVjk_PfjvA5GDrBqEs",
+    img: "/equipo/DavidPERFIL.JPG",
     contactos: {
       linkedin: "https://www.linkedin.com/in/david-sepulveda-vel%C3%A1squez-6311602a8/",
       github: "",
@@ -464,7 +464,7 @@ const EQUIPO = [
     nombre: "Clemente Uribe Ortiz",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
-    img: "",
+    img: "/equipo/ClementePERFIL.JPG",
     contactos: {
       linkedin: "",
       github: "",
@@ -486,7 +486,7 @@ const EQUIPO = [
     nombre: "Catalina Araniz Arancibia",
     rol: "Asistente Investigadora",
     bio: "Estudiante de Ingeniería Civil en Computación mención Informática",
-    img: "https://i.postimg.cc/BnYsgGx7/Whats-App-Image-2026-01-21-at-22-03-49.jpg",
+    img: "/equipo/CatalinaPERFIL.JPG",
     contactos: {
       linkedin: "",
       github: "https://github.com/cataaraniz",
@@ -497,7 +497,7 @@ const EQUIPO = [
     nombre: "Gabriel Araya López",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Informática",
-    img: "",
+    img: "/equipo/GabrielPERFIL.JPG",
     contactos: {
       linkedin: "",
       github: "",
