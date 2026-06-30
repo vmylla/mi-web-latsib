@@ -419,7 +419,7 @@ const EQUIPO = [
   {
     nombre: "Matías Gajardo De La Fuente",
     rol: "Asistente Investigador",
-    bio: "Estudiante de Ingeniería civil en computación menc. informática, Apasionado por la Inteligencia Artificial y Tecnologías Emergentes",
+    bio: "Estudiante de Ingeniería civil en computación menc. informática",
     img: "/equipo/MatiasPERFIL.JPG",
     contactos: {
       linkedin: "https://www.linkedin.com/in/matias-adrian-gajardo-de-la-fuente/",
