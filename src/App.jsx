@@ -524,6 +524,7 @@ const EQUIPO = [
       linkedin: "https://www.linkedin.com/in/camila-millaray-guajardo-bravo-b94297293/",
       github: "https://github.com/vmylla",
       email: "cguajardo@utem.cl"
+      }
     },
     {
     nombre: "Ignacio López Concha",
@@ -535,7 +536,7 @@ const EQUIPO = [
       github: "",
       email: "ilopez@utem.cl"
     }
-  }
+    }
 ];
 
 
