@@ -526,17 +526,6 @@ const EQUIPO = [
       email: "cguajardo@utem.cl"
       }
     },
-    {
-    nombre: "Ignacio López Concha",
-    rol: "Asistente Investigador",
-    bio: "Estudiante de Ingeniería civil en computación menc. informática",
-    img: "https://media.licdn.com/dms/image/v2/D4D03AQESn8LyyE0luQ/profile-displayphoto-crop_800_800/B4DZrzeLBXJAAM-/0/1765021365790?e=1770249600&v=beta&t=iQv9m2cNpliWD8fuQk3KFfAxsuxcBYM9b5hVFBEdhWs",
-    contactos: {
-      linkedin: "https://www.linkedin.com/in/ignacio-l%C3%B3pez-concha-227489297/",
-      github: "",
-      email: "ilopez@utem.cl"
-    }
-    },
 ];
 
 
