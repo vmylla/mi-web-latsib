@@ -179,39 +179,39 @@ const ACTIVIDADES = [
 
     galeria: [
       {
-        url: "/actividades/vive-la-investigacion/CatalinaVIVE.jpg",
+        url: "/actividades/vive-la-investigacion/CatalinaVIVE.jpeg",
         descripcion: "Catalina Araniz: Caracterización de la hipoxia a partir de redes vasculares simuladas con Vascusynth."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQEIJCfTR0gT8Q/feedshare-shrink_2048_1536/B4EZp7oy21IIAw-/0/1763010883768?e=1770249600&v=beta&t=atSPG9ldReDn3cpb5AcI_nexY7ep4O7fAZtTUxMpuKU",
+        url: "/actividades/vive-la-investigacion/AndresVIVE.jpeg",
         descripcion: "Andrés Vega: Importancia de la desoxihemoglobina en la respuesta neurovascular peri-espinal medida con fNIRS."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQHP5uQVeSq0ow/feedshare-shrink_1280/B4EZp7oy2lIwAs-/0/1763010883828?e=1770249600&v=beta&t=bXMDta3C4JzD1hiBsBZPQzK4-kt_4FRpwWcLCSScqRw",
+        url: "/actividades/vive-la-investigacion/MatiasVIVE.jpeg",
         descripcion: "Matías Gajardo: Comparación de la respuesta neurovascular peri-espinal mediante fNIRS tras la estimulación eléctrica del nervio tibial posterior y mediano en voluntarios sanos."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQFKjj9HKGFrEw/feedshare-shrink_1280/B4EZp7oy3MHcAs-/0/1763010884106?e=1770249600&v=beta&t=8nyFgWv2fu9HjFhp29DnNCDvDIU-wkOGfVq_apYyA5Q",
+        url: "/actividades/vive-la-investigacion/GlennVIVE.jpeg",
         descripcion: "Glenn Lanyon: Evaluación del periodo refractario neurovascular de la médula espinal con fNIRS utilizando un protocolo de estimulación progresiva."
       },
        {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQEb11GYN58JRg/feedshare-shrink_2048_1536/B4EZp7oy2jIQAw-/0/1763010883756?e=1770249600&v=beta&t=KhbGCoitta6uFcH11GeDD3tAZKkYxVCswgtj0LOnc6E",
+        url: "/actividades/vive-la-investigacion/GabrielVIVE.jpeg",
         descripcion: "Gabriel Araya: Spine-fNIRS Web: plataforma web para la visualización de la dinámica neurovascular espinal mediante fNIRS."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQFeJGMY-U79aA/feedshare-shrink_2048_1536/B4EZp7oy23KkAw-/0/1763010883706?e=1770249600&v=beta&t=S3ItTHIBgqVjHJD55lkxVeLMD3e5fEian2mJut6pfOA",
+        url: "/actividades/vive-la-investigacion/IgnacioVIVE.jpeg",
         descripcion: "Ignacio López: Sistema inteligente para optimizar la voz en dispositivos de laringe electrónica."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQEX3z5jX9ZETg/feedshare-shrink_1280/B4EZp7oy22KcAw-/0/1763010883797?e=1770249600&v=beta&t=T07Axf67exaqz-9vN811K-QbP6a6oKa2r7jcN61t8yI",
+        url: "/actividades/vive-la-investigacion/DavidVIVE.jpeg",
         descripcion: "David Sepúlveda: Análisis de respuesta neurovascular con nuevos biomarcadores utilizando fNIRS."
       },
        {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQHUR2uytyH5Cw/feedshare-shrink_1280/B4EZp7oy3HIQAs-/0/1763010883863?e=1770249600&v=beta&t=kBD-wK18rSJyp7Un1iq7RbgIvlzTc1Y-oiVSTnPqurY",
+        url: "/actividades/vive-la-investigacion/JuanVIVE.jpeg",
         descripcion: "Juan Toledo: De la imagen al conocimiento: integración de OCR, YOLO y RAG en la construcción de un chat-bot médico."
       },
        {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQGftAkeR366ng/feedshare-shrink_2048_1536/B4EZp7oy3EKkAw-/0/1763010884151?e=1770249600&v=beta&t=7t0nP2rouvRnsiox4nyuBpXPZc76MsY-jgEoUVjnfI4",
+        url: "/actividades/vive-la-investigacion/VicenteVIVE.jpeg",
         descripcion: "Vicente Escudero: Clasificación automática de señales deglutorias utilizando Machine Learning, acompañado por el profesor Dr. Raúl Caulier."
       }
       
