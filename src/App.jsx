@@ -520,7 +520,7 @@ const EQUIPO = [
     nombre: "Vicente Escudero Durana",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
-    img: "",
+    img: "/equipo/VicentePERFIL.JPG",
     contactos: {
       linkedin: "",
       github: "",
@@ -536,17 +536,6 @@ const EQUIPO = [
       linkedin: "https://www.linkedin.com/in/camila-millaray-guajardo-bravo-b94297293/",
       github: "https://github.com/vmylla",
       email: "cguajardo@utem.cl"
-      }
-    },
-    {
-    nombre: "Ignacio López Concha",
-    rol: "Asistente Investigador",
-    bio: "Estudiante de Ingeniería Civil en Computación mención Informática",
-    img: "",
-    contactos: {
-      linkedin: "",
-      github: "",
-      email: "ilopezc@utem.cl"
       }
     },
 ];
