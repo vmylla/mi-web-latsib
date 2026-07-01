@@ -309,11 +309,13 @@ const ACTIVIDADES = [
     descripcion: "Un entorno que reunió a especialistas de diversas áreas de la ingeniería biomédica, favoreciendo el intercambio científico y nuevas perspectivas para el estudio de la función espinal.",
     galeria: [
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQHYUmT-GmLh-A/feedshare-shrink_1280/B4EZq44443KMAs-/0/1764038512980?e=1770249600&v=beta&t=Z2OTAlPdsBK7fDTqp2m0ZJ39A81ZA1OkBGTg6xlj1kA",
+        url: "/actividades/caseib/Presentacion Glenn.jpg",
         descripcion: "Glenn Lanyon: Caracterización neurofisiológica de la respuesta neurovascular peri-espinal humana en el diagnóstico funcional de la médula espinal."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQEDoq1piwvChg/feedshare-shrink_1280/B4EZrNLQgeGYAc-/0/1764378872154?e=1770249600&v=beta&t=S0OlujfwbP09F67oVgEiUWgy2eE9LmGmAdz-fQdHfo0",
+        url: "/actividades/caseib/Presentacion Vicente.jpg",
+        url: "/actividades/caseib/Presentacion Vicente 2.jpg",
+        url: "/actividades/caseib/Presentacion Vicente 3.jpg",
         descripcion: "Vicente Escudero: Clasificación Automática de Señales Deglutorias Utilizando Machine Learning."
       }
     ],
