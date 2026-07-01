@@ -432,7 +432,7 @@ const EQUIPO = [
     nombre: "Matías Gajardo De La Fuente",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería civil en computación menc. informática",
-    img: "/equipo/MatiasPERFIL.JPG",
+    img: "/equipo/MatiasPERFIL.jpg",
     contactos: {
       linkedin: "https://www.linkedin.com/in/matias-adrian-gajardo-de-la-fuente/",
       github: "https://github.com/xhorus11",
@@ -531,7 +531,7 @@ const EQUIPO = [
     nombre: "Camila Guajardo Bravo",
     rol: "Asistente Investigadora",
     bio: "Estudiante de Ingeniería Civil en Computación mención Informática",
-    img: "/equipo/CamilaPERFIL.JPG",
+    img: "/equipo/CamilaPERFIL.jpg",
     contactos: {
       linkedin: "https://www.linkedin.com/in/camila-millaray-guajardo-bravo-b94297293/",
       github: "https://github.com/vmylla",
