@@ -274,15 +274,27 @@ const ACTIVIDADES = [
     descripcion: "Esta participación tuvo como principal objetivo representar a la UTEM en un evento nacional de alta relevancia científica, fortaleciendo el compromiso del estudiantado con la investigación biomédica y reafirmando la importancia de la formación interdisciplinaria en el ámbito de la salud y la ingeniería.",
     galeria: [
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQHFWSJGQLI__Q/feedshare-shrink_1280/B4EZp7lZMQGUAs-/0/1763009991965?e=1770249600&v=beta&t=qgrOfVJsjXvO76jkgQpuv-tGI6kh06kiV8SRmenwUvo",
+        url: "/actividades/pucon/PuconGlenn.jpg",
         descripcion: "Glenn Lanyon: Potenciación de la respuesta neurovascular periespinal gatillada por estimulación eléctrica con pulsos tándem del nervio medial medida con fNIRS en voluntarios sanos"
       },
        {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQEYoRyFhMJ9ow/feedshare-shrink_2048_1536/B4EZp7lZM8KMAw-/0/1763009992067?e=1770249600&v=beta&t=NMy0N0ZVe8ZMbgD20S6tHHZnIlIc53cefH5AT3r3BCg",
+        url: "/actividades/pucon/PuconVicente.jpg",
         descripcion: "Vicente Escudero: Potenciación de la respuesta neurovascular periespinal gatillada por estimulación eléctrica con pulsos tándem del nervio medial medida con fNIRS en voluntarios sanos"
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQGC2_e2lZAyug/feedshare-shrink_1280/B4EZp7lZM_HUAs-/0/1763009992108?e=1770249600&v=beta&t=8mPw8-FnyIysepQUO220FD2Xo_9RurfFskvNTlr_tWQ",
+        url: "/actividades/pucon/Pucontodos1.jpg",
+        descripcion: "Equipo: Algunos de los integrantes de LaTSIB, que participaron del congreso"
+      },
+      {
+        url: "/actividades/pucon/Pucontodos2.jpg",
+        descripcion: "Equipo: Algunos de los integrantes de LaTSIB, que participaron del congreso"
+      },
+            {
+        url: "/actividades/pucon/Pucontodos3.jpg",
+        descripcion: "Equipo: Algunos de los integrantes de LaTSIB, que participaron del congreso"
+      },
+      {
+        url: "/actividades/pucon/PuconMati.jpg",
         descripcion: "Matías Gajardo, Andrés Vega y David Sepúlveda: Comparación de la respuesta neurovascular peri-espinal mediante fNIRS tras la estimulación eléctrica de los nervios tibial posterior o mediano en voluntarios sanos"
       }
     ],
