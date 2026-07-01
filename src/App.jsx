@@ -179,7 +179,7 @@ const ACTIVIDADES = [
 
     galeria: [
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQFKDFG2jVahUQ/feedshare-shrink_2048_1536/B4EZp7oy29KcAw-/0/1763010883772?e=1770249600&v=beta&t=bFkiiTyYeheRyslyw4MHIHseMrFhweTXLpnVqKjdQCE",
+        url: "/actividades/vive-la-investigacion/CatalinaVIVE.jpg",
         descripcion: "Catalina Araniz: Caracterización de la hipoxia a partir de redes vasculares simuladas con Vascusynth."
       },
       {
