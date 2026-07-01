@@ -227,39 +227,39 @@ const ACTIVIDADES = [
     descripcion: "Presentación de sus pósteres de investigación, compartiendo los avances desarrollados en el laboratorio y generando valiosas instancias de conversación científica ",
     galeria: [
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQF0Ay9MkdAxyA/feedshare-shrink_1280/B4EZp7jWctGcAw-/0/1763009456861?e=1770249600&v=beta&t=rnA0QtP4WdoMfsn-jQZAh2qPYaWTgfzvMwY0ae7kZy4",
+        url: "/actividades/idi/CamilaIDI.jpg",
         descripcion: "Camila Guajardo: Simulación computacional del modelo de Hodgkin-Huxley aplicado a la dinámica neuronal"
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQGI4uS0DS2cEQ/feedshare-shrink_1280/B4EZp7jWcgJgAs-/0/1763009456657?e=1770249600&v=beta&t=P4mII6Ph8kyJ-trTuJ0WhYPcXCG69g15MTWOrfcTuTk",
+        url: "/actividades/idi/CatalinaIDI.jpg",
         descripcion: "Catalina Araniz: Caracterización de la hipoxia a partir de redes vasculares simuladas con Vascusynth."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQE8icmpyylqPw/feedshare-shrink_1280/B4EZp7jWcWIoAs-/0/1763009456841?e=1770249600&v=beta&t=58QZzVCEHJF9z0EqfX8QbixHZteQHhcdoBw_AB5etOw",
+        url: "/actividades/idi/JuanIDI.jpg",
         descripcion: "Juan Toledo: Chatbots Inteligentes para la Medicina: Uniendo visión por computador, lenguaje y datos."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQEYMu14DSUFlw/feedshare-shrink_1280/B4EZp7jWb0KkAw-/0/1763009456519?e=1770249600&v=beta&t=Ni7R5y5LizcFmoKzI9KFmvs-kuRTm3CfuNTGST3H3PQ",
+        url: "/actividades/idi/VicenteIDI.jpg",
         descripcion: "Vicente Escudero: Arquitectura CNN 2D para la clasificación de patrones espectrales deglutorios."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQFbGIwvYDdQlQ/feedshare-shrink_2048_1536/B4EZp7jWciKoAw-/0/1763009456686?e=1770249600&v=beta&t=_s9vNu6sw1FkWjlO1HRwq5YgcOIcfQSG7n7BVcpboDA",
+        url: "/actividades/idi/GlennIDI.jpg",
         descripcion: "Glenn Lanyon: Registro de la respuesta neurovascular peri-espinal y detección del periodo refractario con espectroscopia funcional de infrarrojo cercano."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQEn8L7JAHfkcQ/feedshare-shrink_2048_1536/B4EZp7jWcgIUA0-/0/1763009456727?e=1770249600&v=beta&t=KLXsl8ABXYyVh-gNvJBatm20DzUOE4Io0KibSGrkRgo",
+        url: "/actividades/idi/DavidIDI.jpg",
         descripcion: "David Sepúlveda: Nuevos biomarcadores para el análisis de la respuesta neurovascular peri-espinal mediante fNIRS."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQH5-zKVu1ab8g/feedshare-shrink_2048_1536/B4EZp7jWczGUAw-/0/1763009456738?e=1770249600&v=beta&t=iFxx4F-XjYjHo-MGoFtlWIWvSa_O0kWfbX8QIj2XFWY",
+        url: "/actividades/idi/GabrielIDI.jpg",
         descripcion: "Gabriel Araya: Spine-fNIRS: Interfaz para la visualización la respuesta neurovascular en la medula espinal."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQHScoe7aXRxgg/feedshare-shrink_1280/B4EZp7jWcWIIAs-/0/1763009456577?e=1770249600&v=beta&t=Z2B8ShjsZPZejUq7teMbihbxrEw3uI1UU0FneKfHfBM",
+        url: "/actividades/idi/MatiasIDI.jpg",
         descripcion: "Matias Gajardo: Comparación de la respuesta neurovascular peri-espinal mediante fNIRS tras la estimulación eléctrica del nervio tibial posterior y mediano en voluntarios sanos."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQGBQCSsvWySow/feedshare-shrink_2048_1536/B4EZp7jWczIwAw-/0/1763009456678?e=1770249600&v=beta&t=ZlLgRVLDlfeO4-fSh5I5dbHOhl7ypRz2nAHs9e3nOmg",
+        url: "/actividades/idi/AndresIDI.jpg",
         descripcion: "Andrés Vega: Explorando la dinámica de la desoxihemoglobina en la medula espinal con fNIRS."
       }
     ],
