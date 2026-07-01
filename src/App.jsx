@@ -520,7 +520,7 @@ const EQUIPO = [
     nombre: "Vicente Escudero Durana",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
-    img: "/equipo/VicentePERFIL.JPG",
+    img: "/equipo/VicentePERFIL.png",
     contactos: {
       linkedin: "",
       github: "",
