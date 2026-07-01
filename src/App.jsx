@@ -487,7 +487,7 @@ const EQUIPO = [
     nombre: "Glenn Lanyon Lanyon",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
-    img: "https://i.postimg.cc/C5HX3VtG/Imagen-de-referencia-(1).png",
+    img: "/equipo/GlennPERFIL.JPG",
     contactos: {
       linkedin: "",
       github: "",
