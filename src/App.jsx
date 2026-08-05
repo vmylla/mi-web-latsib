@@ -301,19 +301,19 @@ const ACTIVIDADES = [
     descripcion: "Un entorno que reunió a especialistas de diversas áreas de la ingeniería biomédica, favoreciendo el intercambio científico y nuevas perspectivas para el estudio de la función espinal.",
     galeria: [
       {
-        url: "/actividades/caseib/Presentacion Glenn.jpg",
+        url: "/actividades/caseib/Presentacion Glenn.jpeg",
         descripcion: "Glenn Lanyon: Caracterización neurofisiológica de la respuesta neurovascular peri-espinal humana en el diagnóstico funcional de la médula espinal."
       },
       {
-        url: "/actividades/caseib/Presentacion Vicente.jpg",
+        url: "/actividades/caseib/Presentacion Vicente.jpeg",
          descripcion: "Vicente Escudero: Clasificación Automática de Señales Deglutorias Utilizando Machine Learning."
          },
       {
-        url: "/actividades/caseib/Presentacion Vicente 2.jpg",
+        url: "/actividades/caseib/Presentacion Vicente 2.jpeg",
              descripcion: "Vicente Escudero: Clasificación Automática de Señales Deglutorias Utilizando Machine Learning."
          },
       {
-        url: "/actividades/caseib/Presentacion Vicente 3.jpg",
+        url: "/actividades/caseib/Presentacion Vicente 3.jpeg",
         descripcion: "Vicente Escudero: Clasificación Automática de Señales Deglutorias Utilizando Machine Learning."
       }
     ],
@@ -328,59 +328,59 @@ const ACTIVIDADES = [
     descripcion: "Nuestros integrantes expusieron trabajos en las áreas de neuroimagen, biomarcadores y tecnologías asistivas, contribuyendo a la discusión científica desde diversas líneas del laboratorio.",
     galeria: [
       {
-        url: "/actividades/caib/PresentacionDavid.jpg",
+        url: "/actividades/caib/PresentacionDavid.jpeg",
         descripcion: "David Sepúlveda: “Caracterización de nuevos biomarcadores para la respuesta neurovascular peri-espinal obtenida con fNIRS”."
       },
       {
-        url: "/actividades/caib/PresentacionDavid2.jpg",
+        url: "/actividades/caib/PresentacionDavid2.jpeg",
         descripcion: "David Sepúlveda: “Caracterización de nuevos biomarcadores para la respuesta neurovascular peri-espinal obtenida con fNIRS”."
       },
       {
-        url: "/actividades/caib/PresentacionDavid3.jpg",
+        url: "/actividades/caib/PresentacionDavid3.jpeg",
         descripcion: "David Sepúlveda: “Caracterización de nuevos biomarcadores para la respuesta neurovascular peri-espinal obtenida con fNIRS”."
       },
          {
-        url: "/actividades/caib/PresentacionMati.jpg",
+        url: "/actividades/caib/PresentacionMati.jpeg",
             descripcion: "Matías Gajardo: “Comparación de la respuesta neurovascular peri-espinal mediante fNIRS tras estimulación de nervios mediano y tibial en voluntarios sanos."
       },
       {
-           url: "/actividades/caib/PresentacionMati2.jpg",
+           url: "/actividades/caib/PresentacionMati2.jpeg",
          descripcion: "Matías Gajardo: “Comparación de la respuesta neurovascular peri-espinal mediante fNIRS tras estimulación de nervios mediano y tibial en voluntarios sanos."
       },
       {
-           url: "/actividades/caib/PresentacionMati3.jpg",
+           url: "/actividades/caib/PresentacionMati3.jpeg",
         descripcion: "Matías Gajardo: “Comparación de la respuesta neurovascular peri-espinal mediante fNIRS tras estimulación de nervios mediano y tibial en voluntarios sanos."
       },
    {
-        url: "/actividades/caib/PaperIgnacio.jpg",
+        url: "/actividades/caib/PaperIgnacio.jpeg",
         descripcion: "Ignacio López: Sistema inteligente para optimizar la voz en dispositivos de laringe electrónica (póster científico)."
       },
       {
-        url: "/actividades/caib/EntradaJuan.jpg",
+        url: "/actividades/caib/EntradaJuan.jpeg",
         descripcion: "Integrante del laboratorio previo al inicio de las actividades del Congreso Anual de Ingeniería Biomédica."
       },
       {
-        url: "/actividades/caib/EntradaDavid.jpg",
+        url: "/actividades/caib/EntradaDavid.jpeg",
         descripcion: "Integrante del laboratorio previo al inicio de las actividades del Congreso Anual de Ingeniería Biomédica."
       },
       {
-        url: "/actividades/caib/EntradaMati.jpg",
+        url: "/actividades/caib/EntradaMati.jpeg",
         descripcion: "Integrante del laboratorio previo al inicio de las actividades del Congreso Anual de Ingeniería Biomédica."
       },
       {
-        url: "/actividades/caib/EntradaEntradaIgnacio.jpg",
+        url: "/actividades/caib/EntradaEntradaIgnacio.jpeg",
         descripcion: "Integrante del laboratorio previo al inicio de las actividades del Congreso Anual de Ingeniería Biomédica."
       },
         {
-        url: "/actividades/caib/Grupal.jpg",
+        url: "/actividades/caib/Grupal.jpeg",
           descripcion: "Fotografías grupales de los participantes del evento."
         },
       {
-           url: "/actividades/caib/Grupal2.jpg",
+           url: "/actividades/caib/Grupal2.jpeg",
         descripcion: "Fotografías grupales de los participantes del evento."
         },
       {
-          url: "/actividades/caib/EntradaGrupal.jpg",
+          url: "/actividades/caib/EntradaGrupal.jpeg",
         descripcion: "Fotografías grupales de los participantes del evento."
         }
     ],
