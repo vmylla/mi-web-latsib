@@ -306,7 +306,13 @@ const ACTIVIDADES = [
       },
       {
         url: "/actividades/caseib/Presentacion Vicente.jpg",
+         descripcion: "Vicente Escudero: Clasificación Automática de Señales Deglutorias Utilizando Machine Learning."
+         },
+      {
         url: "/actividades/caseib/Presentacion Vicente 2.jpg",
+             descripcion: "Vicente Escudero: Clasificación Automática de Señales Deglutorias Utilizando Machine Learning."
+         },
+      {
         url: "/actividades/caseib/Presentacion Vicente 3.jpg",
         descripcion: "Vicente Escudero: Clasificación Automática de Señales Deglutorias Utilizando Machine Learning."
       }
@@ -323,13 +329,25 @@ const ACTIVIDADES = [
     galeria: [
       {
         url: "/actividades/caib/PresentacionDavid.jpg",
+        descripcion: "David Sepúlveda: “Caracterización de nuevos biomarcadores para la respuesta neurovascular peri-espinal obtenida con fNIRS”."
+      },
+      {
         url: "/actividades/caib/PresentacionDavid2.jpg",
+        descripcion: "David Sepúlveda: “Caracterización de nuevos biomarcadores para la respuesta neurovascular peri-espinal obtenida con fNIRS”."
+      },
+      {
         url: "/actividades/caib/PresentacionDavid3.jpg",
         descripcion: "David Sepúlveda: “Caracterización de nuevos biomarcadores para la respuesta neurovascular peri-espinal obtenida con fNIRS”."
       },
          {
         url: "/actividades/caib/PresentacionMati.jpg",
+            descripcion: "Matías Gajardo: “Comparación de la respuesta neurovascular peri-espinal mediante fNIRS tras estimulación de nervios mediano y tibial en voluntarios sanos."
+      },
+      {
            url: "/actividades/caib/PresentacionMati2.jpg",
+         descripcion: "Matías Gajardo: “Comparación de la respuesta neurovascular peri-espinal mediante fNIRS tras estimulación de nervios mediano y tibial en voluntarios sanos."
+      },
+      {
            url: "/actividades/caib/PresentacionMati3.jpg",
         descripcion: "Matías Gajardo: “Comparación de la respuesta neurovascular peri-espinal mediante fNIRS tras estimulación de nervios mediano y tibial en voluntarios sanos."
       },
@@ -339,14 +357,29 @@ const ACTIVIDADES = [
       },
       {
         url: "/actividades/caib/EntradaJuan.jpg",
+        descripcion: "Integrante del laboratorio previo al inicio de las actividades del Congreso Anual de Ingeniería Biomédica."
+      },
+      {
         url: "/actividades/caib/EntradaDavid.jpg",
+        descripcion: "Integrante del laboratorio previo al inicio de las actividades del Congreso Anual de Ingeniería Biomédica."
+      },
+      {
         url: "/actividades/caib/EntradaMati.jpg",
+        descripcion: "Integrante del laboratorio previo al inicio de las actividades del Congreso Anual de Ingeniería Biomédica."
+      },
+      {
         url: "/actividades/caib/EntradaEntradaIgnacio.jpg",
-        descripcion: "Integrantes del laboratorio previo al inicio de las actividades del Congreso Anual de Ingeniería Biomédica."
+        descripcion: "Integrante del laboratorio previo al inicio de las actividades del Congreso Anual de Ingeniería Biomédica."
       },
         {
         url: "/actividades/caib/Grupal.jpg",
+          descripcion: "Fotografías grupales de los participantes del evento."
+        }
+      {
            url: "/actividades/caib/Grupal2.jpg",
+        descripcion: "Fotografías grupales de los participantes del evento."
+        }
+      {
           url: "/actividades/caib/EntradaGrupal.jpg",
         descripcion: "Fotografías grupales de los participantes del evento."
         }
@@ -409,20 +442,41 @@ const ACTIVIDADES = [
     galeria: [
       {
         url: "/actividades/España/PresentacionRaul.JPG",
+        descripcion: "El Dr. Raúl Caulier-Cisterna presentó los avances del Laboratorio."
+      },
+      {
         url: "/actividades/España/PresentacionRaul2.JPG",
+        descripcion: "El Dr. Raúl Caulier-Cisterna presentó los avances del Laboratorio."
+      },
+      {
         url: "/actividades/España/PresentacionRaul3.JPG",
         descripcion: "El Dr. Raúl Caulier-Cisterna presentó los avances del Laboratorio."
       },
       {
         url: "/actividades/España/PresentacionAndres.JPG",
+         descripcion: "Andrés Vega presentó la charla: Análisis morfológico de señales biológicas mediante autoencoders y caracterización del espacio latente. "
+      },
+      {
         url: "/actividades/España/PresentacionAndres2.JPG",
+         descripcion: "Andrés Vega presentó la charla: Análisis morfológico de señales biológicas mediante autoencoders y caracterización del espacio latente. "
+      },
+      {
         url: "/actividades/España/PresentacionAndres3.JPG",
         descripcion: "Andrés Vega presentó la charla: Análisis morfológico de señales biológicas mediante autoencoders y caracterización del espacio latente. "
       },
          {
       url: "/actividades/España/Grupal.jpg",
+           descripcion: "Integrantes del LaTSIB durante las jornadas de trabajo realizadas en Miraflores de la Sierra."
+    },
+      {
            url: "/actividades/España/Grupal2.jpg",
+        descripcion: "Integrantes del LaTSIB durante las jornadas de trabajo realizadas en Miraflores de la Sierra."
+    },
+      {
            url: "/actividades/España/AtencionMati.jpg",
+        descripcion: "Integrantes del LaTSIB durante las jornadas de trabajo realizadas en Miraflores de la Sierra."
+    },
+      {
            url: "/actividades/España/PoniendoAtencion.jpg",
       descripcion: "Integrantes del LaTSIB durante las jornadas de trabajo realizadas en Miraflores de la Sierra."
     },
@@ -442,7 +496,7 @@ const ACTIVIDADES = [
         descripcion: "Asistencia a la defensa de tesis doctoral realizada en el campus de Fuenlabrada."
       },
       {
-        url: "/actividades/JuradoDeTesis.jpg",
+        url: "/actividades/España/JuradoDeTesis.jpg",
         descripcion: "Dr. Raúl Caulier como jurado en la tesis doctoral en la Universidad Rey Juan Carlos"
       },
          {
@@ -462,8 +516,17 @@ const ACTIVIDADES = [
     galeria: [
       {
         url: "/actividades/España/VisitaPabloOlavide.jpg",
+        descripcion: "Visita al laboratorio IMASD Running, donde se conocieron metodologías y tecnologías aplicadas al análisis biomecánico del movimiento humano y el rendimiento deportivo."
+      },
+      {
         url: "/actividades/España/VisitaPabloOlavide2.jpg",
+        descripcion: "Visita al laboratorio IMASD Running, donde se conocieron metodologías y tecnologías aplicadas al análisis biomecánico del movimiento humano y el rendimiento deportivo."
+      },
+      {
         url: "/actividades/España/VisitaPabloOlavide3.jpg",
+        descripcion: "Visita al laboratorio IMASD Running, donde se conocieron metodologías y tecnologías aplicadas al análisis biomecánico del movimiento humano y el rendimiento deportivo."
+      },
+      {
         url: "/actividades/España/VisitaPabloOlavide4.jpg",
         descripcion: "Visita al laboratorio IMASD Running, donde se conocieron metodologías y tecnologías aplicadas al análisis biomecánico del movimiento humano y el rendimiento deportivo."
       },
@@ -480,41 +543,89 @@ const ACTIVIDADES = [
     galeria: [
       {
         url: "/actividades/ciclodeseminarios/Antonio1.jpg",
+        descripcion: "El Dr. Antonio Eblen-Zajjur presentó avances relacionados con la evaluación miocárdica mediante balistocardiograma y destacó la importancia de acercar la medicina clínica a quienes desarrollan soluciones tecnológicas."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Antonio2.jpg",
+        descripcion: "El Dr. Antonio Eblen-Zajjur presentó avances relacionados con la evaluación miocárdica mediante balistocardiograma y destacó la importancia de acercar la medicina clínica a quienes desarrollan soluciones tecnológicas."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Antonio3.jpg",
+        descripcion: "El Dr. Antonio Eblen-Zajjur presentó avances relacionados con la evaluación miocárdica mediante balistocardiograma y destacó la importancia de acercar la medicina clínica a quienes desarrollan soluciones tecnológicas."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Antonio4.jpg",
         descripcion: "El Dr. Antonio Eblen-Zajjur presentó avances relacionados con la evaluación miocárdica mediante balistocardiograma y destacó la importancia de acercar la medicina clínica a quienes desarrollan soluciones tecnológicas."
       },
       {
         url: "/actividades/ciclodeseminarios/Glenn1.jpg",
+        descripcion: "Glenn Lanyon presentó: Desarrollo de software para el análisis de la respuesta neurovascular y la caracterización del período refractario."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Glenn2.jpg",
+        descripcion: "Glenn Lanyon presentó: Desarrollo de software para el análisis de la respuesta neurovascular y la caracterización del período refractario."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Glenn3.jpg",
+        descripcion: "Glenn Lanyon presentó: Desarrollo de software para el análisis de la respuesta neurovascular y la caracterización del período refractario."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Glenn4.jpg",
         descripcion: "Glenn Lanyon presentó: Desarrollo de software para el análisis de la respuesta neurovascular y la caracterización del período refractario."
       },
        {
         url: "/actividades/ciclodeseminarios/Gabriel1.jpg",
+         descripcion: "Gabriel Araya presentó: Spine-fNirs Web: Herramienta para el análisis de la respuesta neurovascular en la médula espinal."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Gabriel2.jpg",
         descripcion: "Gabriel Araya presentó: Spine-fNirs Web: Herramienta para el análisis de la respuesta neurovascular en la médula espinal."
       },
        {
         url: "/actividades/ciclodeseminarios/Matias1.jpg",
+         descripcion: "Matias Gajardo presentó: Modelando la médula espinal con fNIRS: Un enfoque de ineniería biomédica y estadística no paramétrica."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Matias2.jpg",
+        descripcion: "Matias Gajardo presentó: Modelando la médula espinal con fNIRS: Un enfoque de ineniería biomédica y estadística no paramétrica."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Matias3.jpg",
+        descripcion: "Matias Gajardo presentó: Modelando la médula espinal con fNIRS: Un enfoque de ineniería biomédica y estadística no paramétrica."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Matias4.jpg",
         descripcion: "Matias Gajardo presentó: Modelando la médula espinal con fNIRS: Un enfoque de ineniería biomédica y estadística no paramétrica."
       },
        {
         url: "/actividades/ciclodeseminarios/Renato1.jpg",
+         descripcion: "Renato Álvarez del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Detección de anomalías genómicas mediante modelos deep learning en scRNA-seq."
+      },
+      {
           url: "/actividades/ciclodeseminarios/Renato2.jpg",
+        descripcion: "Renato Álvarez del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Detección de anomalías genómicas mediante modelos deep learning en scRNA-seq."
+      },
+      {
           url: "/actividades/ciclodeseminarios/Renato3.jpg",
+        descripcion: "Renato Álvarez del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Detección de anomalías genómicas mediante modelos deep learning en scRNA-seq."
+      },
+      {
           url: "/actividades/ciclodeseminarios/Renato4.jpg",
         descripcion: "Renato Álvarez del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Detección de anomalías genómicas mediante modelos deep learning en scRNA-seq."
       },
        {
         url: "/actividades/ciclodeseminarios/Alejandro1.jpg",
+         descripcion: "Alejandro Sanz del programa Doctorado en Matemáticas UPV presentó: Reconstrucción de imagen de tomografía por emisión de positrones con Deep Learning."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Alejandro2.jpg",
+        descripcion: "Alejandro Sanz del programa Doctorado en Matemáticas UPV presentó: Reconstrucción de imagen de tomografía por emisión de positrones con Deep Learning."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Alejandro3.jpg",
+        descripcion: "Alejandro Sanz del programa Doctorado en Matemáticas UPV presentó: Reconstrucción de imagen de tomografía por emisión de positrones con Deep Learning."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Alejandro4.jpg",
         descripcion: "Alejandro Sanz del programa Doctorado en Matemáticas UPV presentó: Reconstrucción de imagen de tomografía por emisión de positrones con Deep Learning."
       },
@@ -531,38 +642,77 @@ const ACTIVIDADES = [
     galeria: [
       {
         url: "/actividades/ciclodeseminarios/Marcia1.jpg",
+        descripcion: "La fonoaudióloga Marcia Toloza Dauvergne abordó los desafíos de la comunicación cuando no hay voz y el potencial de las tecnologías de apoyo desarrolladas desde un enfoque interdisciplinario."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Marcia2.jpg",
+        descripcion: "La fonoaudióloga Marcia Toloza Dauvergne abordó los desafíos de la comunicación cuando no hay voz y el potencial de las tecnologías de apoyo desarrolladas desde un enfoque interdisciplinario."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Marcia3.jpg",
+        descripcion: "La fonoaudióloga Marcia Toloza Dauvergne abordó los desafíos de la comunicación cuando no hay voz y el potencial de las tecnologías de apoyo desarrolladas desde un enfoque interdisciplinario."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Marcia4.jpg",
         descripcion: "La fonoaudióloga Marcia Toloza Dauvergne abordó los desafíos de la comunicación cuando no hay voz y el potencial de las tecnologías de apoyo desarrolladas desde un enfoque interdisciplinario."
       },
       {
         url: "/actividades/ciclodeseminarios/Ignacio1.jpg",
+        descripcion: "Ignacio López presentó: Sistema para mejorar la comunicación en dispositivos de laringe electrónica mediante aplicación móvil."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Ignacio2.jpg",
         descripcion: "Ignacio López presentó: Sistema para mejorar la comunicación en dispositivos de laringe electrónica mediante aplicación móvil."
       },
        {
         url: "/actividades/ciclodeseminarios/David1.jpg",
+         descripcion: "David Sepúlveda presentó: Ingeniería biomédica en acción: De la adquisición de señales a la inteligencia artificial en salud."
+      },
+      {
          url: "/actividades/ciclodeseminarios/David2.jpg",
+        descripcion: "David Sepúlveda presentó: Ingeniería biomédica en acción: De la adquisición de señales a la inteligencia artificial en salud."
+      },
+      {
          url: "/actividades/ciclodeseminarios/David3.jpg",
         descripcion: "David Sepúlveda presentó: Ingeniería biomédica en acción: De la adquisición de señales a la inteligencia artificial en salud."
       },
        {
         url: "/actividades/ciclodeseminarios/Camilo1.jpg",
+         descripcion: "Camilo Cerda del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: ¿Cómo lee una IA el ADN? Representación de datos y predicción de resistencia a antibióticos."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Camilo2.jpg",
+        descripcion: "Camilo Cerda del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: ¿Cómo lee una IA el ADN? Representación de datos y predicción de resistencia a antibióticos."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Camilo3.jpg",
+        descripcion: "Camilo Cerda del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: ¿Cómo lee una IA el ADN? Representación de datos y predicción de resistencia a antibióticos."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Camilo4.jpg",
         descripcion: "Camilo Cerda del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: ¿Cómo lee una IA el ADN? Representación de datos y predicción de resistencia a antibióticos."
       },
        {
         url: "/actividades/ciclodeseminarios/Wellinton1.jpg",
+         descripcion: "Wellinton Barrera del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Beyond Linearity: From clustering benchmarks to deep latent representations in Single-Cell lung cancer transcriptomics."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Wellinton2.jpg",
+        descripcion: "Wellinton Barrera del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Beyond Linearity: From clustering benchmarks to deep latent representations in Single-Cell lung cancer transcriptomics."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Wellinton3.jpg",
         descripcion: "Wellinton Barrera del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Beyond Linearity: From clustering benchmarks to deep latent representations in Single-Cell lung cancer transcriptomics."
       },
        {
         url: "/actividades/ciclodeseminarios/Felipe1.jpg",
+         descripcion: "Felipe Espinoza del programa Doctorado en Informática aaplicada a salud y medio ambiente presentó: Análisis de señales ECG y clasificación de arritmias con deep learning."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Felipe2.jpg",
+        descripcion: "Felipe Espinoza del programa Doctorado en Informática aaplicada a salud y medio ambiente presentó: Análisis de señales ECG y clasificación de arritmias con deep learning."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Felipe3.jpg",
         descripcion: "Felipe Espinoza del programa Doctorado en Informática aaplicada a salud y medio ambiente presentó: Análisis de señales ECG y clasificación de arritmias con deep learning."
       },
@@ -579,29 +729,65 @@ const ACTIVIDADES = [
     galeria: [
       {
         url: "/actividades/ciclodeseminarios/Carolina1.jpg",
+        descripcion: "Carolina Giesen compartió su experiencia en innovación y mercados globales, vinculando la práctica clínica con el desarrollo y liderazgo en tecnología médica."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Carolina2.jpg",
+        descripcion: "Carolina Giesen compartió su experiencia en innovación y mercados globales, vinculando la práctica clínica con el desarrollo y liderazgo en tecnología médica."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Carolina3.jpg",
+        descripcion: "Carolina Giesen compartió su experiencia en innovación y mercados globales, vinculando la práctica clínica con el desarrollo y liderazgo en tecnología médica."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Carolina4.jpg",
         descripcion: "Carolina Giesen compartió su experiencia en innovación y mercados globales, vinculando la práctica clínica con el desarrollo y liderazgo en tecnología médica."
       },
       {
         url: "/actividades/ciclodeseminarios/Camila1.jpg",
+        descripcion: "Camila Guajardo presentó: Divulgación Científica: Acercando el conocimiento a la sociedad."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Camila2.jpg",
+        descripcion: "Camila Guajardo presentó: Divulgación Científica: Acercando el conocimiento a la sociedad."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Camila3.jpg",
+        descripcion: "Camila Guajardo presentó: Divulgación Científica: Acercando el conocimiento a la sociedad."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Camila4.jpg",
         descripcion: "Camila Guajardo presentó: Divulgación Científica: Acercando el conocimiento a la sociedad."
       },
        {
         url: "/actividades/ciclodeseminarios/Claudia1.jpg",
+         descripcion: "Claudia Cancino del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Interpretable deep learning for classification of plasma metabolomic profiles in lung adenocarcinoma."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Claudia2.jpg",
+        descripcion: "Claudia Cancino del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Interpretable deep learning for classification of plasma metabolomic profiles in lung adenocarcinoma."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Claudia3.jpg",
+        descripcion: "Claudia Cancino del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Interpretable deep learning for classification of plasma metabolomic profiles in lung adenocarcinoma."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Claudia4.jpg",
         descripcion: "Claudia Cancino del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Interpretable deep learning for classification of plasma metabolomic profiles in lung adenocarcinoma."
       },
        {
         url: "/actividades/ciclodeseminarios/ProfeDavid1.jpg",
+         descripcion: "David Castro-Salinas del programa Magíster en ingeniería informática y estudiante de Doctorado presentó: Realidad virtual y entornos inmersivos para la formación en Ciencias e Ingeniería."
+      },
+      {
          url: "/actividades/ciclodeseminarios/ProfeDavid2.jpg",
+        descripcion: "David Castro-Salinas del programa Magíster en ingeniería informática y estudiante de Doctorado presentó: Realidad virtual y entornos inmersivos para la formación en Ciencias e Ingeniería."
+      },
+      {
          url: "/actividades/ciclodeseminarios/ProfeDavid3.jpg",
+        descripcion: "David Castro-Salinas del programa Magíster en ingeniería informática y estudiante de Doctorado presentó: Realidad virtual y entornos inmersivos para la formación en Ciencias e Ingeniería."
+      },
+      {
          url: "/actividades/ciclodeseminarios/ProfeDavid4.jpg",
         descripcion: "David Castro-Salinas del programa Magíster en ingeniería informática y estudiante de Doctorado presentó: Realidad virtual y entornos inmersivos para la formación en Ciencias e Ingeniería."
       },
@@ -618,29 +804,65 @@ const ACTIVIDADES = [
     galeria: [
       {
         url: "/actividades/ciclodeseminarios/Marcelo1.JPG",
+        descripcion: "El Dr. Marcelo Andia presentó el papel de la inteligencia artificial y las imágenes médicas en el procesamiento de datos, la reducción de costos y la anticipación de diagnósticos."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Marcelo2.JPG",
+        descripcion: "El Dr. Marcelo Andia presentó el papel de la inteligencia artificial y las imágenes médicas en el procesamiento de datos, la reducción de costos y la anticipación de diagnósticos."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Marcelo3.JPG",
+        descripcion: "El Dr. Marcelo Andia presentó el papel de la inteligencia artificial y las imágenes médicas en el procesamiento de datos, la reducción de costos y la anticipación de diagnósticos."
+      },
+      {
         url: "/actividades/ciclodeseminarios/Marcelo4.JPG",
         descripcion: "El Dr. Marcelo Andia presentó el papel de la inteligencia artificial y las imágenes médicas en el procesamiento de datos, la reducción de costos y la anticipación de diagnósticos."
       },
       {
         url: "/actividades/ciclodeseminarios/Juan1.JPG",
+        descripcion: "Juan Toledo presentó: Generación de señales biomédicas usando deep learning"
+      },
+      {
         url: "/actividades/ciclodeseminarios/Juan2.JPG",
+        descripcion: "Juan Toledo presentó: Generación de señales biomédicas usando deep learning"
+      },
+      {
         url: "/actividades/ciclodeseminarios/Juan3.JPG",
+        descripcion: "Juan Toledo presentó: Generación de señales biomédicas usando deep learning"
+      },
+      {
         url: "/actividades/ciclodeseminarios/Juan4.JPG",
         descripcion: "Juan Toledo presentó: Generación de señales biomédicas usando deep learning"
       },
        {
         url: "/actividades/ciclodeseminarios/Cristopher1.JPG",
+         descripcion: "Cristopher Retamales del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Scaling pangenome alignment: GPU acceleration and performance bottleneck analysis of wfmash for large-scale genomics."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Cristopher2.JPG",
+        descripcion: "Cristopher Retamales del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Scaling pangenome alignment: GPU acceleration and performance bottleneck analysis of wfmash for large-scale genomics."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Cristopher3.JPG",
+        descripcion: "Cristopher Retamales del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Scaling pangenome alignment: GPU acceleration and performance bottleneck analysis of wfmash for large-scale genomics."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Cristopher4.JPG",
         descripcion: "Cristopher Retamales del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Scaling pangenome alignment: GPU acceleration and performance bottleneck analysis of wfmash for large-scale genomics."
       },
        {
         url: "/actividades/ciclodeseminarios/Fausto1.JPG",
+         descripcion: "Fausto Cabezas del programa Doctorado, DIASMA presentó: Selección natural digital: Evolución y priorización de novo de péptidos terapéuticos con PEGA.py."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Fausto2.JPG",
+        descripcion: "Fausto Cabezas del programa Doctorado, DIASMA presentó: Selección natural digital: Evolución y priorización de novo de péptidos terapéuticos con PEGA.py."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Fausto3.JPG",
+        descripcion: "Fausto Cabezas del programa Doctorado, DIASMA presentó: Selección natural digital: Evolución y priorización de novo de péptidos terapéuticos con PEGA.py."
+      },
+      {
          url: "/actividades/ciclodeseminarios/Fausto4.JPG",
         descripcion: "Fausto Cabezas del programa Doctorado, DIASMA presentó: Selección natural digital: Evolución y priorización de novo de péptidos terapéuticos con PEGA.py."
       },
