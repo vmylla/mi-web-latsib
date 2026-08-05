@@ -362,11 +362,11 @@ const ACTIVIDADES = [
     descripcion: "participación de parte del equipo del laboratorio en Capacita+, instancia que reunió a estudiantes y profesionales en la Universidad Tecnológica Metropolitana en torno al fortalecimiento de competencias tecnológicas y el desarrollo de soluciones innovadoras.",
     galeria: [
       {
-        url: "https://media.licdn.com/dms/image/v2/D4D22AQFYQKOkMvji9g/feedshare-shrink_2048_1536/B4DZsGhjHYLgAk-/0/1765341016746?e=1770249600&v=beta&t=T1wlg8qYY-ilFyM3uX08t-bUjnW3o3jzNb3gJzmd4R0",
+        url: "",
         descripcion: "Gabriel Araya, Juan Toledo, Matías Gajardo y Camila Guajardo representaron al laboratorio con compromiso y motivación, destacando por su disposición al aprendizaje continuo y por reflejar los valores de colaboración y excelencia que caracterizan a nuestro equipo."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4D22AQEd9qMA8SLmbQ/feedshare-shrink_1280/B4DZsGhjHLLsAc-/0/1765341016754?e=1770249600&v=beta&t=aUzhz4awQKI-iVNvs8bpD64Cpx0WIO2ghpfmttMnTWA",
+        url: "",
         descripcion: "Gabriel Araya, Juan Toledo, Matías Gajardo y Camila Guajardo: Aprendiendo IA con Google Cloud."
       }
     ],
@@ -381,23 +381,208 @@ const ACTIVIDADES = [
     descripcion: "Se desarrollaron módulos teórico-prácticos sobre visualización e impresión 3D, realidad virtual aplicada a sistemas biológicos complejos e inteligencia artificial en la enseñanza de las ciencias, finalizando con un foro de discusión y la entrega de certificados.",
     galeria: [
       {
-        url: "https://media.licdn.com/dms/image/v2/D4D22AQFjiB29uXsyrg/feedshare-shrink_2048_1536/B4DZvKANd2G8Ak-/0/1768620611697?e=1770249600&v=beta&t=mrmpXrG1W5PO7qRNyiHCqGR9e_BaYJGz8_p5onOyHVI",
+        url: "",
         descripcion: "En representación de LaTSIB participaron Ignacio López Concha y JUAN CRISTÓBAL TOLEDO FIERRO, mientras que el Laboratorio de Sistemas Complejos fue representado por Camilo Cerda Sarabia y Joaquín Araya."
       },
       {
-        url: "https://media.licdn.com/dms/image/v2/D4D22AQHZTtsDgBEo6g/feedshare-shrink_1280/B4DZvKAOUcKYAg-/0/1768620615415?e=1770249600&v=beta&t=9Qqf8ZlMsfXc8ygFWrZeqky74fVFj4tgylU-DRX09yc",
+        url: "",
         descripcion: "Matias Zuñiga, Profesor Asistente IDT-UTEM e integrante de @zlab_utem y @moleculas3d, cuyo aporte fue clave para el desarrollo del bootcamp."
       },
             {
-        url: "https://media.licdn.com/dms/image/v2/D4D22AQEbB5Ha3q5fRg/feedshare-shrink_1280/B4DZvKANeFJoAc-/0/1768620611756?e=1770249600&v=beta&t=XyXcMbBbH9_ITaMJuosWDw47oRjAY8BoceXxNwyu6xs",
+        url: "",
         descripcion: "Destacamos especialmente la participación y liderazgo académico del Profesor Raul Caulier Cisterna."
       },
           {
-        url: "https://media.licdn.com/dms/image/v2/D4D22AQEHXP1-WWl8Pg/feedshare-shrink_1280/B4DZvKANdWJMAc-/0/1768620611694?e=1770249600&v=beta&t=-3L0qTmVqplpM42XJnL4owveKZYFGAQ3sodH92tm6to",
+        url: "",
         descripcion: "Destacamos especialmente la participación y liderazgo académico del Profesor Jorge Vergara."
       }
     ],
     participantes: ["Ignacio López Concha", "Juan Cristóbal Toledo Fierro", "Raul Caulier Cisterna", "Jorge Vergara"]
+  },
+  {
+    id: 8,
+    titulo: "Workshop BigMedP",
+    fecha: "Junio 2026",
+    lugar: "Miraflores de la Sierra, Madrid, España",
+    tipo: "Internacional",
+    descripcion: "Integrantes del LaTSIB participaron en las Jornadas de Trabajo del Biomedical Engineering and Data Science Group (BigMedP), instancia orientada al intercambio científico, la presentación de investigaciones y el fortalecimiento de redes de colaboración internacional.",
+    galeria: [
+      {
+        url: "",
+        descripcion: "El Dr. Raúl Caulier-Cisterna presentó los avances del Laboratorio."
+      },
+      {
+        url: "",
+        descripcion: "Andrés Vega presentó la charla: Análisis morfológico de señales biológicas mediante autoencoders y caracterización del espacio latente. "
+      },
+         {
+      url: "/actividades/espana/miraflores/foto1.jpg",
+      descripcion: "Integrantes del LaTSIB durante las jornadas de trabajo realizadas en Miraflores de la Sierra."
+    },
+    ],
+    participantes: ["Raúl Caulier", "Andrés Vega", "Matías Gajardo", "Camila Guajardo"]
+  },
+  {
+    id: 9,
+    titulo: "Defensa de tesis doctoral en la Universidad Rey Juan Carlos",
+    fecha: "Junio 2026",
+    lugar: "Universidad Rey Juan Carlos, Fuenlabrada, Madrid, España",
+    tipo: "Internacional",
+    descripcion: "Como parte de la visita académica a España, integrantes del LaTSIB asistieron a una defensa de tesis doctoral en la Universidad Rey Juan Carlos, conociendo investigaciones desarrolladas en el ámbito de la ingeniería biomédica y compartiendo con la comunidad académica de la institución.",
+    galeria: [
+      {
+        url: "",
+        descripcion: "Asistencia a la defensa de tesis doctoral realizada en el campus de Fuenlabrada."
+      },
+      {
+        url: "",
+        descripcion: "Dr. Raúl Caulier como jurado en la tesis doctoral en la Universidad Rey Juan Carlos"
+      },
+         {
+      url: "/actividades/espana/miraflores/foto1.jpg",
+      descripcion: "Finalización de la tesis con académicos e investigadores de la Universidad Rey Juan Carlos."
+    },
+    ],
+    participantes: ["Raúl Caulier", "Andrés Vega", "Matías Gajardo", "Camila Guajardo"]
+  },
+   {
+    id: 10,
+    titulo: "Visita académica a la Universidad Pablo de Olavide",
+    fecha: "Junio 2026",
+    lugar: "Universidad Pablo de Olavide, Sevilla, España",
+    tipo: "Internacional",
+    descripcion: "Como parte de la visita académica a España, integrantes del LaTSIB participaron en reuniones de trabajo en la Universidad Pablo de Olavide y realizaron una visita al laboratorio IMASD Running. La instancia permitió presentar las líneas de investigación del laboratorio, conocer capacidades en biomecánica, análisis del movimiento humano, evaluación funcional y rendimiento deportivo, además de explorar oportunidades de colaboración internacional en ingeniería biomédica, procesamiento de señales, ciencia de datos y tecnologías aplicadas a la salud.",
+    galeria: [
+      {
+        url: "",
+        descripcion: "Visita al laboratorio IMASD Running, donde se conocieron metodologías y tecnologías aplicadas al análisis biomecánico del movimiento humano y el rendimiento deportivo."
+      },
+    ],
+    participantes: ["Raúl Caulier", "Andrés Vega", "Matías Gajardo", "Camila Guajardo"]
+  },
+   {
+    id: 11,
+    titulo: "Ciclo de Seminarios LaTSIB",
+    fecha: "Primer Semestre del 2026",
+    lugar: "Universidad Tecnológica Metropolitana, Facultad de Ingeniería, Santiago, Chile",
+    tipo: "Nacional",
+    descripcion: "El ciclo de seminarios «Introducción a la Ingeniería Civil Biomédica | Jornada 1» reunió durante jornadas a especialistas, profesionales, académicos y estudiantes para acercar la ingeniería biomédica a la realidad clínica, las tecnologías emergentes y el futuro de la salud. La iniciativa abordó temáticas como análisis neurovascular, modelamiento biomédico, Deep Learning, comunicación aumentativa, innovación en tecnología médica e inteligencia artificial aplicada al diagnóstico, además de visibilizar proyectos de investigación desarrollados por estudiantes de pregrado, postgrado e integrantes de los laboratorios participantes.",
+    galeria: [
+      {
+        url: "",
+        descripcion: "El Dr. Antonio Eblen-Zajjur presentó avances relacionados con la evaluación miocárdica mediante balistocardiograma y destacó la importancia de acercar la medicina clínica a quienes desarrollan soluciones tecnológicas."
+      },
+      {
+        url: "",
+        descripcion: "Glenn Lanyon presentó: Desarrollo de software para el análisis de la respuesta neurovascular y la caracterización del período refractario."
+      },
+       {
+        url: "",
+        descripcion: "Gabriel Araya presentó: Spine-fNirs Web: Herramienta para el análisis de la respuesta neurovascular en la médula espinal."
+      },
+       {
+        url: "",
+        descripcion: "Matias Gajardo presentó: Modelando la médula espinal con fNIRS: Un enfoque de ineniería biomédica y estadística no paramétrica."
+      },
+       {
+        url: "",
+        descripcion: "Renato Álvarez del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Detección de anomalías genómicas mediante modelos deep learning en scRNA-seq."
+      },
+       {
+        url: "",
+        descripcion: "Alejandro Sanz del programa Doctorado en Matemáticas UPV presentó: Reconstrucción de imagen de tomografía por emisión de positrones con Deep Learning."
+      },
+    ],
+    participantes: ["Antonio Eblen-Zajjur", "Glenn Lanyon", "Gabriel Araya", "Matias Gajardo", "Renato Álvarez", "Alejandro Sanz"]
+  },
+    {
+    id: 12,
+    titulo: "Ciclo de Seminarios LaTSIB",
+    fecha: "Primer Semestre del 2026",
+    lugar: "Universidad Tecnológica Metropolitana, Facultad de Ingeniería, Santiago, Chile",
+    tipo: "Nacional",
+    descripcion: "El ciclo de seminarios «Introducción a la Ingeniería Civil Biomédica | Jornada 2» reunió durante jornadas a especialistas, profesionales, académicos y estudiantes para acercar la ingeniería biomédica a la realidad clínica, las tecnologías emergentes y el futuro de la salud. La iniciativa abordó temáticas como análisis neurovascular, modelamiento biomédico, Deep Learning, comunicación aumentativa, innovación en tecnología médica e inteligencia artificial aplicada al diagnóstico, además de visibilizar proyectos de investigación desarrollados por estudiantes de pregrado, postgrado e integrantes de los laboratorios participantes.",
+    galeria: [
+      {
+        url: "",
+        descripcion: "La fonoaudióloga Marcia Toloza Dauvergne abordó los desafíos de la comunicación cuando no hay voz y el potencial de las tecnologías de apoyo desarrolladas desde un enfoque interdisciplinario."
+      },
+      {
+        url: "",
+        descripcion: "Ignacio López presentó: Sistema para mejorar la comunicación en dispositivos de laringe electrónica mediante aplicación móvil."
+      },
+       {
+        url: "",
+        descripcion: "David Sepúlveda presentó: Ingeniería biomédica en acción: De la adquisición de señales a la inteligencia artificial en salud."
+      },
+       {
+        url: "",
+        descripcion: "Camilo Cerda del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: ¿Cómo lee una IA el ADN? Representación de datos y predicción de resistencia a antibióticos."
+      },
+       {
+        url: "",
+        descripcion: "Wellinton Barrera del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Beyond Linearity: From clustering benchmarks to deep latent representations in Single-Cell lung cancer transcriptomics."
+      },
+       {
+        url: "",
+        descripcion: "Felipe Espinoza del programa Doctorado en Informática aaplicada a salud y medio ambiente presentó: Análisis de señales ECG y clasificación de arritmias con deep learning."
+      },
+    ],
+    participantes: ["Marcia Toloza", "Ignacio López", "David Sepúlveda", "Camilo Cerda", "Wellinton Barrera", "Felipe Espinoza"]
+  },
+   {
+    id: 13,
+    titulo: "Ciclo de Seminarios LaTSIB",
+    fecha: "Primer Semestre del 2026",
+    lugar: "Universidad Tecnológica Metropolitana, Facultad de Ingeniería, Santiago, Chile",
+    tipo: "Nacional",
+    descripcion: "El ciclo de seminarios «Introducción a la Ingeniería Civil Biomédica | Jornada 3» reunió durante jornadas a especialistas, profesionales, académicos y estudiantes para acercar la ingeniería biomédica a la realidad clínica, las tecnologías emergentes y el futuro de la salud. La iniciativa abordó temáticas como análisis neurovascular, modelamiento biomédico, Deep Learning, comunicación aumentativa, innovación en tecnología médica e inteligencia artificial aplicada al diagnóstico, además de visibilizar proyectos de investigación desarrollados por estudiantes de pregrado, postgrado e integrantes de los laboratorios participantes.",
+    galeria: [
+      {
+        url: "",
+        descripcion: "Carolina Giesen compartió su experiencia en innovación y mercados globales, vinculando la práctica clínica con el desarrollo y liderazgo en tecnología médica."
+      },
+      {
+        url: "",
+        descripcion: "Camila Guajardo presentó: Divulgación Científica: Acercando el conocimiento a la sociedad."
+      },
+       {
+        url: "",
+        descripcion: "Claudia Cancino del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Interpretable deep learning for classification of plasma metabolomic profiles in lung adenocarcinoma."
+      },
+       {
+        url: "",
+        descripcion: "David Castro-Salinas del programa Magíster en ingeniería informática y estudiante de Doctorado presentó: Realidad virtual y entornos inmersivos para la formación en Ciencias e Ingeniería."
+      },
+    ],
+    participantes: ["Carolina Giesen", "Camila Guajardo", "Claudia Cancino", "David Castro-Salinas"]
+  },
+   {
+    id: 13,
+    titulo: "Ciclo de Seminarios LaTSIB",
+    fecha: "Primer Semestre del 2026",
+    lugar: "Universidad Tecnológica Metropolitana, Facultad de Ingeniería, Santiago, Chile",
+    tipo: "Nacional",
+    descripcion: "El ciclo de seminarios «Introducción a la Ingeniería Civil Biomédica | Jornada 4» reunió durante jornadas a especialistas, profesionales, académicos y estudiantes para acercar la ingeniería biomédica a la realidad clínica, las tecnologías emergentes y el futuro de la salud. La iniciativa abordó temáticas como análisis neurovascular, modelamiento biomédico, Deep Learning, comunicación aumentativa, innovación en tecnología médica e inteligencia artificial aplicada al diagnóstico, además de visibilizar proyectos de investigación desarrollados por estudiantes de pregrado, postgrado e integrantes de los laboratorios participantes.",
+    galeria: [
+      {
+        url: "",
+        descripcion: "El Dr. Marcelo Andia presentó el papel de la inteligencia artificial y las imágenes médicas en el procesamiento de datos, la reducción de costos y la anticipación de diagnósticos."
+      },
+      {
+        url: "",
+        descripcion: "Juan Toledo presentó: Generación de señales biomédicas usando deep learning"
+      },
+       {
+        url: "",
+        descripcion: "Cristopher Retamales del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Scaling pangenome alignment: GPU acceleration and performance bottleneck analysis of wfmash for large-scale genomics."
+      },
+       {
+        url: "",
+        descripcion: "Fausto Cabezas del programa Doctorado, DIASMA presentó: Selección natural digital: Evolución y priorización de novo de péptidos terapéuticos con PEGA.py."
+      },
+    ],
+    participantes: ["Marcelo Andia", "Juan Toledo", "Cristopher Retamales", "Fausto Cabezas"]
   },
 ];
 
