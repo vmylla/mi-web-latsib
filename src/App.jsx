@@ -479,27 +479,43 @@ const ACTIVIDADES = [
     descripcion: "El ciclo de seminarios «Introducción a la Ingeniería Civil Biomédica | Jornada 1» reunió durante jornadas a especialistas, profesionales, académicos y estudiantes para acercar la ingeniería biomédica a la realidad clínica, las tecnologías emergentes y el futuro de la salud. La iniciativa abordó temáticas como análisis neurovascular, modelamiento biomédico, Deep Learning, comunicación aumentativa, innovación en tecnología médica e inteligencia artificial aplicada al diagnóstico, además de visibilizar proyectos de investigación desarrollados por estudiantes de pregrado, postgrado e integrantes de los laboratorios participantes.",
     galeria: [
       {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Antonio1.jpg",
+        url: "/actividades/ciclodeseminarios/Antonio2.jpg",
+        url: "/actividades/ciclodeseminarios/Antonio3.jpg",
+        url: "/actividades/ciclodeseminarios/Antonio4.jpg",
         descripcion: "El Dr. Antonio Eblen-Zajjur presentó avances relacionados con la evaluación miocárdica mediante balistocardiograma y destacó la importancia de acercar la medicina clínica a quienes desarrollan soluciones tecnológicas."
       },
       {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Glenn1.jpg",
+         url: "/actividades/ciclodeseminarios/Glenn2.jpg",
+         url: "/actividades/ciclodeseminarios/Glenn3.jpg",
+         url: "/actividades/ciclodeseminarios/Glenn4.jpg",
         descripcion: "Glenn Lanyon presentó: Desarrollo de software para el análisis de la respuesta neurovascular y la caracterización del período refractario."
       },
        {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Gabriel1.jpg",
+         url: "/actividades/ciclodeseminarios/Gabriel2.jpg",
         descripcion: "Gabriel Araya presentó: Spine-fNirs Web: Herramienta para el análisis de la respuesta neurovascular en la médula espinal."
       },
        {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Matias1.jpg",
+         url: "/actividades/ciclodeseminarios/Matias2.jpg",
+         url: "/actividades/ciclodeseminarios/Matias3.jpg",
+         url: "/actividades/ciclodeseminarios/Matias4.jpg",
         descripcion: "Matias Gajardo presentó: Modelando la médula espinal con fNIRS: Un enfoque de ineniería biomédica y estadística no paramétrica."
       },
        {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Renato1.jpg",
+          url: "/actividades/ciclodeseminarios/Renato2.jpg",
+          url: "/actividades/ciclodeseminarios/Renato3.jpg",
+          url: "/actividades/ciclodeseminarios/Renato4.jpg",
         descripcion: "Renato Álvarez del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Detección de anomalías genómicas mediante modelos deep learning en scRNA-seq."
       },
        {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Alejandro1.jpg",
+         url: "/actividades/ciclodeseminarios/Alejandro2.jpg",
+         url: "/actividades/ciclodeseminarios/Alejandro3.jpg",
+         url: "/actividades/ciclodeseminarios/Alejandro4.jpg",
         descripcion: "Alejandro Sanz del programa Doctorado en Matemáticas UPV presentó: Reconstrucción de imagen de tomografía por emisión de positrones con Deep Learning."
       },
     ],
@@ -514,27 +530,40 @@ const ACTIVIDADES = [
     descripcion: "El ciclo de seminarios «Introducción a la Ingeniería Civil Biomédica | Jornada 2» reunió durante jornadas a especialistas, profesionales, académicos y estudiantes para acercar la ingeniería biomédica a la realidad clínica, las tecnologías emergentes y el futuro de la salud. La iniciativa abordó temáticas como análisis neurovascular, modelamiento biomédico, Deep Learning, comunicación aumentativa, innovación en tecnología médica e inteligencia artificial aplicada al diagnóstico, además de visibilizar proyectos de investigación desarrollados por estudiantes de pregrado, postgrado e integrantes de los laboratorios participantes.",
     galeria: [
       {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Marcia1.jpg",
+        url: "/actividades/ciclodeseminarios/Marcia2.jpg",
+        url: "/actividades/ciclodeseminarios/Marcia3.jpg",
+        url: "/actividades/ciclodeseminarios/Marcia4.jpg",
         descripcion: "La fonoaudióloga Marcia Toloza Dauvergne abordó los desafíos de la comunicación cuando no hay voz y el potencial de las tecnologías de apoyo desarrolladas desde un enfoque interdisciplinario."
       },
       {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Ignacio1.jpg",
+        url: "/actividades/ciclodeseminarios/Ignacio2.jpg",
         descripcion: "Ignacio López presentó: Sistema para mejorar la comunicación en dispositivos de laringe electrónica mediante aplicación móvil."
       },
        {
-        url: "",
+        url: "/actividades/ciclodeseminarios/David1.jpg",
+         url: "/actividades/ciclodeseminarios/David2.jpg",
+         url: "/actividades/ciclodeseminarios/David3.jpg",
         descripcion: "David Sepúlveda presentó: Ingeniería biomédica en acción: De la adquisición de señales a la inteligencia artificial en salud."
       },
        {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Camilo1.jpg",
+         url: "/actividades/ciclodeseminarios/Camilo2.jpg",
+         url: "/actividades/ciclodeseminarios/Camilo3.jpg",
+         url: "/actividades/ciclodeseminarios/Camilo4.jpg",
         descripcion: "Camilo Cerda del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: ¿Cómo lee una IA el ADN? Representación de datos y predicción de resistencia a antibióticos."
       },
        {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Wellinton1.jpg",
+         url: "/actividades/ciclodeseminarios/Wellinton2.jpg",
+         url: "/actividades/ciclodeseminarios/Wellinton3.jpg",
         descripcion: "Wellinton Barrera del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Beyond Linearity: From clustering benchmarks to deep latent representations in Single-Cell lung cancer transcriptomics."
       },
        {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Felipe1.jpg",
+         url: "/actividades/ciclodeseminarios/Felipe2.jpg",
+         url: "/actividades/ciclodeseminarios/Felipe3.jpg",
         descripcion: "Felipe Espinoza del programa Doctorado en Informática aaplicada a salud y medio ambiente presentó: Análisis de señales ECG y clasificación de arritmias con deep learning."
       },
     ],
@@ -549,19 +578,31 @@ const ACTIVIDADES = [
     descripcion: "El ciclo de seminarios «Introducción a la Ingeniería Civil Biomédica | Jornada 3» reunió durante jornadas a especialistas, profesionales, académicos y estudiantes para acercar la ingeniería biomédica a la realidad clínica, las tecnologías emergentes y el futuro de la salud. La iniciativa abordó temáticas como análisis neurovascular, modelamiento biomédico, Deep Learning, comunicación aumentativa, innovación en tecnología médica e inteligencia artificial aplicada al diagnóstico, además de visibilizar proyectos de investigación desarrollados por estudiantes de pregrado, postgrado e integrantes de los laboratorios participantes.",
     galeria: [
       {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Carolina1.jpg",
+        url: "/actividades/ciclodeseminarios/Carolina2.jpg",
+        url: "/actividades/ciclodeseminarios/Carolina3.jpg",
+        url: "/actividades/ciclodeseminarios/Carolina4.jpg",
         descripcion: "Carolina Giesen compartió su experiencia en innovación y mercados globales, vinculando la práctica clínica con el desarrollo y liderazgo en tecnología médica."
       },
       {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Camila1.jpg",
+        url: "/actividades/ciclodeseminarios/Camila2.jpg",
+        url: "/actividades/ciclodeseminarios/Camila3.jpg",
+        url: "/actividades/ciclodeseminarios/Camila4.jpg",
         descripcion: "Camila Guajardo presentó: Divulgación Científica: Acercando el conocimiento a la sociedad."
       },
        {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Claudia1.jpg",
+         url: "/actividades/ciclodeseminarios/Claudia2.jpg",
+         url: "/actividades/ciclodeseminarios/Claudia3.jpg",
+         url: "/actividades/ciclodeseminarios/Claudia4.jpg",
         descripcion: "Claudia Cancino del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Interpretable deep learning for classification of plasma metabolomic profiles in lung adenocarcinoma."
       },
        {
-        url: "",
+        url: "/actividades/ciclodeseminarios/ProfeDavid1.jpg",
+         url: "/actividades/ciclodeseminarios/ProfeDavid2.jpg",
+         url: "/actividades/ciclodeseminarios/ProfeDavid3.jpg",
+         url: "/actividades/ciclodeseminarios/ProfeDavid4.jpg",
         descripcion: "David Castro-Salinas del programa Magíster en ingeniería informática y estudiante de Doctorado presentó: Realidad virtual y entornos inmersivos para la formación en Ciencias e Ingeniería."
       },
     ],
