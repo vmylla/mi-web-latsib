@@ -374,11 +374,11 @@ const ACTIVIDADES = [
         {
         url: "/actividades/caib/Grupal.jpg",
           descripcion: "Fotografías grupales de los participantes del evento."
-        }
+        },
       {
            url: "/actividades/caib/Grupal2.jpg",
         descripcion: "Fotografías grupales de los participantes del evento."
-        }
+        },
       {
           url: "/actividades/caib/EntradaGrupal.jpg",
         descripcion: "Fotografías grupales de los participantes del evento."
@@ -479,7 +479,7 @@ const ACTIVIDADES = [
       {
            url: "/actividades/España/PoniendoAtencion.jpg",
       descripcion: "Integrantes del LaTSIB durante las jornadas de trabajo realizadas en Miraflores de la Sierra."
-    },
+    }
     ],
     participantes: ["Raúl Caulier", "Andrés Vega", "Matías Gajardo", "Camila Guajardo"]
   },
@@ -628,7 +628,7 @@ const ACTIVIDADES = [
       {
          url: "/actividades/ciclodeseminarios/Alejandro4.jpg",
         descripcion: "Alejandro Sanz del programa Doctorado en Matemáticas UPV presentó: Reconstrucción de imagen de tomografía por emisión de positrones con Deep Learning."
-      },
+      }
     ],
     participantes: ["Antonio Eblen-Zajjur", "Glenn Lanyon", "Gabriel Araya", "Matias Gajardo", "Renato Álvarez", "Alejandro Sanz"]
   },
@@ -715,7 +715,7 @@ const ACTIVIDADES = [
       {
          url: "/actividades/ciclodeseminarios/Felipe3.jpg",
         descripcion: "Felipe Espinoza del programa Doctorado en Informática aaplicada a salud y medio ambiente presentó: Análisis de señales ECG y clasificación de arritmias con deep learning."
-      },
+      }
     ],
     participantes: ["Marcia Toloza", "Ignacio López", "David Sepúlveda", "Camilo Cerda", "Wellinton Barrera", "Felipe Espinoza"]
   },
@@ -790,7 +790,7 @@ const ACTIVIDADES = [
       {
          url: "/actividades/ciclodeseminarios/ProfeDavid4.jpg",
         descripcion: "David Castro-Salinas del programa Magíster en ingeniería informática y estudiante de Doctorado presentó: Realidad virtual y entornos inmersivos para la formación en Ciencias e Ingeniería."
-      },
+      }
     ],
     participantes: ["Carolina Giesen", "Camila Guajardo", "Claudia Cancino", "David Castro-Salinas"]
   },
@@ -865,7 +865,7 @@ const ACTIVIDADES = [
       {
          url: "/actividades/ciclodeseminarios/Fausto4.JPG",
         descripcion: "Fausto Cabezas del programa Doctorado, DIASMA presentó: Selección natural digital: Evolución y priorización de novo de péptidos terapéuticos con PEGA.py."
-      },
+      }
     ],
     participantes: ["Marcelo Andia", "Juan Toledo", "Cristopher Retamales", "Fausto Cabezas"]
   },
