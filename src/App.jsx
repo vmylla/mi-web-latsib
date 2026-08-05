@@ -408,15 +408,22 @@ const ACTIVIDADES = [
     descripcion: "Integrantes del LaTSIB participaron en las Jornadas de Trabajo del Biomedical Engineering and Data Science Group (BigMedP), instancia orientada al intercambio científico, la presentación de investigaciones y el fortalecimiento de redes de colaboración internacional.",
     galeria: [
       {
-        url: "",
+        url: "/actividades/España/PresentacionRaul.JPG",
+        url: "/actividades/España/PresentacionRaul2.JPG",
+        url: "/actividades/España/PresentacionRaul3.JPG",
         descripcion: "El Dr. Raúl Caulier-Cisterna presentó los avances del Laboratorio."
       },
       {
-        url: "",
+        url: "/actividades/España/PresentacionAndres.JPG",
+        url: "/actividades/España/PresentacionAndres2.JPG",
+        url: "/actividades/España/PresentacionAndres3.JPG",
         descripcion: "Andrés Vega presentó la charla: Análisis morfológico de señales biológicas mediante autoencoders y caracterización del espacio latente. "
       },
          {
-      url: "/actividades/espana/miraflores/foto1.jpg",
+      url: "/actividades/España/Grupal.jpg",
+           url: "/actividades/España/Grupal2.jpg",
+           url: "/actividades/España/AtencionMati.jpg",
+           url: "/actividades/España/PoniendoAtencion.jpg",
       descripcion: "Integrantes del LaTSIB durante las jornadas de trabajo realizadas en Miraflores de la Sierra."
     },
     ],
@@ -431,15 +438,15 @@ const ACTIVIDADES = [
     descripcion: "Como parte de la visita académica a España, integrantes del LaTSIB asistieron a una defensa de tesis doctoral en la Universidad Rey Juan Carlos, conociendo investigaciones desarrolladas en el ámbito de la ingeniería biomédica y compartiendo con la comunidad académica de la institución.",
     galeria: [
       {
-        url: "",
+        url: "/actividades/España/AtencionTesis.jpg",
         descripcion: "Asistencia a la defensa de tesis doctoral realizada en el campus de Fuenlabrada."
       },
       {
-        url: "",
+        url: "/actividades/JuradoDeTesis.jpg",
         descripcion: "Dr. Raúl Caulier como jurado en la tesis doctoral en la Universidad Rey Juan Carlos"
       },
          {
-      url: "/actividades/espana/miraflores/foto1.jpg",
+      url: "/actividades/España/ProfeRaulTesis.jpg",
       descripcion: "Finalización de la tesis con académicos e investigadores de la Universidad Rey Juan Carlos."
     },
     ],
@@ -454,7 +461,10 @@ const ACTIVIDADES = [
     descripcion: "Como parte de la visita académica a España, integrantes del LaTSIB participaron en reuniones de trabajo en la Universidad Pablo de Olavide y realizaron una visita al laboratorio IMASD Running. La instancia permitió presentar las líneas de investigación del laboratorio, conocer capacidades en biomecánica, análisis del movimiento humano, evaluación funcional y rendimiento deportivo, además de explorar oportunidades de colaboración internacional en ingeniería biomédica, procesamiento de señales, ciencia de datos y tecnologías aplicadas a la salud.",
     galeria: [
       {
-        url: "",
+        url: "/actividades/España/VisitaPabloOlavide.jpg",
+        url: "/actividades/España/VisitaPabloOlavide2.jpg",
+        url: "/actividades/España/VisitaPabloOlavide3.jpg",
+        url: "/actividades/España/VisitaPabloOlavide4.jpg",
         descripcion: "Visita al laboratorio IMASD Running, donde se conocieron metodologías y tecnologías aplicadas al análisis biomecánico del movimiento humano y el rendimiento deportivo."
       },
     ],
