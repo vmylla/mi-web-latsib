@@ -670,7 +670,49 @@ const PUBLICACIONES = [
     year: "2025",
     autor: "Daniel Ramos‐López, Raúl Caulier‐Cisterna, Benjamín Díaz‐Ortiz, Cristóbal Baumann‐Biancani, Kamilo Hunger‐Abbott, Matías Herrera‐Matas, Andrés Vega‐Moraga, Vitor A. Lira, Maximiliano Espinosa‐Ramírez, Karol Ramírez‐Parada, Luigi Gabrielli‐Nervi, Hugo E. Verdejo y Felipe Contreras‐Briceño.",
     link: "https://physoc.onlinelibrary.wiley.com/doi/full/10.1113/EP093287"
-  }
+  },
+    {
+    titulo: "Interpretable machine learning model for characterizing magnetic susceptibility-based biomarkers in first episode psychosis",
+    revista: "Computer Methods and Programs in Biomedicine (Elsevier)",
+    year: "2025",
+    autor: "Cristian Montalba, Raúl Caulier-Cisterna, Carlos Milovic, Alfonso González, Juan Pablo Ramirez-Mahaluf, Juan Undurraga, Rodrigo Salas, Nicolás Crossley, Cristian Tejos y Sergio Uribe.",
+    link: "https://www.sciencedirect.com/science/article/pii/S0169260725004845"
+  },
+    {
+    titulo: "Neonatal anthropometry outcomes comparing two gestational weight gain standards",
+    revista: "Obstetrics & Gynecology International Journal",
+    year: "2025",
+    autor: "Francisco Mardones, Pedro Rosso, Marcelo Farías-Jofré, Sofia Ulloa, Luis Villarroel, Raúl Caulier-Cisterna, Martin Miranda-Hurtado, Álvaro Erazo, Glenn Lanyon-Alarcón.",
+    link: "https://medcraveonline.com/OGIJ/neonatal-anthropometry-outcomes-comparing-two-gestational-weight-gain-standards.html"
+  },
+     {
+    titulo: "Clasificación Automática de Señales Deglutorias Utilizando Machine Learning",
+    revista: "CASEIB 2025: Libro de Actas del XLIII Congreso Anual de la Sociedad Española de Ingeniería Biomédica",
+    year: "2025",
+    autor: "Vicente Escudero, David Sepúlveda-Velazquez, Glenn Lanyon-Alarcón, Andrés Vega-Moraga, Jorge Vergara-Quezada, Constanza Echeverria, Rodrigo Tobar-Fredes, Gustavo Schleyer, Patricio Fuentealba, Raúl Caulier-Cisterna et al.",
+    link: "https://dialnet.unirioja.es/servlet/articulo?codigo=10695623"
+  },
+   {
+    titulo: "Spine-fNIRS Web: Interfaz Gráfica Remota para el Análisis y Visualización de Señales de la Respuesta Neurovascular en la Médula Espinal",
+    revista: "CASEIB 2025: Libro de Actas del XLIII Congreso Anual de la Sociedad Española de Ingeniería Biomédica",
+    year: "2025",
+    autor: "Gabriel Araya López, Andrés Vega-Moraga, Glenn Lanyon-Alarcón, Jorge Vergara-Quezada, Sergio Uribe, Antonio Eblen-Zajjur, Raúl Caulier-Cisterna.",
+    link: "https://lnkd.in/dgvE2KJa"
+  },
+   {
+    titulo: "The Effectiveness of NIRS-Based Wearable Devices in Estimating Physical Activity Intensity in Patients with Chronic Non-Communicable Diseases: A Structured Narrative Review",
+    revista: "Medical Sciences",
+    year: "2026",
+    autor: "Raúl Caulier-Cisterna, Andrés Vega-Moraga, Diego Ramos-López y Felipe Contreras-Briceño.",
+    link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13304124/"
+  },
+    {
+    titulo: "Altered neurovascular responses recorded after incomplete spinal cord injury recorded by a noninvasive near-infrared spectroscopy in a pilot case-control report",
+    revista: "Discover Neuroscience",
+    year: "2026",
+    autor: "Juan P. Appelgren-Gonzalez, Raúl Caulier-Cisterna, Juan E. Oyarzún, Sergio Uribe y Antonio Eblen-Zajjur.",
+    link: "https://link.springer.com/article/10.1186/s13064-026-00266-5"
+  },
 ];
 
 // --- DATA: EQUIPO ---
