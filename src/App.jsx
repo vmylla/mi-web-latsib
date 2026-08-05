@@ -617,19 +617,31 @@ const ACTIVIDADES = [
     descripcion: "El ciclo de seminarios «Introducción a la Ingeniería Civil Biomédica | Jornada 4» reunió durante jornadas a especialistas, profesionales, académicos y estudiantes para acercar la ingeniería biomédica a la realidad clínica, las tecnologías emergentes y el futuro de la salud. La iniciativa abordó temáticas como análisis neurovascular, modelamiento biomédico, Deep Learning, comunicación aumentativa, innovación en tecnología médica e inteligencia artificial aplicada al diagnóstico, además de visibilizar proyectos de investigación desarrollados por estudiantes de pregrado, postgrado e integrantes de los laboratorios participantes.",
     galeria: [
       {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Marcelo1.JPG",
+        url: "/actividades/ciclodeseminarios/Marcelo2.JPG",
+        url: "/actividades/ciclodeseminarios/Marcelo3.JPG",
+        url: "/actividades/ciclodeseminarios/Marcelo4.JPG",
         descripcion: "El Dr. Marcelo Andia presentó el papel de la inteligencia artificial y las imágenes médicas en el procesamiento de datos, la reducción de costos y la anticipación de diagnósticos."
       },
       {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Juan1.JPG",
+        url: "/actividades/ciclodeseminarios/Juan2.JPG",
+        url: "/actividades/ciclodeseminarios/Juan3.JPG",
+        url: "/actividades/ciclodeseminarios/Juan4.JPG",
         descripcion: "Juan Toledo presentó: Generación de señales biomédicas usando deep learning"
       },
        {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Cristopher1.JPG",
+         url: "/actividades/ciclodeseminarios/Cristopher2.JPG",
+         url: "/actividades/ciclodeseminarios/Cristopher3.JPG",
+         url: "/actividades/ciclodeseminarios/Cristopher4.JPG",
         descripcion: "Cristopher Retamales del Laboratorio de Sistemas Complejos Impulsados por Datos presentó: Scaling pangenome alignment: GPU acceleration and performance bottleneck analysis of wfmash for large-scale genomics."
       },
        {
-        url: "",
+        url: "/actividades/ciclodeseminarios/Fausto1.JPG",
+         url: "/actividades/ciclodeseminarios/Fausto2.JPG",
+         url: "/actividades/ciclodeseminarios/Fausto3.JPG",
+         url: "/actividades/ciclodeseminarios/Fausto4.JPG",
         descripcion: "Fausto Cabezas del programa Doctorado, DIASMA presentó: Selección natural digital: Evolución y priorización de novo de péptidos terapéuticos con PEGA.py."
       },
     ],
