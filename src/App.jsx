@@ -322,19 +322,36 @@ const ACTIVIDADES = [
     descripcion: "Nuestros integrantes expusieron trabajos en las áreas de neuroimagen, biomarcadores y tecnologías asistivas, contribuyendo a la discusión científica desde diversas líneas del laboratorio.",
     galeria: [
       {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQGZUxnTdOFoIA/feedshare-shrink_1280/B4EZqF80vIGYAs-/0/1763183906848?e=1770249600&v=beta&t=yNi3jAe9xc6pi8uE05rsSQrZ1BU_8TkC5-q23kERbtY",
+        url: "/actividades/caib/PresentacionDavid.jpg",
+        url: "/actividades/caib/PresentacionDavid2.jpg",
+        url: "/actividades/caib/PresentacionDavid3.jpg",
         descripcion: "David Sepúlveda: “Caracterización de nuevos biomarcadores para la respuesta neurovascular peri-espinal obtenida con fNIRS”."
       },
          {
-        url: "https://media.licdn.com/dms/image/v2/D4D22AQFp5Xz5J5iY2w/feedshare-shrink_2048_1536/B4DZqpYOcXIAAw-/0/1763778294852?e=1770249600&v=beta&t=U2f2ovfwvKjuf8ie-y-bl-cE-9Fbp9FNEWvwAuozkCo",
+        url: "/actividades/caib/PresentacionMati.jpg",
+           url: "/actividades/caib/PresentacionMati2.jpg",
+           url: "/actividades/caib/PresentacionMati3.jpg",
         descripcion: "Matías Gajardo: “Comparación de la respuesta neurovascular peri-espinal mediante fNIRS tras estimulación de nervios mediano y tibial en voluntarios sanos."
       },
    {
-        url: "https://media.licdn.com/dms/image/v2/D4E22AQHFCqW6A8PQ6Q/feedshare-shrink_1280/B4EZqF80u6HoAs-/0/1763183906525?e=1770249600&v=beta&t=oVQ0E805uwDFV759NtujsVNNTJR61RGl0ZASu_V2JLU",
+        url: "/actividades/caib/PaperIgnacio.jpg",
         descripcion: "Ignacio López: Sistema inteligente para optimizar la voz en dispositivos de laringe electrónica (póster científico)."
-      }
+      },
+      {
+        url: "/actividades/caib/EntradaJuan.jpg",
+        url: "/actividades/caib/EntradaDavid.jpg",
+        url: "/actividades/caib/EntradaMati.jpg",
+        url: "/actividades/caib/EntradaEntradaIgnacio.jpg",
+        descripcion: "Integrantes del laboratorio previo al inicio de las actividades del Congreso Anual de Ingeniería Biomédica."
+      },
+        {
+        url: "/actividades/caib/Grupal.jpg",
+           url: "/actividades/caib/Grupal2.jpg",
+          url: "/actividades/caib/EntradaGrupal.jpg",
+        descripcion: "Fotografías grupales de los participantes del evento."
+        }
     ],
-    participantes: ["David Sepúlveda", "Matías Gajardo", "Ignacio López"]
+    participantes: ["David Sepúlveda", "Matías Gajardo", "Ignacio López", "Juan Toledo"]
   },
     {
     id: 6,
