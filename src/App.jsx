@@ -179,10 +179,6 @@ const ACTIVIDADES = [
 
     galeria: [
       {
-        url: "/actividades/vive-la-investigacion/CatalinaVIVE.jpeg",
-        descripcion: "Catalina Araniz: Caracterización de la hipoxia a partir de redes vasculares simuladas con Vascusynth."
-      },
-      {
         url: "/actividades/vive-la-investigacion/AndresVIVE.jpeg",
         descripcion: "Andrés Vega: Importancia de la desoxihemoglobina en la respuesta neurovascular peri-espinal medida con fNIRS."
       },
@@ -229,10 +225,6 @@ const ACTIVIDADES = [
       {
         url: "/actividades/idi/CamilaIDI.jpg",
         descripcion: "Camila Guajardo: Simulación computacional del modelo de Hodgkin-Huxley aplicado a la dinámica neuronal"
-      },
-      {
-        url: "/actividades/idi/CatalinaIDI.jpg",
-        descripcion: "Catalina Araniz: Caracterización de la hipoxia a partir de redes vasculares simuladas con Vascusynth."
       },
       {
         url: "/actividades/idi/JuanIDI.jpg",
