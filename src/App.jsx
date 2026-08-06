@@ -1242,7 +1242,8 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [view, setView] = useState('landing');
-  const [selectedItem, setSelectedItem] = useState(null); 
+ const [selectedResearch, setSelectedResearch] = useState(null);
+const [selectedActivity, setSelectedActivity] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
