@@ -395,11 +395,19 @@ const ACTIVIDADES = [
     descripcion: "participación de parte del equipo del laboratorio en Capacita+, instancia que reunió a estudiantes y profesionales en la Universidad Tecnológica Metropolitana en torno al fortalecimiento de competencias tecnológicas y el desarrollo de soluciones innovadoras.",
     galeria: [
       {
-        url: "",
+        url: "/actividades/capacita+/3.jpeg",
+        descripcion: "Gabriel Araya, Juan Toledo, Matías Gajardo y Camila Guajardo representaron al laboratorio con compromiso y motivación, destacando por su disposición al aprendizaje continuo y por reflejar los valores de colaboración y excelencia que caracterizan a nuestro equipo."
+      },
+       {
+        url: "/actividades/capacita+/4.jpeg",
         descripcion: "Gabriel Araya, Juan Toledo, Matías Gajardo y Camila Guajardo representaron al laboratorio con compromiso y motivación, destacando por su disposición al aprendizaje continuo y por reflejar los valores de colaboración y excelencia que caracterizan a nuestro equipo."
       },
       {
-        url: "",
+        url: "/actividades/capacita+/1.jpeg",
+        descripcion: "Gabriel Araya, Juan Toledo, Matías Gajardo y Camila Guajardo: Aprendiendo IA con Google Cloud."
+      },
+      {
+        url: "/actividades/capacita+/2.jpeg",
         descripcion: "Gabriel Araya, Juan Toledo, Matías Gajardo y Camila Guajardo: Aprendiendo IA con Google Cloud."
       }
     ],
@@ -414,20 +422,12 @@ const ACTIVIDADES = [
     descripcion: "Se desarrollaron módulos teórico-prácticos sobre visualización e impresión 3D, realidad virtual aplicada a sistemas biológicos complejos e inteligencia artificial en la enseñanza de las ciencias, finalizando con un foro de discusión y la entrega de certificados.",
     galeria: [
       {
-        url: "",
+        url: "/actividades/steam-utem/1.jpeg",
         descripcion: "En representación de LaTSIB participaron Ignacio López Concha y JUAN CRISTÓBAL TOLEDO FIERRO, mientras que el Laboratorio de Sistemas Complejos fue representado por Camilo Cerda Sarabia y Joaquín Araya."
       },
       {
-        url: "",
-        descripcion: "Matias Zuñiga, Profesor Asistente IDT-UTEM e integrante de @zlab_utem y @moleculas3d, cuyo aporte fue clave para el desarrollo del bootcamp."
-      },
-            {
-        url: "",
-        descripcion: "Destacamos especialmente la participación y liderazgo académico del Profesor Raul Caulier Cisterna."
-      },
-          {
-        url: "",
-        descripcion: "Destacamos especialmente la participación y liderazgo académico del Profesor Jorge Vergara."
+        url: "/actividades/steam-utem/2.jpeg",
+        descripcion: "En representación de LaTSIB participaron Ignacio López Concha y JUAN CRISTÓBAL TOLEDO FIERRO, mientras que el Laboratorio de Sistemas Complejos fue representado por Camilo Cerda Sarabia y Joaquín Araya."
       }
     ],
     participantes: ["Ignacio López Concha", "Juan Cristóbal Toledo Fierro", "Raul Caulier Cisterna", "Jorge Vergara"]
