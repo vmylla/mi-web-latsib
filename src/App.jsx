@@ -1251,8 +1251,15 @@ const [selectedActivity, setSelectedActivity] = useState(null);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleViewActivity = (activity) => { setSelectedItem(activity); setView('activity-detail'); };
-  const handleViewResearch = (research) => { setSelectedItem(research); setView('research-detail'); };
+const handleViewActivity = (activity) => { 
+  setSelectedActivity(activity); 
+  setView('activity-detail'); 
+};
+
+const handleViewResearch = (research) => { 
+  setSelectedResearch(research); 
+  setView('research-detail'); 
+};
 
   const scrollToSection = (id) => {
     setMobileMenuOpen(false);
