@@ -795,7 +795,7 @@ const ACTIVIDADES = [
     participantes: ["Carolina Giesen", "Camila Guajardo", "Claudia Cancino", "David Castro-Salinas"]
   },
    {
-    id: 13,
+    id: 14,
     titulo: "Ciclo de Seminarios LaTSIB",
     fecha: "Primer Semestre del 2026",
     lugar: "Universidad Tecnológica Metropolitana, Facultad de Ingeniería, Santiago, Chile",
@@ -1067,36 +1067,52 @@ const EQUIPO = [
 // --- COMPONENTES AUXILIARES ---
 
 // Carrusel de imágenes
-const ImageSlider = ({ items, autoSlide = true, autoSlideInterval = 3000 }) => {
+const ImageSlider = ({ items, autoSlide = true, autoSlideInterval = 3500 }) => {
   const [curr, setCurr] = useState(0);
-  const next = () => setCurr((curr) => (curr === items.length - 1 ? 0 : curr + 1));
-  const prev = () => setCurr((curr) => (curr === 0 ? items.length - 1 : curr - 1));
+  const validItems = (items || []).filter(item => item && item.url && item.url.trim() !== '');
+
+  const next = () => setCurr((c) => (c === validItems.length - 1 ? 0 : c + 1));
+  const prev = () => setCurr((c) => (c === 0 ? validItems.length - 1 : c - 1));
 
   useEffect(() => {
-    if (!autoSlide || !items || items.length === 0) return;
+    if (!autoSlide || validItems.length <= 1) return;
     const slideInterval = setInterval(next, autoSlideInterval);
     return () => clearInterval(slideInterval);
-  }, [items]);
+  }, [validItems.length, autoSlide, autoSlideInterval]);
 
-  if (!items || items.length === 0) return null;
+  if (validItems.length === 0) return null;
 
   return (
     <div className="overflow-hidden relative h-full w-full group">
       <div className="flex transition-transform ease-out duration-500 h-full" style={{ transform: `translateX(-${curr * 100}%)` }}>
-        {items.map((item, i) => (
-          <img key={i} src={item.url} alt="" className="w-full h-full object-cover flex-shrink-0" />
+        {validItems.map((item, i) => (
+          <img key={i} src={item.url} alt={item.descripcion || ""} className="w-full h-full object-cover flex-shrink-0" />
         ))}
       </div>
-      {items.length > 1 && (
+      {validItems.length > 1 && (
         <>
           <div className="absolute inset-0 flex items-center justify-between p-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-            <button onClick={(e) => {e.stopPropagation(); prev()}} className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white pointer-events-auto"><ChevronLeft size={16} /></button>
-            <button onClick={(e) => {e.stopPropagation(); next()}} className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white pointer-events-auto"><ChevronRight size={16} /></button>
+            <button
+              type="button"
+              aria-label="Imagen anterior"
+              onClick={(e) => { e.stopPropagation(); prev(); }}
+              className="p-1.5 rounded-full shadow-md bg-white/90 text-gray-800 hover:bg-white hover:scale-110 transition-all pointer-events-auto cursor-pointer"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              type="button"
+              aria-label="Siguiente imagen"
+              onClick={(e) => { e.stopPropagation(); next(); }}
+              className="p-1.5 rounded-full shadow-md bg-white/90 text-gray-800 hover:bg-white hover:scale-110 transition-all pointer-events-auto cursor-pointer"
+            >
+              <ChevronRight size={18} />
+            </button>
           </div>
-          <div className="absolute bottom-2 right-0 left-0">
-            <div className="flex items-center justify-center gap-1">
-              {items.map((_, i) => (
-                <div key={i} className={`transition-all w-1.5 h-1.5 bg-white rounded-full ${curr === i ? "p-1" : "bg-opacity-50"}`} />
+          <div className="absolute bottom-2 right-0 left-0 pointer-events-none">
+            <div className="flex items-center justify-center gap-1.5">
+              {validItems.map((_, i) => (
+                <div key={i} className={`transition-all rounded-full ${curr === i ? "w-4 h-1.5 bg-white shadow-sm" : "w-1.5 h-1.5 bg-white/60"}`} />
               ))}
             </div>
           </div>
@@ -1108,48 +1124,129 @@ const ImageSlider = ({ items, autoSlide = true, autoSlideInterval = 3000 }) => {
 
 // Tarjeta de Actividad
 const ActivityCard = ({ item, onClick }) => (
-  <div onClick={() => onClick(item)} className="group bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-lg transition-all flex flex-col h-full cursor-pointer hover:-translate-y-1">
+  <div
+    onClick={() => onClick(item)}
+    role="button"
+    tabIndex={0}
+    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(item); } }}
+    className="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full cursor-pointer hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  >
     <div className="h-48 overflow-hidden relative bg-slate-200">
       <ImageSlider items={item.galeria} />
-      <div className="absolute top-3 right-3 bg-blue-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full border border-blue-400 z-10 pointer-events-none">{item.tipo}</div>
+      <div className="absolute top-3 right-3 bg-blue-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full border border-blue-400 z-10 pointer-events-none shadow-sm">
+        {item.tipo}
+      </div>
     </div>
     <div className="p-6 flex flex-col flex-grow relative">
-      <div className="flex items-center gap-2 text-slate-400 text-xs font-medium mb-3"><Calendar size={14} className="text-blue-500" /> {item.fecha} <MapPin size={14} className="text-teal-500" /> {item.lugar}</div>
-      <h3 className="font-bold text-slate-900 text-lg mb-3 leading-tight group-hover:text-blue-600 transition-colors">{item.titulo}</h3>
-      <p className="text-slate-500 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">{item.descripcion}</p>
-      <div className="pt-2 mt-auto border-t border-slate-50 text-blue-600 text-xs font-bold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Ver fotos y detalles <ArrowLeft className="rotate-180" size={12}/></div>
+      <div className="flex items-center gap-2 text-slate-400 text-xs font-medium mb-3">
+        <Calendar size={14} className="text-blue-500" /> {item.fecha}
+        <span className="text-slate-300">•</span>
+        <MapPin size={14} className="text-teal-500" /> {item.lugar}
+      </div>
+      <h3 className="font-bold text-slate-900 text-lg mb-3 leading-snug group-hover:text-blue-600 transition-colors">
+        {item.titulo}
+      </h3>
+      <p className="text-slate-500 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">
+        {item.descripcion}
+      </p>
+      <div className="pt-3 mt-auto border-t border-slate-100 text-blue-600 text-xs font-bold flex items-center justify-between">
+        <span>Ver fotos y detalles</span>
+        <ChevronRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
+      </div>
     </div>
   </div>
 );
 
 // --- COMPONENTE VISTA DETALLE DE ACTIVIDAD ---
 const ActivityDetailView = ({ activity, onBack }) => {
-  useEffect(() => window.scrollTo(0, 0), []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const validGallery = (activity?.galeria || []).filter(f => f && f.url && f.url.trim() !== '');
+  const participantesList = (activity?.participantes || [])
+    .flatMap(item => (typeof item === 'string' ? item.split(',') : [item]))
+    .map(name => (typeof name === 'string' ? name.trim() : ''))
+    .filter(Boolean);
+
   return (
     <div className="pt-32 pb-20 min-h-screen bg-slate-50 animate-in fade-in zoom-in duration-300">
       <div className="container mx-auto px-6 max-w-6xl">
-        <button onClick={onBack} className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 mb-8 font-medium transition-colors bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200"><ArrowLeft size={20} /> Volver a Actividades</button>
+        <button
+          type="button"
+          onClick={onBack}
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 mb-8 font-semibold transition-colors bg-white px-5 py-2.5 rounded-full shadow-sm border border-slate-200 cursor-pointer hover:shadow hover:border-blue-200"
+        >
+          <ArrowLeft size={18} /> Volver a Actividades
+        </button>
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
           <div className="p-8 md:p-12 border-b border-slate-100">
-            <div className="flex flex-wrap gap-3 mb-4"><span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-bold">{activity.tipo}</span><span className="flex items-center gap-1 text-slate-500 text-sm"><Calendar size={16}/> {activity.fecha}</span><span className="flex items-center gap-1 text-slate-500 text-sm"><MapPin size={16}/> {activity.lugar}</span></div>
-            <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">{activity.titulo}</h1>
-            <p className="text-lg text-slate-600 leading-relaxed max-w-3xl">{activity.descripcion}</p>
-          </div>
-          <div className="p-8 md:p-12 bg-slate-50">
-            <h3 className="text-xl font-bold text-slate-900 mb-8 flex items-center gap-2"><LayoutGrid size={20} className="text-blue-500"/> Galería de Imágenes</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {activity.galeria.map((foto, idx) => (
-                <div key={idx} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group flex flex-col h-full">
-                  <div className="aspect-video overflow-hidden bg-gray-100"><img src={foto.url} alt={`Foto ${idx+1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" /></div>
-                  <div className="p-5 flex gap-3 items-start"><Info size={18} className="text-blue-400 mt-1 flex-shrink-0" /><p className="text-slate-600 text-sm leading-relaxed">{foto.descripcion}</p></div>
-                </div>
-              ))}
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              <span className="bg-blue-100 text-blue-700 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                {activity.tipo}
+              </span>
+              <span className="flex items-center gap-1.5 text-slate-500 text-sm">
+                <Calendar size={16} className="text-blue-500" /> {activity.fecha}
+              </span>
+              <span className="text-slate-300">•</span>
+              <span className="flex items-center gap-1.5 text-slate-500 text-sm">
+                <MapPin size={16} className="text-teal-500" /> {activity.lugar}
+              </span>
             </div>
+            <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+              {activity.titulo}
+            </h1>
+            <p className="text-lg text-slate-600 leading-relaxed max-w-4xl">
+              {activity.descripcion}
+            </p>
           </div>
-          <div className="p-8 md:p-12 border-t border-slate-100">
-            <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2"><Users size={20} className="text-teal-500"/> Integrantes Participantes</h3>
-            <div className="flex flex-wrap gap-2">{activity.participantes.map((persona, idx) => (<span key={idx} className="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg text-sm font-medium border border-slate-200">{persona}</span>))}</div>
-          </div>
+
+          {validGallery.length > 0 && (
+            <div className="p-8 md:p-12 bg-slate-50 border-b border-slate-100">
+              <h3 className="text-xl font-bold text-slate-900 mb-8 flex items-center gap-2">
+                <LayoutGrid size={20} className="text-blue-500" /> Galería de Imágenes ({validGallery.length})
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {validGallery.map((foto, idx) => (
+                  <div key={idx} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all group flex flex-col h-full border border-slate-100">
+                    <div className="aspect-video overflow-hidden bg-slate-100">
+                      <img
+                        src={foto.url}
+                        alt={`Foto ${idx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        loading="lazy"
+                      />
+                    </div>
+                    {foto.descripcion && (
+                      <div className="p-5 flex gap-3 items-start flex-grow">
+                        <Info size={18} className="text-blue-400 mt-0.5 shrink-0" />
+                        <p className="text-slate-600 text-sm leading-relaxed">{foto.descripcion}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {participantesList.length > 0 && (
+            <div className="p-8 md:p-12 bg-white">
+              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <Users size={20} className="text-teal-500" /> Integrantes Participantes
+              </h3>
+              <div className="flex flex-wrap gap-2.5">
+                {participantesList.map((persona, idx) => (
+                  <span
+                    key={idx}
+                    className="inline-flex items-center gap-2 bg-slate-50 text-slate-700 px-4 py-2 rounded-xl text-sm font-medium border border-slate-200 shadow-2xs hover:border-teal-300 transition-colors"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-teal-500"></span>
+                    {persona}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -1158,55 +1255,116 @@ const ActivityDetailView = ({ activity, onBack }) => {
 
 // --- COMPONENTE VISTA DETALLE DE LÍNEA DE INVESTIGACIÓN ---
 const ResearchDetailView = ({ research, onBack }) => {
-  useEffect(() => window.scrollTo(0, 0), []);
-  const headerGradient = research.color || "from-slate-50 to-white";
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const headerGradient = research?.color || "from-slate-50 to-white";
+  const validImages = (research?.imagenes || []).filter(img => img && img.url && img.url.trim() !== '');
+  const integrantesList = (research?.integrantes || [])
+    .flatMap(item => (typeof item === 'string' ? item.split(',') : [item]))
+    .map(name => (typeof name === 'string' ? name.trim() : ''))
+    .filter(Boolean);
+  const docsList = (research?.documentos || []).filter(doc => doc && doc.titulo);
+
   return (
     <div className="pt-32 pb-20 min-h-screen bg-slate-50 animate-in fade-in zoom-in duration-300">
       <div className="container mx-auto px-6 max-w-6xl">
-        <button onClick={onBack} className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 mb-8 font-medium transition-colors bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200"><ArrowLeft size={20} /> Volver a Investigaciones</button>
+        <button
+          type="button"
+          onClick={onBack}
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 mb-8 font-semibold transition-colors bg-white px-5 py-2.5 rounded-full shadow-sm border border-slate-200 cursor-pointer hover:shadow hover:border-blue-200"
+        >
+          <ArrowLeft size={18} /> Volver a Investigaciones
+        </button>
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
           <div className={`p-8 md:p-12 border-b border-slate-100 bg-gradient-to-r ${headerGradient}`}>
-            <div className="mb-6 p-4 bg-white rounded-2xl w-fit shadow-sm border border-slate-100">{research.icon}</div>
-            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">{research.titulo}</h1>
-            <p className="text-lg text-slate-600 leading-relaxed max-w-4xl">{research.desc}</p>
+            <div className="mb-6 p-4 bg-white/90 backdrop-blur-sm rounded-2xl w-fit shadow-md border border-slate-100">
+              {research?.icon}
+            </div>
+            <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
+              {research?.titulo}
+            </h1>
+            <p className="text-lg text-slate-700 leading-relaxed max-w-4xl">
+              {research?.desc}
+            </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-0">
             <div className="md:col-span-2 p-8 md:p-12 bg-white">
-              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2"><LayoutGrid size={20} className="text-blue-500"/> Galería y Ejemplos</h3>
-              <div className="grid gap-6">
-                {research.imagenes.map((img, idx) => (
-                  <div key={idx} className="rounded-xl overflow-hidden border border-slate-100 shadow-sm">
-                    <img src={img.url} alt="" className="w-full h-auto object-cover" />
-                    <div className="p-4 bg-slate-50 text-sm text-slate-600 italic border-t border-slate-100">{img.desc}</div>
-                  </div>
-                ))}
-              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <LayoutGrid size={20} className="text-blue-500" /> Galería y Evidencia Experimental
+              </h3>
+
+              {validImages.length > 0 ? (
+                <div className="grid gap-6">
+                  {validImages.map((img, idx) => (
+                    <div key={idx} className="rounded-2xl overflow-hidden border border-slate-100 shadow-sm bg-slate-50">
+                      <img src={img.url} alt={img.desc || `Evidencia ${idx + 1}`} className="w-full h-auto object-cover" loading="lazy" />
+                      {img.desc && (
+                        <div className="p-4 bg-slate-50 text-sm text-slate-600 italic border-t border-slate-100 flex items-start gap-2">
+                          <Info size={16} className="text-blue-400 mt-0.5 shrink-0" />
+                          <span>{img.desc}</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="bg-slate-50 border border-slate-200/70 rounded-2xl p-8 text-center">
+                  <BookOpen size={36} className="mx-auto text-slate-400 mb-3" />
+                  <h4 className="font-bold text-slate-700 mb-1">Proyecto en Desarrollo Activo</h4>
+                  <p className="text-slate-500 text-sm max-w-md mx-auto">
+                    Los registros experimentales, diagramas de arquitectura y material audiovisual asociado a esta línea se actualizan continuamente conforme avanzan las publicaciones.
+                  </p>
+                </div>
+              )}
             </div>
 
-            <div className="p-8 md:p-12 bg-slate-50 border-l border-slate-100">
+            <div className="p-8 md:p-12 bg-slate-50 border-t md:border-t-0 md:border-l border-slate-100">
               <div className="mb-10">
-                <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2"><Users size={18} className="text-teal-500"/> Investigadores</h3>
-                <ul className="space-y-3">
-                  {research.integrantes.map((member, i) => (
-                    <li key={i} className="flex items-center gap-2 text-slate-700 bg-white p-3 rounded-lg border border-slate-200 shadow-sm text-sm"><div className="w-2 h-2 rounded-full bg-teal-400"></div>{member}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2"><FileText size={18} className="text-indigo-500"/> Documentos</h3>
-                <ul className="space-y-3">
-                  {research.documentos.map((doc, i) => (
-                    <li key={i}>
-                      <a href={doc.link} target="_blank" rel="noopener noreferrer" className="block p-3 bg-white rounded-lg border border-slate-200 shadow-sm hover:border-indigo-300 hover:shadow-md transition-all group">
-                        <div className="font-semibold text-slate-800 text-sm mb-1 group-hover:text-indigo-600">{doc.titulo}</div>
-                        <div className="flex items-center gap-1 text-xs text-slate-400"><Download size={12}/> {doc.tipo}</div>
-                      </a>
+                <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                  <Users size={18} className="text-teal-500" /> Investigadores ({integrantesList.length})
+                </h3>
+                <ul className="space-y-2.5">
+                  {integrantesList.map((member, i) => (
+                    <li
+                      key={i}
+                      className="flex items-center gap-2.5 text-slate-700 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs text-sm font-medium hover:border-teal-300 transition-colors"
+                    >
+                      <div className="w-2.5 h-2.5 rounded-full bg-teal-500 shrink-0"></div>
+                      <span>{member}</span>
                     </li>
                   ))}
                 </ul>
               </div>
+
+              {docsList.length > 0 && (
+                <div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <FileText size={18} className="text-indigo-500" /> Documentos y Papers
+                  </h3>
+                  <ul className="space-y-3">
+                    {docsList.map((doc, i) => (
+                      <li key={i}>
+                        <a
+                          href={doc.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block p-3.5 bg-white rounded-xl border border-slate-200 shadow-2xs hover:border-indigo-300 hover:shadow-md transition-all group"
+                        >
+                          <div className="font-semibold text-slate-800 text-sm mb-1.5 group-hover:text-indigo-600 leading-snug">
+                            {doc.titulo}
+                          </div>
+                          <div className="flex items-center gap-1.5 text-xs text-slate-400 group-hover:text-indigo-500 font-medium">
+                            <Download size={13} /> {doc.tipo || "Enlace"}
+                          </div>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -1218,32 +1376,61 @@ const ResearchDetailView = ({ research, onBack }) => {
 // --- COMPONENTES UI BÁSICOS ---
 const SectionTitle = ({ children, subtitle }) => (
   <div className="mb-12 text-center">
-    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">{children}</h2>
-    <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
-    {subtitle && <p className="text-slate-600 max-w-2xl mx-auto">{subtitle}</p>}
+    <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">{children}</h2>
+    <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full mb-4"></div>
+    {subtitle && <p className="text-slate-600 max-w-2xl mx-auto text-base leading-relaxed">{subtitle}</p>}
   </div>
 );
 
-const Card = ({ children, className = "" }) => (
-  <div className={`bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 ${className}`}>{children}</div>
-);
-
-const NavLink = ({ href, children, mobile, onClick }) => (
-  <a href={href} onClick={onClick} className={`${mobile ? 'block py-3 text-lg border-b border-slate-100' : 'text-sm font-medium'} text-slate-600 hover:text-blue-600 transition-colors uppercase tracking-wide cursor-pointer`}>{children}</a>
+const NavLink = ({ children, mobile, onClick }) => (
+  <button
+    type="button"
+    onClick={onClick}
+    className={`${mobile ? 'block w-full text-left py-3 text-lg border-b border-slate-100' : 'text-sm font-medium'} text-slate-600 hover:text-blue-600 transition-colors uppercase tracking-wide cursor-pointer`}
+  >
+    {children}
+  </button>
 );
 
 /**
  * ------------------------------------------------------------------
- * COMPONENTE PRINCIPAL (APP)
+ * COMPONENTE PRINCIPAL (APP) CON ENRUTAMIENTO SEGURO
  * ------------------------------------------------------------------
  */
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [view, setView] = useState('landing');
- const [selectedResearch, setSelectedResearch] = useState(null);
-const [selectedActivity, setSelectedActivity] = useState(null);
+
+  // Función para parsear el hash actual de forma segura
+  const parseRoute = () => {
+    const hash = window.location.hash.replace(/^#\/?/, '').trim();
+    if (!hash || hash === 'about' || hash === 'research' || hash === 'activities' || hash === 'team' || hash === 'publications' || hash === 'contact') {
+      return { view: 'landing', id: null, section: hash || null };
+    }
+    if (hash === 'investigaciones') {
+      return { view: 'research-list', id: null, section: null };
+    }
+    if (hash.startsWith('investigacion/')) {
+      const rawId = hash.replace('investigacion/', '');
+      const numId = parseInt(rawId, 10);
+      return { view: 'research-detail', id: isNaN(numId) ? rawId : numId, section: null };
+    }
+    if (hash === 'actividades') {
+      return { view: 'activities-list', id: null, section: null };
+    }
+    if (hash.startsWith('actividad/')) {
+      const rawId = hash.replace('actividad/', '');
+      const numId = parseInt(rawId, 10);
+      return { view: 'activity-detail', id: isNaN(numId) ? rawId : numId, section: null };
+    }
+    if (hash === 'publicaciones') {
+      return { view: 'publications-list', id: null, section: null };
+    }
+    return { view: 'landing', id: null, section: null };
+  };
+
+  const [route, setRoute] = useState(parseRoute);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -1251,51 +1438,135 @@ const [selectedActivity, setSelectedActivity] = useState(null);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-const handleViewActivity = (activity) => { 
-  setSelectedActivity(activity); 
-  setView('activity-detail'); 
-};
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const currentRoute = parseRoute();
+      setRoute(currentRoute);
+      if (currentRoute.section) {
+        setTimeout(() => {
+          const el = document.getElementById(currentRoute.section);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 60);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
 
-const handleViewResearch = (research) => { 
-  setSelectedResearch(research); 
-  setView('research-detail'); 
-};
+    window.addEventListener('hashchange', handleLocationChange);
+    window.addEventListener('popstate', handleLocationChange);
 
-  const scrollToSection = (id) => {
-    setMobileMenuOpen(false);
-    if (id === 'all-activities') { setView('activities-list'); window.scrollTo(0,0); return; }
-    if (id === 'all-research') { setView('research-list'); window.scrollTo(0,0); return; }
-    if (id === 'all-publications') { setView('publications-list'); window.scrollTo(0,0); return; } 
-    
-    if (view !== 'landing') {
-      setView('landing');
-      setTimeout(() => { const element = document.getElementById(id); if (element) element.scrollIntoView({ behavior: 'smooth' }); }, 100);
+    // Si carga con sección en el hash, asegurar scroll
+    if (route.section) {
+      setTimeout(() => {
+        const el = document.getElementById(route.section);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+
+    return () => {
+      window.removeEventListener('hashchange', handleLocationChange);
+      window.removeEventListener('popstate', handleLocationChange);
+    };
+  }, []);
+
+  const navigateTo = (targetView, id = null) => {
+    let newHash = '';
+    if (targetView === 'landing') newHash = '';
+    else if (targetView === 'research-list') newHash = 'investigaciones';
+    else if (targetView === 'research-detail') newHash = `investigacion/${id}`;
+    else if (targetView === 'activities-list') newHash = 'actividades';
+    else if (targetView === 'activity-detail') newHash = `actividad/${id}`;
+    else if (targetView === 'publications-list') newHash = 'publicaciones';
+
+    const fullNewHash = newHash ? `#${newHash}` : '#';
+    if (window.location.hash === fullNewHash || (!window.location.hash && fullNewHash === '#')) {
+      setRoute(parseRoute());
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      const element = document.getElementById(id);
-      if (element) element.scrollIntoView({ behavior: 'smooth' });
+      window.location.hash = newHash;
     }
   };
 
+  const handleBack = (fallbackView = 'landing') => {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      navigateTo(fallbackView);
+    }
+  };
+
+  const handleViewResearch = (research) => {
+    navigateTo('research-detail', research.id);
+  };
+
+  const handleViewActivity = (activity) => {
+    navigateTo('activity-detail', activity.id);
+  };
+
+  const scrollToSection = (id) => {
+    setMobileMenuOpen(false);
+    if (id === 'all-activities') { navigateTo('activities-list'); return; }
+    if (id === 'all-research') { navigateTo('research-list'); return; }
+    if (id === 'all-publications') { navigateTo('publications-list'); return; } 
+
+    if (route.view !== 'landing') {
+      window.location.hash = id;
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  // Resolver item actual con seguridad
+  const currentResearch = route.view === 'research-detail'
+    ? LINEAS_INVESTIGACION.find((r) => r.id === route.id || String(r.id) === String(route.id)) || null
+    : null;
+
+  const currentActivity = route.view === 'activity-detail'
+    ? ACTIVIDADES.find((a) => a.id === route.id || String(a.id) === String(route.id)) || null
+    : null;
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled || view !== 'landing' ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'}`}>
+      {/* NAVBAR */}
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled || route.view !== 'landing' ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => { setView('landing'); setTimeout(() => window.scrollTo(0,0), 50); }}>
-            <img src={CONFIG.imagenes.logo} alt="Logo" className="h-12 w-12 object-cover rounded-full" />
-            <span className={`text-xl font-bold tracking-tighter ${isScrolled || view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>{CONFIG.nombreGrupo}</span>
+          <div
+            className="flex items-center gap-3 cursor-pointer select-none"
+            onClick={() => { navigateTo('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          >
+            <img src={CONFIG.imagenes.logo} alt="Logo" className="h-12 w-12 object-cover rounded-full shadow-sm" />
+            <span className={`text-xl font-extrabold tracking-tight ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
+              {CONFIG.nombreGrupo}
+            </span>
           </div>
-          <div className={`hidden md:flex items-center gap-8 ${isScrolled || view !== 'landing' ? 'text-slate-600' : 'text-white'}`}>
-            <button onClick={() => scrollToSection('about')}>Nosotros</button>
-            <button onClick={() => scrollToSection('research')}>Investigación</button>
-            <button onClick={() => scrollToSection('activities')}>Actividades</button>
-            <button onClick={() => scrollToSection('team')}>Equipo</button>
-            <button onClick={() => scrollToSection('publications')}>Publicaciones</button>
-            <button onClick={() => scrollToSection('contact')} className={`px-5 py-2 rounded-full font-semibold transition-all ${isScrolled || view !== 'landing' ? 'bg-blue-600 text-white' : 'bg-white text-blue-900'}`}>Contacto</button>
+          <div className={`hidden md:flex items-center gap-8 ${isScrolled || route.view !== 'landing' ? 'text-slate-600' : 'text-white'}`}>
+            <button type="button" onClick={() => scrollToSection('about')} className="hover:text-blue-500 font-medium transition-colors cursor-pointer">Nosotros</button>
+            <button type="button" onClick={() => scrollToSection('research')} className="hover:text-blue-500 font-medium transition-colors cursor-pointer">Investigación</button>
+            <button type="button" onClick={() => scrollToSection('activities')} className="hover:text-blue-500 font-medium transition-colors cursor-pointer">Actividades</button>
+            <button type="button" onClick={() => scrollToSection('team')} className="hover:text-blue-500 font-medium transition-colors cursor-pointer">Equipo</button>
+            <button type="button" onClick={() => scrollToSection('publications')} className="hover:text-blue-500 font-medium transition-colors cursor-pointer">Publicaciones</button>
+            <button
+              type="button"
+              onClick={() => scrollToSection('contact')}
+              className={`px-5 py-2 rounded-full font-semibold transition-all shadow-sm cursor-pointer ${isScrolled || route.view !== 'landing' ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-white text-blue-900 hover:bg-blue-50'}`}
+            >
+              Contacto
+            </button>
           </div>
-          <button className="md:hidden text-slate-800" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>{mobileMenuOpen ? <X /> : <Menu className={isScrolled || view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} />}</button>
+          <button
+            type="button"
+            className="md:hidden text-slate-800 p-2 cursor-pointer"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Abrir menú"
+          >
+            {mobileMenuOpen ? <X /> : <Menu className={isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} />}
+          </button>
         </div>
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex flex-col gap-2">
+          <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex flex-col gap-2 animate-in fade-in duration-200">
             <NavLink mobile onClick={() => scrollToSection('about')}>Nosotros</NavLink>
             <NavLink mobile onClick={() => scrollToSection('research')}>Investigación</NavLink>
             <NavLink mobile onClick={() => scrollToSection('activities')}>Actividades</NavLink>
@@ -1306,129 +1577,196 @@ const handleViewResearch = (research) => {
         )}
       </nav>
 
-      {/* --- RENDERIZADO CONDICIONAL DE VISTAS --- */}
+      {/* --- RENDERIZADO CONDICIONAL DE VISTAS CON PROTECCIÓN ANTE PANTALLA EN BLANCO --- */}
 
       {/* VISTA: DETALLE DE LÍNEA DE INVESTIGACIÓN */}
-      {view === 'research-detail' && selectedItem && (
-        <ResearchDetailView research={selectedItem} onBack={() => setView('research-list')} />
-      )}
-
-      {/* VISTA: LISTADO COMPLETO DE INVESTIGACIONES */}
-      {view === 'research-list' && (
-        <div className="pt-32 pb-20 min-h-screen bg-slate-50">
+      {route.view === 'research-detail' && currentResearch ? (
+        <ResearchDetailView research={currentResearch} onBack={() => handleBack('research-list')} />
+      ) : route.view === 'research-list' ? (
+        /* VISTA: LISTADO COMPLETO DE INVESTIGACIONES */
+        <div className="pt-32 pb-20 min-h-screen bg-slate-50 animate-in fade-in duration-300">
           <div className="container mx-auto px-6">
             <div className="mb-10">
-              <button onClick={() => setView('landing')} className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 mb-6 font-medium transition-colors"><ArrowLeft size={20} /> Volver al inicio</button>
-              <h1 className="text-4xl font-bold text-slate-900 mb-4">Líneas de Investigación</h1>
+              <button
+                type="button"
+                onClick={() => navigateTo('landing')}
+                className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 mb-6 font-semibold transition-colors bg-white px-5 py-2.5 rounded-full shadow-sm border border-slate-200 cursor-pointer hover:shadow"
+              >
+                <ArrowLeft size={18} /> Volver al inicio
+              </button>
+              <h1 className="text-4xl font-extrabold text-slate-900 mb-4">Líneas de Investigación</h1>
               <p className="text-slate-600 max-w-3xl text-lg">Explora nuestras áreas de desarrollo científico y tecnológico.</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {LINEAS_INVESTIGACION.map((item, idx) => (
-                <Card key={idx} className={`group flex flex-col h-full bg-gradient-to-br ${item.color}`}>
-                  <div className="mb-6 p-4 bg-white/50 backdrop-blur-sm rounded-2xl w-fit group-hover:bg-white transition-colors border border-white/50">{item.icon}</div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{item.titulo}</h3>
-                  <p className="text-slate-600 leading-relaxed flex-grow line-clamp-3">{item.desc}</p>
-                  <div className="mt-6 pt-6 border-t border-slate-200/50">
-                    <button onClick={() => handleViewResearch(item)} className="flex items-center text-blue-700 font-bold text-sm cursor-pointer hover:underline gap-2">Ver proyecto completo <ChevronRight size={16} /></button>
+                <div
+                  key={item.id || idx}
+                  onClick={() => handleViewResearch(item)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleViewResearch(item); } }}
+                  className={`group flex flex-col h-full cursor-pointer bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gradient-to-br ${item.color}`}
+                >
+                  <div className="mb-6 p-4 bg-white/70 backdrop-blur-sm rounded-2xl w-fit group-hover:bg-white group-hover:scale-105 transition-all border border-white/60 shadow-sm">{item.icon}</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors leading-snug">{item.titulo}</h3>
+                  <p className="text-slate-600 leading-relaxed flex-grow line-clamp-3 mb-6 text-sm">{item.desc}</p>
+                  <div className="mt-auto pt-4 border-t border-slate-200/60 flex items-center justify-between text-blue-700 font-bold text-sm">
+                    <span>Ver proyecto completo</span>
+                    <ChevronRight size={16} className="transform group-hover:translate-x-1.5 transition-transform" />
                   </div>
-                </Card>
+                </div>
               ))}
             </div>
           </div>
         </div>
-      )}
-
-      {/* VISTA: DETALLE DE ACTIVIDAD */}
-      {view === 'activity-detail' && selectedItem && (
-        <ActivityDetailView activity={selectedItem} onBack={() => setView('activities-list')} />
-      )}
-
-      {/* VISTA: LISTADO COMPLETO DE ACTIVIDADES */}
-      {view === 'activities-list' && (
-        <div className="pt-32 pb-20 min-h-screen bg-slate-50">
+      ) : route.view === 'activity-detail' && currentActivity ? (
+        /* VISTA: DETALLE DE ACTIVIDAD */
+        <ActivityDetailView activity={currentActivity} onBack={() => handleBack('activities-list')} />
+      ) : route.view === 'activities-list' ? (
+        /* VISTA: LISTADO COMPLETO DE ACTIVIDADES */
+        <div className="pt-32 pb-20 min-h-screen bg-slate-50 animate-in fade-in duration-300">
           <div className="container mx-auto px-6">
             <div className="mb-10">
-              <button onClick={() => setView('landing')} className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 mb-6 font-medium transition-colors"><ArrowLeft size={20} /> Volver al inicio</button>
-              <h1 className="text-4xl font-bold text-slate-900 mb-4">Bitácora de Actividades</h1>
-              <p className="text-slate-600 max-w-3xl text-lg">Registro completo de nuestras actividades.</p>
+              <button
+                type="button"
+                onClick={() => navigateTo('landing')}
+                className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 mb-6 font-semibold transition-colors bg-white px-5 py-2.5 rounded-full shadow-sm border border-slate-200 cursor-pointer hover:shadow"
+              >
+                <ArrowLeft size={18} /> Volver al inicio
+              </button>
+              <h1 className="text-4xl font-extrabold text-slate-900 mb-4">Bitácora de Actividades</h1>
+              <p className="text-slate-600 max-w-3xl text-lg">Registro completo de nuestras actividades y participaciones académicas.</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {ACTIVIDADES.map((act) => <ActivityCard key={act.id} item={act} onClick={handleViewActivity} />)}
+              {ACTIVIDADES.map((act) => (
+                <ActivityCard key={act.id} item={act} onClick={handleViewActivity} />
+              ))}
             </div>
           </div>
         </div>
-      )}
-
-      {/* VISTA NUEVA: LISTADO COMPLETO DE PUBLICACIONES */}
-      {view === 'publications-list' && (
-        <div className="pt-32 pb-20 min-h-screen bg-slate-50">
+      ) : route.view === 'publications-list' ? (
+        /* VISTA: LISTADO COMPLETO DE PUBLICACIONES */
+        <div className="pt-32 pb-20 min-h-screen bg-slate-50 animate-in fade-in duration-300">
           <div className="container mx-auto px-6">
             <div className="mb-10">
-              <button onClick={() => setView('landing')} className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 mb-6 font-medium transition-colors"><ArrowLeft size={20} /> Volver al inicio</button>
-              <h1 className="text-4xl font-bold text-slate-900 mb-4">Repositorio de Publicaciones</h1>
+              <button
+                type="button"
+                onClick={() => navigateTo('landing')}
+                className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 mb-6 font-semibold transition-colors bg-white px-5 py-2.5 rounded-full shadow-sm border border-slate-200 cursor-pointer hover:shadow"
+              >
+                <ArrowLeft size={18} /> Volver al inicio
+              </button>
+              <h1 className="text-4xl font-extrabold text-slate-900 mb-4">Repositorio de Publicaciones</h1>
               <p className="text-slate-600 max-w-3xl text-lg">Lista completa de artículos científicos y contribuciones académicas.</p>
             </div>
             <div className="grid gap-4 max-w-4xl mx-auto">
               {PUBLICACIONES.map((pub, idx) => (
-                <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white hover:bg-blue-50 border border-transparent hover:border-blue-100 rounded-lg transition-all hover:shadow-md">
-                  <div>
+                <a
+                  key={idx}
+                  href={pub.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white hover:bg-blue-50/70 border border-slate-100 hover:border-blue-200 rounded-2xl transition-all hover:shadow-md block"
+                >
+                  <div className="pr-4">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded">{pub.year}</span>
-                      <span className="text-slate-500 text-xs font-semibold uppercase">{pub.revista}</span>
+                      <span className="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">{pub.year}</span>
+                      <span className="text-slate-500 text-xs font-semibold uppercase tracking-wider">{pub.revista}</span>
                     </div>
-                    <h4 className="font-bold text-slate-800 text-lg mb-1">{pub.titulo}</h4>
-                    <p className="text-slate-500 text-sm">{pub.autor ? pub.autor : pub.autores}</p>
+                    <h4 className="font-bold text-slate-900 text-lg mb-1 group-hover:text-blue-700 transition-colors leading-snug">{pub.titulo}</h4>
+                    <p className="text-slate-500 text-sm leading-relaxed">{pub.autor ? pub.autor : pub.autores}</p>
                   </div>
-                  <a href={pub.link} className="mt-4 md:mt-0 p-2 text-slate-400 hover:text-blue-600 hover:bg-white rounded-full transition-all"><ExternalLink size={20} /></a>
-                </div>
+                  <div className="mt-4 md:mt-0 p-2.5 text-slate-400 group-hover:text-blue-600 group-hover:bg-white rounded-full transition-all shrink-0">
+                    <ExternalLink size={20} />
+                  </div>
+                </a>
               ))}
             </div>
           </div>
         </div>
-      )}
-
-      {/* VISTA: PORTADA (LANDING) */}
-      {view === 'landing' && (
+      ) : (
+        /* VISTA: PORTADA (LANDING) - FALLBACK PRINCIPAL SEGURO */
         <>
           <header className="relative pt-32 pb-20 lg:min-h-screen flex items-center overflow-hidden bg-slate-900" id="about">
-            <div className="absolute inset-0 z-0 opacity-20"><div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-600 rounded-full blur-[120px]"></div><div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-500 rounded-full blur-[100px]"></div></div>
-            <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+            <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+              <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-600 rounded-full blur-[120px]"></div>
+              <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-500 rounded-full blur-[100px]"></div>
+            </div>
+            <div className="absolute inset-0 z-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
             <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
               <div className="text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/50 border border-blue-700 text-blue-200 text-xs font-semibold mb-6">
-                  <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span><span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span></span>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-900/50 border border-blue-700 text-blue-200 text-xs font-semibold mb-6 shadow-sm">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                  </span>
                   Investigación Activa {CONFIG.year}
                 </div>
-                <h1 className="text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-6">Donde la ciencia <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">se encuentra con la tecnología</span></h1>
-                <p className="text-lg text-slate-300 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">{CONFIG.mision}</p>
+                <h1 className="text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight">
+                  Donde la ciencia <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">
+                    se encuentra con la tecnología
+                  </span>
+                </h1>
+                <p className="text-lg text-slate-300 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light">
+                  {CONFIG.mision}
+                </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <button onClick={() => scrollToSection('research')} className="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 group">Nuestras Líneas <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" /></button>
-                  <button onClick={() => scrollToSection('publications')} className="px-8 py-3 bg-slate-800 text-white border border-slate-700 rounded-lg font-semibold hover:bg-slate-700 transition-all">Ver Publicaciones</button>
+                  <button
+                    type="button"
+                    onClick={() => scrollToSection('research')}
+                    className="px-8 py-3.5 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 group shadow-lg shadow-blue-900/30 cursor-pointer"
+                  >
+                    Nuestras Líneas <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollToSection('publications')}
+                    className="px-8 py-3.5 bg-slate-800 text-white border border-slate-700 rounded-xl font-bold hover:bg-slate-700 transition-all shadow-sm cursor-pointer"
+                  >
+                    Ver Publicaciones
+                  </button>
                 </div>
               </div>
               <div className="relative hidden lg:block">
-                <div className="relative z-10 bg-slate-800/50 backdrop-blur-xl border border-slate-700 p-2 rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500"><img src={CONFIG.imagenes.hero} alt="Lab Vis" className="rounded-xl w-full h-auto" /></div>
+                <div className="relative z-10 bg-slate-800/50 backdrop-blur-xl border border-slate-700 p-2 rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                  <img src={CONFIG.imagenes.hero} alt="Lab Vis" className="rounded-xl w-full h-auto object-cover" />
+                </div>
               </div>
             </div>
           </header>
 
           <section id="research" className="py-24 bg-white">
             <div className="container mx-auto px-6">
-              <SectionTitle subtitle="Creamos conocimiento que conecta datos, tecnología y personas para avanzar en la salud del futuro.">Líneas de Investigación</SectionTitle>
+              <SectionTitle subtitle="Creamos conocimiento que conecta datos, tecnología y personas para avanzar en la salud del futuro.">
+                Líneas de Investigación
+              </SectionTitle>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 {LINEAS_INVESTIGACION.slice(0, 3).map((item, idx) => (
-                  <Card key={idx} className={`group flex flex-col h-full hover:-translate-y-2 bg-gradient-to-br ${item.color}`}>
-                    <div className="mb-6 p-4 bg-white/50 backdrop-blur-sm rounded-2xl w-fit group-hover:bg-white transition-colors border border-white/50">{item.icon}</div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">{item.titulo}</h3>
-                    <p className="text-slate-600 leading-relaxed flex-grow line-clamp-3">{item.desc}</p>
-                    <div className="mt-6 pt-6 border-t border-slate-200/50">
-                      <button onClick={() => handleViewResearch(item)} className="flex items-center text-blue-700 font-bold text-sm cursor-pointer hover:underline gap-2">Ver proyecto completo <ChevronRight size={16} /></button>
+                  <div
+                    key={item.id || idx}
+                    onClick={() => handleViewResearch(item)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleViewResearch(item); } }}
+                    className={`group flex flex-col h-full cursor-pointer bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gradient-to-br ${item.color}`}
+                  >
+                    <div className="mb-6 p-4 bg-white/70 backdrop-blur-sm rounded-2xl w-fit group-hover:bg-white group-hover:scale-105 transition-all border border-white/60 shadow-sm">{item.icon}</div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors leading-snug">{item.titulo}</h3>
+                    <p className="text-slate-600 leading-relaxed flex-grow line-clamp-3 mb-6 text-sm">{item.desc}</p>
+                    <div className="mt-auto pt-4 border-t border-slate-200/60 flex items-center justify-between text-blue-700 font-bold text-sm">
+                      <span>Ver proyecto completo</span>
+                      <ChevronRight size={16} className="transform group-hover:translate-x-1.5 transition-transform" />
                     </div>
-                  </Card>
+                  </div>
                 ))}
               </div>
               <div className="text-center">
-                <button onClick={() => scrollToSection('all-research')} className="inline-flex items-center gap-2 px-8 py-3 bg-white text-blue-600 border border-blue-200 rounded-full font-bold shadow-sm hover:shadow-md hover:bg-blue-50 transition-all group">
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('all-research')}
+                  className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-blue-600 border border-blue-200 rounded-full font-bold shadow-sm hover:shadow-md hover:bg-blue-50 transition-all group cursor-pointer"
+                >
                   <LayoutGrid size={20} className="group-hover:scale-110 transition-transform" /> Ver todas las líneas de investigación
                 </button>
               </div>
@@ -1437,12 +1775,20 @@ const handleViewResearch = (research) => {
 
           <section id="activities" className="py-24 bg-slate-50 border-y border-slate-200">
             <div className="container mx-auto px-6">
-              <SectionTitle subtitle="Registro completo de actividades académicas, presentaciones y participación institucional del Laboratorio.">Actividades Recientes</SectionTitle>
+              <SectionTitle subtitle="Registro completo de actividades académicas, presentaciones y participación institucional del Laboratorio.">
+                Actividades Recientes
+              </SectionTitle>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                {ACTIVIDADES.slice(0, 3).map((act) => <ActivityCard key={act.id} item={act} onClick={handleViewActivity} />)}
+                {ACTIVIDADES.slice(0, 3).map((act) => (
+                  <ActivityCard key={act.id} item={act} onClick={handleViewActivity} />
+                ))}
               </div>
               <div className="text-center">
-                <button onClick={() => scrollToSection('all-activities')} className="inline-flex items-center gap-2 px-8 py-3 bg-white text-blue-600 border border-blue-200 rounded-full font-bold shadow-sm hover:shadow-md hover:bg-blue-50 transition-all group">
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('all-activities')}
+                  className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-blue-600 border border-blue-200 rounded-full font-bold shadow-sm hover:shadow-md hover:bg-blue-50 transition-all group cursor-pointer"
+                >
                   <LayoutGrid size={20} className="group-hover:scale-110 transition-transform" /> Ver bitácora completa
                 </button>
               </div>
@@ -1451,35 +1797,54 @@ const handleViewResearch = (research) => {
 
           <section id="team" className="py-24 bg-white">
             <div className="container mx-auto px-6">
-              <SectionTitle subtitle="Investigadores, estudiantes y profesionales trabajando juntos para construir ciencia con propósito.">Integrantes del Laboratorio</SectionTitle>
+              <SectionTitle subtitle="Investigadores, estudiantes y profesionales trabajando juntos para construir ciencia con propósito.">
+                Integrantes del Laboratorio
+              </SectionTitle>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {EQUIPO.map((miembro, idx) => (
-                  <div key={idx} className="bg-slate-50 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all text-center group">
-                    <div className="h-48 overflow-hidden relative"><img src={miembro.img} alt={miembro.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" /></div>
-                    <div className="p-6">
-                      <h4 className="font-bold text-slate-900 text-lg">{miembro.nombre}</h4>
-                      <p className="text-blue-600 text-sm font-medium mb-3">{miembro.rol}</p>
-                      <p className="text-slate-500 text-sm mb-4">{miembro.bio}</p>
+                  <div key={idx} className="bg-slate-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all text-center group border border-slate-100 flex flex-col">
+                    <div className="h-48 overflow-hidden relative bg-slate-200">
+                      <img src={miembro.img} alt={miembro.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    </div>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <h4 className="font-bold text-slate-900 text-lg mb-1 leading-snug">{miembro.nombre}</h4>
+                      <p className="text-blue-600 text-sm font-semibold mb-3">{miembro.rol}</p>
+                      <p className="text-slate-500 text-xs leading-relaxed mb-5 flex-grow">{miembro.bio}</p>
                       
                       {/* REDES SOCIALES */}
-                      <div className="flex justify-center gap-3">
-                        {miembro.contactos.linkedin && (
-                          <a href={miembro.contactos.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-600">
+                      <div className="flex justify-center items-center gap-3 pt-3 border-t border-slate-200/60 mt-auto">
+                        {miembro.contactos?.linkedin && (
+                          <a
+                            href={miembro.contactos.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 rounded-full text-slate-400 hover:text-blue-600 hover:bg-white transition-all shadow-2xs"
+                            aria-label="LinkedIn"
+                          >
                             <Linkedin size={18} />
                           </a>
                         )}
-                        {miembro.contactos.github && (
-                          <a href={miembro.contactos.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-900">
+                        {miembro.contactos?.github && (
+                          <a
+                            href={miembro.contactos.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 rounded-full text-slate-400 hover:text-slate-900 hover:bg-white transition-all shadow-2xs"
+                            aria-label="GitHub"
+                          >
                             <Github size={18} />
                           </a>
                         )}
-                        {miembro.contactos.email && (
-                          <a href={`mailto:${miembro.contactos.email}`} className="text-slate-400 hover:text-teal-600">
+                        {miembro.contactos?.email && (
+                          <a
+                            href={`mailto:${miembro.contactos.email}`}
+                            className="p-2 rounded-full text-slate-400 hover:text-teal-600 hover:bg-white transition-all shadow-2xs"
+                            aria-label="Email"
+                          >
                             <Mail size={18} />
                           </a>
                         )}
                       </div>
-
                     </div>
                   </div>
                 ))}
@@ -1487,26 +1852,40 @@ const handleViewResearch = (research) => {
             </div>
           </section>
 
-          <section id="publications" className="py-24 bg-slate-50 relative overflow-hidden">
+          <section id="publications" className="py-24 bg-slate-50 relative overflow-hidden border-t border-slate-200">
             <div className="container mx-auto px-6">
               <SectionTitle>Publicaciones Recientes</SectionTitle>
               <div className="grid gap-4 max-w-4xl mx-auto">
                 {PUBLICACIONES.slice(0, 3).map((pub, idx) => (
-                  <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white hover:bg-blue-50 border border-transparent hover:border-blue-100 rounded-lg transition-all hover:shadow-md">
-                    <div>
+                  <a
+                    key={idx}
+                    href={pub.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white hover:bg-blue-50/70 border border-slate-100 hover:border-blue-200 rounded-2xl transition-all hover:shadow-md block"
+                  >
+                    <div className="pr-4">
                       <div className="flex items-center gap-3 mb-2">
-                        <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded">{pub.year}</span>
-                        <span className="text-slate-500 text-xs font-semibold uppercase">{pub.revista}</span>
+                        <span className="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">{pub.year}</span>
+                        <span className="text-slate-500 text-xs font-semibold uppercase tracking-wider">{pub.revista}</span>
                       </div>
-                      <h4 className="font-bold text-slate-800 text-lg mb-1">{pub.titulo}</h4>
-                      <p className="text-slate-500 text-sm">{pub.autor ? pub.autor : pub.autores}</p>
+                      <h4 className="font-bold text-slate-900 text-lg mb-1 group-hover:text-blue-700 transition-colors leading-snug">{pub.titulo}</h4>
+                      <p className="text-slate-500 text-sm leading-relaxed">{pub.autor ? pub.autor : pub.autores}</p>
                     </div>
-                    <a href={pub.link} className="mt-4 md:mt-0 p-2 text-slate-400 hover:text-blue-600 hover:bg-white rounded-full transition-all"><ExternalLink size={20} /></a>
-                  </div>
+                    <div className="mt-4 md:mt-0 p-2.5 text-slate-400 group-hover:text-blue-600 group-hover:bg-white rounded-full transition-all shrink-0">
+                      <ExternalLink size={20} />
+                    </div>
+                  </a>
                 ))}
               </div>
               <div className="text-center mt-10">
-                <button onClick={() => scrollToSection('all-publications')} className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:underline">Ver todas las publicaciones <ChevronRight size={16} /></button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('all-publications')}
+                  className="inline-flex items-center gap-2 text-blue-600 font-bold hover:underline cursor-pointer"
+                >
+                  Ver todas las publicaciones <ChevronRight size={16} />
+                </button>
               </div>
             </div>
           </section>
@@ -1522,10 +1901,10 @@ const handleViewResearch = (research) => {
                   Ciencia, datos y tecnología al servicio de la salud. Desarrollamos investigación biomédica con impacto real en la práctica clínica.
                 </p>
                 <div className="flex gap-4">
-                  <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-white">
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-white" aria-label="GitHub">
                     <Github size={20} />
                   </a>
-                  <a href="https://www.linkedin.com/in/latsib-utem-b87337396/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-white">
+                  <a href="https://www.linkedin.com/in/latsib-utem-b87337396/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-white" aria-label="LinkedIn">
                     <Linkedin size={20} />
                   </a>
                 </div>
@@ -1534,15 +1913,15 @@ const handleViewResearch = (research) => {
                 <h4 className="text-white font-bold text-lg mb-6">Contacto</h4>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
-                    <MapPin className="text-blue-500 mt-1" size={20} />
+                    <MapPin className="text-blue-500 mt-1 shrink-0" size={20} />
                     <span className="text-sm">{CONFIG.direccion}</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <Mail className="text-blue-500" size={20} />
+                    <Mail className="text-blue-500 shrink-0" size={20} />
                     <a href={`mailto:${CONFIG.email}`} className="text-sm hover:text-white transition-colors">{CONFIG.email}</a>
                   </li>
                   <li className="flex items-center gap-3">
-                    <Instagram size={20} className="text-blue-500" />
+                    <Instagram size={20} className="text-blue-500 shrink-0" />
                     <a href="https://www.instagram.com/latsib.utem/" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors">@latsib.utem</a>
                   </li>
                 </ul>
