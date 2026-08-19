@@ -4,6 +4,7 @@ import {
   ChevronRight, ChevronLeft, Menu, X, Linkedin, Github, 
   ExternalLink, BookOpen, Calendar, ArrowLeft, LayoutGrid, Info, Download, Instagram
 } from 'lucide-react';
+import ContactModal from './components/ContactModal';
 
 /**
  * ------------------------------------------------------------------
@@ -1401,6 +1402,7 @@ const NavLink = ({ children, mobile, onClick }) => (
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   // Función para parsear el hash actual de forma segura
   const parseRoute = () => {
@@ -1550,7 +1552,7 @@ export default function App() {
             <button type="button" onClick={() => scrollToSection('publications')} className="hover:text-blue-500 font-medium transition-colors cursor-pointer">Publicaciones</button>
             <button
               type="button"
-              onClick={() => scrollToSection('contact')}
+              onClick={() => setIsContactModalOpen(true)}
               className={`px-5 py-2 rounded-full font-semibold transition-all shadow-sm cursor-pointer ${isScrolled || route.view !== 'landing' ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-white text-blue-900 hover:bg-blue-50'}`}
             >
               Contacto
@@ -1572,7 +1574,7 @@ export default function App() {
             <NavLink mobile onClick={() => scrollToSection('activities')}>Actividades</NavLink>
             <NavLink mobile onClick={() => scrollToSection('team')}>Equipo</NavLink>
             <NavLink mobile onClick={() => scrollToSection('publications')}>Publicaciones</NavLink>
-            <NavLink mobile onClick={() => scrollToSection('contact')}>Contacto</NavLink>
+            <NavLink mobile onClick={() => { setMobileMenuOpen(false); setIsContactModalOpen(true); }}>Contacto</NavLink>
           </div>
         )}
       </nav>
@@ -1942,6 +1944,12 @@ export default function App() {
           </footer>
         </>
       )}
+
+      {/* FORMULARIO MODAL DE CONTACTO */}
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
     </div>
   );
 }
