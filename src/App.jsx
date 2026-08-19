@@ -1938,12 +1938,23 @@ export default function App() {
                 <p className="text-slate-400 text-sm leading-relaxed mb-6">
                   Ciencia, datos y tecnología al servicio de la salud. Desarrollamos investigación biomédica con impacto real en la práctica clínica.
                 </p>
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-3">
                   <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-white" aria-label="GitHub">
                     <Github size={20} />
                   </a>
                   <a href="https://www.linkedin.com/in/latsib-utem-b87337396/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-white" aria-label="LinkedIn">
                     <Linkedin size={20} />
+                  </a>
+                  <a href="https://www.instagram.com/latsib.utem/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-white" aria-label="Instagram">
+                    <Instagram size={20} />
+                  </a>
+                  <a href="https://www.youtube.com/@LaTSIBUTEM" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-white" aria-label="YouTube">
+                    <Youtube size={20} />
+                  </a>
+                  <a href="https://www.tiktok.com/@latsibutem" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-white" aria-label="TikTok">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+                    </svg>
                   </a>
                 </div>
               </div>
@@ -1957,21 +1968,6 @@ export default function App() {
                   <li className="flex items-center gap-3">
                     <Mail className="text-blue-500 shrink-0" size={20} />
                     <a href={`mailto:${CONFIG.email}`} className="text-sm hover:text-white transition-colors">{CONFIG.email}</a>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Instagram size={20} className="text-blue-500 shrink-0" />
-                    <a href="https://www.instagram.com/latsib.utem/" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors">@latsib.utem</a>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Youtube size={20} className="text-blue-500 shrink-0" />
-                    <a href="https://www.youtube.com/@LaTSIBUTEM" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors">@LaTSIBUTEM</a>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    {/* Ícono TikTok personalizado (no disponible en lucide-react) */}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-blue-500 shrink-0" aria-label="TikTok">
-                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
-                    </svg>
-                    <a href="https://www.tiktok.com/@latsibutem" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors">@latsibutem</a>
                   </li>
                 </ul>
               </div>
