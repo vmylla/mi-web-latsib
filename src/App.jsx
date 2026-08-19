@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Atom, Cpu, Globe, Users, FileText, Mail, MapPin, 
   ChevronRight, ChevronLeft, Menu, X, Linkedin, Github, 
-  ExternalLink, BookOpen, Calendar, ArrowLeft, LayoutGrid, Info, Download, Instagram
+  ExternalLink, BookOpen, Calendar, ArrowLeft, LayoutGrid, Info, Download, Instagram, Youtube
 } from 'lucide-react';
 import ContactModal from './components/ContactModal';
 
@@ -1961,6 +1961,17 @@ export default function App() {
                   <li className="flex items-center gap-3">
                     <Instagram size={20} className="text-blue-500 shrink-0" />
                     <a href="https://www.instagram.com/latsib.utem/" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors">@latsib.utem</a>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Youtube size={20} className="text-blue-500 shrink-0" />
+                    <a href="https://www.youtube.com/@LaTSIBUTEM" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors">@LaTSIBUTEM</a>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    {/* Ícono TikTok personalizado (no disponible en lucide-react) */}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-blue-500 shrink-0" aria-label="TikTok">
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+                    </svg>
+                    <a href="https://www.tiktok.com/@latsibutem" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors">@latsibutem</a>
                   </li>
                 </ul>
               </div>

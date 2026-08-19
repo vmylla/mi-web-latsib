@@ -74,19 +74,28 @@ export default function ContactModal({ isOpen, onClose }) {
       ? `Otro: ${formData.motivoPersonalizado || 'Sin especificar'}` 
       : formData.motivo || 'Consulta General';
 
+    // ─────────────────────────────────────────────────────────────────
+    // Web3Forms – correo principal: latsibutem@gmail.com
+    // CC: rcaulier@utem.cl
+    // ─────────────────────────────────────────────────────────────────
+    const WEB3FORMS_KEY = '52fff220-4e6e-4c4f-bc0c-3c785536a88e';
+
     const payload = {
-      "Nombre y Apellido": formData.nombre.trim(),
-      "Correo Electrónico / Contacto": formData.email.trim(),
-      "Ocupación / Institución": formData.ocupacion.trim() || 'No especificada',
-      "Motivo de Contacto": motivoFinal,
-      "Comentarios y Contexto": formData.comentarios.trim(),
-      "_subject": `Nuevo Contacto LaTSIB: ${motivoFinal} - ${formData.nombre.trim()}`,
-      "_cc": "latsibutem@gmail.com",
-      "_template": "table",
+      access_key: WEB3FORMS_KEY,
+      subject: `Nuevo Contacto LaTSIB: ${motivoFinal} - ${formData.nombre.trim()}`,
+      from_name: 'LaTSIB Web',
+      cc: 'rcaulier@utem.cl',
+      // Campos del formulario
+      'Nombre y Apellido': formData.nombre.trim(),
+      'Correo de Contacto': formData.email.trim(),
+      'Ocupación / Institución': formData.ocupacion.trim() || 'No especificada',
+      'Motivo de Contacto': motivoFinal,
+      'Comentarios y Contexto': formData.comentarios.trim(),
+      replyto: formData.email.trim(),
     };
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/rcaulier@utem.cl', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -95,16 +104,17 @@ export default function ContactModal({ isOpen, onClose }) {
         body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (data.success) {
         setStatus('success');
       } else {
-        const data = await response.json().catch(() => ({}));
-        throw new Error(data.message || 'No fue posible procesar el envío del formulario.');
+        throw new Error(data.message || 'Error al procesar el formulario.');
       }
     } catch (err) {
       console.error('Error al enviar formulario:', err);
       setStatus('error');
-      setErrorMessage('Ocurrió un inconveniente al procesar el envío automático. Puedes reintentar o enviar tu mensaje directamente por correo.');
+      setErrorMessage('No fue posible enviar el formulario automáticamente. Por favor usa el enlace de correo directo para asegurarte de que tu mensaje llegue.');
     }
   };
 
@@ -163,7 +173,7 @@ export default function ContactModal({ isOpen, onClose }) {
                 Gracias por comunicarte con nosotros. Tu información ha sido enviada a la coordinación del laboratorio y te responderemos a la brevedad posible.
               </p>
               <div className="p-4 bg-slate-50 border border-slate-100 rounded-2xl text-xs text-slate-500 mb-6">
-                Copia enviada a: <strong className="text-slate-700">rcaulier@utem.cl</strong> &amp; <strong className="text-slate-700">latsibutem@gmail.com</strong>
+                Mensaje enviado a: <strong className="text-slate-700">rcaulier@utem.cl</strong> &amp; <strong className="text-slate-700">latsibutem@gmail.com</strong>
               </div>
               <button
                 type="button"
@@ -302,6 +312,17 @@ export default function ContactModal({ isOpen, onClose }) {
                   disabled={status === 'submitting'}
                   className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all resize-none"
                 />
+              </div>
+
+              {/* ENLACE ALTERNATIVO SIEMPRE VISIBLE */}
+              <div className="flex items-center gap-2 text-xs text-slate-400">
+                <Mail size={12} className="shrink-0" />
+                <span>
+                  También puedes escribirnos directamente a{' '}
+                  <a href="mailto:rcaulier@utem.cl" className="text-blue-500 hover:underline">rcaulier@utem.cl</a>
+                  {' '}o{' '}
+                  <a href="mailto:latsibutem@gmail.com" className="text-blue-500 hover:underline">latsibutem@gmail.com</a>
+                </span>
               </div>
 
               {/* BOTONES DE ACCIÓN */}
