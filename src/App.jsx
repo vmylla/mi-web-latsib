@@ -1081,6 +1081,18 @@ const EQUIPO = [
       email: "cguajardo@utem.cl"
     }
   },
+  {
+    nombre: "Nicolás Frieri Baez",
+    categoria: "asistentes",
+    rol: "Asistente Investigador",
+    bio: "Estudiante de Ingeniería Civil Biomédica",
+    img: "/equipo/NicolasPERFIL.png",
+    contactos: {
+      linkedin: "",
+      github: "",
+      email: "nfrieri@utem.cl"
+    }
+  },
 ];
 
 
