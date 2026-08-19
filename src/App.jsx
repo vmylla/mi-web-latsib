@@ -1025,7 +1025,7 @@ const EQUIPO = [
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/ClementePERFIL.jpg",
     contactos: {
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/clemente-uribe-18b79a39b/",
       github: "",
       email: "curibeo@utem.cl"
     }
@@ -1061,7 +1061,7 @@ const EQUIPO = [
     bio: "Estudiante de Ingeniería Informática",
     img: "/equipo/GabrielPERFIL.jpg",
     contactos: {
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/gabriel-ignacio-a-6924b921a/",
       github: "",
       email: "garaya@utem.cl"
     }
