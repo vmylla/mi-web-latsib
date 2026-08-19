@@ -977,7 +977,7 @@ const EQUIPO = [
     nombre: "Juan Toledo Fierro",
     categoria: "asistentes",
     rol: "Asistente Investigador",
-    bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
+    bio: "Egresado",
     img: "/equipo/JuanPERFIL.jpg",
     contactos: {
       linkedin: "https://www.linkedin.com/in/juan-crist%C3%B3bal-toledo-fierro-83787129b/",
@@ -1001,7 +1001,7 @@ const EQUIPO = [
     nombre: "Andrés Vega Moraga",
     categoria: "asistentes",
     rol: "Asistente Investigador",
-    bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
+    bio: "Egresado",
     img: "/equipo/AndrésPERFIL.jpg",
     contactos: {
       linkedin: "https://www.linkedin.com/in/andres-nicolas-vega-moraga-950b3128b/",
@@ -1025,7 +1025,7 @@ const EQUIPO = [
     nombre: "Glenn Lanyon Lanyon",
     categoria: "asistentes",
     rol: "Asistente Investigador",
-    bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
+    bio: "Egresado",
     img: "/equipo/GlennPERFIL.jpg",
     contactos: {
       linkedin: "",
