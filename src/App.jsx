@@ -873,68 +873,77 @@ const ACTIVIDADES = [
 ];
 
 const PUBLICACIONES = [
-   {
+  {
     titulo: "The Effectiveness of NIRS-Based Wearable Devices in Estimating Physical Activity Intensity in Patients with Chronic Non-Communicable Diseases: A Structured Narrative Review",
     revista: "Medical Sciences",
     year: "2026",
     autor: "Raúl Caulier-Cisterna, Andrés Vega-Moraga, Diego Ramos-López y Felipe Contreras-Briceño.",
-    link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13304124/"
+    link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13304124/",
+    instagram: "https://www.instagram.com/p/DbdkZhqkUsL/?img_index=1"
   },
-    {
+  {
     titulo: "Altered neurovascular responses recorded after incomplete spinal cord injury recorded by a noninvasive near-infrared spectroscopy in a pilot case-control report",
     revista: "Discover Neuroscience",
     year: "2026",
     autor: "Juan P. Appelgren-Gonzalez, Raúl Caulier-Cisterna, Juan E. Oyarzún, Sergio Uribe y Antonio Eblen-Zajjur.",
-    link: "https://link.springer.com/article/10.1186/s13064-026-00266-5"
+    link: "https://link.springer.com/article/10.1186/s13064-026-00266-5",
+    instagram: "https://www.instagram.com/p/Dbo5XJaEYa0/?img_index=1"
   },
-   {
+  {
     titulo: "Neonatal anthropometry outcomes comparing two gestational weight gain standards",
     revista: "Obstetrics & Gynecology International Journal",
     year: "2025",
     autor: "Francisco Mardones, Pedro Rosso, Marcelo Farías-Jofré, Sofia Ulloa, Luis Villarroel, Raúl Caulier-Cisterna, Martin Miranda-Hurtado, Álvaro Erazo, Glenn Lanyon-Alarcón.",
-    link: "https://medcraveonline.com/OGIJ/neonatal-anthropometry-outcomes-comparing-two-gestational-weight-gain-standards.html"
+    link: "https://medcraveonline.com/OGIJ/neonatal-anthropometry-outcomes-comparing-two-gestational-weight-gain-standards.html",
+    instagram: "https://www.instagram.com/p/DYCy6KikVBa/?img_index=1"
   },
-     {
+  {
     titulo: "Clasificación Automática de Señales Deglutorias Utilizando Machine Learning",
     revista: "CASEIB 2025: Libro de Actas del XLIII Congreso Anual de la Sociedad Española de Ingeniería Biomédica",
     year: "2025",
     autor: "Vicente Escudero, David Sepúlveda-Velazquez, Glenn Lanyon-Alarcón, Andrés Vega-Moraga, Jorge Vergara-Quezada, Constanza Echeverria, Rodrigo Tobar-Fredes, Gustavo Schleyer, Patricio Fuentealba, Raúl Caulier-Cisterna et al.",
-    link: "https://dialnet.unirioja.es/servlet/articulo?codigo=10695623"
+    link: "https://dialnet.unirioja.es/servlet/articulo?codigo=10695623",
+    instagram: "https://www.instagram.com/p/DZYqdwzDNiV/?img_index=1"
   },
-   {
+  {
     titulo: "Spine-fNIRS Web: Interfaz Gráfica Remota para el Análisis y Visualización de Señales de la Respuesta Neurovascular en la Médula Espinal",
     revista: "CASEIB 2025: Libro de Actas del XLIII Congreso Anual de la Sociedad Española de Ingeniería Biomédica",
     year: "2025",
     autor: "Gabriel Araya López, Andrés Vega-Moraga, Glenn Lanyon-Alarcón, Jorge Vergara-Quezada, Sergio Uribe, Antonio Eblen-Zajjur, Raúl Caulier-Cisterna.",
-    link: "https://lnkd.in/dgvE2KJa"
+    link: "https://lnkd.in/dgvE2KJa",
+    instagram: "https://www.instagram.com/p/DZbQNwQjNvJ/?img_index=1"
   },
-    {
+  {
     titulo: "Interpretable machine learning model for characterizing magnetic susceptibility-based biomarkers in first episode psychosis",
     revista: "Computer Methods and Programs in Biomedicine (Elsevier)",
     year: "2025",
     autor: "Cristian Montalba, Raúl Caulier-Cisterna, Carlos Milovic, Alfonso González, Juan Pablo Ramirez-Mahaluf, Juan Undurraga, Rodrigo Salas, Nicolás Crossley, Cristian Tejos y Sergio Uribe.",
-    link: "https://www.sciencedirect.com/science/article/pii/S0169260725004845"
-},
-   {
+    link: "https://www.sciencedirect.com/science/article/pii/S0169260725004845",
+    instagram: "https://www.instagram.com/p/DXz_PtkkbtE/?img_index=1"
+  },
+  {
     titulo: "Sex differences in the prefrontal cortex during exercise",
     revista: "Experimental Physiology",
     year: "2025",
     autor: "Daniel Ramos‐López, Raúl Caulier‐Cisterna, Benjamín Díaz‐Ortiz, Cristóbal Baumann‐Biancani, Kamilo Hunger‐Abbott, Matías Herrera‐Matas, Andrés Vega‐Moraga, Vitor A. Lira, Maximiliano Espinosa‐Ramírez, Karol Ramírez‐Parada, Luigi Gabrielli‐Nervi, Hugo E. Verdejo y Felipe Contreras‐Briceño.",
-    link: "https://physoc.onlinelibrary.wiley.com/doi/full/10.1113/EP093287"
+    link: "https://physoc.onlinelibrary.wiley.com/doi/full/10.1113/EP093287",
+    instagram: ""
   },
   {
     titulo: "Comparison of LED- and LASER-based fNIRS technologies to record the human peri-spinal cord neurovascular response",
     revista: "Medical Engineering & Physics (Elsevier)",
     year: "2024",
     autores: "Raul Caulier Cisterna M. Id, Juan-Pablo Appelgren-Gonzales, Juan-Esteban Oyarzun, Felipe Valenzuela, Ranganatha Sitaram, Antonio Eblen-Zajjur y Sergio Uribe.",
-    link: "https://www.sciencedirect.com/science/article/pii/S1350453324000717"
+    link: "https://www.sciencedirect.com/science/article/pii/S1350453324000717",
+    instagram: "https://www.instagram.com/p/DWpiJRgEYxO/?img_index=1"
   },
   {
     titulo: "Using Near-Infrared Spectroscopy Wearable Devices to Identify Central Versus Peripheral Limitations During Exercise",
     revista: "JoVE, N° 214, e67609",
     year: "2024",
     autor: "Matías Carreño-Román, Daniel Ramos-López, Benjamín Rapaport, Raúl Caulier-Cisterna, Maximiliano Espinosa-Ramírez y Felipe Contreras-Briceño.",
-    link: "https://app.jove.com/t/67609/using-near-infrared-spectroscopy-wearable-devices-to-identify-central"
+    link: "https://app.jove.com/t/67609/using-near-infrared-spectroscopy-wearable-devices-to-identify-central",
+    instagram: "https://www.instagram.com/p/DXAdZIEkdYb/?img_index=1"
   },
 ];
 
@@ -1804,25 +1813,49 @@ export default function App() {
             </div>
             <div className="grid gap-4 max-w-4xl mx-auto">
               {PUBLICACIONES.map((pub, idx) => (
-                <a
+                <div
                   key={idx}
-                  href={pub.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white hover:bg-blue-50/70 border border-slate-100 hover:border-blue-200 rounded-2xl transition-all hover:shadow-md block"
+                  className="group flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white hover:bg-slate-50/90 border border-slate-100 hover:border-blue-200 rounded-2xl transition-all hover:shadow-md"
                 >
-                  <div className="pr-4">
+                  <div className="pr-4 flex-grow mb-4 md:mb-0">
                     <div className="flex items-center gap-3 mb-2">
                       <span className="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">{pub.year}</span>
                       <span className="text-slate-500 text-xs font-semibold uppercase tracking-wider">{pub.revista}</span>
                     </div>
-                    <h4 className="font-bold text-slate-900 text-lg mb-1 group-hover:text-blue-700 transition-colors leading-snug">{pub.titulo}</h4>
+                    <h4 className="font-bold text-slate-900 text-lg mb-1 group-hover:text-blue-700 transition-colors leading-snug">
+                      <a href={pub.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        {pub.titulo}
+                      </a>
+                    </h4>
                     <p className="text-slate-500 text-sm leading-relaxed">{pub.autor ? pub.autor : pub.autores}</p>
                   </div>
-                  <div className="mt-4 md:mt-0 p-2.5 text-slate-400 group-hover:text-blue-600 group-hover:bg-white rounded-full transition-all shrink-0">
-                    <ExternalLink size={20} />
+                  <div className="flex items-center gap-2.5 shrink-0 self-end md:self-center">
+                    {pub.instagram && (
+                      <a
+                        href={pub.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-2 text-pink-600 hover:text-white bg-pink-50 hover:bg-gradient-to-r hover:from-pink-500 hover:to-rose-500 border border-pink-200 hover:border-transparent rounded-xl text-xs font-bold transition-all shadow-2xs hover:shadow"
+                        title="Ver infografía explicativa en Instagram"
+                        aria-label="Ver infografía en Instagram"
+                      >
+                        <Instagram size={16} />
+                        <span>Infografía</span>
+                      </a>
+                    )}
+                    <a
+                      href={pub.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 rounded-xl text-xs font-bold transition-all shadow-2xs hover:shadow"
+                      title="Ver artículo científico original"
+                      aria-label="Ver artículo científico original"
+                    >
+                      <ExternalLink size={16} />
+                      <span className="hidden sm:inline">Artículo</span>
+                    </a>
                   </div>
-                </a>
+                </div>
               ))}
             </div>
           </div>
@@ -2061,25 +2094,49 @@ export default function App() {
               <SectionTitle>Publicaciones Recientes</SectionTitle>
               <div className="grid gap-4 max-w-4xl mx-auto">
                 {PUBLICACIONES.slice(0, 3).map((pub, idx) => (
-                  <a
+                  <div
                     key={idx}
-                    href={pub.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white hover:bg-blue-50/70 border border-slate-100 hover:border-blue-200 rounded-2xl transition-all hover:shadow-md block"
+                    className="group flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white hover:bg-slate-50/90 border border-slate-100 hover:border-blue-200 rounded-2xl transition-all hover:shadow-md"
                   >
-                    <div className="pr-4">
+                    <div className="pr-4 flex-grow mb-4 md:mb-0">
                       <div className="flex items-center gap-3 mb-2">
                         <span className="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">{pub.year}</span>
                         <span className="text-slate-500 text-xs font-semibold uppercase tracking-wider">{pub.revista}</span>
                       </div>
-                      <h4 className="font-bold text-slate-900 text-lg mb-1 group-hover:text-blue-700 transition-colors leading-snug">{pub.titulo}</h4>
+                      <h4 className="font-bold text-slate-900 text-lg mb-1 group-hover:text-blue-700 transition-colors leading-snug">
+                        <a href={pub.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          {pub.titulo}
+                        </a>
+                      </h4>
                       <p className="text-slate-500 text-sm leading-relaxed">{pub.autor ? pub.autor : pub.autores}</p>
                     </div>
-                    <div className="mt-4 md:mt-0 p-2.5 text-slate-400 group-hover:text-blue-600 group-hover:bg-white rounded-full transition-all shrink-0">
-                      <ExternalLink size={20} />
+                    <div className="flex items-center gap-2.5 shrink-0 self-end md:self-center">
+                      {pub.instagram && (
+                        <a
+                          href={pub.instagram}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3.5 py-2 text-pink-600 hover:text-white bg-pink-50 hover:bg-gradient-to-r hover:from-pink-500 hover:to-rose-500 border border-pink-200 hover:border-transparent rounded-xl text-xs font-bold transition-all shadow-2xs hover:shadow"
+                          title="Ver infografía explicativa en Instagram"
+                          aria-label="Ver infografía en Instagram"
+                        >
+                          <Instagram size={16} />
+                          <span>Infografía</span>
+                        </a>
+                      )}
+                      <a
+                        href={pub.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-2 text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 rounded-xl text-xs font-bold transition-all shadow-2xs hover:shadow"
+                        title="Ver artículo científico original"
+                        aria-label="Ver artículo científico original"
+                      >
+                        <ExternalLink size={16} />
+                        <span className="hidden sm:inline">Artículo</span>
+                      </a>
                     </div>
-                  </a>
+                  </div>
                 ))}
               </div>
               <div className="text-center mt-10">
