@@ -964,6 +964,7 @@ const EQUIPO = [
     rol: "Director e Investigador Principal del Laboratorio LaTSIB",
     bio: "PhD en Multimedia y Comunicaciones, Especialista en Biomédica, Machine Learning, Análisis de Señales y Datos",
     img: "https://fing.utem.cl/wp-content/uploads/sites/6/2023/11/Raul-Paul-Caulier-Cisterna.jpg",
+    actividadesLab: "Dirección general e investigación principal en el Laboratorio LaTSIB. Liderazgo de proyectos en procesamiento de señales biomédicas (fNIRS, EMG, EEG), machine learning aplicado al diagnóstico clínico y colaboración interdisciplinaria.",
     contactos: {
       linkedin: "https://www.linkedin.com/in/rcaulier/",
       github: "",
@@ -976,6 +977,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería civil en computación menc. informática",
     img: "/equipo/MatiasPERFIL.jpg",
+    actividadesLab: "",
     contactos: {
       linkedin: "https://www.linkedin.com/in/matias-adrian-gajardo-de-la-fuente/",
       github: "https://github.com/xhorus11",
@@ -988,6 +990,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/JuanPERFIL.jpg",
+    actividadesLab: "",
     contactos: {
       linkedin: "https://www.linkedin.com/in/juan-crist%C3%B3bal-toledo-fierro-83787129b/",
       github: "",
@@ -1000,6 +1003,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/DavidPERFIL.jpg",
+    actividadesLab: "",
     contactos: {
       linkedin: "https://www.linkedin.com/in/david-sepulveda-vel%C3%A1squez-6311602a8/",
       github: "",
@@ -1012,6 +1016,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/AndrésPERFIL.jpg",
+    actividadesLab: "",
     contactos: {
       linkedin: "https://www.linkedin.com/in/andres-nicolas-vega-moraga-950b3128b/",
       github: "",
@@ -1024,6 +1029,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/ClementePERFIL.jpg",
+    actividadesLab: "",
     contactos: {
       linkedin: "https://www.linkedin.com/in/clemente-uribe-18b79a39b/",
       github: "",
@@ -1036,6 +1042,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/GlennPERFIL.jpg",
+    actividadesLab: "",
     contactos: {
       linkedin: "",
       github: "",
@@ -1048,6 +1055,7 @@ const EQUIPO = [
     rol: "Asistente Investigadora",
     bio: "Estudiante de Ingeniería Civil en Computación mención Informática",
     img: "/equipo/CatalinaPERFIL.jpg",
+    actividadesLab: "",
     contactos: {
       linkedin: "",
       github: "https://github.com/cataaraniz",
@@ -1060,6 +1068,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Informática",
     img: "/equipo/GabrielPERFIL.jpg",
+    actividadesLab: "",
     contactos: {
       linkedin: "https://www.linkedin.com/in/gabriel-ignacio-a-6924b921a/",
       github: "",
@@ -1072,6 +1081,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/VicentePERFIL.jpg",
+    actividadesLab: "",
     contactos: {
       linkedin: "",
       github: "",
@@ -1084,6 +1094,7 @@ const EQUIPO = [
     rol: "Asistente Investigadora",
     bio: "Estudiante de Ingeniería Civil en Computación mención Informática",
     img: "/equipo/CamilaPERFIL.jpg",
+    actividadesLab: "",
     contactos: {
       linkedin: "https://www.linkedin.com/in/camila-millaray-guajardo-bravo-b94297293/",
       github: "https://github.com/vmylla",
@@ -1096,6 +1107,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil Biomédica",
     img: "/equipo/NicolasPERFIL.png",
+    actividadesLab: "",
     contactos: {
       linkedin: "",
       github: "",
@@ -1108,10 +1120,50 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil Biomédica",
     img: "/equipo/LucasPERFIL.jpg",
+    actividadesLab: "",
     contactos: {
       linkedin: "",
       github: "",
       email: "lvaldebenito@utem.cl"
+    }
+  },
+  {
+    nombre: "Juan Toledo Fierro",
+    categoria: "tesistas",
+    rol: "Tesista / Egresado",
+    bio: "Egresado de Ingeniería Civil en Ciencia de Datos · Proyecto de Tesis",
+    img: "/equipo/JuanPERFIL.jpg",
+    actividadesLab: "",
+    contactos: {
+      linkedin: "https://www.linkedin.com/in/juan-crist%C3%B3bal-toledo-fierro-83787129b/",
+      github: "",
+      email: "jtoledof@utem.cl"
+    }
+  },
+  {
+    nombre: "Andrés Vega Moraga",
+    categoria: "tesistas",
+    rol: "Tesista / Egresado",
+    bio: "Egresado de Ingeniería Civil en Ciencia de Datos · Proyecto de Tesis",
+    img: "/equipo/AndrésPERFIL.jpg",
+    actividadesLab: "",
+    contactos: {
+      linkedin: "https://www.linkedin.com/in/andres-nicolas-vega-moraga-950b3128b/",
+      github: "",
+      email: "avega@utem.cl"
+    }
+  },
+  {
+    nombre: "Glenn Lanyon Lanyon",
+    categoria: "tesistas",
+    rol: "Tesista / Egresado",
+    bio: "Egresado de Ingeniería Civil en Ciencia de Datos · Proyecto de Tesis",
+    img: "/equipo/GlennPERFIL.jpg",
+    actividadesLab: "",
+    contactos: {
+      linkedin: "",
+      github: "",
+      email: "glanyon@utem.cl"
     }
   },
 ];
@@ -1490,6 +1542,180 @@ const ResearchDetailView = ({ research, onBack }) => {
   );
 };
 
+// --- COMPONENTES UI: EQUIPO ---
+const MemberDetailModal = ({ member, onClose }) => {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  if (!member) return null;
+
+  return (
+    <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+      {/* Fondo desenfocado */}
+      <div
+        className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300 animate-in fade-in"
+        onClick={onClose}
+      />
+
+      {/* Contenedor del Modal */}
+      <div className="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden z-10 animate-in zoom-in-95 duration-200 my-auto">
+        {/* Cabecera estilizada */}
+        <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-teal-600 px-6 py-4 text-white flex items-center justify-between">
+          <span className="text-xs uppercase tracking-widest text-blue-100 font-bold">
+            Perfil del Integrante
+          </span>
+          <button
+            type="button"
+            onClick={onClose}
+            className="p-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            aria-label="Cerrar"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        <div className="p-6 sm:p-8">
+          {/* Fila superior: Foto + Información principal */}
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left mb-6 pb-6 border-b border-slate-100">
+            <div className="w-28 h-28 rounded-2xl overflow-hidden bg-slate-100 shrink-0 shadow-md border-2 border-white ring-2 ring-slate-100">
+              <img src={member.img} alt={member.nombre} className="w-full h-full object-cover" />
+            </div>
+            <div>
+              <div className="inline-block px-3 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider mb-2 bg-blue-50 text-blue-700 border border-blue-100">
+                {member.categoria === 'academicos' ? 'Académico' : member.categoria === 'tesistas' ? 'Tesista' : 'Asistente de Investigación'}
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 leading-tight mb-1">{member.nombre}</h3>
+              <p className="text-blue-600 text-sm font-semibold mb-2">{member.rol}</p>
+              <p className="text-slate-500 text-xs leading-relaxed">{member.bio}</p>
+            </div>
+          </div>
+
+          {/* Bloque: Actividades y Labor Actual */}
+          <div className="mb-6 bg-slate-50 rounded-2xl p-5 border border-slate-100">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2.5 flex items-center gap-2">
+              <FileText size={16} className="text-blue-600" />
+              Actividades y Proyectos en el Laboratorio
+            </h4>
+            <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">
+              {member.actividadesLab || "Desarrollo de proyectos de investigación, análisis de datos biomédicos, procesamiento de señales y colaboración en las líneas activas de investigación de LaTSIB."}
+            </p>
+          </div>
+
+          {/* Bloque: Enlaces de Contacto */}
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-2">
+              {member.contactos?.linkedin && (
+                <a
+                  href={member.contactos.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:text-white hover:bg-blue-600 transition-colors shadow-2xs"
+                >
+                  <Linkedin size={15} /> LinkedIn
+                </a>
+              )}
+              {member.contactos?.github && (
+                <a
+                  href={member.contactos.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:text-white hover:bg-slate-900 transition-colors shadow-2xs"
+                >
+                  <Github size={15} /> GitHub
+                </a>
+              )}
+              {member.contactos?.email && (
+                <a
+                  href={`mailto:${member.contactos.email}`}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-teal-50 text-teal-700 hover:text-white hover:bg-teal-600 transition-colors border border-teal-100 shadow-2xs"
+                >
+                  <Mail size={15} /> {member.contactos.email}
+                </a>
+              )}
+            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2 text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer ml-auto"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const TeamMemberCard = ({ miembro, categoriaId, onSelect }) => (
+  <div
+    onClick={() => onSelect(miembro)}
+    role="button"
+    tabIndex={0}
+    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(miembro); } }}
+    className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all text-center group border border-slate-100 flex flex-col relative cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
+  >
+    <div className="h-48 overflow-hidden relative bg-slate-200">
+      <img src={miembro.img} alt={miembro.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+      {categoriaId === 'tesistas' && (
+        <div className="absolute top-3 right-3 bg-teal-600/90 backdrop-blur-sm text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-teal-400 z-10 shadow-sm">
+          Tesista
+        </div>
+      )}
+      <div className="absolute inset-0 bg-blue-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end justify-center pb-3">
+        <span className="text-[11px] font-bold text-white bg-slate-900/90 px-3 py-1 rounded-full backdrop-blur-sm shadow-md flex items-center gap-1.5">
+          <Info size={13} /> Ver actividades
+        </span>
+      </div>
+    </div>
+    <div className="p-6 flex flex-col flex-grow">
+      <h3 className="font-bold text-slate-900 text-lg mb-1 leading-snug group-hover:text-blue-600 transition-colors">{miembro.nombre}</h3>
+      <p className="text-blue-600 text-sm font-semibold mb-3">{miembro.rol}</p>
+      <p className="text-slate-500 text-xs leading-relaxed mb-5 flex-grow">{miembro.bio}</p>
+      
+      {/* REDES SOCIALES */}
+      <div className="flex justify-center items-center gap-3 pt-3 border-t border-slate-100 mt-auto" onClick={(e) => e.stopPropagation()}>
+        {miembro.contactos?.linkedin && (
+          <a
+            href={miembro.contactos.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full text-slate-400 hover:text-blue-600 hover:bg-slate-50 transition-all shadow-2xs"
+            aria-label="LinkedIn"
+          >
+            <Linkedin size={18} />
+          </a>
+        )}
+        {miembro.contactos?.github && (
+          <a
+            href={miembro.contactos.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full text-slate-400 hover:text-slate-900 hover:bg-slate-50 transition-all shadow-2xs"
+            aria-label="GitHub"
+          >
+            <Github size={18} />
+          </a>
+        )}
+        {miembro.contactos?.email && (
+          <a
+            href={`mailto:${miembro.contactos.email}`}
+            className="p-2 rounded-full text-slate-400 hover:text-teal-600 hover:bg-slate-50 transition-all shadow-2xs"
+            aria-label="Email"
+          >
+            <Mail size={18} />
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+);
+
 // --- COMPONENTES UI BÁSICOS ---
 const SectionTitle = ({ children, subtitle }) => (
   <div className="mb-12 text-center">
@@ -1519,6 +1745,7 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [selectedMember, setSelectedMember] = useState(null);
 
   // Función para parsear el hash actual de forma segura
   const parseRoute = () => {
@@ -1544,6 +1771,9 @@ export default function App() {
     }
     if (hash === 'publicaciones') {
       return { view: 'publications-list', id: null, section: null };
+    }
+    if (hash === 'equipo') {
+      return { view: 'team-list', id: null, section: null };
     }
     return { view: 'landing', id: null, section: null };
   };
@@ -1595,6 +1825,7 @@ export default function App() {
     else if (targetView === 'activities-list') newHash = 'actividades';
     else if (targetView === 'activity-detail') newHash = `actividad/${id}`;
     else if (targetView === 'publications-list') newHash = 'publicaciones';
+    else if (targetView === 'team-list') newHash = 'equipo';
 
     const fullNewHash = newHash ? `#${newHash}` : '#';
     if (window.location.hash === fullNewHash || (!window.location.hash && fullNewHash === '#')) {
@@ -1626,6 +1857,7 @@ export default function App() {
     if (id === 'all-activities') { navigateTo('activities-list'); return; }
     if (id === 'all-research') { navigateTo('research-list'); return; }
     if (id === 'all-publications') { navigateTo('publications-list'); return; } 
+    if (id === 'all-team') { navigateTo('team-list'); return; }
 
     if (route.view !== 'landing') {
       window.location.hash = id;
@@ -1872,6 +2104,51 @@ export default function App() {
             </div>
           </div>
         </div>
+      ) : route.view === 'team-list' ? (
+        /* VISTA: DIRECTORIO COMPLETO DEL EQUIPO */
+        <div className="pt-32 pb-20 min-h-screen bg-slate-50 animate-in fade-in duration-300">
+          <div className="container mx-auto px-6">
+            <div className="mb-12">
+              <button
+                type="button"
+                onClick={() => navigateTo('landing')}
+                className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 mb-6 font-semibold transition-colors bg-white px-5 py-2.5 rounded-full shadow-sm border border-slate-200 cursor-pointer hover:shadow"
+              >
+                <ArrowLeft size={18} /> Volver al inicio
+              </button>
+              <h1 className="text-4xl font-extrabold text-slate-900 mb-4">Directorio del Equipo</h1>
+              <p className="text-slate-600 max-w-3xl text-lg">Investigadores, asistentes, tesistas y colaboradores del Laboratorio de Biomédica Traslacional.</p>
+            </div>
+
+            <div className="space-y-16">
+              {CATEGORIAS_EQUIPO.map((cat) => {
+                const miembrosCat = EQUIPO.filter((m) => m.categoria === cat.id);
+                if (miembrosCat.length === 0) return null;
+
+                return (
+                  <div key={cat.id}>
+                    <div className="flex items-center gap-3 mb-8 pb-3 border-b border-slate-200">
+                      <h2 className="text-2xl font-bold text-slate-900 tracking-tight">{cat.titulo}</h2>
+                      <span className={`px-2.5 py-0.5 text-xs font-bold rounded-full ${cat.id === 'tesistas' ? 'bg-teal-100 text-teal-700' : 'bg-blue-100 text-blue-700'}`}>
+                        {miembrosCat.length}
+                      </span>
+                    </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                      {miembrosCat.map((miembro, idx) => (
+                        <TeamMemberCard
+                          key={idx}
+                          miembro={miembro}
+                          categoriaId={cat.id}
+                          onSelect={setSelectedMember}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       ) : (
         /* VISTA: PORTADA (LANDING) - FALLBACK PRINCIPAL SEGURO */
         <>
@@ -2032,71 +2309,45 @@ export default function App() {
               <SectionTitle subtitle="Investigadores, estudiantes y profesionales trabajando juntos para construir ciencia con propósito.">
                 Integrantes del Laboratorio
               </SectionTitle>
-              <div className="space-y-16">
+              <div className="space-y-16 mb-12">
                 {CATEGORIAS_EQUIPO.map((cat) => {
                   const miembrosCat = EQUIPO.filter((m) => m.categoria === cat.id);
                   if (miembrosCat.length === 0) return null;
+                  
+                  // En la portada mostramos hasta 4 integrantes por categoría para no saturar
+                  const miembrosMostrar = cat.id === 'asistentes' ? miembrosCat.slice(0, 4) : miembrosCat;
 
                   return (
                     <div key={cat.id}>
                       <div className="flex items-center gap-3 mb-8 pb-3 border-b border-slate-200">
                         <h3 className="text-2xl font-bold text-slate-900 tracking-tight">{cat.titulo}</h3>
-                        <span className="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">
+                        <span className={`px-2.5 py-0.5 text-xs font-bold rounded-full ${cat.id === 'tesistas' ? 'bg-teal-100 text-teal-700' : 'bg-blue-100 text-blue-700'}`}>
                           {miembrosCat.length}
                         </span>
                       </div>
                       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {miembrosCat.map((miembro, idx) => (
-                          <div key={idx} className="bg-slate-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all text-center group border border-slate-100 flex flex-col">
-                            <div className="h-48 overflow-hidden relative bg-slate-200">
-                              <img src={miembro.img} alt={miembro.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                            </div>
-                            <div className="p-6 flex flex-col flex-grow">
-                              <h4 className="font-bold text-slate-900 text-lg mb-1 leading-snug">{miembro.nombre}</h4>
-                              <p className="text-blue-600 text-sm font-semibold mb-3">{miembro.rol}</p>
-                              <p className="text-slate-500 text-xs leading-relaxed mb-5 flex-grow">{miembro.bio}</p>
-                              
-                              {/* REDES SOCIALES */}
-                              <div className="flex justify-center items-center gap-3 pt-3 border-t border-slate-200/60 mt-auto">
-                                {miembro.contactos?.linkedin && (
-                                  <a
-                                    href={miembro.contactos.linkedin}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-2 rounded-full text-slate-400 hover:text-blue-600 hover:bg-white transition-all shadow-2xs"
-                                    aria-label="LinkedIn"
-                                  >
-                                    <Linkedin size={18} />
-                                  </a>
-                                )}
-                                {miembro.contactos?.github && (
-                                  <a
-                                    href={miembro.contactos.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-2 rounded-full text-slate-400 hover:text-slate-900 hover:bg-white transition-all shadow-2xs"
-                                    aria-label="GitHub"
-                                  >
-                                    <Github size={18} />
-                                  </a>
-                                )}
-                                {miembro.contactos?.email && (
-                                  <a
-                                    href={`mailto:${miembro.contactos.email}`}
-                                    className="p-2 rounded-full text-slate-400 hover:text-teal-600 hover:bg-white transition-all shadow-2xs"
-                                    aria-label="Email"
-                                  >
-                                    <Mail size={18} />
-                                  </a>
-                                )}
-                              </div>
-                            </div>
-                          </div>
+                        {miembrosMostrar.map((miembro, idx) => (
+                          <TeamMemberCard
+                            key={idx}
+                            miembro={miembro}
+                            categoriaId={cat.id}
+                            onSelect={setSelectedMember}
+                          />
                         ))}
                       </div>
                     </div>
                   );
                 })}
+              </div>
+
+              <div className="text-center">
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('all-team')}
+                  className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-blue-600 border border-blue-200 rounded-full font-bold shadow-sm hover:shadow-md hover:bg-blue-50 transition-all group cursor-pointer"
+                >
+                  <Users size={20} className="group-hover:scale-110 transition-transform" /> Ver directorio completo del equipo
+                </button>
               </div>
             </div>
           </section>
@@ -2227,6 +2478,12 @@ export default function App() {
       <ContactModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
+      />
+
+      {/* MODAL DE PERFIL Y ACTIVIDADES DEL INTEGRANTE */}
+      <MemberDetailModal
+        member={selectedMember}
+        onClose={() => setSelectedMember(null)}
       />
     </div>
   );
