@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Atom, Cpu, Globe, Users, FileText, Mail, MapPin, 
   ChevronRight, ChevronLeft, Menu, X, Linkedin, Github, 
-  ExternalLink, BookOpen, Calendar, ArrowLeft, LayoutGrid, Info, Download, Instagram, Youtube
+  ExternalLink, BookOpen, Calendar, ArrowLeft, LayoutGrid, Info, Download, Instagram, Youtube, Maximize2
 } from 'lucide-react';
 import ContactModal from './components/ContactModal';
 
@@ -1179,8 +1179,19 @@ const ActivityCard = ({ item, onClick }) => (
 
 // --- COMPONENTE VISTA DETALLE DE ACTIVIDAD ---
 const ActivityDetailView = ({ activity, onBack }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  // Cerrar lightbox con tecla Escape
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setSelectedImage(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   const validGallery = (activity?.galeria || []).filter(f => f && f.url && f.url.trim() !== '');
@@ -1223,24 +1234,45 @@ const ActivityDetailView = ({ activity, onBack }) => {
 
           {validGallery.length > 0 && (
             <div className="p-8 md:p-12 bg-slate-50 border-b border-slate-100">
-              <h3 className="text-xl font-bold text-slate-900 mb-8 flex items-center gap-2">
-                <LayoutGrid size={20} className="text-blue-500" /> Galería de Imágenes ({validGallery.length})
-              </h3>
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                  <LayoutGrid size={20} className="text-blue-500" /> Galería de Imágenes ({validGallery.length})
+                </h3>
+                <span className="text-xs text-slate-500 hidden sm:inline-block">Haz clic en cualquier imagen para verla en pantalla completa</span>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {validGallery.map((foto, idx) => (
-                  <div key={idx} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all group flex flex-col h-full border border-slate-100">
-                    <div className="aspect-video overflow-hidden bg-slate-100">
+                  <div key={idx} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all group flex flex-col h-full border border-slate-200">
+                    {/* CONTENEDOR DE IMAGEN COMPLETA SIN RECORTES */}
+                    <div
+                      className="relative h-72 sm:h-80 w-full bg-slate-950 flex items-center justify-center overflow-hidden cursor-pointer"
+                      onClick={() => setSelectedImage(foto)}
+                      title="Haz clic para ver la imagen completa"
+                    >
+                      {/* Fondo difuminado para rellenar estéticamente espacios de fotos verticales */}
                       <img
                         src={foto.url}
-                        alt={`Foto ${idx + 1}`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        alt=""
+                        className="absolute inset-0 w-full h-full object-cover blur-md opacity-35 scale-110 pointer-events-none"
+                        aria-hidden="true"
+                      />
+                      {/* Imagen principal 100% completa sin recortar */}
+                      <img
+                        src={foto.url}
+                        alt={foto.descripcion || `Evidencia ${idx + 1}`}
+                        className="relative z-10 max-h-full max-w-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
+                      <div className="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white/90 p-2 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity z-20 shadow-sm flex items-center gap-1 text-xs font-semibold">
+                        <Maximize2 size={14} /> Ampliar
+                      </div>
                     </div>
+
+                    {/* DESCRIPCIÓN DE LA FOTO */}
                     {foto.descripcion && (
-                      <div className="p-5 flex gap-3 items-start flex-grow">
-                        <Info size={18} className="text-blue-400 mt-0.5 shrink-0" />
-                        <p className="text-slate-600 text-sm leading-relaxed">{foto.descripcion}</p>
+                      <div className="p-5 flex gap-3 items-start flex-grow bg-white border-t border-slate-100">
+                        <Info size={18} className="text-blue-500 mt-0.5 shrink-0" />
+                        <p className="text-slate-700 text-sm leading-relaxed">{foto.descripcion}</p>
                       </div>
                     )}
                   </div>
@@ -1269,6 +1301,38 @@ const ActivityDetailView = ({ activity, onBack }) => {
           )}
         </div>
       </div>
+
+      {/* MODAL LIGHTBOX PARA PANTALLA COMPLETA */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-[120] bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 animate-in fade-in duration-200"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-5 right-5 text-white/80 hover:text-white p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors cursor-pointer z-30"
+            aria-label="Cerrar imagen"
+          >
+            <X size={26} />
+          </button>
+          <div
+            className="relative max-h-[85vh] max-w-[92vw] flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage.url}
+              alt={selectedImage.descripcion || "Imagen completa"}
+              className="max-h-[75vh] max-w-full object-contain rounded-xl shadow-2xl"
+            />
+            {selectedImage.descripcion && (
+              <div className="mt-4 p-4 bg-slate-900/90 backdrop-blur-md border border-white/10 text-white text-sm max-w-2xl text-center rounded-2xl">
+                {selectedImage.descripcion}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -1549,6 +1613,9 @@ export default function App() {
     ? ACTIVIDADES.find((a) => a.id === route.id || String(a.id) === String(route.id)) || null
     : null;
 
+  const actividadesNacionales = ACTIVIDADES.filter((a) => a.tipo === 'Nacional');
+  const actividadesInternacionales = ACTIVIDADES.filter((a) => a.tipo === 'Internacional');
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
       {/* NAVBAR */}
@@ -1647,7 +1714,7 @@ export default function App() {
         /* VISTA: LISTADO COMPLETO DE ACTIVIDADES */
         <div className="pt-32 pb-20 min-h-screen bg-slate-50 animate-in fade-in duration-300">
           <div className="container mx-auto px-6">
-            <div className="mb-10">
+            <div className="mb-12">
               <button
                 type="button"
                 onClick={() => navigateTo('landing')}
@@ -1656,12 +1723,55 @@ export default function App() {
                 <ArrowLeft size={18} /> Volver al inicio
               </button>
               <h1 className="text-4xl font-extrabold text-slate-900 mb-4">Bitácora de Actividades</h1>
-              <p className="text-slate-600 max-w-3xl text-lg">Registro completo de nuestras actividades y participaciones académicas.</p>
+              <p className="text-slate-600 max-w-3xl text-lg">Registro completo de nuestras actividades y participaciones académicas nacionales e internacionales.</p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {ACTIVIDADES.map((act) => (
-                <ActivityCard key={act.id} item={act} onClick={handleViewActivity} />
-              ))}
+
+            <div className="space-y-16">
+              {/* ACTIVIDADES NACIONALES */}
+              {actividadesNacionales.length > 0 && (
+                <div>
+                  <div className="flex items-center gap-3 mb-8 pb-3 border-b border-slate-200">
+                    <div className="p-2 rounded-xl bg-blue-100 text-blue-700">
+                      <MapPin size={20} />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Actividades Nacionales</h2>
+                      <p className="text-xs text-slate-500 font-medium">Congresos, simposios y jornadas científicas en Chile</p>
+                    </div>
+                    <span className="ml-auto px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">
+                      {actividadesNacionales.length} {actividadesNacionales.length === 1 ? 'actividad' : 'actividades'}
+                    </span>
+                  </div>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {actividadesNacionales.map((act) => (
+                      <ActivityCard key={act.id} item={act} onClick={handleViewActivity} />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* ACTIVIDADES INTERNACIONALES */}
+              {actividadesInternacionales.length > 0 && (
+                <div>
+                  <div className="flex items-center gap-3 mb-8 pb-3 border-b border-slate-200">
+                    <div className="p-2 rounded-xl bg-teal-100 text-teal-700">
+                      <Globe size={20} />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Actividades Internacionales</h2>
+                      <p className="text-xs text-slate-500 font-medium">Pasantías, defensas doctorales y congresos internacionales</p>
+                    </div>
+                    <span className="ml-auto px-3 py-1 bg-teal-100 text-teal-700 text-xs font-bold rounded-full">
+                      {actividadesInternacionales.length} {actividadesInternacionales.length === 1 ? 'actividad' : 'actividades'}
+                    </span>
+                  </div>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {actividadesInternacionales.map((act) => (
+                      <ActivityCard key={act.id} item={act} onClick={handleViewActivity} />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -1797,20 +1907,64 @@ export default function App() {
           <section id="activities" className="py-24 bg-slate-50 border-y border-slate-200">
             <div className="container mx-auto px-6">
               <SectionTitle subtitle="Registro completo de actividades académicas, presentaciones y participación institucional del Laboratorio.">
-                Actividades Recientes
+                Actividades y Congresos
               </SectionTitle>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                {ACTIVIDADES.slice(0, 3).map((act) => (
-                  <ActivityCard key={act.id} item={act} onClick={handleViewActivity} />
-                ))}
+
+              <div className="space-y-16 mb-12">
+                {/* GRUPO 1: ACTIVIDADES NACIONALES */}
+                {actividadesNacionales.length > 0 && (
+                  <div>
+                    <div className="flex items-center gap-3 mb-8 pb-3 border-b border-slate-200">
+                      <div className="p-2 rounded-xl bg-blue-100 text-blue-700">
+                        <MapPin size={20} />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-slate-900 tracking-tight">Actividades Nacionales</h3>
+                        <p className="text-xs text-slate-500 font-medium">Congresos, simposios y jornadas científicas en Chile</p>
+                      </div>
+                      <span className="ml-auto px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">
+                        {actividadesNacionales.length} {actividadesNacionales.length === 1 ? 'actividad' : 'actividades'}
+                      </span>
+                    </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {actividadesNacionales.slice(0, 3).map((act) => (
+                        <ActivityCard key={act.id} item={act} onClick={handleViewActivity} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* GRUPO 2: ACTIVIDADES INTERNACIONALES */}
+                {actividadesInternacionales.length > 0 && (
+                  <div>
+                    <div className="flex items-center gap-3 mb-8 pb-3 border-b border-slate-200">
+                      <div className="p-2 rounded-xl bg-teal-100 text-teal-700">
+                        <Globe size={20} />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-slate-900 tracking-tight">Actividades Internacionales</h3>
+                        <p className="text-xs text-slate-500 font-medium">Pasantías, defensas doctorales y congresos internacionales</p>
+                      </div>
+                      <span className="ml-auto px-3 py-1 bg-teal-100 text-teal-700 text-xs font-bold rounded-full">
+                        {actividadesInternacionales.length} {actividadesInternacionales.length === 1 ? 'actividad' : 'actividades'}
+                      </span>
+                    </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {actividadesInternacionales.slice(0, 3).map((act) => (
+                        <ActivityCard key={act.id} item={act} onClick={handleViewActivity} />
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
+
               <div className="text-center">
                 <button
                   type="button"
                   onClick={() => scrollToSection('all-activities')}
                   className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-blue-600 border border-blue-200 rounded-full font-bold shadow-sm hover:shadow-md hover:bg-blue-50 transition-all group cursor-pointer"
                 >
-                  <LayoutGrid size={20} className="group-hover:scale-110 transition-transform" /> Ver bitácora completa
+                  <LayoutGrid size={20} className="group-hover:scale-110 transition-transform" /> Ver bitácora completa de actividades
                 </button>
               </div>
             </div>
