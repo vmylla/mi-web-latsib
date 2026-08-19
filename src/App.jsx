@@ -1102,6 +1102,18 @@ const EQUIPO = [
       email: "nfrieri@utem.cl"
     }
   },
+  {
+    nombre: "Lucas Valdebenito Maldonado",
+    categoria: "asistentes",
+    rol: "Asistente Investigador",
+    bio: "Estudiante de Ingeniería Civil Biomédica",
+    img: "/equipo/LucasPERFIL.jpg",
+    contactos: {
+      linkedin: "",
+      github: "",
+      email: "lvaldebenito@utem.cl"
+    }
+  },
 ];
 
 
