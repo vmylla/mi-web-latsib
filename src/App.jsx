@@ -914,7 +914,7 @@ const PUBLICACIONES = [
     year: "2025",
     autor: "Cristian Montalba, Raúl Caulier-Cisterna, Carlos Milovic, Alfonso González, Juan Pablo Ramirez-Mahaluf, Juan Undurraga, Rodrigo Salas, Nicolás Crossley, Cristian Tejos y Sergio Uribe.",
     link: "https://www.sciencedirect.com/science/article/pii/S0169260725004845"
-  },
+},
    {
     titulo: "Sex differences in the prefrontal cortex during exercise",
     revista: "Experimental Physiology",
@@ -922,7 +922,7 @@ const PUBLICACIONES = [
     autor: "Daniel Ramos‐López, Raúl Caulier‐Cisterna, Benjamín Díaz‐Ortiz, Cristóbal Baumann‐Biancani, Kamilo Hunger‐Abbott, Matías Herrera‐Matas, Andrés Vega‐Moraga, Vitor A. Lira, Maximiliano Espinosa‐Ramírez, Karol Ramírez‐Parada, Luigi Gabrielli‐Nervi, Hugo E. Verdejo y Felipe Contreras‐Briceño.",
     link: "https://physoc.onlinelibrary.wiley.com/doi/full/10.1113/EP093287"
   },
-   {
+  {
     titulo: "Comparison of LED- and LASER-based fNIRS technologies to record the human peri-spinal cord neurovascular response",
     revista: "Medical Engineering & Physics (Elsevier)",
     year: "2024",
@@ -938,11 +938,20 @@ const PUBLICACIONES = [
   },
 ];
 
-// --- DATA: EQUIPO ---
+// --- DATA: CATEGORÍAS Y EQUIPO ---
+
+const CATEGORIAS_EQUIPO = [
+  { id: 'academicos', titulo: 'Académicos' },
+  { id: 'colaboradores', titulo: 'Colaboradores' },
+  { id: 'asistentes', titulo: 'Asistentes de Investigación' },
+  { id: 'tesistas', titulo: 'Tesistas' },
+  { id: 'doctorandos', titulo: 'Doctorandos' },
+];
 
 const EQUIPO = [
   {
     nombre: "DR. Raúl Caulier Cisterna",
+    categoria: "academicos",
     rol: "Director e Investigador Principal del Laboratorio LaTSIB",
     bio: "PhD en Multimedia y Comunicaciones, Especialista en Biomédica, Machine Learning, Análisis de Señales y Datos",
     img: "https://fing.utem.cl/wp-content/uploads/sites/6/2023/11/Raul-Paul-Caulier-Cisterna.jpg",
@@ -954,6 +963,7 @@ const EQUIPO = [
   },
   {
     nombre: "Matías Gajardo De La Fuente",
+    categoria: "asistentes",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería civil en computación menc. informática",
     img: "/equipo/MatiasPERFIL.jpg",
@@ -965,8 +975,9 @@ const EQUIPO = [
   },
   {
     nombre: "Juan Toledo Fierro",
+    categoria: "asistentes",
     rol: "Asistente Investigador",
-    bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
+    bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/JuanPERFIL.jpg",
     contactos: {
       linkedin: "https://www.linkedin.com/in/juan-crist%C3%B3bal-toledo-fierro-83787129b/",
@@ -976,6 +987,7 @@ const EQUIPO = [
   },
   {
     nombre: "David Sepulveda Velásquez",
+    categoria: "asistentes",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/DavidPERFIL.jpg",
@@ -987,8 +999,9 @@ const EQUIPO = [
   },
   {
     nombre: "Andrés Vega Moraga",
+    categoria: "asistentes",
     rol: "Asistente Investigador",
-    bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
+    bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/AndrésPERFIL.jpg",
     contactos: {
       linkedin: "https://www.linkedin.com/in/andres-nicolas-vega-moraga-950b3128b/",
@@ -996,8 +1009,9 @@ const EQUIPO = [
       email: "avega@utem.cl"
     }
   },
-   {
+  {
     nombre: "Clemente Uribe Ortiz",
+    categoria: "asistentes",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/ClementePERFIL.jpg",
@@ -1007,10 +1021,11 @@ const EQUIPO = [
       email: "curibeo@utem.cl"
     }
   },
-   {
+  {
     nombre: "Glenn Lanyon Lanyon",
+    categoria: "asistentes",
     rol: "Asistente Investigador",
-    bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
+    bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/GlennPERFIL.jpg",
     contactos: {
       linkedin: "",
@@ -1018,8 +1033,9 @@ const EQUIPO = [
       email: "glanyon@utem.cl"
     }
   },
-   {
+  {
     nombre: "Catalina Araniz Arancibia",
+    categoria: "asistentes",
     rol: "Asistente Investigadora",
     bio: "Estudiante de Ingeniería Civil en Computación mención Informática",
     img: "/equipo/CatalinaPERFIL.jpg",
@@ -1031,6 +1047,7 @@ const EQUIPO = [
   },
    {
     nombre: "Gabriel Araya López",
+    categoria: "asistentes",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Informática",
     img: "/equipo/GabrielPERFIL.jpg",
@@ -1040,8 +1057,9 @@ const EQUIPO = [
       email: "garaya@utem.cl"
     }
   },
-   {
+  {
     nombre: "Vicente Escudero Durana",
+    categoria: "asistentes",
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/VicentePERFIL.jpg",
@@ -1051,8 +1069,9 @@ const EQUIPO = [
       email: "vescuderod@utem.cl"
     }
   },
-   {
+  {
     nombre: "Camila Guajardo Bravo",
+    categoria: "asistentes",
     rol: "Asistente Investigadora",
     bio: "Estudiante de Ingeniería Civil en Computación mención Informática",
     img: "/equipo/CamilaPERFIL.jpg",
@@ -1060,8 +1079,8 @@ const EQUIPO = [
       linkedin: "https://www.linkedin.com/in/camila-millaray-guajardo-bravo-b94297293/",
       github: "https://github.com/vmylla",
       email: "cguajardo@utem.cl"
-      }
-    },
+    }
+  },
 ];
 
 
@@ -1802,54 +1821,71 @@ export default function App() {
               <SectionTitle subtitle="Investigadores, estudiantes y profesionales trabajando juntos para construir ciencia con propósito.">
                 Integrantes del Laboratorio
               </SectionTitle>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {EQUIPO.map((miembro, idx) => (
-                  <div key={idx} className="bg-slate-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all text-center group border border-slate-100 flex flex-col">
-                    <div className="h-48 overflow-hidden relative bg-slate-200">
-                      <img src={miembro.img} alt={miembro.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                    </div>
-                    <div className="p-6 flex flex-col flex-grow">
-                      <h4 className="font-bold text-slate-900 text-lg mb-1 leading-snug">{miembro.nombre}</h4>
-                      <p className="text-blue-600 text-sm font-semibold mb-3">{miembro.rol}</p>
-                      <p className="text-slate-500 text-xs leading-relaxed mb-5 flex-grow">{miembro.bio}</p>
-                      
-                      {/* REDES SOCIALES */}
-                      <div className="flex justify-center items-center gap-3 pt-3 border-t border-slate-200/60 mt-auto">
-                        {miembro.contactos?.linkedin && (
-                          <a
-                            href={miembro.contactos.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 rounded-full text-slate-400 hover:text-blue-600 hover:bg-white transition-all shadow-2xs"
-                            aria-label="LinkedIn"
-                          >
-                            <Linkedin size={18} />
-                          </a>
-                        )}
-                        {miembro.contactos?.github && (
-                          <a
-                            href={miembro.contactos.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 rounded-full text-slate-400 hover:text-slate-900 hover:bg-white transition-all shadow-2xs"
-                            aria-label="GitHub"
-                          >
-                            <Github size={18} />
-                          </a>
-                        )}
-                        {miembro.contactos?.email && (
-                          <a
-                            href={`mailto:${miembro.contactos.email}`}
-                            className="p-2 rounded-full text-slate-400 hover:text-teal-600 hover:bg-white transition-all shadow-2xs"
-                            aria-label="Email"
-                          >
-                            <Mail size={18} />
-                          </a>
-                        )}
+              <div className="space-y-16">
+                {CATEGORIAS_EQUIPO.map((cat) => {
+                  const miembrosCat = EQUIPO.filter((m) => m.categoria === cat.id);
+                  if (miembrosCat.length === 0) return null;
+
+                  return (
+                    <div key={cat.id}>
+                      <div className="flex items-center gap-3 mb-8 pb-3 border-b border-slate-200">
+                        <h3 className="text-2xl font-bold text-slate-900 tracking-tight">{cat.titulo}</h3>
+                        <span className="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">
+                          {miembrosCat.length}
+                        </span>
+                      </div>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {miembrosCat.map((miembro, idx) => (
+                          <div key={idx} className="bg-slate-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all text-center group border border-slate-100 flex flex-col">
+                            <div className="h-48 overflow-hidden relative bg-slate-200">
+                              <img src={miembro.img} alt={miembro.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                            </div>
+                            <div className="p-6 flex flex-col flex-grow">
+                              <h4 className="font-bold text-slate-900 text-lg mb-1 leading-snug">{miembro.nombre}</h4>
+                              <p className="text-blue-600 text-sm font-semibold mb-3">{miembro.rol}</p>
+                              <p className="text-slate-500 text-xs leading-relaxed mb-5 flex-grow">{miembro.bio}</p>
+                              
+                              {/* REDES SOCIALES */}
+                              <div className="flex justify-center items-center gap-3 pt-3 border-t border-slate-200/60 mt-auto">
+                                {miembro.contactos?.linkedin && (
+                                  <a
+                                    href={miembro.contactos.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2 rounded-full text-slate-400 hover:text-blue-600 hover:bg-white transition-all shadow-2xs"
+                                    aria-label="LinkedIn"
+                                  >
+                                    <Linkedin size={18} />
+                                  </a>
+                                )}
+                                {miembro.contactos?.github && (
+                                  <a
+                                    href={miembro.contactos.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2 rounded-full text-slate-400 hover:text-slate-900 hover:bg-white transition-all shadow-2xs"
+                                    aria-label="GitHub"
+                                  >
+                                    <Github size={18} />
+                                  </a>
+                                )}
+                                {miembro.contactos?.email && (
+                                  <a
+                                    href={`mailto:${miembro.contactos.email}`}
+                                    className="p-2 rounded-full text-slate-400 hover:text-teal-600 hover:bg-white transition-all shadow-2xs"
+                                    aria-label="Email"
+                                  >
+                                    <Mail size={18} />
+                                  </a>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </section>
