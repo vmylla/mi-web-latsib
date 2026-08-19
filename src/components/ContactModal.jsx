@@ -75,17 +75,16 @@ export default function ContactModal({ isOpen, onClose }) {
       : formData.motivo || 'Consulta General';
 
     // ─────────────────────────────────────────────────────────────────
-    // Web3Forms – correo principal: latsibutem@gmail.com
-    // CC: rcaulier@utem.cl
+    // Web3Forms – Claves para ambos destinatarios:
+    // Key 1: latsibutem@gmail.com
+    // Key 2: rcaulier@utem.cl
     // ─────────────────────────────────────────────────────────────────
-    const WEB3FORMS_KEY = '52fff220-4e6e-4c4f-bc0c-3c785536a88e';
+    const KEY_LATSIB = '52fff220-4e6e-4c4f-bc0c-3c785536a88e';
+    const KEY_RCAULIER = 'd9f6ec50-6190-4f6e-890c-2ebc189db655';
 
-    const payload = {
-      access_key: WEB3FORMS_KEY,
+    const basePayload = {
       subject: `Nuevo Contacto LaTSIB: ${motivoFinal} - ${formData.nombre.trim()}`,
       from_name: 'LaTSIB Web',
-      cc: 'rcaulier@utem.cl',
-      // Campos del formulario
       'Nombre y Apellido': formData.nombre.trim(),
       'Correo de Contacto': formData.email.trim(),
       'Ocupación / Institución': formData.ocupacion.trim() || 'No especificada',
@@ -95,21 +94,27 @@ export default function ContactModal({ isOpen, onClose }) {
     };
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
+      // Envío simultáneo a ambos correos
+      const [res1, res2] = await Promise.all([
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ ...basePayload, access_key: KEY_LATSIB }),
+        }),
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ ...basePayload, access_key: KEY_RCAULIER }),
+        }),
+      ]);
 
-      const data = await response.json();
+      const data1 = await res1.json().catch(() => ({ success: false }));
+      const data2 = await res2.json().catch(() => ({ success: false }));
 
-      if (data.success) {
+      if (data1.success || data2.success) {
         setStatus('success');
       } else {
-        throw new Error(data.message || 'Error al procesar el formulario.');
+        throw new Error('Error al procesar el envío del formulario.');
       }
     } catch (err) {
       console.error('Error al enviar formulario:', err);
