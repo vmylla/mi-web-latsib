@@ -2463,7 +2463,7 @@ export default function App() {
                   <li><a href="https://www.utem.cl" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Universidad Tecnológica Metropolitana</a></li>
                   <li><a href="https://www.anid.cl" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">ANID Chile</a></li>
                   <li><a href="https://postgrado.utem.cl" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Postulaciones a Magíster</a></li>
-                  <li><a href="https://rrii.utem.cl" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Colaboración Internacional</a></li>
+                  <li><a href="https://noticias.utem.cl/2026/07/21/seminarios-de-ingenieria-civil-biomedica-utem-impulsan-uso-de-ia/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Noticia seminarios de ingeniería civil biomédica UTEM</a></li>
                 </ul>
               </div>
             </div>
