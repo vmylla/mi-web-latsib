@@ -1120,7 +1120,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil Biomédica",
     img: "/equipo/LucasPERFIL.jpg",
-    actividadesLab: "El trabajo de Lucas se centra en el desarrollo de soluciones basadas en inteligencia artificial, en el marco del proyecto Nuevo Paradigma, explorando nuevas herramientas y metodologías para abordar desafíos de investigación mediante tecnologías de IA.\n\nSu participación contempla el desarrollo y aplicación de modelos de inteligencia artificial, contribuyendo a la incorporación de estas tecnologías en los procesos de investigación e innovación del laboratorio.",
+    actividadesLab: "El trabajo de Lucas se centra en el desarrollo de soluciones basadas en inteligencia artificial, en el marco del proyecto Nuevo Paradigma, explorando nuevas herramientas y metodologías para abordar desafíos de investigación mediante tecnologías de IA, indagando en procesos biomédicos aplicables.\n\nSu participación contempla el desarrollo y aplicación de modelos de inteligencia artificial, contribuyendo a la incorporación de estas tecnologías en los procesos de investigación e innovación del laboratorio.",
     contactos: {
       linkedin: "",
       github: "",
