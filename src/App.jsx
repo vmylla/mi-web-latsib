@@ -1887,11 +1887,11 @@ export default function App() {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled || route.view !== 'landing' ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div
-            className="flex items-center gap-3 cursor-pointer select-none"
+            className="flex items-center gap-3.5 cursor-pointer select-none group"
             onClick={() => { navigateTo('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           >
-            <img src={CONFIG.imagenes.logo} alt="Logo" className="h-12 w-12 object-cover rounded-full shadow-sm" />
-            <span className={`text-xl font-extrabold tracking-tight ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
+            <img src={CONFIG.imagenes.logo} alt="Logo" className="h-14 w-14 sm:h-16 sm:w-16 object-cover rounded-full shadow-md group-hover:scale-105 transition-transform duration-300" />
+            <span className={`text-2xl font-extrabold tracking-tight ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
               {CONFIG.nombreGrupo}
             </span>
           </div>
