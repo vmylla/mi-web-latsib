@@ -990,7 +990,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/JuanPERFIL.jpg",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Juan se centra en la aplicación de inteligencia artificial al procesamiento de señales biomédicas, específicamente en el uso de algoritmos de Self-Supervised Learning para el análisis y generación de señales electrocardiográficas (ECG).\n\nSu investigación busca generar señales ECG sintéticas mediante técnicas de autoaprendizaje, con el objetivo de realizar data augmentation y construir bases de datos más balanceadas, contribuyendo al desarrollo de modelos de inteligencia artificial más robustos para aplicaciones biomédicas.",
     contactos: {
       linkedin: "https://www.linkedin.com/in/juan-crist%C3%B3bal-toledo-fierro-83787129b/",
       github: "",
@@ -1133,7 +1133,7 @@ const EQUIPO = [
     rol: "Tesista / Egresado",
     bio: "Egresado de Ingeniería Civil en Ciencia de Datos · Proyecto de Tesis",
     img: "/equipo/JuanPERFIL.jpg",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Juan se centra en la aplicación de inteligencia artificial al procesamiento de señales biomédicas, específicamente en el uso de algoritmos de Self-Supervised Learning para el análisis y generación de señales electrocardiográficas (ECG).\n\nSu investigación busca generar señales ECG sintéticas mediante técnicas de autoaprendizaje, con el objetivo de realizar data augmentation y construir bases de datos más balanceadas, contribuyendo al desarrollo de modelos de inteligencia artificial más robustos para aplicaciones biomédicas.",
     contactos: {
       linkedin: "https://www.linkedin.com/in/juan-crist%C3%B3bal-toledo-fierro-83787129b/",
       github: "",
