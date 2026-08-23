@@ -977,7 +977,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería civil en computación menc. informática",
     img: "/equipo/MatiasPERFIL.jpg",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Matías se centra en el análisis de señales biomédicas y neurocientíficas, utilizando herramientas de procesamiento y análisis de datos para estudiar respuestas fisiológicas y explorar su potencial aplicación en investigación y diagnóstico.\n\nParticipa en el análisis de la respuesta neurovascular espinal (RNV) mediante fNIRS frente a la estimulación de los nervios tibial posterior y mediano. Además, apoya el análisis espectral de señales acústicas intestinales en modelos murinos, orientado a la caracterización de cólicos y la identificación de posibles biomarcadores diagnósticos.\n\nTambién participa en la comparación de equipamiento neurocientífico, evaluando tecnologías como fNIRS, EEG Bitbrain y eye-tracking Tobii para apoyar futuros estudios colaborativos entre distintos centros de investigación.",
     contactos: {
       linkedin: "https://www.linkedin.com/in/matias-adrian-gajardo-de-la-fuente/",
       github: "https://github.com/xhorus11",
@@ -1094,7 +1094,7 @@ const EQUIPO = [
     rol: "Asistente Investigadora",
     bio: "Estudiante de Ingeniería Civil en Computación mención Informática",
     img: "/equipo/CamilaPERFIL.jpg",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Camila se centra principalmente en la divulgación científica, buscando transformar y comunicar el conocimiento generado en el laboratorio de manera clara, visual y accesible, acercando la investigación científica a la comunidad y a públicos no especializados.\n\nPara ello, desarrolla contenido para redes sociales y plataformas digitales, difundiendo investigaciones, proyectos, publicaciones, seminarios y actividades del laboratorio. También apoya la creación de material gráfico y audiovisual, así como la gestión de su presencia digital y página web.\n\nEl objetivo es visibilizar el trabajo científico del LaTSIB, facilitar su comprensión y fortalecer la conexión entre la investigación, la comunidad y el entorno académico.",
     contactos: {
       linkedin: "https://www.linkedin.com/in/camila-millaray-guajardo-bravo-b94297293/",
       github: "https://github.com/vmylla",
@@ -1120,7 +1120,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil Biomédica",
     img: "/equipo/LucasPERFIL.jpg",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Lucas se centra en el desarrollo de soluciones basadas en inteligencia artificial, en el marco del proyecto Nuevo Paradigma, explorando nuevas herramientas y metodologías para abordar desafíos de investigación mediante tecnologías de IA.\n\nSu participación contempla el desarrollo y aplicación de modelos de inteligencia artificial, contribuyendo a la incorporación de estas tecnologías en los procesos de investigación e innovación del laboratorio.",
     contactos: {
       linkedin: "",
       github: "",
