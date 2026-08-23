@@ -1081,7 +1081,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/VicentePERFIL.jpg",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Vicente se centra en la investigación y desarrollo de herramientas de apoyo al diagnóstico mediante inteligencia artificial y procesamiento de señales biomédicas.\n\nActualmente investiga señales acústicas intestinales en modelos murinos como posibles biomarcadores de cólicos. Además, desarrolla una aplicación de apoyo diagnóstico que integra visión artificial y modelos matemáticos para la segmentación de lesiones óseas, contribuyendo a la automatización y análisis de información médica.",
     contactos: {
       linkedin: "",
       github: "",
