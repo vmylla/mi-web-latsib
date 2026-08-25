@@ -1016,7 +1016,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/AndrésPERFIL.jpg",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Andrés se desarrolla en dos áreas principales de desarrollo, combinando la investigación en inteligencia artificial aplicada a señales biomédicas con el desarrollo de herramientas tecnológicas para la educación.\n\nPor un lado, se dedica al desarrollo de Machine Learning y Deep Learning en la investigación de fNIRS en la médula espinal, buscando modelos autoencoder capaces de encontrar características dentro del espacio latente. Esto permite detectar patrones y explorar nuevas aplicaciones, como la modulación de señales y el análisis de cómo variables antropométricas como la edad, el sexo y el IMC pueden inducir cambios en las señales fNIRS.\n\nPor otro lado, trabaja en el desarrollo de una App para el ámbito de la educación, pensada para la planificación de clases de un semestre o año escolar de manera contextualizada. Esta herramienta integra las bases de datos de Objetivos de Aprendizaje (OAs) con la información complementaria proporcionada por el profesor, con el objetivo directo de reducir sus tiempos de trabajo y facilitar el proceso de planificación, utilizando la tecnología como un apoyo concreto para la labor docente.",
     contactos: {
       linkedin: "https://www.linkedin.com/in/andres-nicolas-vega-moraga-950b3128b/",
       github: "",
@@ -1055,7 +1055,7 @@ const EQUIPO = [
     rol: "Asistente Investigadora",
     bio: "Estudiante de Ingeniería Civil en Computación mención Informática",
     img: "/equipo/CatalinaPERFIL.jpg",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Catalina se enfoca en la creación de soluciones tecnológicas que conectan el desarrollo de software con la investigación biomédica, buscando facilitar el manejo, análisis y aprovechamiento de grandes volúmenes de información clínica.\n\nParticipa en el desarrollo de DataLab, una herramienta web diseñada para trabajar de manera eficiente con grandes bases de datos clínicas. Además, desarrolla software para la integración y utilización de tecnologías como EEG Bitbrain y eye-tracking Tobii, contribuyendo a generar nuevas herramientas para la investigación y el estudio de señales neurocientíficas.\n\nSu trabajo permite transformar datos complejos en herramientas útiles para la investigación, impulsando la incorporación de tecnología e innovación en el ámbito biomédico.",
     contactos: {
       linkedin: "",
       github: "https://github.com/cataaraniz",
@@ -1107,7 +1107,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil Biomédica",
     img: "/equipo/NicolasPERFIL.png",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Nicolás se centra en la investigación y aplicación de inteligencia artificial dentro del proyecto Nuevo Paradigma, contribuyendo al desarrollo y exploración de soluciones basadas en IA.\n\nParticipa como ayudante de investigación, apoyando las distintas etapas del proyecto y colaborando en la incorporación de herramientas de inteligencia artificial a los procesos de investigación e innovación del laboratorio.",
     contactos: {
       linkedin: "",
       github: "",
@@ -1146,7 +1146,7 @@ const EQUIPO = [
     rol: "Tesista / Egresado",
     bio: "Egresado de Ingeniería Civil en Ciencia de Datos · Proyecto de Tesis",
     img: "/equipo/AndrésPERFIL.jpg",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Andrés se desarrolla en dos áreas principales de desarrollo, combinando la investigación en inteligencia artificial aplicada a señales biomédicas con el desarrollo de herramientas tecnológicas para la educación.\n\nPor un lado, se dedica al desarrollo de Machine Learning y Deep Learning en la investigación de fNIRS en la médula espinal, buscando modelos autoencoder capaces de encontrar características dentro del espacio latente. Esto permite detectar patrones y explorar nuevas aplicaciones, como la modulación de señales y el análisis de cómo variables antropométricas como la edad, el sexo y el IMC pueden inducir cambios en las señales fNIRS.\n\nPor otro lado, trabaja en el desarrollo de una App para el ámbito de la educación, pensada para la planificación de clases de un semestre o año escolar de manera contextualizada. Esta herramienta integra las bases de datos de Objetivos de Aprendizaje (OAs) con la información complementaria proporcionada por el profesor, con el objetivo directo de reducir sus tiempos de trabajo y facilitar el proceso de planificación, utilizando la tecnología como un apoyo concreto para la labor docente.",
     contactos: {
       linkedin: "https://www.linkedin.com/in/andres-nicolas-vega-moraga-950b3128b/",
       github: "",
