@@ -1029,7 +1029,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/ClementePERFIL.jpg",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Clemente se desarrolla en la intersección entre inteligencia artificial, aprendizaje automático y análisis de imágenes médicas, buscando desarrollar herramientas capaces de apoyar la detección y caracterización de distintas patologías mediante modelos computacionales.\n\nSu trabajo consiste en desarrollar y evaluar modelos de aprendizaje supervisado (YOLO26-seg, Random Forest/XGBoost) con explicabilidad (SHAP), aplicados a la detección de patologías médicas. Esta investigación se desarrolla a través de tres líneas de trabajo:\n\n• Patologías gastrointestinales: realiza la segmentación de instancias en imágenes endoscópicas multi-fuente, incorporando el diagnóstico de sesgo de dominio y validación a nivel de sujeto para prevenir fuga de datos.\n• fNIRS (dolor lumbar): evalúa posibles aplicaciones paralelas o futuras de los biomarcadores hemodinámicos trabajados en el artículo, explorando nuevas posibilidades para el uso de estas señales en investigación biomédica.\n• Cáncer óseo: trabaja en la detección mediante análisis de imagen, explorando el potencial de herramientas de inteligencia artificial para apoyar la identificación de esta patología.\n\nA través de estas líneas, su trabajo busca llevar el potencial de la inteligencia artificial al análisis de información médica, desarrollando modelos que no solo permitan detectar patologías, sino también comprender y explicar los resultados obtenidos.",
     contactos: {
       linkedin: "https://www.linkedin.com/in/clemente-uribe-18b79a39b/",
       github: "",
@@ -1042,7 +1042,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/GlennPERFIL.jpg",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Glenn se desarrolla en el área de la investigación de la respuesta neurovascular (RNV) de la médula espinal humana, utilizando tecnologías de espectroscopía funcional para estudiar cómo responde el sistema neurovascular frente a estímulos sucesivos.\n\nSu trabajo se centra en el estudio del período refractario de la respuesta neurovascular (RNV) peri-espinal de la médula espinal humana mediante espectroscopía funcional de infrarrojo cercano (fNIRS), utilizando la señal de oxihemoglobina (O₂Hb) obtenida ante estímulos eléctricos sucesivos del nervio mediano. El objetivo es caracterizar cómo se modifica la respuesta cuando los estímulos se aplican con distintos intervalos de tiempo, identificando patrones de refractariedad y potenciación a partir de la morfología de la señal.\n\nEsta investigación permite profundizar en la comprensión de cómo la médula espinal responde y se adapta ante estímulos repetidos, aportando información relevante para el estudio de la dinámica neurovascular y el potencial de fNIRS como herramienta para investigar el funcionamiento de la médula espinal humana.",
     contactos: {
       linkedin: "",
       github: "",
@@ -1068,7 +1068,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Estudiante de Ingeniería Informática",
     img: "/equipo/GabrielPERFIL.jpg",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Gabriel se desarrolla en el área de la investigación y visualización de señales biomédicas, buscando transformar información compleja en herramientas que permitan comprender y analizar de manera más clara la respuesta del sistema neurovascular.\n\nSu trabajo se centra en el desarrollo de una plataforma estandarizada para la visualización y análisis de la respuesta neurovascular (RNV) a través de señales e imágenes biomédicas, creando una herramienta que facilite la exploración, interpretación y estudio de estos datos.\n\nEste desarrollo busca estandarizar y fortalecer el análisis de la RNV, aportando una plataforma que permita aprovechar de mejor manera las señales e imágenes biomédicas y apoyar futuras investigaciones dentro del laboratorio.",
     contactos: {
       linkedin: "https://www.linkedin.com/in/gabriel-ignacio-a-6924b921a/",
       github: "",
@@ -1159,7 +1159,7 @@ const EQUIPO = [
     rol: "Tesista / Egresado",
     bio: "Egresado de Ingeniería Civil en Ciencia de Datos · Proyecto de Tesis",
     img: "/equipo/GlennPERFIL.jpg",
-    actividadesLab: "",
+    actividadesLab: "El trabajo de Glenn se desarrolla en el área de la investigación de la respuesta neurovascular (RNV) de la médula espinal humana, utilizando tecnologías de espectroscopía funcional para estudiar cómo responde el sistema neurovascular frente a estímulos sucesivos.\n\nSu trabajo se centra en el estudio del período refractario de la respuesta neurovascular (RNV) peri-espinal de la médula espinal humana mediante espectroscopía funcional de infrarrojo cercano (fNIRS), utilizando la señal de oxihemoglobina (O₂Hb) obtenida ante estímulos eléctricos sucesivos del nervio mediano. El objetivo es caracterizar cómo se modifica la respuesta cuando los estímulos se aplican con distintos intervalos de tiempo, identificando patrones de refractariedad y potenciación a partir de la morfología de la señal.\n\nEsta investigación permite profundizar en la comprensión de cómo la médula espinal responde y se adapta ante estímulos repetidos, aportando información relevante para el estudio de la dinámica neurovascular y el potencial de fNIRS como herramienta para investigar el funcionamiento de la médula espinal humana.",
     contactos: {
       linkedin: "",
       github: "",
