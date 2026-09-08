@@ -140,7 +140,7 @@ export const AdminUsers = () => {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse text-xs">
+          <table className="w-full min-w-[620px] text-left border-collapse text-xs">
             <thead>
               <tr className="border-b border-slate-800 bg-slate-950/60 text-slate-400 font-bold uppercase tracking-wider text-[10px]">
                 <th className="py-3.5 px-6">Integrante</th>

@@ -11,6 +11,7 @@ import { AdminLogin } from './components/admin/AdminLogin';
 import { AdminLayout } from './components/admin/AdminLayout';
 import { InvitationScreen } from './components/auth/InvitationScreen';
 import utemLogo from './assets/logo-utem.png';
+import heroPattern from './assets/hero-pattern.png';
 
 // --- COMPONENTES AUXILIARES DE LA WEB PÚBLICA ---
 
@@ -405,8 +406,8 @@ const MemberDetailModal = ({ member, onClose }) => {
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden z-10 animate-in zoom-in-95 duration-200 my-auto">
-        <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-teal-600 px-6 py-4 text-white flex items-center justify-between">
+      <div className="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden z-10 animate-in zoom-in-95 duration-200 my-auto max-h-[90vh] flex flex-col">
+        <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-teal-600 px-6 py-4 text-white flex items-center justify-between shrink-0">
           <span className="text-xs uppercase tracking-widest text-blue-100 font-bold">
             Perfil del Integrante
           </span>
@@ -420,7 +421,7 @@ const MemberDetailModal = ({ member, onClose }) => {
           </button>
         </div>
 
-        <div className="p-6 sm:p-8">
+        <div className="p-5 sm:p-8 overflow-y-auto flex-grow">
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left mb-6 pb-6 border-b border-slate-100">
             <div className="w-28 h-28 rounded-2xl overflow-hidden bg-slate-100 shrink-0 shadow-md border-2 border-white ring-2 ring-slate-100">
               <img src={member.img || '/logo-circle.png'} alt={member.nombre} className="w-full h-full object-cover" />
@@ -561,10 +562,10 @@ const TeamMemberCard = ({ miembro, onSelect }) => (
 );
 
 const SectionTitle = ({ children, subtitle }) => (
-  <div className="mb-12 text-center">
-    <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">{children}</h2>
-    <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full mb-4"></div>
-    {subtitle && <p className="text-slate-600 max-w-2xl mx-auto text-base leading-relaxed">{subtitle}</p>}
+  <div className="mb-10 sm:mb-12 text-center px-4">
+    <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 sm:mb-4 tracking-tight">{children}</h2>
+    <div className="w-20 sm:w-24 h-1.5 bg-blue-600 mx-auto rounded-full mb-3 sm:mb-4"></div>
+    {subtitle && <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">{subtitle}</p>}
   </div>
 );
 
@@ -798,12 +799,12 @@ function AppContent() {
               <Menu size={24} />
             </button>
             <div
-              className="flex items-center gap-2.5 sm:gap-3 cursor-pointer select-none group"
+              className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none group min-w-0"
               onClick={() => { navigateTo('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             >
-              <img src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-14 w-14 sm:h-16 sm:w-16 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300" />
-              <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-14 w-14 sm:h-16 sm:w-16 object-cover rounded-full shadow-md group-hover:scale-105 transition-transform duration-300" />
-              <span className={`text-2xl font-extrabold tracking-tight ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
+              <img src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300 shrink-0" />
+              <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 object-cover rounded-full shadow-md group-hover:scale-105 transition-transform duration-300 shrink-0" />
+              <span className={`text-xl sm:text-2xl font-extrabold tracking-tight truncate ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
                 {config.nombreGrupo}
               </span>
             </div>
@@ -1248,12 +1249,26 @@ function AppContent() {
       ) : (
         /* VISTA: PORTADA (LANDING) */
         <>
-          <header className="relative pt-32 pb-20 lg:min-h-screen flex items-center overflow-hidden bg-slate-900" id="about">
-            <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-              <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-600 rounded-full blur-[120px]"></div>
-              <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-500 rounded-full blur-[100px]"></div>
+          <header className="relative pt-32 pb-20 lg:min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900" id="about">
+            {/* Luces sutiles de fondo */}
+            <div className="absolute inset-0 z-0 opacity-25 pointer-events-none">
+              <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-500 rounded-full blur-[130px]"></div>
+              <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-400 rounded-full blur-[110px]"></div>
             </div>
-            <div className="absolute inset-0 z-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+
+            {/* Patrón Biomédico Ilustrado con 60% de transparencia */}
+            <div
+              className="absolute inset-0 z-0 opacity-60 pointer-events-none bg-repeat bg-center"
+              style={{
+                backgroundImage: `url(${heroPattern || '/hero-pattern.png'})`,
+                backgroundSize: '520px auto',
+                mixBlendMode: 'soft-light'
+              }}
+            />
+
+            {/* Máscara suave para garantizar máxima legibilidad de tipografía y logos */}
+            <div className="absolute inset-0 z-0 bg-gradient-to-r from-slate-900/50 via-slate-850/30 to-transparent pointer-events-none" />
+
             <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
               <div className="text-center lg:text-left">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-900/50 border border-blue-700 text-blue-200 text-xs font-semibold mb-6 shadow-sm">
@@ -1263,27 +1278,27 @@ function AppContent() {
                   </span>
                   Investigación Activa {config.year}
                 </div>
-                <h1 className="text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight">
                   Donde la ciencia <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">
                     se encuentra con la tecnología
                   </span>
                 </h1>
-                <p className="text-lg text-slate-300 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light">
+                <p className="text-base sm:text-lg text-slate-300 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light">
                   {config.mision}
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start w-full sm:w-auto">
                   <button
                     type="button"
                     onClick={() => scrollToSection('research')}
-                    className="px-8 py-3.5 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 group shadow-lg shadow-blue-900/30 cursor-pointer"
+                    className="w-full sm:w-auto px-7 py-3.5 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 group shadow-lg shadow-blue-900/30 cursor-pointer text-sm sm:text-base"
                   >
                     Nuestras Líneas <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </button>
                   <button
                     type="button"
                     onClick={() => scrollToSection('publications')}
-                    className="px-8 py-3.5 bg-slate-800 text-white border border-slate-700 rounded-xl font-bold hover:bg-slate-700 transition-all shadow-sm cursor-pointer"
+                    className="w-full sm:w-auto px-7 py-3.5 bg-slate-800 text-white border border-slate-700 rounded-xl font-bold hover:bg-slate-700 transition-all shadow-sm cursor-pointer text-sm sm:text-base"
                   >
                     Ver Publicaciones
                   </button>
