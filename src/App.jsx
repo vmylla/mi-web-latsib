@@ -21,6 +21,7 @@ const CONFIG = {
   year: 2026,
   imagenes: {
     logo: "/logo-circle.png", 
+    logoUtem: "/logo-utem.png",
     hero: "/image.jpg"      
   }
 };
@@ -1867,10 +1868,11 @@ export default function App() {
               <Menu size={24} />
             </button>
             <div
-              className="flex items-center gap-3.5 cursor-pointer select-none group"
+              className="flex items-center gap-2.5 sm:gap-3 cursor-pointer select-none group"
               onClick={() => { navigateTo('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             >
-              <img src={CONFIG.imagenes.logo} alt="Logo" className="h-14 w-14 sm:h-16 sm:w-16 object-cover rounded-full shadow-md group-hover:scale-105 transition-transform duration-300" />
+              <img src={CONFIG.imagenes.logoUtem} alt="Logo UTEM" className="h-14 w-14 sm:h-16 sm:w-16 object-contain rounded-2xl p-1 bg-white shadow-md group-hover:scale-105 transition-transform duration-300" />
+              <img src={CONFIG.imagenes.logo} alt="Logo LaTSIB" className="h-14 w-14 sm:h-16 sm:w-16 object-cover rounded-full shadow-md group-hover:scale-105 transition-transform duration-300" />
               <span className={`text-2xl font-extrabold tracking-tight ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
                 {CONFIG.nombreGrupo}
               </span>
@@ -1923,10 +1925,11 @@ export default function App() {
           <div className="relative w-full max-w-xs sm:max-w-sm bg-white h-full shadow-2xl z-10 flex flex-col p-6 animate-in slide-in-from-left duration-300 border-r border-slate-100">
             <div className="flex items-center justify-between pb-5 border-b border-slate-100 mb-6">
               <div
-                className="flex items-center gap-3 cursor-pointer"
+                className="flex items-center gap-2.5 cursor-pointer"
                 onClick={() => { setSideDrawerOpen(false); navigateTo('landing'); }}
               >
-                <img src={CONFIG.imagenes.logo} alt="Logo" className="h-10 w-10 object-cover rounded-full shadow-sm" />
+                <img src={CONFIG.imagenes.logoUtem} alt="Logo UTEM" className="h-10 w-10 object-contain rounded-lg p-0.5 bg-white border border-slate-100 shadow-2xs" />
+                <img src={CONFIG.imagenes.logo} alt="Logo LaTSIB" className="h-10 w-10 object-cover rounded-full shadow-sm" />
                 <div>
                   <span className="font-extrabold text-xl text-slate-900 tracking-tight block leading-tight">{CONFIG.nombreGrupo}</span>
                   <span className="text-[10px] text-slate-400 font-medium">Laboratorio LaTSIB · UTEM</span>
