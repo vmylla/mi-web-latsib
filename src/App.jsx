@@ -61,6 +61,7 @@ const LINEAS_INVESTIGACION = [
   {
     id: 3,
     titulo: "Sistema Inteligente para Laringe Electrónica",
+    badge: "Trabajo de título",
     desc: "Esta línea de investigación se centra en el desarrollo de un sistema inteligente para mejorar la calidad de la voz generada por dispositivos de laringe electrónica, utilizados por personas que han perdido la capacidad de hablar tras una laringectomía total. Aunque estos dispositivos permiten la comunicación, la voz producida suele ser poco natural, metálica y difícil de comprender, lo que impacta negativamente en la calidad de vida y la integración social de los usuarios. El proyecto propone el uso de técnicas de inteligencia artificial para procesar el habla electrolaríngea y transformarla en una voz más clara, natural e inteligible. Para ello, se capturan señales de voz generadas por una laringe electrónica y se procesan mediante modelos avanzados de reconocimiento y síntesis de voz, permitiendo convertir el sonido original en una señal de mayor calidad auditiva. Los resultados iniciales muestran que la efectividad del sistema depende tanto de la tecnología utilizada como del correcto uso del dispositivo por parte del usuario, destacando la importancia de una adecuada articulación y posicionamiento. Este enfoque representa una solución prometedora para mejorar la comunicación asistida y sienta las bases para futuras evaluaciones clínicas con pacientes, con el objetivo final de contribuir a una mejor calidad de vida y autonomía comunicativa.",
     icon: <Atom className="w-8 h-8 text-[#1f7a8c]" />,
     color: "from-[#1e5c6b]/10 to-[#1e5c6b]/20 border-[#1e5c6b]/20",
@@ -132,7 +133,7 @@ const LINEAS_INVESTIGACION = [
       { titulo: "Póster: Software en Python para el análisis de la respuesta neurovascular peri-espinal obtenida con fNIRS", tipo: "Paper", link: "https://drive.google.com/file/d/1M2yYsle0MGrwIyioQ5rDqTlrZI8cvYOb/view?usp=drive_link" }
     ]
   },
-{
+  {
     id: 8,
     titulo: "Respuesta neurovascular espinal y período refractario",
     desc: "Esta línea de investigación estudia cómo responde la médula espinal a estímulos eléctricos suaves y no invasivos, utilizando una técnica llamada espectroscopía funcional de infrarrojo cercano (fNIRS), que permite medir cambios en la oxigenación de la sangre asociados a la actividad del sistema nervioso. El objetivo principal es explorar la existencia de un llamado período refractario neurovascular, es decir, un intervalo de tiempo en el que la médula espinal no logra generar una respuesta completa si los estímulos se aplican demasiado seguido. Para ello, se aplican estímulos con tiempos de espera cada vez más cortos y se observa cómo cambia la señal registrada. Los resultados muestran que, cuando los estímulos se aplican con intervalos muy breves, la respuesta neurovascular disminuye progresivamente, especialmente en la región cervical, lo que entrega evidencia preliminar de este fenómeno de refractariedad. También se observan diferencias entre las zonas cervical y lumbar, lo que sugiere que la respuesta de la médula no es uniforme a lo largo de la columna. En proyección, esta línea de trabajo busca comprender mejor el funcionamiento dinámico de la médula espinal y sentar las bases para utilizar estas mediciones como biomarcadores funcionales, con potencial aplicación en el estudio de dolor neuropático, lesiones medulares y otras condiciones donde los exámenes estructurales tradicionales no muestran alteraciones claras.",
@@ -146,26 +147,7 @@ const LINEAS_INVESTIGACION = [
     documentos: [
       { titulo: "Póster: Registro de la respuesta neurovascular peri-espinal y detección del período refractario con espectroscopía funcional de infrarrojo cercano", tipo: "Paper", link: "https://drive.google.com/file/d/16sQsgMSYrIOBWN7szBeBbepGM3MG72f2/view?usp=drive_link" }
     ]
-  },
-{
-    id: 9,
-    titulo: "Actividad neurovascular de la médula espinal medida con fNIRS",
-    desc: "Esta línea de investigación busca comprender cómo responde la médula espinal frente a estímulos nerviosos, utilizando una técnica no invasiva llamada espectroscopía funcional de infrarrojo cercano (fNIRS). El estudio se centra en analizar los cambios en la oxigenación de la sangre alrededor de la médula espinal, con especial énfasis en la desoxihemoglobina, una señal poco explorada que puede entregar información clave sobre el consumo de oxígeno y la dinámica neurovascular. A través de registros realizados en voluntarios sanos y mediante estimulación eléctrica periférica, se observan patrones temporales y espaciales que permiten caracterizar la respuesta funcional de la médula más allá de lo estructural. Estos hallazgos aportan nuevas bases para el desarrollo de herramientas de evaluación funcional, con proyección hacia futuras aplicaciones clínicas en el estudio del dolor lumbar y otras patologías espinales no estructurales.",
-    icon: <Atom className="w-8 h-8 text-indigo-500" />,
-    color: "from-[#1e5c6b]/10 to-[#1e5c6b]/20 border-[#1e5c6b]/20",
-    integrantes: ["Andrés Vega-Moraga, David Sepúlveda-Velazquez, Gabriel Araya López, Jorge Vergara-Quezada, Sergio Uribe, Antonio Eblen-Zajjur, Raúl Caulier-Cisterna"],
-    imagenes: [
-      { url: "https://i.postimg.cc/gcRc2X8k/Diseno-sin-titulo.jpg", desc: "Estimulación Nervio Tibial Posterior" },
-      { url: "https://i.postimg.cc/jdZpxt8p/Gemini-Generated-Image-qbko4uqbko4uqbko.png", desc: "Representación esquemática de la actividad neurovascular de la médula espinal medida mediante fNIRS." }
-    ],
-    documentos: [
-      { titulo: "Póster: Explorando la dinámica de la desoxihemoglobina en la médula espinal con fNIRS", tipo: "Paper", link: "https://drive.google.com/file/d/11XSWGPeGwT2UQbzL6MG7iSs7oioVjieS/view?usp=drive_link" }
-    ]
   }
-
-
-
-
 ];
 
 // --- DATA: ACTIVIDADES ---
@@ -1411,8 +1393,15 @@ const ResearchDetailView = ({ research, onBack }) => {
         </button>
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
           <div className={`p-8 md:p-12 border-b border-slate-100 bg-gradient-to-r ${headerGradient}`}>
-            <div className="mb-6 p-4 bg-white/90 backdrop-blur-sm rounded-2xl w-fit shadow-md border border-slate-100">
-              {research?.icon}
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="p-4 bg-white/90 backdrop-blur-sm rounded-2xl w-fit shadow-md border border-slate-100">
+                {research?.icon}
+              </div>
+              {research?.badge && (
+                <span className="bg-teal-600/90 text-white text-xs font-bold px-3.5 py-1.5 rounded-full border border-teal-400 shadow-sm">
+                  {research.badge}
+                </span>
+              )}
             </div>
             <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
               {research?.titulo}
@@ -2092,8 +2081,13 @@ export default function App() {
                     role="button"
                     tabIndex={0}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleViewResearch(item); } }}
-                    className={`group flex flex-col h-full cursor-pointer bg-white p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gradient-to-br ${item.color}`}
+                    className={`group flex flex-col h-full cursor-pointer bg-white p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gradient-to-br ${item.color} relative`}
                   >
+                    {item.badge && (
+                      <div className="absolute top-4 right-4 bg-teal-600/90 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full border border-teal-400 z-10 shadow-sm">
+                        {item.badge}
+                      </div>
+                    )}
                     <div className="mb-6 p-4 bg-white/80 backdrop-blur-sm rounded-2xl w-fit group-hover:bg-white group-hover:scale-105 transition-all border border-white/60 shadow-sm">{item.icon}</div>
                     <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors leading-snug">{item.titulo}</h3>
                     <p className="text-slate-600 leading-relaxed flex-grow line-clamp-3 mb-6 text-sm">{item.desc}</p>
@@ -2133,8 +2127,13 @@ export default function App() {
                   role="button"
                   tabIndex={0}
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleViewResearch(item); } }}
-                  className={`group flex flex-col h-full cursor-pointer bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gradient-to-br ${item.color}`}
+                  className={`group flex flex-col h-full cursor-pointer bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gradient-to-br ${item.color} relative`}
                 >
+                  {item.badge && (
+                    <div className="absolute top-4 right-4 bg-teal-600/90 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full border border-teal-400 z-10 shadow-sm">
+                      {item.badge}
+                    </div>
+                  )}
                   <div className="mb-6 p-4 bg-white/70 backdrop-blur-sm rounded-2xl w-fit group-hover:bg-white group-hover:scale-105 transition-all border border-white/60 shadow-sm">{item.icon}</div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors leading-snug">{item.titulo}</h3>
                   <p className="text-slate-600 leading-relaxed flex-grow line-clamp-3 mb-6 text-sm">{item.desc}</p>
