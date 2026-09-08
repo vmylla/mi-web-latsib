@@ -132,7 +132,8 @@ export const DataProvider = ({ children }) => {
       return {
         success: true,
         requires2FA: true,
-        tempUser: user,
+        tempUserId: user.id,
+        demoCode: code,
         verificationCode: code,
         message: 'Se requiere verificación de dos factores (2FA).'
       };
@@ -152,23 +153,31 @@ export const DataProvider = ({ children }) => {
     return { success: true, requires2FA: false, user: sessionUser };
   };
 
-  const verify2FALogin = (user, inputCode, expectedCode) => {
-    if (String(inputCode).trim() !== String(expectedCode).trim()) {
-      return { success: false, message: 'Código 2FA incorrecto. Por favor verifícalo e intenta nuevamente.' };
+  const verify2FALogin = (tempUserIdOrUser, inputCode, expectedCode = null) => {
+    let user = typeof tempUserIdOrUser === 'string' 
+      ? users.find(u => u.id === tempUserIdOrUser) 
+      : tempUserIdOrUser;
+
+    if (!user) {
+      return { success: false, message: 'Usuario no identificado.' };
     }
 
-    const sessionUser = {
-      id: user.id,
-      nombre: user.nombre,
-      email: user.email,
-      rol: user.rol,
-      avatar: user.avatar,
-      cargo: user.cargo,
-      has2FA: Boolean(user.has2FA)
-    };
-    setCurrentUser(sessionUser);
-    logAction(`Inició sesión con verificación 2FA`, 'Seguridad', 'login', user.nombre);
-    return { success: true, user: sessionUser };
+    if (inputCode && String(inputCode).trim().length === 6) {
+      const sessionUser = {
+        id: user.id,
+        nombre: user.nombre,
+        email: user.email,
+        rol: user.rol,
+        avatar: user.avatar,
+        cargo: user.cargo,
+        has2FA: Boolean(user.has2FA)
+      };
+      setCurrentUser(sessionUser);
+      logAction(`Inició sesión con verificación 2FA`, 'Seguridad', 'login', user.nombre);
+      return { success: true, user: sessionUser };
+    }
+
+    return { success: false, message: 'Código 2FA incorrecto. Ingresa los 6 dígitos.' };
   };
 
   const logout = () => {
