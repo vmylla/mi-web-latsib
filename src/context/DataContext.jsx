@@ -54,7 +54,8 @@ export const DataProvider = ({ children }) => {
       ...stored,
       imagenes: {
         ...INITIAL_CONFIG.imagenes,
-        ...(stored?.imagenes || {})
+        ...(stored?.imagenes || {}),
+        logoUtem: stored?.imagenes?.logoUtem || INITIAL_CONFIG.imagenes.logoUtem
       }
     };
   });

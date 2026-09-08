@@ -4,6 +4,7 @@ import {
   ArrowRight, KeyRound, Sparkles, HelpCircle 
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
+import utemLogo from '../../assets/logo-utem.png';
 
 export const InvitationScreen = ({ mode = 'invitacion', onComplete, onCancel }) => {
   const { 
@@ -120,7 +121,7 @@ export const InvitationScreen = ({ mode = 'invitacion', onComplete, onCancel }) 
           <div className="flex items-center justify-center gap-4 mb-3">
             <div className="h-14 px-3 py-1.5 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center">
               <img
-                src={config?.imagenes?.logoUtem || '/utem-logo.png'}
+                src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'}
                 alt="Logo UTEM"
                 className="h-9 w-auto object-contain"
               />

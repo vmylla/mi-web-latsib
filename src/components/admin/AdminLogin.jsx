@@ -4,6 +4,7 @@ import {
   Smartphone, CheckCircle2, ArrowRight, HelpCircle, X 
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
+import utemLogo from '../../assets/logo-utem.png';
 
 export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
   const { login, verify2FALogin, requestPasswordReset, config } = useData();
@@ -153,7 +154,7 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-14 px-3 py-1.5 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center">
                 <img
-                  src={config?.imagenes?.logoUtem || '/utem-logo.png'}
+                  src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'}
                   alt="Logo UTEM"
                   className="h-8 w-auto object-contain"
                 />

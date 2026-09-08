@@ -13,6 +13,7 @@ import { AdminProjects } from './AdminProjects';
 import { AdminHistory } from './AdminHistory';
 import { AdminUsers } from './AdminUsers';
 import { AdminProfileModal } from './AdminProfileModal';
+import utemLogo from '../../assets/logo-utem.png';
 
 export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
   const { currentUser, logout, config, adminTheme, toggleAdminTheme } = useData();
@@ -56,7 +57,7 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
           <div className="flex items-center gap-2.5">
             <div className="h-10 px-2 py-1 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center">
               <img
-                src={config?.imagenes?.logoUtem || '/utem-logo.png'}
+                src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'}
                 alt="Logo UTEM"
                 className="h-6 w-auto object-contain"
               />
