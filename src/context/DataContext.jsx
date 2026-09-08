@@ -24,7 +24,8 @@ const STORAGE_KEYS = {
   USERS: 'latsib_users_v3',
   INVITATIONS: 'latsib_invitations_v3',
   RESETS: 'latsib_resets_v3',
-  SESSION: 'latsib_session_v3'
+  SESSION: 'latsib_session_v3',
+  THEME: 'latsib_admin_theme_v3'
 };
 
 const getStored = (key, fallback) => {
@@ -66,6 +67,7 @@ export const DataProvider = ({ children }) => {
   const [invitations, setInvitations] = useState(() => getStored(STORAGE_KEYS.INVITATIONS, []));
   const [resets, setResets] = useState(() => getStored(STORAGE_KEYS.RESETS, []));
   const [currentUser, setCurrentUser] = useState(() => getStored(STORAGE_KEYS.SESSION, null));
+  const [adminTheme, setAdminTheme] = useState(() => getStored(STORAGE_KEYS.THEME, 'dark'));
 
   // Sincronización persistente
   useEffect(() => setStored(STORAGE_KEYS.CONFIG, config), [config]);
@@ -78,6 +80,11 @@ export const DataProvider = ({ children }) => {
   useEffect(() => setStored(STORAGE_KEYS.INVITATIONS, invitations), [invitations]);
   useEffect(() => setStored(STORAGE_KEYS.RESETS, resets), [resets]);
   useEffect(() => setStored(STORAGE_KEYS.SESSION, currentUser), [currentUser]);
+  useEffect(() => setStored(STORAGE_KEYS.THEME, adminTheme), [adminTheme]);
+
+  const toggleAdminTheme = () => {
+    setAdminTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   const getNowFormatted = () => {
     const now = new Date();
@@ -586,6 +593,9 @@ export const DataProvider = ({ children }) => {
     users,
     invitations,
     currentUser,
+    adminTheme,
+    setAdminTheme,
+    toggleAdminTheme,
     login,
     verify2FALogin,
     logout,

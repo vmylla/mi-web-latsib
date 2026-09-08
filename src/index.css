@@ -1,3 +1,175 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* =========================================================
+   TEMA CLARO / TEMA OSCURO PARA EL PANEL DE ADMINISTRACIÓN
+   ========================================================= */
+
+/* Transición suave al alternar tema */
+.admin-theme-light,
+.admin-theme-dark,
+.admin-theme-light *,
+.admin-theme-dark * {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+}
+
+/* --- TEMA CLARO (.admin-theme-light) --- */
+.admin-theme-light {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Sidebar y Header */
+.admin-theme-light aside {
+  background-color: #ffffff !important;
+  border-right-color: #e2e8f0 !important;
+}
+
+.admin-theme-light .md\:hidden.bg-slate-900 {
+  background-color: #ffffff !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+/* Superficies principales y tarjetas */
+.admin-theme-light .bg-slate-900,
+.admin-theme-light .bg-slate-900\/90,
+.admin-theme-light .bg-slate-900\/80 {
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
+}
+
+/* Superficies secundarias y fondos sutiles */
+.admin-theme-light .bg-slate-950,
+.admin-theme-light .bg-slate-950\/60,
+.admin-theme-light .bg-slate-950\/80,
+.admin-theme-light .bg-slate-950\/40,
+.admin-theme-light .bg-slate-850 {
+  background-color: #f1f5f9 !important;
+}
+
+.admin-theme-light .bg-slate-800,
+.admin-theme-light .bg-slate-800\/60,
+.admin-theme-light .bg-slate-800\/80 {
+  background-color: #e2e8f0 !important;
+}
+
+/* Bordes y divisores */
+.admin-theme-light .border-slate-800,
+.admin-theme-light .border-slate-800\/60,
+.admin-theme-light .border-slate-800\/80,
+.admin-theme-light .border-slate-700,
+.admin-theme-light .border-slate-700\/80 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Textos */
+.admin-theme-light .text-white {
+  color: #0f172a !important;
+}
+
+.admin-theme-light .text-slate-100,
+.admin-theme-light .text-slate-200,
+.admin-theme-light .text-slate-300 {
+  color: #1e293b !important;
+}
+
+.admin-theme-light .text-slate-400 {
+  color: #64748b !important;
+}
+
+.admin-theme-light .text-slate-500 {
+  color: #64748b !important;
+}
+
+/* Inputs y controles de formulario */
+.admin-theme-light input,
+.admin-theme-light textarea,
+.admin-theme-light select {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.admin-theme-light input:focus,
+.admin-theme-light textarea:focus,
+.admin-theme-light select:focus {
+  border-color: #0d9488 !important;
+  background-color: #ffffff !important;
+}
+
+.admin-theme-light input::placeholder,
+.admin-theme-light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Modales y Diálogos Flotantes */
+.admin-theme-light .fixed.inset-0.bg-black\/80,
+.admin-theme-light .fixed.inset-0.bg-black\/70,
+.admin-theme-light .fixed.inset-0.bg-slate-900\/80 {
+  background-color: rgba(15, 23, 42, 0.55) !important;
+}
+
+/* Tablas */
+.admin-theme-light th {
+  background-color: #f8fafc !important;
+  color: #475569 !important;
+}
+
+.admin-theme-light tr:hover {
+  background-color: #f1f5f9 !important;
+}
+
+/* Botones de navegación en Sidebar */
+.admin-theme-light .hover\:bg-slate-800\/60:hover,
+.admin-theme-light .hover\:bg-slate-800:hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Conservar botones destacados y gradientes con texto blanco */
+.admin-theme-light .bg-gradient-to-r,
+.admin-theme-light button.bg-blue-600,
+.admin-theme-light button.bg-teal-600,
+.admin-theme-light button.bg-emerald-600,
+.admin-theme-light .bg-gradient-to-r *,
+.admin-theme-light .bg-blue-600 *,
+.admin-theme-light .bg-teal-600 * {
+  color: #ffffff !important;
+}
+
+/* Contenedores de badges y estados en tema claro */
+.admin-theme-light .bg-teal-500\/10,
+.admin-theme-light .bg-teal-500\/20 {
+  background-color: #ccfbf1 !important;
+  color: #0f766e !important;
+  border-color: #99f6e4 !important;
+}
+
+.admin-theme-light .bg-blue-500\/10,
+.admin-theme-light .bg-blue-500\/20 {
+  background-color: #e0f2fe !important;
+  color: #0369a1 !important;
+  border-color: #bae6fd !important;
+}
+
+.admin-theme-light .bg-indigo-500\/10,
+.admin-theme-light .bg-indigo-500\/20 {
+  background-color: #e0e7ff !important;
+  color: #4338ca !important;
+  border-color: #c7d2fe !important;
+}
+
+.admin-theme-light .bg-rose-500\/10,
+.admin-theme-light .bg-rose-500\/20 {
+  background-color: #ffe4e6 !important;
+  color: #be123c !important;
+  border-color: #fecdd3 !important;
+}
+
+.admin-theme-light .bg-amber-500\/10,
+.admin-theme-light .bg-amber-500\/20 {
+  background-color: #fef3c7 !important;
+  color: #b45309 !important;
+  border-color: #fde68a !important;
+}

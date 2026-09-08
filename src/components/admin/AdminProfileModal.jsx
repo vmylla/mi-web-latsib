@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { 
   X, User, Lock, ShieldCheck, KeyRound, CheckCircle2, 
-  AlertCircle, Smartphone, Check, Eye, EyeOff, Sparkles 
+  AlertCircle, Smartphone, Check, Eye, EyeOff, Sparkles, Sun, Moon, Palette 
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 
 export const AdminProfileModal = ({ isOpen, onClose }) => {
-  const { currentUser, updateUserProfile, changePassword, toggle2FA } = useData();
-  const [activeTab, setActiveTab] = useState('perfil'); // 'perfil' | 'seguridad' | '2fa'
+  const { 
+    currentUser, 
+    updateUserProfile, 
+    changePassword, 
+    toggle2FA, 
+    adminTheme, 
+    setAdminTheme 
+  } = useData();
+
+  const [activeTab, setActiveTab] = useState('perfil'); // 'perfil' | 'tema' | 'seguridad' | '2fa'
 
   // Perfil form
   const [nombre, setNombre] = useState(currentUser?.nombre || '');
@@ -80,7 +88,7 @@ export const AdminProfileModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200 font-sans">
       <div className="bg-slate-900 border border-slate-800 w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         
         {/* Cabecera */}
@@ -90,8 +98,8 @@ export const AdminProfileModal = ({ isOpen, onClose }) => {
               <User size={20} />
             </div>
             <div>
-              <h3 className="font-bold text-lg text-white">Mi Cuenta y Seguridad</h3>
-              <p className="text-xs text-slate-400">Gestiona tu identidad, credenciales y autenticación</p>
+              <h3 className="font-bold text-lg text-white">Mi Cuenta y Preferencias</h3>
+              <p className="text-xs text-slate-400">Gestiona tu identidad, apariencia y seguridad</p>
             </div>
           </div>
           <button 
@@ -104,11 +112,11 @@ export const AdminProfileModal = ({ isOpen, onClose }) => {
         </div>
 
         {/* Pestañas */}
-        <div className="flex border-b border-slate-800 bg-slate-950/30 px-6 pt-3 gap-2">
+        <div className="flex border-b border-slate-800 bg-slate-950/30 px-6 pt-3 gap-2 overflow-x-auto">
           <button
             type="button"
             onClick={() => { setActiveTab('perfil'); setError(null); setMessage(null); }}
-            className={`pb-3 px-3 text-xs font-bold transition-all border-b-2 cursor-pointer ${
+            className={`pb-3 px-3 text-xs font-bold transition-all border-b-2 whitespace-nowrap cursor-pointer ${
               activeTab === 'perfil'
                 ? 'text-teal-400 border-teal-400'
                 : 'text-slate-400 border-transparent hover:text-slate-200'
@@ -116,10 +124,24 @@ export const AdminProfileModal = ({ isOpen, onClose }) => {
           >
             Datos Personales
           </button>
+
+          <button
+            type="button"
+            onClick={() => { setActiveTab('tema'); setError(null); setMessage(null); }}
+            className={`pb-3 px-3 text-xs font-bold transition-all border-b-2 whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
+              activeTab === 'tema'
+                ? 'text-teal-400 border-teal-400'
+                : 'text-slate-400 border-transparent hover:text-slate-200'
+            }`}
+          >
+            <Palette size={14} />
+            Tema Visual
+          </button>
+
           <button
             type="button"
             onClick={() => { setActiveTab('seguridad'); setError(null); setMessage(null); }}
-            className={`pb-3 px-3 text-xs font-bold transition-all border-b-2 cursor-pointer ${
+            className={`pb-3 px-3 text-xs font-bold transition-all border-b-2 whitespace-nowrap cursor-pointer ${
               activeTab === 'seguridad'
                 ? 'text-teal-400 border-teal-400'
                 : 'text-slate-400 border-transparent hover:text-slate-200'
@@ -127,10 +149,11 @@ export const AdminProfileModal = ({ isOpen, onClose }) => {
           >
             Cambiar Contraseña
           </button>
+
           <button
             type="button"
             onClick={() => { setActiveTab('2fa'); setError(null); setMessage(null); }}
-            className={`pb-3 px-3 text-xs font-bold transition-all border-b-2 flex items-center gap-1.5 cursor-pointer ${
+            className={`pb-3 px-3 text-xs font-bold transition-all border-b-2 whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
               activeTab === '2fa'
                 ? 'text-teal-400 border-teal-400'
                 : 'text-slate-400 border-transparent hover:text-slate-200'
@@ -224,6 +247,83 @@ export const AdminProfileModal = ({ isOpen, onClose }) => {
                 </button>
               </div>
             </form>
+          )}
+
+          {activeTab === 'tema' && (
+            <div className="space-y-5">
+              <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+                <div className="text-sm font-bold text-white mb-1">Comodidad Visual del Panel</div>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Elige el tema que mejor se adapte a tu iluminación de trabajo. Tu preferencia se guardará automáticamente en este dispositivo.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Opción Tema Oscuro */}
+                <div
+                  onClick={() => {
+                    setAdminTheme('dark');
+                    setMessage('Tema Oscuro seleccionado');
+                    setTimeout(() => setMessage(null), 2500);
+                  }}
+                  className={`p-5 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between h-40 ${
+                    adminTheme === 'dark'
+                      ? 'bg-slate-950 border-teal-400 shadow-lg shadow-teal-950/50'
+                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-70'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="p-2.5 rounded-xl bg-slate-900 text-teal-400 border border-slate-800">
+                      <Moon size={20} />
+                    </div>
+                    {adminTheme === 'dark' && (
+                      <span className="px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-bold uppercase border border-teal-500/30">
+                        Activo
+                      </span>
+                    )}
+                  </div>
+                  <div>
+                    <div className="font-bold text-white text-sm">Tema Oscuro (Dark)</div>
+                    <div className="text-[11px] text-slate-400 mt-0.5">
+                      Mayor descanso visual en entornos de poca luz
+                    </div>
+                  </div>
+                </div>
+
+                {/* Opción Tema Claro */}
+                <div
+                  onClick={() => {
+                    setAdminTheme('light');
+                    setMessage('Tema Claro seleccionado');
+                    setTimeout(() => setMessage(null), 2500);
+                  }}
+                  className={`p-5 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between h-40 ${
+                    adminTheme === 'light'
+                      ? 'bg-slate-100 border-amber-500 shadow-lg text-slate-900'
+                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-70'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="p-2.5 rounded-xl bg-white text-amber-500 border border-slate-200 shadow-sm">
+                      <Sun size={20} />
+                    </div>
+                    {adminTheme === 'light' && (
+                      <span className="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-700 text-[10px] font-bold uppercase border border-amber-500/30">
+                        Activo
+                      </span>
+                    )}
+                  </div>
+                  <div>
+                    <div className={`font-bold text-sm ${adminTheme === 'light' ? 'text-slate-900' : 'text-white'}`}>
+                      Tema Claro (Light)
+                    </div>
+                    <div className={`text-[11px] mt-0.5 ${adminTheme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>
+                      Alto contraste y claridad para el día
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           )}
 
           {activeTab === 'seguridad' && (

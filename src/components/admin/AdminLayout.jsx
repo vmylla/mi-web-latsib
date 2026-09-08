@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { 
   LayoutDashboard, Users, FileText, Calendar, Cpu, Clock, 
-  LogOut, Globe, Menu, X, Shield, ChevronRight, UserCircle, Settings, UserPlus
+  LogOut, Globe, Menu, X, Shield, ChevronRight, UserCircle, 
+  Settings, UserPlus, Sun, Moon
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { AdminDashboard } from './AdminDashboard';
@@ -14,7 +15,7 @@ import { AdminUsers } from './AdminUsers';
 import { AdminProfileModal } from './AdminProfileModal';
 
 export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
-  const { currentUser, logout, config } = useData();
+  const { currentUser, logout, config, adminTheme, toggleAdminTheme } = useData();
   const [activeTab, setActiveTab] = useState(initialTab);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [modalParam, setModalParam] = useState(false);
@@ -22,6 +23,7 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
 
   const isAdmin = currentUser?.rol === 'admin';
   const isEditor = currentUser?.rol === 'editor' || isAdmin;
+  const isLight = adminTheme === 'light';
 
   const handleNavigate = (tab, options = {}) => {
     setActiveTab(tab);
@@ -44,12 +46,14 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col md:flex-row font-sans">
+    <div className={`min-h-screen flex flex-col md:flex-row font-sans transition-colors duration-200 ${
+      isLight ? 'admin-theme-light bg-slate-100 text-slate-900' : 'admin-theme-dark bg-slate-950 text-slate-100'
+    }`}>
       {/* SIDEBAR ESCRITORIO */}
       <aside className="hidden md:flex flex-col w-72 bg-slate-900 border-r border-slate-800 shrink-0 p-6">
         {/* Cabecera Sidebar con Logos */}
-        <div className="flex items-center gap-3 pb-6 mb-6 border-b border-slate-800">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between pb-6 mb-6 border-b border-slate-800">
+          <div className="flex items-center gap-2.5">
             <div className="h-10 px-2 py-1 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center">
               <img
                 src={config?.imagenes?.logoUtem || '/utem-logo.png'}
@@ -62,11 +66,35 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
               alt="Logo LaTSIB"
               className="h-10 w-10 object-cover rounded-full shadow-md border border-teal-500/30"
             />
+            <div>
+              <div className="font-extrabold text-white text-sm tracking-tight leading-none">Panel LaTSIB</div>
+              <div className="text-[10px] text-teal-400 font-bold uppercase tracking-wider mt-1">Gestión & Control</div>
+            </div>
           </div>
-          <div>
-            <div className="font-extrabold text-white text-base tracking-tight leading-none">Panel LaTSIB</div>
-            <div className="text-[10px] text-teal-400 font-bold uppercase tracking-wider mt-1">Gestión & Control</div>
-          </div>
+        </div>
+
+        {/* Selector Rápido de Tema (Claro / Oscuro) */}
+        <div className="mb-4">
+          <button
+            type="button"
+            onClick={toggleAdminTheme}
+            className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl bg-slate-950/80 border border-slate-800 text-xs font-semibold hover:border-teal-500/40 transition-all cursor-pointer group"
+            title={isLight ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'}
+          >
+            <div className="flex items-center gap-2">
+              {isLight ? (
+                <Sun size={15} className="text-amber-500" />
+              ) : (
+                <Moon size={15} className="text-teal-400" />
+              )}
+              <span className="text-slate-300 text-[11px]">
+                Modo: <strong className="text-white">{isLight ? 'Claro' : 'Oscuro'}</strong>
+              </span>
+            </div>
+            <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-mono">
+              {isLight ? '☀️ Light' : '🌙 Dark'}
+            </span>
+          </button>
         </div>
 
         {/* Navegación */}
@@ -99,7 +127,7 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
           <div 
             onClick={() => setIsProfileModalOpen(true)}
             className="flex items-center gap-3 p-3 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-teal-500/40 cursor-pointer transition-all group"
-            title="Haz clic para editar tu perfil o cambiar contraseña"
+            title="Haz clic para editar tu perfil, tema o cambiar contraseña"
           >
             <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-900 shrink-0 border border-slate-700">
               {currentUser?.avatar ? (
@@ -152,15 +180,23 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
         <div className="flex items-center gap-2">
           <button
             type="button"
+            onClick={toggleAdminTheme}
+            className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white cursor-pointer"
+            title="Cambiar Tema"
+          >
+            {isLight ? <Sun size={18} className="text-amber-500" /> : <Moon size={18} className="text-teal-400" />}
+          </button>
+          <button
+            type="button"
             onClick={() => setIsProfileModalOpen(true)}
-            className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white"
+            className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white cursor-pointer"
           >
             <Settings size={18} />
           </button>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white"
+            className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white cursor-pointer"
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
