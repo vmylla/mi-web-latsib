@@ -1714,6 +1714,7 @@ const NavLink = ({ children, mobile, onClick }) => (
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [selectedMember, setSelectedMember] = useState(null);
 
@@ -1722,6 +1723,9 @@ export default function App() {
     const hash = window.location.hash.replace(/^#\/?/, '').trim();
     if (!hash || hash === 'about' || hash === 'research' || hash === 'activities' || hash === 'team' || hash === 'publications' || hash === 'contact') {
       return { view: 'landing', id: null, section: hash || null };
+    }
+    if (hash === 'que-hacemos' || hash === 'quehacemos') {
+      return { view: 'what-we-do', id: null, section: null };
     }
     if (hash === 'investigaciones') {
       return { view: 'research-list', id: null, section: null };
@@ -1790,6 +1794,7 @@ export default function App() {
   const navigateTo = (targetView, id = null) => {
     let newHash = '';
     if (targetView === 'landing') newHash = '';
+    else if (targetView === 'what-we-do') newHash = 'que-hacemos';
     else if (targetView === 'research-list') newHash = 'investigaciones';
     else if (targetView === 'research-detail') newHash = `investigacion/${id}`;
     else if (targetView === 'activities-list') newHash = 'actividades';
@@ -1824,6 +1829,8 @@ export default function App() {
 
   const scrollToSection = (id) => {
     setMobileMenuOpen(false);
+    setSideDrawerOpen(false);
+    if (id === 'what-we-do') { navigateTo('what-we-do'); return; }
     if (id === 'all-activities') { navigateTo('activities-list'); return; }
     if (id === 'all-research') { navigateTo('research-list'); return; }
     if (id === 'all-publications') { navigateTo('publications-list'); return; } 
@@ -1856,17 +1863,33 @@ export default function App() {
       {/* NAVBAR */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled || route.view !== 'landing' ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <div
-            className="flex items-center gap-3.5 cursor-pointer select-none group"
-            onClick={() => { navigateTo('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          >
-            <img src={CONFIG.imagenes.logo} alt="Logo" className="h-14 w-14 sm:h-16 sm:w-16 object-cover rounded-full shadow-md group-hover:scale-105 transition-transform duration-300" />
-            <span className={`text-2xl font-extrabold tracking-tight ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
-              {CONFIG.nombreGrupo}
-            </span>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => setSideDrawerOpen(true)}
+              className={`p-2 rounded-xl transition-all cursor-pointer ${
+                isScrolled || route.view !== 'landing'
+                  ? 'text-slate-700 hover:bg-slate-100 hover:text-blue-600'
+                  : 'text-white hover:bg-white/10'
+              }`}
+              aria-label="Abrir menú de navegación"
+              title="Menú"
+            >
+              <Menu size={24} />
+            </button>
+            <div
+              className="flex items-center gap-3.5 cursor-pointer select-none group"
+              onClick={() => { navigateTo('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            >
+              <img src={CONFIG.imagenes.logo} alt="Logo" className="h-14 w-14 sm:h-16 sm:w-16 object-cover rounded-full shadow-md group-hover:scale-105 transition-transform duration-300" />
+              <span className={`text-2xl font-extrabold tracking-tight ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
+                {CONFIG.nombreGrupo}
+              </span>
+            </div>
           </div>
-          <div className={`hidden md:flex items-center gap-8 ${isScrolled || route.view !== 'landing' ? 'text-slate-600' : 'text-white'}`}>
+          <div className={`hidden md:flex items-center gap-7 ${isScrolled || route.view !== 'landing' ? 'text-slate-600' : 'text-white'}`}>
             <button type="button" onClick={() => scrollToSection('about')} className="hover:text-blue-500 font-medium transition-colors cursor-pointer">Nosotros</button>
+            <button type="button" onClick={() => navigateTo('what-we-do')} className="hover:text-blue-500 font-medium transition-colors cursor-pointer">¿Qué Hacemos?</button>
             <button type="button" onClick={() => scrollToSection('research')} className="hover:text-blue-500 font-medium transition-colors cursor-pointer">Investigación</button>
             <button type="button" onClick={() => scrollToSection('activities')} className="hover:text-blue-500 font-medium transition-colors cursor-pointer">Actividades</button>
             <button type="button" onClick={() => scrollToSection('team')} className="hover:text-blue-500 font-medium transition-colors cursor-pointer">Equipo</button>
@@ -1891,6 +1914,7 @@ export default function App() {
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex flex-col gap-2 animate-in fade-in duration-200">
             <NavLink mobile onClick={() => scrollToSection('about')}>Nosotros</NavLink>
+            <NavLink mobile onClick={() => { setMobileMenuOpen(false); navigateTo('what-we-do'); }}>¿Qué Hacemos?</NavLink>
             <NavLink mobile onClick={() => scrollToSection('research')}>Investigación</NavLink>
             <NavLink mobile onClick={() => scrollToSection('activities')}>Actividades</NavLink>
             <NavLink mobile onClick={() => scrollToSection('team')}>Equipo</NavLink>
@@ -1900,11 +1924,192 @@ export default function App() {
         )}
       </nav>
 
+      {/* MENÚ LATERAL DESLIZANTE (3 RAYITAS) */}
+      {sideDrawerOpen && (
+        <div className="fixed inset-0 z-[120] flex">
+          <div
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-300 animate-in fade-in"
+            onClick={() => setSideDrawerOpen(false)}
+          />
+          <div className="relative w-full max-w-xs sm:max-w-sm bg-white h-full shadow-2xl z-10 flex flex-col p-6 animate-in slide-in-from-left duration-300 border-r border-slate-100">
+            <div className="flex items-center justify-between pb-5 border-b border-slate-100 mb-6">
+              <div
+                className="flex items-center gap-3 cursor-pointer"
+                onClick={() => { setSideDrawerOpen(false); navigateTo('landing'); }}
+              >
+                <img src={CONFIG.imagenes.logo} alt="Logo" className="h-10 w-10 object-cover rounded-full shadow-sm" />
+                <div>
+                  <span className="font-extrabold text-xl text-slate-900 tracking-tight block leading-tight">{CONFIG.nombreGrupo}</span>
+                  <span className="text-[10px] text-slate-400 font-medium">Laboratorio LaTSIB · UTEM</span>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSideDrawerOpen(false)}
+                className="p-2 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+                aria-label="Cerrar menú lateral"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-1.5 flex-grow overflow-y-auto pr-1">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-3 mb-1">Navegación</p>
+              
+              <button
+                type="button"
+                onClick={() => { setSideDrawerOpen(false); scrollToSection('about'); }}
+                className="flex items-center gap-3.5 px-3.5 py-3 text-left rounded-xl text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 font-semibold text-sm transition-all cursor-pointer group"
+              >
+                <div className="p-1.5 rounded-lg bg-slate-100 text-slate-600 group-hover:bg-blue-100 group-hover:text-blue-600 transition-colors">
+                  <Info size={16} />
+                </div>
+                <span>Nosotros</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => { setSideDrawerOpen(false); navigateTo('what-we-do'); }}
+                className="flex items-center gap-3.5 px-3.5 py-3 text-left rounded-xl text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 font-semibold text-sm transition-all cursor-pointer group"
+              >
+                <div className="p-1.5 rounded-lg bg-teal-50 text-teal-600 group-hover:bg-teal-100 group-hover:text-teal-700 transition-colors">
+                  <Atom size={16} />
+                </div>
+                <span>¿Qué Hacemos?</span>
+                <span className="ml-auto text-[10px] uppercase font-bold px-2 py-0.5 bg-teal-100 text-teal-800 rounded-full">Nuevo</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => { setSideDrawerOpen(false); scrollToSection('research'); }}
+                className="flex items-center gap-3.5 px-3.5 py-3 text-left rounded-xl text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 font-semibold text-sm transition-all cursor-pointer group"
+              >
+                <div className="p-1.5 rounded-lg bg-indigo-50 text-indigo-600 group-hover:bg-indigo-100 group-hover:text-indigo-700 transition-colors">
+                  <Cpu size={16} />
+                </div>
+                <span>Líneas de Investigación</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => { setSideDrawerOpen(false); scrollToSection('activities'); }}
+                className="flex items-center gap-3.5 px-3.5 py-3 text-left rounded-xl text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 font-semibold text-sm transition-all cursor-pointer group"
+              >
+                <div className="p-1.5 rounded-lg bg-amber-50 text-amber-600 group-hover:bg-amber-100 group-hover:text-amber-700 transition-colors">
+                  <Calendar size={16} />
+                </div>
+                <span>Actividades y Congresos</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => { setSideDrawerOpen(false); scrollToSection('team'); }}
+                className="flex items-center gap-3.5 px-3.5 py-3 text-left rounded-xl text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 font-semibold text-sm transition-all cursor-pointer group"
+              >
+                <div className="p-1.5 rounded-lg bg-emerald-50 text-emerald-600 group-hover:bg-emerald-100 group-hover:text-emerald-700 transition-colors">
+                  <Users size={16} />
+                </div>
+                <span>Equipo</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => { setSideDrawerOpen(false); scrollToSection('publications'); }}
+                className="flex items-center gap-3.5 px-3.5 py-3 text-left rounded-xl text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 font-semibold text-sm transition-all cursor-pointer group"
+              >
+                <div className="p-1.5 rounded-lg bg-purple-50 text-purple-600 group-hover:bg-purple-100 group-hover:text-purple-700 transition-colors">
+                  <BookOpen size={16} />
+                </div>
+                <span>Publicaciones</span>
+              </button>
+            </div>
+
+            <div className="pt-4 border-t border-slate-100 mt-auto">
+              <button
+                type="button"
+                onClick={() => { setSideDrawerOpen(false); setIsContactModalOpen(true); }}
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors shadow-sm cursor-pointer"
+              >
+                <Mail size={16} /> Contactar al Laboratorio
+              </button>
+              <p className="text-center text-xs text-slate-400 mt-3">{CONFIG.email}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* --- RENDERIZADO CONDICIONAL DE VISTAS CON PROTECCIÓN ANTE PANTALLA EN BLANCO --- */}
 
-      {/* VISTA: DETALLE DE LÍNEA DE INVESTIGACIÓN */}
-      {route.view === 'research-detail' && currentResearch ? (
-        <ResearchDetailView research={currentResearch} onBack={() => handleBack('research-list')} />
+      {/* VISTA: ¿QUÉ HACEMOS? */}
+      {route.view === 'what-we-do' ? (
+        <div className="pt-32 pb-24 min-h-screen bg-slate-50 animate-in fade-in duration-300">
+          <div className="container mx-auto px-6">
+            <div className="mb-10">
+              <button
+                type="button"
+                onClick={() => navigateTo('landing')}
+                className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 mb-6 font-semibold transition-colors bg-white px-5 py-2.5 rounded-full shadow-sm border border-slate-200 cursor-pointer hover:shadow"
+              >
+                <ArrowLeft size={18} /> Volver al inicio
+              </button>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="px-3.5 py-1 rounded-full bg-blue-100 text-blue-700 font-bold text-xs uppercase tracking-wider">
+                  Laboratorio LaTSIB · UTEM
+                </span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+                ¿Qué Hacemos?
+              </h1>
+              
+              {/* TARJETA DE DESCRIPCIÓN PRINCIPAL */}
+              <div className="bg-gradient-to-br from-blue-900 via-slate-900 to-teal-900 rounded-3xl p-8 sm:p-10 text-white shadow-xl mb-16 relative overflow-hidden">
+                <div className="absolute -right-10 -bottom-10 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute -left-10 -top-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+                <p className="text-lg sm:text-xl text-slate-100 leading-relaxed font-normal mb-6 relative z-10">
+                  En el <span className="font-bold text-teal-300">Laboratorio de Biomédica Traslacional (LaTSIB)</span> de la Universidad Tecnológica Metropolitana (UTEM), unimos la ingeniería, la ciencia de datos y la medicina para transformar datos biológicos complejos en soluciones de salud reales y no invasivas. Desarrollamos investigación aplicada en el área de la ingeniería biomédica, utilizando señales, imágenes y datos para comprender fenómenos biológicos y aportar al desarrollo de nuevas herramientas para la salud.
+                </p>
+                <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal relative z-10">
+                  Trabajamos en el procesamiento y análisis de señales e imágenes biomédicas, el estudio de la respuesta neurovascular mediante tecnologías como fNIRS, la modelación y simulación de fenómenos fisiológicos, y el desarrollo de soluciones inteligentes que integran tecnologías como inteligencia artificial y aprendizaje automático. Nuestra investigación busca conectar la ingeniería con las necesidades reales de las personas, generando conocimiento, herramientas y soluciones con potencial de aplicación clínica y tecnológica.
+                </p>
+              </div>
+            </div>
+
+            {/* LÍNEAS DE INVESTIGACIÓN Y PROYECTOS */}
+            <div className="mb-12">
+              <div className="flex items-center gap-3 mb-8 pb-3 border-b border-slate-200">
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+                  Líneas de Investigación y Proyectos
+                </h2>
+                <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-blue-100 text-blue-700">
+                  {LINEAS_INVESTIGACION.length} proyectos
+                </span>
+              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {LINEAS_INVESTIGACION.map((item, idx) => (
+                  <div
+                    key={item.id || idx}
+                    onClick={() => handleViewResearch(item)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleViewResearch(item); } }}
+                    className={`group flex flex-col h-full cursor-pointer bg-white p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gradient-to-br ${item.color}`}
+                  >
+                    <div className="mb-6 p-4 bg-white/80 backdrop-blur-sm rounded-2xl w-fit group-hover:bg-white group-hover:scale-105 transition-all border border-white/60 shadow-sm">{item.icon}</div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors leading-snug">{item.titulo}</h3>
+                    <p className="text-slate-600 leading-relaxed flex-grow line-clamp-3 mb-6 text-sm">{item.desc}</p>
+                    <div className="mt-auto pt-4 border-t border-slate-200/60 flex items-center justify-between text-blue-700 font-bold text-sm">
+                      <span>Ver proyecto completo</span>
+                      <ChevronRight size={16} className="transform group-hover:translate-x-1.5 transition-transform" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : route.view === 'research-detail' && currentResearch ? (
+        /* VISTA: DETALLE DE LÍNEA DE INVESTIGACIÓN */
+        <ResearchDetailView research={currentResearch} onBack={() => handleBack('what-we-do')} />
       ) : route.view === 'research-list' ? (
         /* VISTA: LISTADO COMPLETO DE INVESTIGACIONES */
         <div className="pt-32 pb-20 min-h-screen bg-slate-50 animate-in fade-in duration-300">
@@ -2173,36 +2378,24 @@ export default function App() {
 
           <section id="research" className="py-24 bg-white">
             <div className="container mx-auto px-6">
-              <SectionTitle subtitle="Creamos conocimiento que conecta datos, tecnología y personas para avanzar en la salud del futuro.">
+              <SectionTitle subtitle="Espacio destinado a las nuevas líneas y áreas de trabajo que se incorporarán próximamente en el laboratorio.">
                 Líneas de Investigación
               </SectionTitle>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                {LINEAS_INVESTIGACION.slice(0, 3).map((item, idx) => (
-                  <div
-                    key={item.id || idx}
-                    onClick={() => handleViewResearch(item)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleViewResearch(item); } }}
-                    className={`group flex flex-col h-full cursor-pointer bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gradient-to-br ${item.color}`}
-                  >
-                    <div className="mb-6 p-4 bg-white/70 backdrop-blur-sm rounded-2xl w-fit group-hover:bg-white group-hover:scale-105 transition-all border border-white/60 shadow-sm">{item.icon}</div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors leading-snug">{item.titulo}</h3>
-                    <p className="text-slate-600 leading-relaxed flex-grow line-clamp-3 mb-6 text-sm">{item.desc}</p>
-                    <div className="mt-auto pt-4 border-t border-slate-200/60 flex items-center justify-between text-blue-700 font-bold text-sm">
-                      <span>Ver proyecto completo</span>
-                      <ChevronRight size={16} className="transform group-hover:translate-x-1.5 transition-transform" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="text-center">
+              
+              <div className="max-w-3xl mx-auto text-center p-10 sm:p-12 bg-slate-50/80 border-2 border-dashed border-slate-200 rounded-3xl">
+                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm">
+                  <Cpu size={32} />
+                </div>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Sección en Actualización</h3>
+                <p className="text-slate-500 text-sm leading-relaxed max-w-lg mx-auto mb-6">
+                  Espacio reservado para la incorporación de las nuevas tarjetas y líneas de investigación del Laboratorio LaTSIB.
+                </p>
                 <button
                   type="button"
-                  onClick={() => scrollToSection('all-research')}
-                  className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-blue-600 border border-blue-200 rounded-full font-bold shadow-sm hover:shadow-md hover:bg-blue-50 transition-all group cursor-pointer"
+                  onClick={() => navigateTo('what-we-do')}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-sm hover:bg-blue-700 transition-all cursor-pointer text-sm"
                 >
-                  <LayoutGrid size={20} className="group-hover:scale-110 transition-transform" /> Ver todas las líneas de investigación
+                  Conoce qué hacemos en LaTSIB <ChevronRight size={16} />
                 </button>
               </div>
             </div>
