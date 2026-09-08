@@ -953,7 +953,6 @@ const CATEGORIAS_EQUIPO = [
   { id: 'academicos', titulo: 'Académicos' },
   { id: 'colaboradores', titulo: 'Colaboradores' },
   { id: 'asistentes', titulo: 'Asistentes de Investigación' },
-  { id: 'tesistas', titulo: 'Tesistas' },
   { id: 'doctorandos', titulo: 'Doctorandos' },
 ];
 
@@ -990,6 +989,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/JuanPERFIL.jpg",
+    esTesista: true,
     actividadesLab: "El trabajo de Juan se centra en la aplicación de inteligencia artificial al procesamiento de señales biomédicas, específicamente en el uso de algoritmos de Self-Supervised Learning para el análisis y generación de señales electrocardiográficas (ECG).\n\nSu investigación busca generar señales ECG sintéticas mediante técnicas de autoaprendizaje, con el objetivo de realizar data augmentation y construir bases de datos más balanceadas, contribuyendo al desarrollo de modelos de inteligencia artificial más robustos para aplicaciones biomédicas.",
     contactos: {
       linkedin: "https://www.linkedin.com/in/juan-crist%C3%B3bal-toledo-fierro-83787129b/",
@@ -1016,6 +1016,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/AndrésPERFIL.jpg",
+    esTesista: true,
     actividadesLab: "El trabajo de Andrés se desarrolla en dos áreas principales de desarrollo, combinando la investigación en inteligencia artificial aplicada a señales biomédicas con el desarrollo de herramientas tecnológicas para la educación.\n\nPor un lado, se dedica al desarrollo de Machine Learning y Deep Learning en la investigación de fNIRS en la médula espinal, buscando modelos autoencoder capaces de encontrar características dentro del espacio latente. Esto permite detectar patrones y explorar nuevas aplicaciones, como la modulación de señales y el análisis de cómo variables antropométricas como la edad, el sexo y el IMC pueden inducir cambios en las señales fNIRS.\n\nPor otro lado, trabaja en el desarrollo de una App para el ámbito de la educación, pensada para la planificación de clases de un semestre o año escolar de manera contextualizada. Esta herramienta integra las bases de datos de Objetivos de Aprendizaje (OAs) con la información complementaria proporcionada por el profesor, con el objetivo directo de reducir sus tiempos de trabajo y facilitar el proceso de planificación, utilizando la tecnología como un apoyo concreto para la labor docente.",
     contactos: {
       linkedin: "https://www.linkedin.com/in/andres-nicolas-vega-moraga-950b3128b/",
@@ -1042,6 +1043,7 @@ const EQUIPO = [
     rol: "Asistente Investigador",
     bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
     img: "/equipo/GlennPERFIL.jpg",
+    esTesista: true,
     actividadesLab: "El trabajo de Glenn se desarrolla en el área de la investigación de la respuesta neurovascular (RNV) de la médula espinal humana, utilizando tecnologías de espectroscopía funcional para estudiar cómo responde el sistema neurovascular frente a estímulos sucesivos.\n\nSu trabajo se centra en el estudio del período refractario de la respuesta neurovascular (RNV) peri-espinal de la médula espinal humana mediante espectroscopía funcional de infrarrojo cercano (fNIRS), utilizando la señal de oxihemoglobina (O₂Hb) obtenida ante estímulos eléctricos sucesivos del nervio mediano. El objetivo es caracterizar cómo se modifica la respuesta cuando los estímulos se aplican con distintos intervalos de tiempo, identificando patrones de refractariedad y potenciación a partir de la morfología de la señal.\n\nEsta investigación permite profundizar en la comprensión de cómo la médula espinal responde y se adapta ante estímulos repetidos, aportando información relevante para el estudio de la dinámica neurovascular y el potencial de fNIRS como herramienta para investigar el funcionamiento de la médula espinal humana.",
     contactos: {
       linkedin: "",
@@ -1125,45 +1127,6 @@ const EQUIPO = [
       linkedin: "",
       github: "",
       email: "lvaldebenito@utem.cl"
-    }
-  },
-  {
-    nombre: "Juan Toledo Fierro",
-    categoria: "tesistas",
-    rol: "Tesista / Egresado",
-    bio: "Egresado de Ingeniería Civil en Ciencia de Datos · Proyecto de Tesis",
-    img: "/equipo/JuanPERFIL.jpg",
-    actividadesLab: "El trabajo de Juan se centra en la aplicación de inteligencia artificial al procesamiento de señales biomédicas, específicamente en el uso de algoritmos de Self-Supervised Learning para el análisis y generación de señales electrocardiográficas (ECG).\n\nSu investigación busca generar señales ECG sintéticas mediante técnicas de autoaprendizaje, con el objetivo de realizar data augmentation y construir bases de datos más balanceadas, contribuyendo al desarrollo de modelos de inteligencia artificial más robustos para aplicaciones biomédicas.",
-    contactos: {
-      linkedin: "https://www.linkedin.com/in/juan-crist%C3%B3bal-toledo-fierro-83787129b/",
-      github: "",
-      email: "jtoledof@utem.cl"
-    }
-  },
-  {
-    nombre: "Andrés Vega Moraga",
-    categoria: "tesistas",
-    rol: "Tesista / Egresado",
-    bio: "Egresado de Ingeniería Civil en Ciencia de Datos · Proyecto de Tesis",
-    img: "/equipo/AndrésPERFIL.jpg",
-    actividadesLab: "El trabajo de Andrés se desarrolla en dos áreas principales de desarrollo, combinando la investigación en inteligencia artificial aplicada a señales biomédicas con el desarrollo de herramientas tecnológicas para la educación.\n\nPor un lado, se dedica al desarrollo de Machine Learning y Deep Learning en la investigación de fNIRS en la médula espinal, buscando modelos autoencoder capaces de encontrar características dentro del espacio latente. Esto permite detectar patrones y explorar nuevas aplicaciones, como la modulación de señales y el análisis de cómo variables antropométricas como la edad, el sexo y el IMC pueden inducir cambios en las señales fNIRS.\n\nPor otro lado, trabaja en el desarrollo de una App para el ámbito de la educación, pensada para la planificación de clases de un semestre o año escolar de manera contextualizada. Esta herramienta integra las bases de datos de Objetivos de Aprendizaje (OAs) con la información complementaria proporcionada por el profesor, con el objetivo directo de reducir sus tiempos de trabajo y facilitar el proceso de planificación, utilizando la tecnología como un apoyo concreto para la labor docente.",
-    contactos: {
-      linkedin: "https://www.linkedin.com/in/andres-nicolas-vega-moraga-950b3128b/",
-      github: "",
-      email: "avega@utem.cl"
-    }
-  },
-  {
-    nombre: "Glenn Lanyon Lanyon",
-    categoria: "tesistas",
-    rol: "Tesista / Egresado",
-    bio: "Egresado de Ingeniería Civil en Ciencia de Datos · Proyecto de Tesis",
-    img: "/equipo/GlennPERFIL.jpg",
-    actividadesLab: "El trabajo de Glenn se desarrolla en el área de la investigación de la respuesta neurovascular (RNV) de la médula espinal humana, utilizando tecnologías de espectroscopía funcional para estudiar cómo responde el sistema neurovascular frente a estímulos sucesivos.\n\nSu trabajo se centra en el estudio del período refractario de la respuesta neurovascular (RNV) peri-espinal de la médula espinal humana mediante espectroscopía funcional de infrarrojo cercano (fNIRS), utilizando la señal de oxihemoglobina (O₂Hb) obtenida ante estímulos eléctricos sucesivos del nervio mediano. El objetivo es caracterizar cómo se modifica la respuesta cuando los estímulos se aplican con distintos intervalos de tiempo, identificando patrones de refractariedad y potenciación a partir de la morfología de la señal.\n\nEsta investigación permite profundizar en la comprensión de cómo la médula espinal responde y se adapta ante estímulos repetidos, aportando información relevante para el estudio de la dinámica neurovascular y el potencial de fNIRS como herramienta para investigar el funcionamiento de la médula espinal humana.",
-    contactos: {
-      linkedin: "",
-      github: "",
-      email: "glanyon@utem.cl"
     }
   },
 ];
@@ -1586,8 +1549,15 @@ const MemberDetailModal = ({ member, onClose }) => {
               <img src={member.img} alt={member.nombre} className="w-full h-full object-cover" />
             </div>
             <div>
-              <div className="inline-block px-3 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider mb-2 bg-blue-50 text-blue-700 border border-blue-100">
-                {member.categoria === 'academicos' ? 'Académico' : member.categoria === 'tesistas' ? 'Tesista' : 'Asistente de Investigación'}
+              <div className="flex flex-wrap items-center gap-2 mb-2">
+                <span className="inline-block px-3 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-100">
+                  {member.categoria === 'academicos' ? 'Académico' : 'Asistente de Investigación'}
+                </span>
+                {member.esTesista && (
+                  <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-teal-50 text-teal-700 border border-teal-200">
+                    Tesista
+                  </span>
+                )}
               </div>
               <h3 className="text-2xl font-bold text-slate-900 leading-tight mb-1">{member.nombre}</h3>
               <p className="text-blue-600 text-sm font-semibold mb-2">{member.rol}</p>
@@ -1662,7 +1632,7 @@ const TeamMemberCard = ({ miembro, categoriaId, onSelect }) => (
   >
     <div className="h-48 overflow-hidden relative bg-slate-200">
       <img src={miembro.img} alt={miembro.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-      {categoriaId === 'tesistas' && (
+      {miembro.esTesista && (
         <div className="absolute top-3 right-3 bg-teal-600/90 backdrop-blur-sm text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-teal-400 z-10 shadow-sm">
           Tesista
         </div>
