@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Users, FileText, Calendar, Cpu, Clock, 
   ArrowUpRight, Plus, ShieldCheck, Download, Upload, RotateCcw,
-  CheckCircle, AlertTriangle
+  CheckCircle, AlertTriangle, UserPlus
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 
@@ -13,6 +13,7 @@ export const AdminDashboard = ({ onNavigate }) => {
     publicaciones, 
     actividades, 
     proyectos, 
+    users,
     historial,
     exportBackupJSON,
     importBackupJSON,
@@ -114,13 +115,22 @@ export const AdminDashboard = ({ onNavigate }) => {
 
           <div className="flex flex-wrap items-center gap-3">
             {isAdmin && (
-              <button
-                type="button"
-                onClick={() => onNavigate('team', { openNewModal: true })}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-500 hover:to-teal-500 text-white text-xs font-bold shadow-md shadow-blue-950 transition-all cursor-pointer"
-              >
-                <Plus size={16} /> Agregar Integrante
-              </button>
+              <>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('users', { openNewModal: true })}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 hover:text-white text-xs font-bold border border-teal-500/30 transition-all cursor-pointer"
+                >
+                  <UserPlus size={16} /> Invitar Usuario
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('team', { openNewModal: true })}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-500 hover:to-teal-500 text-white text-xs font-bold shadow-md shadow-blue-950 transition-all cursor-pointer"
+                >
+                  <Plus size={16} /> Agregar Integrante
+                </button>
+              </>
             )}
             {isEditor && (
               <button

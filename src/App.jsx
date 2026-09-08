@@ -9,6 +9,7 @@ import ContactModal from './components/ContactModal';
 import { DataProvider, useData } from './context/DataContext';
 import { AdminLogin } from './components/admin/AdminLogin';
 import { AdminLayout } from './components/admin/AdminLayout';
+import { InvitationScreen } from './components/auth/InvitationScreen';
 
 // --- COMPONENTES AUXILIARES DE LA WEB PÚBLICA ---
 
@@ -597,6 +598,12 @@ function AppContent() {
   // Parser de ruta seguro
   const parseRoute = () => {
     const hash = window.location.hash.replace(/^#\/?/, '').trim();
+    if (hash.startsWith('invitacion')) {
+      return { view: 'invitation', mode: 'invitacion', id: null, section: null };
+    }
+    if (hash.startsWith('recuperar')) {
+      return { view: 'invitation', mode: 'recuperar', id: null, section: null };
+    }
     if (hash === 'login') {
       return { view: 'login', id: null, section: null };
     }
@@ -607,6 +614,7 @@ function AppContent() {
       else if (sub === 'publicaciones') tab = 'publications';
       else if (sub === 'actividades') tab = 'activities';
       else if (sub === 'que-hacemos' || sub === 'quehacemos' || sub === 'proyectos') tab = 'projects';
+      else if (sub === 'usuarios' || sub === 'users' || sub === 'invitaciones') tab = 'users';
       else if (sub === 'historial' || sub === 'history') tab = 'history';
       return { view: 'admin', subTab: tab, id: null, section: null };
     }
@@ -743,7 +751,17 @@ function AppContent() {
   // Integrantes visibles (no ocultos)
   const equipoVisible = equipo.filter((m) => m.activo !== false);
 
-  // --- VISTAS PRIVADAS DE ADMINISTRACIÓN Y LOGIN ---
+  // --- VISTAS PRIVADAS DE ADMINISTRACIÓN, INVITACIONES Y LOGIN ---
+
+  if (route.view === 'invitation') {
+    return (
+      <InvitationScreen
+        mode={route.mode || 'invitacion'}
+        onComplete={() => navigateTo('admin')}
+        onCancel={() => navigateTo('landing')}
+      />
+    );
+  }
 
   if (route.view === 'login') {
     if (currentUser) {

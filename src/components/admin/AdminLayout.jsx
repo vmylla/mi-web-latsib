@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   LayoutDashboard, Users, FileText, Calendar, Cpu, Clock, 
-  LogOut, Globe, Menu, X, Shield, ChevronRight, UserCircle
+  LogOut, Globe, Menu, X, Shield, ChevronRight, UserCircle, Settings, UserPlus
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { AdminDashboard } from './AdminDashboard';
@@ -10,12 +10,15 @@ import { AdminPublications } from './AdminPublications';
 import { AdminActivities } from './AdminActivities';
 import { AdminProjects } from './AdminProjects';
 import { AdminHistory } from './AdminHistory';
+import { AdminUsers } from './AdminUsers';
+import { AdminProfileModal } from './AdminProfileModal';
 
 export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
   const { currentUser, logout, config } = useData();
   const [activeTab, setActiveTab] = useState(initialTab);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [modalParam, setModalParam] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   const isAdmin = currentUser?.rol === 'admin';
   const isEditor = currentUser?.rol === 'editor' || isAdmin;
@@ -36,23 +39,33 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
     { id: 'publications', label: 'Publicaciones', icon: <FileText size={18} /> },
     { id: 'activities', label: 'Actividades', icon: <Calendar size={18} /> },
     { id: 'projects', label: 'Qué Hacemos (Proyectos)', icon: <Cpu size={18} /> },
+    ...(isAdmin ? [{ id: 'users', label: 'Cuentas & Invitaciones', icon: <Shield size={18} /> }] : []),
     { id: 'history', label: 'Historial de Cambios', icon: <Clock size={18} /> },
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col md:flex-row font-sans">
       {/* SIDEBAR ESCRITORIO */}
       <aside className="hidden md:flex flex-col w-72 bg-slate-900 border-r border-slate-800 shrink-0 p-6">
         {/* Cabecera Sidebar con Logos */}
         <div className="flex items-center gap-3 pb-6 mb-6 border-b border-slate-800">
-          <img
-            src={config?.imagenes?.logo || '/logo-circle.png'}
-            alt="Logo LaTSIB"
-            className="h-10 w-10 object-cover rounded-full shadow-md border border-white/10"
-          />
+          <div className="flex items-center gap-2">
+            <div className="h-10 px-2 py-1 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center">
+              <img
+                src={config?.imagenes?.logoUtem || '/utem-logo.png'}
+                alt="Logo UTEM"
+                className="h-6 w-auto object-contain"
+              />
+            </div>
+            <img
+              src={config?.imagenes?.logo || '/logo-circle.png'}
+              alt="Logo LaTSIB"
+              className="h-10 w-10 object-cover rounded-full shadow-md border border-teal-500/30"
+            />
+          </div>
           <div>
-            <div className="font-extrabold text-white text-base tracking-tight">Panel LaTSIB</div>
-            <div className="text-[10px] text-teal-400 font-bold uppercase tracking-wider">Gestor Institucional</div>
+            <div className="font-extrabold text-white text-base tracking-tight leading-none">Panel LaTSIB</div>
+            <div className="text-[10px] text-teal-400 font-bold uppercase tracking-wider mt-1">Gestión & Control</div>
           </div>
         </div>
 
@@ -82,23 +95,32 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
         </nav>
 
         {/* Perfil del Usuario Activo */}
-        <div className="pt-6 border-t border-slate-800 space-y-4">
-          <div className="flex items-center gap-3 p-3 rounded-2xl bg-slate-950/80 border border-slate-800">
+        <div className="pt-6 border-t border-slate-800 space-y-3">
+          <div 
+            onClick={() => setIsProfileModalOpen(true)}
+            className="flex items-center gap-3 p-3 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-teal-500/40 cursor-pointer transition-all group"
+            title="Haz clic para editar tu perfil o cambiar contraseña"
+          >
             <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-900 shrink-0 border border-slate-700">
               {currentUser?.avatar ? (
                 <img src={currentUser.avatar} alt={currentUser.nombre} className="w-full h-full object-cover" />
               ) : (
-                <UserCircle size={38} className="text-slate-400" />
+                <div className="w-full h-full flex items-center justify-center text-slate-400 font-bold text-sm bg-slate-850">
+                  {currentUser?.nombre ? currentUser.nombre.charAt(0) : 'U'}
+                </div>
               )}
             </div>
             <div className="min-w-0 flex-grow">
-              <div className="font-bold text-white text-xs truncate">{currentUser?.nombre}</div>
+              <div className="font-bold text-white text-xs truncate group-hover:text-teal-300 transition-colors">
+                {currentUser?.nombre}
+              </div>
               <div className={`text-[10px] font-bold uppercase tracking-wider ${
                 isAdmin ? 'text-teal-400' : isEditor ? 'text-indigo-400' : 'text-blue-400'
               }`}>
                 {isAdmin ? 'Administrador' : isEditor ? 'Editor' : 'Integrante'}
               </div>
             </div>
+            <Settings size={15} className="text-slate-500 group-hover:text-teal-400 transition-colors shrink-0" />
           </div>
 
           <div className="flex flex-col gap-2">
@@ -127,13 +149,22 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
           <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo" className="h-8 w-8 rounded-full" />
           <span className="font-bold text-white text-sm">Admin LaTSIB</span>
         </div>
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white"
-        >
-          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setIsProfileModalOpen(true)}
+            className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white"
+          >
+            <Settings size={18} />
+          </button>
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white"
+          >
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {/* MENÚ MÓVIL DESPLEGABLE */}
@@ -178,8 +209,15 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
         {activeTab === 'publications' && <AdminPublications initialOpenModal={modalParam} />}
         {activeTab === 'activities' && <AdminActivities initialOpenModal={modalParam} />}
         {activeTab === 'projects' && <AdminProjects initialOpenModal={modalParam} />}
+        {activeTab === 'users' && isAdmin && <AdminUsers />}
         {activeTab === 'history' && <AdminHistory />}
       </main>
+
+      {/* MODAL PERFIL Y SEGURIDAD */}
+      <AdminProfileModal
+        isOpen={isProfileModalOpen}
+        onClose={() => setIsProfileModalOpen(false)}
+      />
     </div>
   );
 };

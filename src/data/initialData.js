@@ -726,117 +726,175 @@ export const INITIAL_PROYECTOS = [
   }
 ];
 
+export const INVITATION_TEMPLATE = (nombre, rol, link) => {
+  return `Hola, ${nombre}:
+
+Se ha creado tu acceso para la plataforma web del Laboratorio de Biomédica Traslacional (LaTSIB) de la Universidad Tecnológica Metropolitana.
+
+Se te ha asignado el rol de ${rol}, lo que te permitirá gestionar tus datos de perfil, publicar contenidos y colaborar en la administración del sitio según tus permisos.
+
+Para activar tu cuenta y configurar tu contraseña personal, por favor haz clic en el siguiente enlace:
+👉 [Configurar mi contraseña y acceder al sitio] ${link}
+
+(Nota: Este enlace es personal, único y expirará en 48 horas por motivos de seguridad).
+
+Si tienes alguna duda o problema durante el registro, puedes responder directamente a este correo o contactar al equipo de desarrollo web del laboratorio.
+
+Saludos cordiales,
+Equipo de Desarrollo Web & Soporte
+Laboratorio de Biomédica Traslacional (LaTSIB)
+Universidad Tecnológica Metropolitana (UTEM)`;
+};
+
 export const DEFAULT_USERS = [
-  // Administradores autorizados (Control Total)
+  // Administradora Principal / Desarrolladora
   {
-    id: 'u1',
-    nombre: 'Dr. Raúl Caulier',
-    email: 'rcaulier@utem.cl',
-    password: 'admin.latsib.2026',
-    rol: 'admin',
-    avatar: 'https://fing.utem.cl/wp-content/uploads/sites/6/2023/11/Raul-Paul-Caulier-Cisterna.jpg',
-    cargo: 'Director e Investigador Principal'
-  },
-  {
-    id: 'u2',
-    nombre: 'Andrés Vega',
-    email: 'avega@utem.cl',
-    password: 'admin.latsib.2026',
-    rol: 'admin',
-    avatar: '/equipo/AndrésPERFIL.jpg',
-    cargo: 'Asistente Investigador / Tesista'
-  },
-  {
-    id: 'u3',
-    nombre: 'Vicente Escudero',
-    email: 'vescuderod@utem.cl',
-    password: 'admin.latsib.2026',
-    rol: 'admin',
-    avatar: '/equipo/VicentePERFIL.jpg',
-    cargo: 'Asistente Investigador'
-  },
-  {
-    id: 'u4',
-    nombre: 'Glenn Lanyon',
-    email: 'glanyon@utem.cl',
-    password: 'admin.latsib.2026',
-    rol: 'admin',
-    avatar: '/equipo/GlennPERFIL.jpg',
-    cargo: 'Asistente Investigador / Tesista'
-  },
-  {
-    id: 'u5',
+    id: 'u_camila',
     nombre: 'Camila Guajardo',
     email: 'cguajardo@utem.cl',
     password: 'admin.latsib.2026',
     rol: 'admin',
+    estado: 'activo',
+    isPrimaryAdmin: true,
+    has2FA: false,
     avatar: '/equipo/CamilaPERFIL.jpg',
-    cargo: 'Asistente Investigadora / Divulgación'
+    cargo: 'Desarrolladora Web / Asistente Investigadora',
+    creadoEl: '08/09/2026'
+  },
+  // Director e Investigadores Administradores
+  {
+    id: 'u_raul',
+    nombre: 'Dr. Raúl Caulier',
+    email: 'rcaulier@utem.cl',
+    password: 'admin.latsib.2026',
+    rol: 'admin',
+    estado: 'activo',
+    has2FA: true,
+    avatar: 'https://fing.utem.cl/wp-content/uploads/sites/6/2023/11/Raul-Paul-Caulier-Cisterna.jpg',
+    cargo: 'Director e Investigador Principal',
+    creadoEl: '08/09/2026'
+  },
+  {
+    id: 'u_andres',
+    nombre: 'Andrés Vega',
+    email: 'avega@utem.cl',
+    password: 'admin.latsib.2026',
+    rol: 'admin',
+    estado: 'activo',
+    has2FA: false,
+    avatar: '/equipo/AndrésPERFIL.jpg',
+    cargo: 'Asistente Investigador / Tesista',
+    creadoEl: '08/09/2026'
+  },
+  {
+    id: 'u_vicente',
+    nombre: 'Vicente Escudero',
+    email: 'vescuderod@utem.cl',
+    password: 'admin.latsib.2026',
+    rol: 'admin',
+    estado: 'activo',
+    has2FA: false,
+    avatar: '/equipo/VicentePERFIL.jpg',
+    cargo: 'Asistente Investigador',
+    creadoEl: '08/09/2026'
+  },
+  {
+    id: 'u_glenn',
+    nombre: 'Glenn Lanyon',
+    email: 'glanyon@utem.cl',
+    password: 'admin.latsib.2026',
+    rol: 'admin',
+    estado: 'activo',
+    has2FA: false,
+    avatar: '/equipo/GlennPERFIL.jpg',
+    cargo: 'Asistente Investigador / Tesista',
+    creadoEl: '08/09/2026'
   },
   // Editores (Colaboradores y Doctorandos)
   {
-    id: 'u6',
+    id: 'u_jorge',
     nombre: 'Jorge Vergara',
     email: 'jvergara@utem.cl',
     password: 'editor.latsib.2026',
     rol: 'editor',
+    estado: 'activo',
+    has2FA: false,
     avatar: '/logo-circle.png',
-    cargo: 'Investigador Colaborador'
+    cargo: 'Investigador Colaborador',
+    creadoEl: '08/09/2026'
   },
   {
-    id: 'u7',
+    id: 'u_felipe',
     nombre: 'Felipe Espinoza',
     email: 'fespinoza@utem.cl',
     password: 'editor.latsib.2026',
     rol: 'editor',
+    estado: 'activo',
+    has2FA: false,
     avatar: '/logo-circle.png',
-    cargo: 'Estudiante de Doctorado'
+    cargo: 'Estudiante de Doctorado',
+    creadoEl: '08/09/2026'
   },
-  // Integrantes / Investigadores (Asistentes restantes)
+  // Integrantes / Asistentes
   {
-    id: 'u8',
+    id: 'u_matias',
     nombre: 'Matías Gajardo',
     email: 'mgajardod@utem.cl',
     password: 'miembro.latsib.2026',
     rol: 'member',
+    estado: 'activo',
+    has2FA: false,
     avatar: '/equipo/MatiasPERFIL.jpg',
-    cargo: 'Asistente Investigador'
+    cargo: 'Asistente Investigador',
+    creadoEl: '08/09/2026'
   },
   {
-    id: 'u9',
+    id: 'u_juan',
     nombre: 'Juan Toledo',
     email: 'jtoledof@utem.cl',
     password: 'miembro.latsib.2026',
     rol: 'member',
+    estado: 'activo',
+    has2FA: false,
     avatar: '/equipo/JuanPERFIL.jpg',
-    cargo: 'Asistente Investigador / Tesista'
+    cargo: 'Asistente Investigador / Tesista',
+    creadoEl: '08/09/2026'
   },
   {
-    id: 'u10',
+    id: 'u_david',
     nombre: 'David Sepúlveda',
     email: 'svelasquez@utem.cl',
     password: 'miembro.latsib.2026',
     rol: 'member',
+    estado: 'activo',
+    has2FA: false,
     avatar: '/equipo/DavidPERFIL.jpg',
-    cargo: 'Asistente Investigador'
+    cargo: 'Asistente Investigador',
+    creadoEl: '08/09/2026'
   },
   {
-    id: 'u11',
+    id: 'u_catalina',
     nombre: 'Catalina Araniz',
     email: 'caraniz@utem.cl',
     password: 'miembro.latsib.2026',
     rol: 'member',
+    estado: 'activo',
+    has2FA: false,
     avatar: '/equipo/CatalinaPERFIL.jpg',
-    cargo: 'Asistente Investigadora'
+    cargo: 'Asistente Investigadora',
+    creadoEl: '08/09/2026'
   },
   {
-    id: 'u12',
+    id: 'u_gabriel',
     nombre: 'Gabriel Araya',
     email: 'garaya@utem.cl',
     password: 'miembro.latsib.2026',
     rol: 'member',
+    estado: 'activo',
+    has2FA: false,
     avatar: '/equipo/GabrielPERFIL.jpg',
-    cargo: 'Asistente Investigador'
+    cargo: 'Asistente Investigador',
+    creadoEl: '08/09/2026'
   }
 ];
 
@@ -878,3 +936,4 @@ export const INITIAL_HISTORIAL = [
     tipo: 'edicion'
   }
 ];
+
