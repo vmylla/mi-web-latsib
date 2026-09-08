@@ -152,13 +152,11 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
           {/* Logo Principal e Identidad */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-14 px-3 py-1.5 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center">
-                <img
-                  src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'}
-                  alt="Logo UTEM"
-                  className="h-8 w-auto object-contain"
-                />
-              </div>
+              <img
+                src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'}
+                alt="Logo UTEM"
+                className="h-14 w-auto object-contain"
+              />
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-teal-400 rounded-2xl blur-md opacity-70"></div>
                 <img

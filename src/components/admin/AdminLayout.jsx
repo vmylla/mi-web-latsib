@@ -55,13 +55,11 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
         {/* Cabecera Sidebar con Logos */}
         <div className="flex items-center justify-between pb-6 mb-6 border-b border-slate-800">
           <div className="flex items-center gap-2.5">
-            <div className="h-10 px-2 py-1 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center">
-              <img
-                src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'}
-                alt="Logo UTEM"
-                className="h-6 w-auto object-contain"
-              />
-            </div>
+            <img
+              src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'}
+              alt="Logo UTEM"
+              className="h-10 w-auto object-contain"
+            />
             <img
               src={config?.imagenes?.logo || '/logo-circle.png'}
               alt="Logo LaTSIB"

@@ -119,13 +119,11 @@ export const InvitationScreen = ({ mode = 'invitacion', onComplete, onCancel }) 
         {/* Cabecera de Logos */}
         <div className="flex flex-col items-center mb-6">
           <div className="flex items-center justify-center gap-4 mb-3">
-            <div className="h-14 px-3 py-1.5 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center">
-              <img
-                src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'}
-                alt="Logo UTEM"
-                className="h-9 w-auto object-contain"
-              />
-            </div>
+            <img
+              src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'}
+              alt="Logo UTEM"
+              className="h-14 w-auto object-contain"
+            />
             <div className="h-14 w-14 rounded-2xl overflow-hidden border border-teal-500/30 shadow-lg shadow-teal-950/50 bg-slate-950 flex items-center justify-center">
               <img
                 src={config?.imagenes?.logo || '/logo-circle.png'}
