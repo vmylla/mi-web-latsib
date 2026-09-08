@@ -42,7 +42,17 @@ const setStored = (key, value) => {
 };
 
 export const DataProvider = ({ children }) => {
-  const [config, setConfig] = useState(() => getStored(STORAGE_KEYS.CONFIG, INITIAL_CONFIG));
+  const [config, setConfig] = useState(() => {
+    const stored = getStored(STORAGE_KEYS.CONFIG, INITIAL_CONFIG);
+    return {
+      ...INITIAL_CONFIG,
+      ...stored,
+      imagenes: {
+        ...INITIAL_CONFIG.imagenes,
+        ...(stored?.imagenes || {})
+      }
+    };
+  });
   const [equipo, setEquipo] = useState(() => getStored(STORAGE_KEYS.EQUIPO, INITIAL_EQUIPO));
   const [publicaciones, setPublicaciones] = useState(() => getStored(STORAGE_KEYS.PUBLICACIONES, INITIAL_PUBLICACIONES));
   const [actividades, setActividades] = useState(() => getStored(STORAGE_KEYS.ACTIVIDADES, INITIAL_ACTIVIDADES));

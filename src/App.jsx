@@ -782,8 +782,8 @@ function AppContent() {
               className="flex items-center gap-2.5 sm:gap-3 cursor-pointer select-none group"
               onClick={() => { navigateTo('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             >
-              <img src={config.imagenes.logoUtem} alt="Logo UTEM" className="h-14 w-14 sm:h-16 sm:w-16 object-contain rounded-2xl p-1 bg-white shadow-md group-hover:scale-105 transition-transform duration-300" />
-              <img src={config.imagenes.logo} alt="Logo LaTSIB" className="h-14 w-14 sm:h-16 sm:w-16 object-cover rounded-full shadow-md group-hover:scale-105 transition-transform duration-300" />
+              <img src={config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-14 w-14 sm:h-16 sm:w-16 object-contain rounded-2xl p-1 bg-white shadow-md group-hover:scale-105 transition-transform duration-300" />
+              <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-14 w-14 sm:h-16 sm:w-16 object-cover rounded-full shadow-md group-hover:scale-105 transition-transform duration-300" />
               <span className={`text-2xl font-extrabold tracking-tight ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
                 {config.nombreGrupo}
               </span>
@@ -839,8 +839,8 @@ function AppContent() {
                 className="flex items-center gap-2.5 cursor-pointer"
                 onClick={() => { setSideDrawerOpen(false); navigateTo('landing'); }}
               >
-                <img src={config.imagenes.logoUtem} alt="Logo UTEM" className="h-10 w-10 object-contain rounded-lg p-0.5 bg-white border border-slate-100 shadow-2xs" />
-                <img src={config.imagenes.logo} alt="Logo LaTSIB" className="h-10 w-10 object-cover rounded-full shadow-sm" />
+                <img src={config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-10 w-10 object-contain rounded-lg p-0.5 bg-white border border-slate-100 shadow-2xs" />
+                <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-10 w-10 object-cover rounded-full shadow-sm" />
                 <div>
                   <span className="font-extrabold text-xl text-slate-900 tracking-tight block leading-tight">{config.nombreGrupo}</span>
                   <span className="text-[10px] text-slate-400 font-medium">Laboratorio LaTSIB · UTEM</span>
