@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   LayoutDashboard, Users, FileText, Calendar, Cpu, Clock, 
   LogOut, Globe, Menu, X, Shield, ChevronRight, UserCircle, 
-  Settings, UserPlus, Sun, Moon
+  Settings, UserPlus, Sun, Moon, Sparkles 
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { AdminDashboard } from './AdminDashboard';
@@ -16,7 +16,7 @@ import { AdminProfileModal } from './AdminProfileModal';
 import utemLogo from '../../assets/logo-utem.png';
 
 export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
-  const { currentUser, logout, config, adminTheme, toggleAdminTheme } = useData();
+  const { currentUser, logout, config, adminTheme, setAdminTheme, toggleAdminTheme } = useData();
   const [activeTab, setActiveTab] = useState(initialTab);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [modalParam, setModalParam] = useState(false);

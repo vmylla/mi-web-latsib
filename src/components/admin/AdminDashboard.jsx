@@ -68,9 +68,15 @@ export const AdminDashboard = ({ onNavigate }) => {
   const isAdmin = currentUser?.rol === 'admin';
   const isEditor = currentUser?.rol === 'editor' || isAdmin;
 
-  const totalIntegrantes = equipo.length;
-  const integrantesActivos = equipo.filter(m => m.activo && m.categoria !== 'exintegrantes').length;
-  const exintegrantes = equipo.filter(m => m.categoria === 'exintegrantes').length;
+  const safeEquipo = Array.isArray(equipo) ? equipo : [];
+  const safePublicaciones = Array.isArray(publicaciones) ? publicaciones : [];
+  const safeActividades = Array.isArray(actividades) ? actividades : [];
+  const safeProyectos = Array.isArray(proyectos) ? proyectos : [];
+  const safeHistorial = Array.isArray(historial) ? historial : [];
+
+  const totalIntegrantes = safeEquipo.length;
+  const integrantesActivos = safeEquipo.filter(m => m && m.activo && m.categoria !== 'exintegrantes').length;
+  const exintegrantes = safeEquipo.filter(m => m && m.categoria === 'exintegrantes').length;
 
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
@@ -176,7 +182,7 @@ export const AdminDashboard = ({ onNavigate }) => {
             </div>
             <ArrowUpRight size={18} className="text-slate-500 group-hover:text-teal-400 transition-colors" />
           </div>
-          <div className="text-3xl font-extrabold text-white mb-1">{publicaciones.length}</div>
+          <div className="text-3xl font-extrabold text-white mb-1">{safePublicaciones.length}</div>
           <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Artículos y Papers</div>
           <div className="text-[11px] text-slate-500 mt-2 font-medium">
             Indexados y mostrados en repositorio
@@ -194,7 +200,7 @@ export const AdminDashboard = ({ onNavigate }) => {
             </div>
             <ArrowUpRight size={18} className="text-slate-500 group-hover:text-indigo-400 transition-colors" />
           </div>
-          <div className="text-3xl font-extrabold text-white mb-1">{actividades.length}</div>
+          <div className="text-3xl font-extrabold text-white mb-1">{safeActividades.length}</div>
           <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Actividades y Congresos</div>
           <div className="text-[11px] text-slate-500 mt-2 font-medium">
             Nacionales e internacionales con galería
@@ -212,7 +218,7 @@ export const AdminDashboard = ({ onNavigate }) => {
             </div>
             <ArrowUpRight size={18} className="text-slate-500 group-hover:text-pink-400 transition-colors" />
           </div>
-          <div className="text-3xl font-extrabold text-white mb-1">{proyectos.length}</div>
+          <div className="text-3xl font-extrabold text-white mb-1">{safeProyectos.length}</div>
           <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Proyectos "¿Qué Hacemos?"</div>
           <div className="text-[11px] text-slate-500 mt-2 font-medium">
             Fichas activas de investigación
@@ -239,7 +245,7 @@ export const AdminDashboard = ({ onNavigate }) => {
           </div>
 
           <div className="space-y-3.5">
-            {historial.slice(0, 6).map((log) => (
+            {safeHistorial.slice(0, 6).map((log) => (
               <div 
                 key={log.id}
                 className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-950/60 border border-slate-800/60 hover:border-slate-700 transition-all text-xs"
