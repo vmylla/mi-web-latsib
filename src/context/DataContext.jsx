@@ -178,7 +178,7 @@ export const DataProvider = ({ children }) => {
         success: false,
         isUnauthorized: true,
         email: cleanEmail,
-        message: `Acceso denegado: Tu correo ${cleanEmail} no figura en la lista autorizada del equipo LaTSIB.`
+        message: `Acceso denegado: El correo ${cleanEmail} no pertenece al equipo autorizado del LaTSIB.`
       };
     }
 
