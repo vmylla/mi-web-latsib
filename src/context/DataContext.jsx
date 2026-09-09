@@ -135,45 +135,41 @@ export const DataProvider = ({ children }) => {
     if (!cleanEmail) {
       return { 
         success: false, 
-        message: 'Por favor ingresa tu cuenta de correo institucional de Google.' 
+        message: 'Por favor ingresa tu cuenta de correo institucional de Google (Mi UTEM).' 
       };
     }
 
-    // Si el usuario escribió el usuario sin dominio (ej: "rcaulier"), agregar "@utem.cl"
-    const emailWithDomain = cleanEmail.includes('@') ? cleanEmail : `${cleanEmail}@utem.cl`;
-    const userPrefix = cleanEmail.split('@')[0];
+    // Permitir correo institucional principal del lab (config.email) o latsibutem@gmail.com
+    const isLabEmail = (config?.email && config.email.toLowerCase() === cleanEmail) || 
+                        cleanEmail === 'latsibutem@gmail.com';
 
-    // 1. Buscar en la lista de integrantes del equipo en la web (equipo)
+    // 1. Restricción de Dominio: Debe ser @utem.cl (o correo oficial del lab)
+    if (!cleanEmail.endsWith('@utem.cl') && !isLabEmail) {
+      logAction(`Intento de acceso con dominio no permitido: ${cleanEmail}`, 'Seguridad', 'alerta', cleanEmail);
+      return {
+        success: false,
+        isUnauthorized: true,
+        email: cleanEmail,
+        message: `Acceso denegado: El correo ${cleanEmail} no pertenece al dominio institucional (@utem.cl). Debe utilizar su cuenta institucional Mi UTEM.`
+      };
+    }
+
+    // 2. Validación en la Base de Datos: Buscar coincidencia EXACTA en la tabla Equipo LaTSIB
     const teamMember = equipo.find(m => {
       const mEmail = (m.contactos?.email || m.email || '').trim().toLowerCase();
       const mGoogleEmail = (m.contactos?.googleEmail || '').trim().toLowerCase();
-      const mPrefix = mEmail.split('@')[0];
 
       return (
-        mEmail === cleanEmail ||
-        mEmail === emailWithDomain ||
-        mGoogleEmail === cleanEmail ||
-        mGoogleEmail === emailWithDomain ||
-        (mPrefix && mPrefix === userPrefix) ||
-        m.id.toLowerCase() === cleanEmail
+        (mEmail && mEmail === cleanEmail) ||
+        (mGoogleEmail && mGoogleEmail === cleanEmail)
       );
     });
 
-    // 2. Buscar en la lista de usuarios del sistema
+    // 3. Buscar en la lista de usuarios administradores registrados
     const userRecord = users.find(u => {
       const uEmail = (u.email || '').trim().toLowerCase();
-      const uPrefix = uEmail.split('@')[0];
-      return (
-        uEmail === cleanEmail ||
-        uEmail === emailWithDomain ||
-        (uPrefix && uPrefix === userPrefix) ||
-        u.id.toLowerCase() === cleanEmail
-      );
+      return uEmail && uEmail === cleanEmail;
     });
-
-    // 3. Permitir correo institucional principal del lab (config.email)
-    const isLabEmail = (config?.email && config.email.toLowerCase() === cleanEmail) || 
-                        cleanEmail === 'latsibutem@gmail.com';
 
     // Si NO está en el equipo ni en usuarios autorizados ni es el correo del lab
     if (!teamMember && !userRecord && !isLabEmail) {
@@ -182,15 +178,15 @@ export const DataProvider = ({ children }) => {
         success: false,
         isUnauthorized: true,
         email: cleanEmail,
-        message: `Este correo (${cleanEmail}) no está registrado como integrante activo del LaTSIB.`
+        message: `Acceso denegado: El correo ${cleanEmail} no está registrado dentro del equipo activo del LaTSIB. Contacta a la administración si perteneces al laboratorio.`
       };
     }
 
-    // Verificar si el integrante está marcado como inactivo
-    if (teamMember && teamMember.activo === false) {
+    // Verificar si el integrante está marcado como inactivo o exintegrante
+    if (teamMember && (teamMember.activo === false || teamMember.categoria === 'exintegrantes')) {
       return {
         success: false,
-        message: `Acceso denegado: El perfil de ${teamMember.nombre} se encuentra marcado como inactivo.`
+        message: `Acceso denegado: El perfil de ${teamMember.nombre} se encuentra marcado como inactivo o exintegrante.`
       };
     }
     if (userRecord && userRecord.estado === 'inactivo') {
