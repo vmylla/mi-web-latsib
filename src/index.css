@@ -16,31 +16,28 @@
 /* =========================================================
    1. TEMA CLARO CLÁSICO (.admin-theme-light)
    ========================================================= */
-/* =========================================================
-   1. TEMA CLARO CLÁSICO (.admin-theme-light)
-   ========================================================= */
 .admin-theme-light {
-  background-color: #f8fafc !important;
+  background-color: #f1f5f9 !important;
   color: #0f172a !important;
 }
 
 .admin-theme-light aside {
   background-color: #ffffff !important;
-  border-right-color: #e2e8f0 !important;
-  box-shadow: 2px 0 10px -3px rgba(0, 0, 0, 0.04) !important;
+  border-right-color: #cbd5e1 !important;
+  box-shadow: 2px 0 10px -3px rgba(0, 0, 0, 0.06) !important;
 }
 
 .admin-theme-light .md\:hidden.bg-slate-900 {
   background-color: #ffffff !important;
-  border-bottom-color: #e2e8f0 !important;
+  border-bottom-color: #cbd5e1 !important;
 }
 
 .admin-theme-light .bg-slate-900,
 .admin-theme-light .bg-slate-900\/90,
 .admin-theme-light .bg-slate-900\/80 {
   background-color: #ffffff !important;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
-  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.08) !important;
+  border-color: #cbd5e1 !important;
 }
 
 .admin-theme-light .bg-slate-950,
@@ -48,13 +45,13 @@
 .admin-theme-light .bg-slate-950\/80,
 .admin-theme-light .bg-slate-950\/40,
 .admin-theme-light .bg-slate-850 {
-  background-color: #f1f5f9 !important;
+  background-color: #e2e8f0 !important;
 }
 
 .admin-theme-light .bg-slate-800,
 .admin-theme-light .bg-slate-800\/60,
 .admin-theme-light .bg-slate-800\/80 {
-  background-color: #e2e8f0 !important;
+  background-color: #cbd5e1 !important;
 }
 
 .admin-theme-light .border-slate-800,
@@ -62,7 +59,7 @@
 .admin-theme-light .border-slate-800\/80,
 .admin-theme-light .border-slate-700,
 .admin-theme-light .border-slate-700\/80 {
-  border-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
 }
 
 .admin-theme-light .text-white {
@@ -76,11 +73,11 @@
 }
 
 .admin-theme-light .text-slate-400 {
-  color: #475569 !important;
+  color: #334155 !important;
 }
 
 .admin-theme-light .text-slate-500 {
-  color: #64748b !important;
+  color: #475569 !important;
 }
 
 .admin-theme-light .text-teal-400,
@@ -122,7 +119,7 @@
 .admin-theme-light textarea,
 .admin-theme-light select {
   background-color: #ffffff !important;
-  border-color: #cbd5e1 !important;
+  border-color: #94a3b8 !important;
   color: #0f172a !important;
 }
 
@@ -131,55 +128,55 @@
 .admin-theme-light select:focus {
   border-color: #0284c7 !important;
   background-color: #ffffff !important;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2) !important;
 }
 
 .admin-theme-light input::placeholder,
 .admin-theme-light textarea::placeholder {
-  color: #94a3b8 !important;
+  color: #64748b !important;
 }
 
 .admin-theme-light th {
-  background-color: #f8fafc !important;
-  color: #334155 !important;
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
 }
 
 .admin-theme-light tr:hover {
-  background-color: #f1f5f9 !important;
+  background-color: #e2e8f0 !important;
 }
 
 .admin-theme-light .hover\:bg-slate-800\/60:hover,
 .admin-theme-light .hover\:bg-slate-800:hover {
-  background-color: #f1f5f9 !important;
+  background-color: #e2e8f0 !important;
   color: #0f172a !important;
 }
 
 
 /* =========================================================
-   2. TEMA ROSA CHICLE PASTEL & VIBRANTE (.admin-theme-pink)
+   2. TEMA ROSA CHICLE VIBRANTE & INTENSO (.admin-theme-pink)
    ========================================================= */
 .admin-theme-pink {
-  background-color: #fff5f9 !important;
+  background-color: #ffe4ee !important;
   color: #500724 !important;
 }
 
 .admin-theme-pink aside {
   background-color: #ffffff !important;
-  border-right-color: #fbcfe8 !important;
-  box-shadow: 2px 0 16px -4px rgba(244, 114, 182, 0.15) !important;
+  border-right-color: #f472b6 !important;
+  box-shadow: 2px 0 16px -4px rgba(236, 72, 153, 0.2) !important;
 }
 
 .admin-theme-pink .md\:hidden.bg-slate-900 {
   background-color: #ffffff !important;
-  border-bottom-color: #fbcfe8 !important;
+  border-bottom-color: #f472b6 !important;
 }
 
 .admin-theme-pink .bg-slate-900,
 .admin-theme-pink .bg-slate-900\/90,
 .admin-theme-pink .bg-slate-900\/80 {
   background-color: #ffffff !important;
-  box-shadow: 0 4px 20px -2px rgba(244, 114, 182, 0.12) !important;
-  border-color: #fbcfe8 !important;
+  box-shadow: 0 4px 20px -2px rgba(236, 72, 153, 0.16) !important;
+  border-color: #f472b6 !important;
 }
 
 .admin-theme-pink .bg-slate-950,
@@ -187,14 +184,14 @@
 .admin-theme-pink .bg-slate-950\/80,
 .admin-theme-pink .bg-slate-950\/40,
 .admin-theme-pink .bg-slate-850 {
-  background-color: #fff0f7 !important;
+  background-color: #ffd1e3 !important;
 }
 
 .admin-theme-pink .bg-slate-800,
 .admin-theme-pink .bg-slate-800\/60,
 .admin-theme-pink .bg-slate-800\/80 {
-  background-color: #fce7f3 !important;
-  border-color: #fbcfe8 !important;
+  background-color: #fbcfe8 !important;
+  border-color: #f472b6 !important;
 }
 
 .admin-theme-pink .border-slate-800,
@@ -202,7 +199,7 @@
 .admin-theme-pink .border-slate-800\/80,
 .admin-theme-pink .border-slate-700,
 .admin-theme-pink .border-slate-700\/80 {
-  border-color: #fbcfe8 !important;
+  border-color: #f472b6 !important;
 }
 
 .admin-theme-pink .text-white {
@@ -236,7 +233,7 @@
 .admin-theme-pink .bg-gradient-to-r.from-slate-900 {
   background: linear-gradient(135deg, #4a0425 0%, #831843 50%, #500724 100%) !important;
   border-color: #db2777 !important;
-  box-shadow: 0 14px 35px -5px rgba(219, 39, 119, 0.4) !important;
+  box-shadow: 0 14px 35px -5px rgba(219, 39, 119, 0.45) !important;
 }
 
 .admin-theme-pink .bg-gradient-to-r.from-slate-900 h1,
@@ -252,17 +249,17 @@
 .admin-theme-pink .bg-gradient-to-r.from-slate-900 .bg-teal-500\/20,
 .admin-theme-pink .bg-gradient-to-r.from-slate-900 .bg-blue-500\/20,
 .admin-theme-pink .bg-gradient-to-r.from-slate-900 .bg-indigo-500\/20 {
-  background-color: rgba(236, 72, 153, 0.25) !important;
-  border-color: rgba(244, 114, 182, 0.5) !important;
+  background-color: rgba(236, 72, 153, 0.3) !important;
+  border-color: rgba(244, 114, 182, 0.6) !important;
   color: #ffffff !important;
 }
 
 /* Botones con gradientes de Rosa Chicle */
 .admin-theme-pink nav button.bg-gradient-to-r,
 .admin-theme-pink button.bg-gradient-to-r.from-blue-600 {
-  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%) !important;
+  background: linear-gradient(135deg, #db2777 0%, #e11d48 100%) !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 15px 0 rgba(236, 72, 153, 0.35) !important;
+  box-shadow: 0 4px 15px 0 rgba(219, 39, 119, 0.4) !important;
 }
 
 .admin-theme-pink nav button.bg-gradient-to-r *,
@@ -275,82 +272,82 @@
 .admin-theme-pink .bg-teal-500\/10,
 .admin-theme-pink .bg-indigo-500\/10,
 .admin-theme-pink .bg-pink-500\/10 {
-  background-color: #fce7f3 !important;
-  border-color: #fbcfe8 !important;
-  color: #db2777 !important;
+  background-color: #fbcfe8 !important;
+  border-color: #f472b6 !important;
+  color: #be185d !important;
 }
 
 .admin-theme-pink .bg-teal-500\/20,
 .admin-theme-pink .bg-blue-500\/20,
 .admin-theme-pink .bg-indigo-500\/20 {
-  background-color: #fce7f3 !important;
-  border-color: #f472b6 !important;
-  color: #9d174d !important;
+  background-color: #fbcfe8 !important;
+  border-color: #ec4899 !important;
+  color: #831843 !important;
 }
 
 .admin-theme-pink input,
 .admin-theme-pink textarea,
 .admin-theme-pink select {
   background-color: #ffffff !important;
-  border-color: #fbcfe8 !important;
+  border-color: #f472b6 !important;
   color: #500724 !important;
 }
 
 .admin-theme-pink input:focus,
 .admin-theme-pink textarea:focus,
 .admin-theme-pink select:focus {
-  border-color: #ec4899 !important;
+  border-color: #db2777 !important;
   background-color: #ffffff !important;
-  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2) !important;
+  box-shadow: 0 0 0 3px rgba(219, 39, 119, 0.25) !important;
 }
 
 .admin-theme-pink input::placeholder,
 .admin-theme-pink textarea::placeholder {
-  color: #f472b6 !important;
-  opacity: 0.7;
+  color: #ec4899 !important;
+  opacity: 0.8;
 }
 
 .admin-theme-pink th {
-  background-color: #fff0f7 !important;
-  color: #831843 !important;
+  background-color: #ffd1e3 !important;
+  color: #701a43 !important;
 }
 
 .admin-theme-pink tr:hover {
-  background-color: #fff0f7 !important;
+  background-color: #ffd1e3 !important;
 }
 
 .admin-theme-pink .hover\:bg-slate-800\/60:hover,
 .admin-theme-pink .hover\:bg-slate-800:hover {
-  background-color: #fff0f7 !important;
-  color: #831843 !important;
+  background-color: #ffd1e3 !important;
+  color: #701a43 !important;
 }
 
 
 /* =========================================================
-   3. TEMA AZUL CIELO PASTEL & CIAN (.admin-theme-lightblue)
+   3. TEMA AZUL CIELO INTENSO & VIBRANTE (.admin-theme-lightblue)
    ========================================================= */
 .admin-theme-lightblue {
-  background-color: #f0f9ff !important;
+  background-color: #e0f2fe !important;
   color: #0c4a6e !important;
 }
 
 .admin-theme-lightblue aside {
   background-color: #ffffff !important;
-  border-right-color: #bae6fd !important;
-  box-shadow: 2px 0 16px -4px rgba(14, 165, 233, 0.12) !important;
+  border-right-color: #38bdf8 !important;
+  box-shadow: 2px 0 16px -4px rgba(14, 165, 233, 0.2) !important;
 }
 
 .admin-theme-lightblue .md\:hidden.bg-slate-900 {
   background-color: #ffffff !important;
-  border-bottom-color: #bae6fd !important;
+  border-bottom-color: #38bdf8 !important;
 }
 
 .admin-theme-lightblue .bg-slate-900,
 .admin-theme-lightblue .bg-slate-900\/90,
 .admin-theme-lightblue .bg-slate-900\/80 {
   background-color: #ffffff !important;
-  box-shadow: 0 4px 20px -2px rgba(14, 165, 233, 0.1) !important;
-  border-color: #bae6fd !important;
+  box-shadow: 0 4px 20px -2px rgba(14, 165, 233, 0.16) !important;
+  border-color: #38bdf8 !important;
 }
 
 .admin-theme-lightblue .bg-slate-950,
@@ -358,13 +355,13 @@
 .admin-theme-lightblue .bg-slate-950\/80,
 .admin-theme-lightblue .bg-slate-950\/40,
 .admin-theme-lightblue .bg-slate-850 {
-  background-color: #e0f2fe !important;
+  background-color: #bae6fd !important;
 }
 
 .admin-theme-lightblue .bg-slate-800,
 .admin-theme-lightblue .bg-slate-800\/60,
 .admin-theme-lightblue .bg-slate-800\/80 {
-  background-color: #bae6fd !important;
+  background-color: #7dd3fc !important;
 }
 
 .admin-theme-lightblue .border-slate-800,
@@ -372,7 +369,7 @@
 .admin-theme-lightblue .border-slate-800\/80,
 .admin-theme-lightblue .border-slate-700,
 .admin-theme-lightblue .border-slate-700\/80 {
-  border-color: #bae6fd !important;
+  border-color: #38bdf8 !important;
 }
 
 .admin-theme-lightblue .text-white {
@@ -404,7 +401,7 @@
 .admin-theme-lightblue .bg-gradient-to-r.from-slate-900 {
   background: linear-gradient(135deg, #082f49 0%, #0369a1 50%, #0c4a6e 100%) !important;
   border-color: #0284c7 !important;
-  box-shadow: 0 14px 35px -5px rgba(2, 132, 199, 0.4) !important;
+  box-shadow: 0 14px 35px -5px rgba(2, 132, 199, 0.45) !important;
 }
 
 .admin-theme-lightblue .bg-gradient-to-r.from-slate-900 h1,
@@ -420,16 +417,16 @@
 .admin-theme-lightblue .bg-gradient-to-r.from-slate-900 .bg-teal-500\/20,
 .admin-theme-lightblue .bg-gradient-to-r.from-slate-900 .bg-blue-500\/20,
 .admin-theme-lightblue .bg-gradient-to-r.from-slate-900 .bg-indigo-500\/20 {
-  background-color: rgba(2, 132, 199, 0.25) !important;
-  border-color: rgba(56, 189, 248, 0.5) !important;
+  background-color: rgba(2, 132, 199, 0.3) !important;
+  border-color: rgba(56, 189, 248, 0.6) !important;
   color: #ffffff !important;
 }
 
 .admin-theme-lightblue nav button.bg-gradient-to-r,
 .admin-theme-lightblue button.bg-gradient-to-r.from-blue-600 {
-  background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%) !important;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 15px 0 rgba(2, 132, 199, 0.35) !important;
+  box-shadow: 0 4px 15px 0 rgba(2, 132, 199, 0.4) !important;
 }
 
 .admin-theme-lightblue nav button.bg-gradient-to-r *,
@@ -441,7 +438,7 @@
 .admin-theme-lightblue textarea,
 .admin-theme-lightblue select {
   background-color: #ffffff !important;
-  border-color: #7dd3fc !important;
+  border-color: #38bdf8 !important;
   color: #0c4a6e !important;
 }
 
@@ -449,324 +446,28 @@
 .admin-theme-lightblue textarea:focus,
 .admin-theme-lightblue select:focus {
   border-color: #0284c7 !important;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2) !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25) !important;
 }
 
 .admin-theme-lightblue input::placeholder,
 .admin-theme-lightblue textarea::placeholder {
-  color: #38bdf8 !important;
-  opacity: 0.7;
+  color: #0284c7 !important;
+  opacity: 0.8;
 }
 
 .admin-theme-lightblue th {
-  background-color: #f0f9ff !important;
-  color: #0369a1 !important;
+  background-color: #bae6fd !important;
+  color: #082f49 !important;
 }
 
 .admin-theme-lightblue tr:hover {
-  background-color: #e0f2fe !important;
+  background-color: #bae6fd !important;
 }
 
 .admin-theme-lightblue .hover\:bg-slate-800\/60:hover,
 .admin-theme-lightblue .hover\:bg-slate-800:hover {
-  background-color: #e0f2fe !important;
-  color: #0369a1 !important;
-}
-
-
-/* =========================================================
-   4. TEMA VERDE MENTA PASTEL & ESMERALDA (.admin-theme-green)
-   ========================================================= */
-.admin-theme-green {
-  background-color: #f0fdf4 !important;
-  color: #14532d !important;
-}
-
-.admin-theme-green aside {
-  background-color: #ffffff !important;
-  border-right-color: #bbf7d0 !important;
-  box-shadow: 2px 0 16px -4px rgba(16, 185, 129, 0.12) !important;
-}
-
-.admin-theme-green .md\:hidden.bg-slate-900 {
-  background-color: #ffffff !important;
-  border-bottom-color: #bbf7d0 !important;
-}
-
-.admin-theme-green .bg-slate-900,
-.admin-theme-green .bg-slate-900\/90,
-.admin-theme-green .bg-slate-900\/80 {
-  background-color: #ffffff !important;
-  box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.1) !important;
-  border-color: #bbf7d0 !important;
-}
-
-.admin-theme-green .bg-slate-950,
-.admin-theme-green .bg-slate-950\/60,
-.admin-theme-green .bg-slate-950\/80,
-.admin-theme-green .bg-slate-950\/40,
-.admin-theme-green .bg-slate-850 {
-  background-color: #dcfce7 !important;
-}
-
-.admin-theme-green .bg-slate-800,
-.admin-theme-green .bg-slate-800\/60,
-.admin-theme-green .bg-slate-800\/80 {
-  background-color: #bbf7d0 !important;
-}
-
-.admin-theme-green .border-slate-800,
-.admin-theme-green .border-slate-800\/60,
-.admin-theme-green .border-slate-800\/80,
-.admin-theme-green .border-slate-700,
-.admin-theme-green .border-slate-700\/80 {
-  border-color: #bbf7d0 !important;
-}
-
-.admin-theme-green .text-white {
-  color: #15803d !important;
-}
-
-.admin-theme-green .text-slate-100,
-.admin-theme-green .text-slate-200,
-.admin-theme-green .text-slate-300 {
-  color: #14532d !important;
-}
-
-.admin-theme-green .text-slate-400 {
-  color: #16a34a !important;
-}
-
-.admin-theme-green .text-slate-500 {
-  color: #15803d !important;
-}
-
-.admin-theme-green .text-teal-400,
-.admin-theme-green .text-teal-300,
-.admin-theme-green .text-blue-400,
-.admin-theme-green .text-blue-300 {
-  color: #059669 !important;
-}
-
-/* Dashboard Banner Verde Menta con tonos fuertes y degradados */
-.admin-theme-green .bg-gradient-to-r.from-slate-900 {
-  background: linear-gradient(135deg, #052e16 0%, #065f46 50%, #14532d 100%) !important;
-  border-color: #059669 !important;
-  box-shadow: 0 14px 35px -5px rgba(5, 150, 105, 0.4) !important;
-}
-
-.admin-theme-green .bg-gradient-to-r.from-slate-900 h1,
-.admin-theme-green .bg-gradient-to-r.from-slate-900 .text-white {
-  color: #ffffff !important;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
-}
-
-.admin-theme-green .bg-gradient-to-r.from-slate-900 p {
-  color: #dcfce7 !important;
-}
-
-.admin-theme-green .bg-gradient-to-r.from-slate-900 .bg-teal-500\/20,
-.admin-theme-green .bg-gradient-to-r.from-slate-900 .bg-blue-500\/20,
-.admin-theme-green .bg-gradient-to-r.from-slate-900 .bg-indigo-500\/20 {
-  background-color: rgba(5, 150, 105, 0.25) !important;
-  border-color: rgba(52, 211, 153, 0.5) !important;
-  color: #ffffff !important;
-}
-
-.admin-theme-green nav button.bg-gradient-to-r,
-.admin-theme-green button.bg-gradient-to-r.from-blue-600 {
-  background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
-  color: #ffffff !important;
-  box-shadow: 0 4px 15px 0 rgba(16, 185, 129, 0.35) !important;
-}
-
-.admin-theme-green nav button.bg-gradient-to-r *,
-.admin-theme-green button.bg-gradient-to-r.from-blue-600 * {
-  color: #ffffff !important;
-}
-
-.admin-theme-green input,
-.admin-theme-green textarea,
-.admin-theme-green select {
-  background-color: #ffffff !important;
-  border-color: #86efac !important;
-  color: #14532d !important;
-}
-
-.admin-theme-green input:focus,
-.admin-theme-green textarea:focus,
-.admin-theme-green select:focus {
-  border-color: #16a34a !important;
-  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2) !important;
-}
-
-.admin-theme-green input::placeholder,
-.admin-theme-green textarea::placeholder {
-  color: #4ade80 !important;
-  opacity: 0.7;
-}
-
-.admin-theme-green th {
-  background-color: #f0fdf4 !important;
-  color: #15803d !important;
-}
-
-.admin-theme-green tr:hover {
-  background-color: #dcfce7 !important;
-}
-
-.admin-theme-green .hover\:bg-slate-800\/60:hover,
-.admin-theme-green .hover\:bg-slate-800:hover {
-  background-color: #dcfce7 !important;
-  color: #15803d !important;
-}
-
-
-/* =========================================================
-   5. TEMA ROJO CARMESÍ PASTEL & RUBÍ (.admin-theme-red)
-   ========================================================= */
-.admin-theme-red {
-  background-color: #fff1f2 !important;
-  color: #7f1d1d !important;
-}
-
-.admin-theme-red aside {
-  background-color: #ffffff !important;
-  border-right-color: #fecdd3 !important;
-  box-shadow: 2px 0 16px -4px rgba(225, 29, 72, 0.12) !important;
-}
-
-.admin-theme-red .md\:hidden.bg-slate-900 {
-  background-color: #ffffff !important;
-  border-bottom-color: #fecdd3 !important;
-}
-
-.admin-theme-red .bg-slate-900,
-.admin-theme-red .bg-slate-900\/90,
-.admin-theme-red .bg-slate-900\/80 {
-  background-color: #ffffff !important;
-  box-shadow: 0 4px 20px -2px rgba(225, 29, 72, 0.1) !important;
-  border-color: #fecdd3 !important;
-}
-
-.admin-theme-red .bg-slate-950,
-.admin-theme-red .bg-slate-950\/60,
-.admin-theme-red .bg-slate-950\/80,
-.admin-theme-red .bg-slate-950\/40,
-.admin-theme-red .bg-slate-850 {
-  background-color: #ffe4e6 !important;
-}
-
-.admin-theme-red .bg-slate-800,
-.admin-theme-red .bg-slate-800\/60,
-.admin-theme-red .bg-slate-800\/80 {
-  background-color: #fecdd3 !important;
-}
-
-.admin-theme-red .border-slate-800,
-.admin-theme-red .border-slate-800\/60,
-.admin-theme-red .border-slate-800\/80,
-.admin-theme-red .border-slate-700,
-.admin-theme-red .border-slate-700\/80 {
-  border-color: #fecdd3 !important;
-}
-
-.admin-theme-red .text-white {
-  color: #991b1b !important;
-}
-
-.admin-theme-red .text-slate-100,
-.admin-theme-red .text-slate-200,
-.admin-theme-red .text-slate-300 {
-  color: #7f1d1d !important;
-}
-
-.admin-theme-red .text-slate-400 {
-  color: #b91c1c !important;
-}
-
-.admin-theme-red .text-slate-500 {
-  color: #991b1b !important;
-}
-
-.admin-theme-red .text-teal-400,
-.admin-theme-red .text-teal-300,
-.admin-theme-red .text-blue-400,
-.admin-theme-red .text-blue-300 {
-  color: #dc2626 !important;
-}
-
-/* Dashboard Banner Rojo Carmesí con tonos fuertes y degradados */
-.admin-theme-red .bg-gradient-to-r.from-slate-900 {
-  background: linear-gradient(135deg, #450a0a 0%, #881337 50%, #7f1d1d 100%) !important;
-  border-color: #e11d48 !important;
-  box-shadow: 0 14px 35px -5px rgba(225, 29, 72, 0.4) !important;
-}
-
-.admin-theme-red .bg-gradient-to-r.from-slate-900 h1,
-.admin-theme-red .bg-gradient-to-r.from-slate-900 .text-white {
-  color: #ffffff !important;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
-}
-
-.admin-theme-red .bg-gradient-to-r.from-slate-900 p {
-  color: #ffe4e6 !important;
-}
-
-.admin-theme-red .bg-gradient-to-r.from-slate-900 .bg-teal-500\/20,
-.admin-theme-red .bg-gradient-to-r.from-slate-900 .bg-blue-500\/20,
-.admin-theme-red .bg-gradient-to-r.from-slate-900 .bg-indigo-500\/20 {
-  background-color: rgba(225, 29, 72, 0.25) !important;
-  border-color: rgba(251, 113, 133, 0.5) !important;
-  color: #ffffff !important;
-}
-
-.admin-theme-red nav button.bg-gradient-to-r,
-.admin-theme-red button.bg-gradient-to-r.from-blue-600 {
-  background: linear-gradient(135deg, #dc2626 0%, #e11d48 100%) !important;
-  color: #ffffff !important;
-  box-shadow: 0 4px 15px 0 rgba(220, 38, 38, 0.35) !important;
-}
-
-.admin-theme-red nav button.bg-gradient-to-r *,
-.admin-theme-red button.bg-gradient-to-r.from-blue-600 * {
-  color: #ffffff !important;
-}
-
-.admin-theme-red input,
-.admin-theme-red textarea,
-.admin-theme-red select {
-  background-color: #ffffff !important;
-  border-color: #fca5a5 !important;
-  color: #7f1d1d !important;
-}
-
-.admin-theme-red input:focus,
-.admin-theme-red textarea:focus,
-.admin-theme-red select:focus {
-  border-color: #dc2626 !important;
-  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2) !important;
-}
-
-.admin-theme-red input::placeholder,
-.admin-theme-red textarea::placeholder {
-  color: #fb7185 !important;
-  opacity: 0.7;
-}
-
-.admin-theme-red th {
-  background-color: #fef2f2 !important;
-  color: #991b1b !important;
-}
-
-.admin-theme-red tr:hover {
-  background-color: #fee2e2 !important;
-}
-
-.admin-theme-red .hover\:bg-slate-800\/60:hover,
-.admin-theme-red .hover\:bg-slate-800:hover {
-  background-color: #fee2e2 !important;
-  color: #991b1b !important;
+  background-color: #bae6fd !important;
+  color: #082f49 !important;
 }
 
 
@@ -777,51 +478,33 @@
 .admin-theme-light .bg-gradient-to-r,
 .admin-theme-pink .bg-gradient-to-r,
 .admin-theme-lightblue .bg-gradient-to-r,
-.admin-theme-green .bg-gradient-to-r,
-.admin-theme-red .bg-gradient-to-r,
 .admin-theme-light button.bg-blue-600,
 .admin-theme-pink button.bg-blue-600,
 .admin-theme-lightblue button.bg-blue-600,
-.admin-theme-green button.bg-blue-600,
-.admin-theme-red button.bg-blue-600,
 .admin-theme-light button.bg-teal-600,
 .admin-theme-pink button.bg-teal-600,
 .admin-theme-lightblue button.bg-teal-600,
-.admin-theme-green button.bg-teal-600,
-.admin-theme-red button.bg-teal-600,
 .admin-theme-light button.bg-emerald-600,
 .admin-theme-pink button.bg-emerald-600,
 .admin-theme-lightblue button.bg-emerald-600,
-.admin-theme-green button.bg-emerald-600,
-.admin-theme-red button.bg-emerald-600,
 .admin-theme-light button.bg-rose-600,
 .admin-theme-pink button.bg-rose-600,
 .admin-theme-lightblue button.bg-rose-600,
-.admin-theme-green button.bg-rose-600,
-.admin-theme-red button.bg-rose-600,
 .admin-theme-light button.bg-red-600,
 .admin-theme-pink button.bg-red-600,
-.admin-theme-lightblue button.bg-red-600,
-.admin-theme-green button.bg-red-600,
-.admin-theme-red button.bg-red-600 {
+.admin-theme-lightblue button.bg-red-600 {
   color: #ffffff !important;
 }
 
 .admin-theme-light .bg-gradient-to-r *,
 .admin-theme-pink .bg-gradient-to-r *,
 .admin-theme-lightblue .bg-gradient-to-r *,
-.admin-theme-green .bg-gradient-to-r *,
-.admin-theme-red .bg-gradient-to-r *,
 .admin-theme-light button.bg-blue-600 *,
 .admin-theme-pink button.bg-blue-600 *,
 .admin-theme-lightblue button.bg-blue-600 *,
-.admin-theme-green button.bg-blue-600 *,
-.admin-theme-red button.bg-blue-600 *,
 .admin-theme-light button.bg-teal-600 *,
 .admin-theme-pink button.bg-teal-600 *,
-.admin-theme-lightblue button.bg-teal-600 *,
-.admin-theme-green button.bg-teal-600 *,
-.admin-theme-red button.bg-teal-600 * {
+.admin-theme-lightblue button.bg-teal-600 * {
   color: #ffffff !important;
 }
 
@@ -831,10 +514,6 @@
 .admin-theme-pink .fixed.inset-0.bg-black\/80,
 .admin-theme-pink .fixed.inset-0.bg-black\/70,
 .admin-theme-lightblue .fixed.inset-0.bg-black\/80,
-.admin-theme-lightblue .fixed.inset-0.bg-black\/70,
-.admin-theme-green .fixed.inset-0.bg-black\/80,
-.admin-theme-green .fixed.inset-0.bg-black\/70,
-.admin-theme-red .fixed.inset-0.bg-black\/80,
-.admin-theme-red .fixed.inset-0.bg-black\/70 {
+.admin-theme-lightblue .fixed.inset-0.bg-black\/70 {
   background-color: rgba(15, 23, 42, 0.6) !important;
 }

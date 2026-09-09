@@ -51,8 +51,6 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
     { id: 'light', label: 'Claro', icon: <Sun size={14} />, color: 'bg-slate-100 border-slate-400 text-slate-700' },
     { id: 'pink', label: 'Rosa Chicle', icon: '🌸', color: 'bg-pink-100 border-pink-400 text-pink-600' },
     { id: 'lightblue', label: 'Azul Cielo', icon: '💧', color: 'bg-sky-100 border-sky-400 text-sky-600' },
-    { id: 'green', label: 'Verde Menta', icon: '🌿', color: 'bg-emerald-100 border-emerald-400 text-emerald-600' },
-    { id: 'red', label: 'Rojo Carmesí', icon: '🔴', color: 'bg-rose-100 border-rose-400 text-rose-600' },
   ];
 
   return (
@@ -81,7 +79,7 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
           </div>
         </div>
 
-        {/* Selector Rápido de 6 Temas Visuales */}
+        {/* Selector Rápido de 4 Temas Visuales */}
         <div className="mb-5 p-3 rounded-2xl bg-slate-950/70 border border-slate-800">
           <div className="flex items-center justify-between mb-2 px-1">
             <span className="text-[11px] font-bold text-slate-300 flex items-center gap-1.5">
@@ -91,7 +89,7 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
               {THEMES.find(t => t.id === adminTheme)?.label || 'Personalizado'}
             </span>
           </div>
-          <div className="grid grid-cols-6 gap-1.5">
+          <div className="grid grid-cols-4 gap-2">
             {THEMES.map((th) => {
               const isSelected = adminTheme === th.id;
               return (

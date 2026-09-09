@@ -356,66 +356,8 @@ export const AdminProfileModal = ({ isOpen, onClose }) => {
                       </span>
                     )}
                   </div>
-                  <div className="text-[11px] text-slate-500">
-                    Ambiente clínico, fresco y relajante de alta pureza
-                  </div>
-                </div>
-
-                {/* 5. Tema Verde Esmeralda (Green) */}
-                <div
-                  onClick={() => {
-                    setAdminTheme('green');
-                    setMessage('Tema Verde Esmeralda activado');
-                    setTimeout(() => setMessage(null), 2500);
-                  }}
-                  className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between min-h-[120px] ${
-                    adminTheme === 'green'
-                      ? 'bg-emerald-50 border-emerald-500 shadow-md ring-1 ring-emerald-500'
-                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-80 hover:opacity-100'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="p-2 rounded-xl bg-emerald-100 text-emerald-600 border border-emerald-200 flex items-center gap-2">
-                      <span className="text-sm">🌿</span>
-                      <span className="text-xs font-bold text-emerald-900">Verde Esmeralda (Green)</span>
-                    </div>
-                    {adminTheme === 'green' && (
-                      <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-700 text-[10px] font-bold uppercase border border-emerald-500/30">
-                        Activo
-                      </span>
-                    )}
-                  </div>
-                  <div className="text-[11px] text-slate-500">
-                    Sensación bio-tecnológica, natural y de investigación
-                  </div>
-                </div>
-
-                {/* 6. Tema Rojo Carmesí (Red) */}
-                <div
-                  onClick={() => {
-                    setAdminTheme('red');
-                    setMessage('Tema Rojo Carmesí activado');
-                    setTimeout(() => setMessage(null), 2500);
-                  }}
-                  className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between min-h-[120px] ${
-                    adminTheme === 'red'
-                      ? 'bg-red-50 border-red-500 shadow-md ring-1 ring-red-500'
-                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-80 hover:opacity-100'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="p-2 rounded-xl bg-red-100 text-red-600 border border-red-200 flex items-center gap-2">
-                      <span className="text-sm">🔴</span>
-                      <span className="text-xs font-bold text-red-900">Rojo Carmesí (Red)</span>
-                    </div>
-                    {adminTheme === 'red' && (
-                      <span className="px-2 py-0.5 rounded-full bg-red-500/20 text-red-700 text-[10px] font-bold uppercase border border-red-500/30">
-                        Activo
-                      </span>
-                    )}
-                  </div>
-                  <div className="text-[11px] text-slate-500">
-                    Estilo dinámico y enfocado con tonos rubí y corales
+                  <div className="text-[11px] text-sky-900 font-medium">
+                    Ambiente clínico, fresco y relajante con tonos celestes intensos
                   </div>
                 </div>
               </div>
