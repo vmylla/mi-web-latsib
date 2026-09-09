@@ -18,6 +18,47 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
   // Inicializar Google Identity Services (GIS)
   useEffect(() => {
     const initGIS = () => {
+      // 1. Inicializar Google Identity Services ID Token (One-Tap / ID Token)
+      if (window.google?.accounts?.id) {
+        try {
+          window.google.accounts.id.initialize({
+            client_id: GOOGLE_CLIENT_ID,
+            auto_select: false,
+            callback: async (response) => {
+              setLoading(true);
+              try {
+                const base64Url = response.credential.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                const googleProfile = JSON.parse(jsonPayload);
+                
+                const result = await loginWithGoogle({
+                  email: googleProfile.email,
+                  name: googleProfile.name,
+                  picture: googleProfile.picture,
+                  hd: googleProfile.hd
+                });
+
+                setLoading(false);
+                if (result.success) {
+                  if (onLoginSuccess) onLoginSuccess(result.user);
+                } else {
+                  setError(result.message || 'La cuenta verificada no tiene permisos de acceso al panel.');
+                }
+              } catch (e) {
+                setLoading(false);
+                setError('Error al decodificar credencial de Google.');
+              }
+            }
+          });
+        } catch (err) {
+          console.warn('GIS ID Init:', err);
+        }
+      }
+
+      // 2. Inicializar Google OAuth2 Token Client (Popup flow)
       if (window.google?.accounts?.oauth2) {
         try {
           const client = window.google.accounts.oauth2.initTokenClient({
@@ -31,7 +72,6 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
               }
 
               try {
-                // Obtener perfil verificado directamente desde la API oficial de Google
                 const userInfoRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
                   headers: { Authorization: `Bearer ${tokenResponse.access_token}` }
                 });
@@ -42,12 +82,11 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
 
                 const googleProfile = await userInfoRes.json();
                 
-                // Validar que la cuenta verificada esté en el Equipo
                 const result = await loginWithGoogle({
                   email: googleProfile.email,
                   name: googleProfile.name,
                   picture: googleProfile.picture,
-                  hd: googleProfile.hd // Dominio institucional (ej: utem.cl)
+                  hd: googleProfile.hd
                 });
 
                 setLoading(false);
@@ -72,12 +111,11 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
       }
     };
 
-    // Intentar inicializar inmediatamente o esperar a que cargue el script
-    if (window.google?.accounts?.oauth2) {
+    if (window.google?.accounts?.oauth2 || window.google?.accounts?.id) {
       initGIS();
     } else {
       const interval = setInterval(() => {
-        if (window.google?.accounts?.oauth2) {
+        if (window.google?.accounts?.oauth2 || window.google?.accounts?.id) {
           initGIS();
           clearInterval(interval);
         }
