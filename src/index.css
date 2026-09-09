@@ -16,6 +16,9 @@
 /* =========================================================
    1. TEMA CLARO CLÁSICO (.admin-theme-light)
    ========================================================= */
+/* =========================================================
+   1. TEMA CLARO CLÁSICO (.admin-theme-light)
+   ========================================================= */
 .admin-theme-light {
   background-color: #f8fafc !important;
   color: #0f172a !important;
@@ -24,6 +27,7 @@
 .admin-theme-light aside {
   background-color: #ffffff !important;
   border-right-color: #e2e8f0 !important;
+  box-shadow: 2px 0 10px -3px rgba(0, 0, 0, 0.04) !important;
 }
 
 .admin-theme-light .md\:hidden.bg-slate-900 {
@@ -31,15 +35,14 @@
   border-bottom-color: #e2e8f0 !important;
 }
 
-/* Superficies principales y tarjetas */
 .admin-theme-light .bg-slate-900,
 .admin-theme-light .bg-slate-900\/90,
 .admin-theme-light .bg-slate-900\/80 {
   background-color: #ffffff !important;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  border-color: #e2e8f0 !important;
 }
 
-/* Superficies secundarias y fondos sutiles */
 .admin-theme-light .bg-slate-950,
 .admin-theme-light .bg-slate-950\/60,
 .admin-theme-light .bg-slate-950\/80,
@@ -54,7 +57,6 @@
   background-color: #e2e8f0 !important;
 }
 
-/* Bordes y divisores */
 .admin-theme-light .border-slate-800,
 .admin-theme-light .border-slate-800\/60,
 .admin-theme-light .border-slate-800\/80,
@@ -63,7 +65,6 @@
   border-color: #e2e8f0 !important;
 }
 
-/* Textos con alto contraste */
 .admin-theme-light .text-white {
   color: #0f172a !important;
 }
@@ -89,25 +90,34 @@
 
 .admin-theme-light .text-blue-400,
 .admin-theme-light .text-blue-300 {
-  color: #0369a1 !important;
+  color: #0284c7 !important;
 }
 
-.admin-theme-light .text-cyan-400,
-.admin-theme-light .text-cyan-300 {
-  color: #0891b2 !important;
+/* Dashboard Banner Claro con tonos fuertes y degradados */
+.admin-theme-light .bg-gradient-to-r.from-slate-900 {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%) !important;
+  border-color: #334155 !important;
+  box-shadow: 0 12px 30px -4px rgba(15, 23, 42, 0.3) !important;
 }
 
-.admin-theme-light .text-amber-400,
-.admin-theme-light .text-amber-300 {
-  color: #b45309 !important;
+.admin-theme-light .bg-gradient-to-r.from-slate-900 h1,
+.admin-theme-light .bg-gradient-to-r.from-slate-900 .text-white {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
 }
 
-.admin-theme-light .text-rose-400,
-.admin-theme-light .text-rose-300 {
-  color: #be123c !important;
+.admin-theme-light .bg-gradient-to-r.from-slate-900 p {
+  color: #cbd5e1 !important;
 }
 
-/* Inputs y controles */
+.admin-theme-light .bg-gradient-to-r.from-slate-900 .bg-teal-500\/20,
+.admin-theme-light .bg-gradient-to-r.from-slate-900 .bg-blue-500\/20,
+.admin-theme-light .bg-gradient-to-r.from-slate-900 .bg-indigo-500\/20 {
+  background-color: rgba(14, 165, 233, 0.25) !important;
+  border-color: rgba(56, 189, 248, 0.5) !important;
+  color: #ffffff !important;
+}
+
 .admin-theme-light input,
 .admin-theme-light textarea,
 .admin-theme-light select {
@@ -119,9 +129,9 @@
 .admin-theme-light input:focus,
 .admin-theme-light textarea:focus,
 .admin-theme-light select:focus {
-  border-color: #0d9488 !important;
+  border-color: #0284c7 !important;
   background-color: #ffffff !important;
-  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.2) !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
 }
 
 .admin-theme-light input::placeholder,
@@ -146,28 +156,30 @@
 
 
 /* =========================================================
-   2. TEMA ROSA BIOMÉDICO (.admin-theme-pink)
+   2. TEMA ROSA CHICLE PASTEL & VIBRANTE (.admin-theme-pink)
    ========================================================= */
 .admin-theme-pink {
-  background-color: #fff1f2 !important;
-  color: #4c0519 !important;
+  background-color: #fff5f9 !important;
+  color: #500724 !important;
 }
 
 .admin-theme-pink aside {
   background-color: #ffffff !important;
-  border-right-color: #fecdd3 !important;
+  border-right-color: #fbcfe8 !important;
+  box-shadow: 2px 0 16px -4px rgba(244, 114, 182, 0.15) !important;
 }
 
 .admin-theme-pink .md\:hidden.bg-slate-900 {
   background-color: #ffffff !important;
-  border-bottom-color: #fecdd3 !important;
+  border-bottom-color: #fbcfe8 !important;
 }
 
 .admin-theme-pink .bg-slate-900,
 .admin-theme-pink .bg-slate-900\/90,
 .admin-theme-pink .bg-slate-900\/80 {
   background-color: #ffffff !important;
-  box-shadow: 0 1px 3px 0 rgb(244 63 94 / 0.08);
+  box-shadow: 0 4px 20px -2px rgba(244, 114, 182, 0.12) !important;
+  border-color: #fbcfe8 !important;
 }
 
 .admin-theme-pink .bg-slate-950,
@@ -175,13 +187,14 @@
 .admin-theme-pink .bg-slate-950\/80,
 .admin-theme-pink .bg-slate-950\/40,
 .admin-theme-pink .bg-slate-850 {
-  background-color: #ffe4e6 !important;
+  background-color: #fff0f7 !important;
 }
 
 .admin-theme-pink .bg-slate-800,
 .admin-theme-pink .bg-slate-800\/60,
 .admin-theme-pink .bg-slate-800\/80 {
-  background-color: #fecdd3 !important;
+  background-color: #fce7f3 !important;
+  border-color: #fbcfe8 !important;
 }
 
 .admin-theme-pink .border-slate-800,
@@ -189,73 +202,132 @@
 .admin-theme-pink .border-slate-800\/80,
 .admin-theme-pink .border-slate-700,
 .admin-theme-pink .border-slate-700\/80 {
-  border-color: #fecdd3 !important;
+  border-color: #fbcfe8 !important;
 }
 
 .admin-theme-pink .text-white {
-  color: #881337 !important;
+  color: #831843 !important;
 }
 
 .admin-theme-pink .text-slate-100,
 .admin-theme-pink .text-slate-200,
 .admin-theme-pink .text-slate-300 {
-  color: #4c0519 !important;
+  color: #701a43 !important;
 }
 
 .admin-theme-pink .text-slate-400 {
-  color: #9f1239 !important;
+  color: #9d174d !important;
 }
 
 .admin-theme-pink .text-slate-500 {
-  color: #be123c !important;
+  color: #be185d !important;
 }
 
 .admin-theme-pink .text-teal-400,
 .admin-theme-pink .text-teal-300,
 .admin-theme-pink .text-blue-400,
-.admin-theme-pink .text-blue-300 {
-  color: #e11d48 !important;
+.admin-theme-pink .text-blue-300,
+.admin-theme-pink .text-pink-400,
+.admin-theme-pink .text-pink-300 {
+  color: #db2777 !important;
+}
+
+/* Dashboard Banner Rosa Chicle con tonos fuertes y degradados */
+.admin-theme-pink .bg-gradient-to-r.from-slate-900 {
+  background: linear-gradient(135deg, #4a0425 0%, #831843 50%, #500724 100%) !important;
+  border-color: #db2777 !important;
+  box-shadow: 0 14px 35px -5px rgba(219, 39, 119, 0.4) !important;
+}
+
+.admin-theme-pink .bg-gradient-to-r.from-slate-900 h1,
+.admin-theme-pink .bg-gradient-to-r.from-slate-900 .text-white {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+.admin-theme-pink .bg-gradient-to-r.from-slate-900 p {
+  color: #fce7f3 !important;
+}
+
+.admin-theme-pink .bg-gradient-to-r.from-slate-900 .bg-teal-500\/20,
+.admin-theme-pink .bg-gradient-to-r.from-slate-900 .bg-blue-500\/20,
+.admin-theme-pink .bg-gradient-to-r.from-slate-900 .bg-indigo-500\/20 {
+  background-color: rgba(236, 72, 153, 0.25) !important;
+  border-color: rgba(244, 114, 182, 0.5) !important;
+  color: #ffffff !important;
+}
+
+/* Botones con gradientes de Rosa Chicle */
+.admin-theme-pink nav button.bg-gradient-to-r,
+.admin-theme-pink button.bg-gradient-to-r.from-blue-600 {
+  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px 0 rgba(236, 72, 153, 0.35) !important;
+}
+
+.admin-theme-pink nav button.bg-gradient-to-r *,
+.admin-theme-pink button.bg-gradient-to-r.from-blue-600 * {
+  color: #ffffff !important;
+}
+
+/* Badges y tarjetas de métricas en Rosa Chicle */
+.admin-theme-pink .bg-blue-500\/10,
+.admin-theme-pink .bg-teal-500\/10,
+.admin-theme-pink .bg-indigo-500\/10,
+.admin-theme-pink .bg-pink-500\/10 {
+  background-color: #fce7f3 !important;
+  border-color: #fbcfe8 !important;
+  color: #db2777 !important;
+}
+
+.admin-theme-pink .bg-teal-500\/20,
+.admin-theme-pink .bg-blue-500\/20,
+.admin-theme-pink .bg-indigo-500\/20 {
+  background-color: #fce7f3 !important;
+  border-color: #f472b6 !important;
+  color: #9d174d !important;
 }
 
 .admin-theme-pink input,
 .admin-theme-pink textarea,
 .admin-theme-pink select {
   background-color: #ffffff !important;
-  border-color: #fda4af !important;
-  color: #4c0519 !important;
+  border-color: #fbcfe8 !important;
+  color: #500724 !important;
 }
 
 .admin-theme-pink input:focus,
 .admin-theme-pink textarea:focus,
 .admin-theme-pink select:focus {
-  border-color: #e11d48 !important;
-  box-shadow: 0 0 0 2px rgba(225, 29, 72, 0.2) !important;
+  border-color: #ec4899 !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2) !important;
 }
 
 .admin-theme-pink input::placeholder,
 .admin-theme-pink textarea::placeholder {
-  color: #f43f5e !important;
-  opacity: 0.6;
+  color: #f472b6 !important;
+  opacity: 0.7;
 }
 
 .admin-theme-pink th {
-  background-color: #fff1f2 !important;
-  color: #881337 !important;
+  background-color: #fff0f7 !important;
+  color: #831843 !important;
 }
 
 .admin-theme-pink tr:hover {
-  background-color: #ffe4e6 !important;
+  background-color: #fff0f7 !important;
 }
 
 .admin-theme-pink .hover\:bg-slate-800\/60:hover,
 .admin-theme-pink .hover\:bg-slate-800:hover {
-  background-color: #ffe4e6 !important;
-  color: #881337 !important;
+  background-color: #fff0f7 !important;
+  color: #831843 !important;
 }
 
 
 /* =========================================================
-   3. TEMA AZUL CIELO (.admin-theme-lightblue)
+   3. TEMA AZUL CIELO PASTEL & CIAN (.admin-theme-lightblue)
    ========================================================= */
 .admin-theme-lightblue {
   background-color: #f0f9ff !important;
@@ -265,6 +337,7 @@
 .admin-theme-lightblue aside {
   background-color: #ffffff !important;
   border-right-color: #bae6fd !important;
+  box-shadow: 2px 0 16px -4px rgba(14, 165, 233, 0.12) !important;
 }
 
 .admin-theme-lightblue .md\:hidden.bg-slate-900 {
@@ -276,7 +349,8 @@
 .admin-theme-lightblue .bg-slate-900\/90,
 .admin-theme-lightblue .bg-slate-900\/80 {
   background-color: #ffffff !important;
-  box-shadow: 0 1px 3px 0 rgb(14 165 233 / 0.08);
+  box-shadow: 0 4px 20px -2px rgba(14, 165, 233, 0.1) !important;
+  border-color: #bae6fd !important;
 }
 
 .admin-theme-lightblue .bg-slate-950,
@@ -326,6 +400,43 @@
   color: #0284c7 !important;
 }
 
+/* Dashboard Banner Azul Cielo con tonos fuertes y degradados */
+.admin-theme-lightblue .bg-gradient-to-r.from-slate-900 {
+  background: linear-gradient(135deg, #082f49 0%, #0369a1 50%, #0c4a6e 100%) !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 14px 35px -5px rgba(2, 132, 199, 0.4) !important;
+}
+
+.admin-theme-lightblue .bg-gradient-to-r.from-slate-900 h1,
+.admin-theme-lightblue .bg-gradient-to-r.from-slate-900 .text-white {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+.admin-theme-lightblue .bg-gradient-to-r.from-slate-900 p {
+  color: #e0f2fe !important;
+}
+
+.admin-theme-lightblue .bg-gradient-to-r.from-slate-900 .bg-teal-500\/20,
+.admin-theme-lightblue .bg-gradient-to-r.from-slate-900 .bg-blue-500\/20,
+.admin-theme-lightblue .bg-gradient-to-r.from-slate-900 .bg-indigo-500\/20 {
+  background-color: rgba(2, 132, 199, 0.25) !important;
+  border-color: rgba(56, 189, 248, 0.5) !important;
+  color: #ffffff !important;
+}
+
+.admin-theme-lightblue nav button.bg-gradient-to-r,
+.admin-theme-lightblue button.bg-gradient-to-r.from-blue-600 {
+  background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px 0 rgba(2, 132, 199, 0.35) !important;
+}
+
+.admin-theme-lightblue nav button.bg-gradient-to-r *,
+.admin-theme-lightblue button.bg-gradient-to-r.from-blue-600 * {
+  color: #ffffff !important;
+}
+
 .admin-theme-lightblue input,
 .admin-theme-lightblue textarea,
 .admin-theme-lightblue select {
@@ -338,13 +449,13 @@
 .admin-theme-lightblue textarea:focus,
 .admin-theme-lightblue select:focus {
   border-color: #0284c7 !important;
-  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2) !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2) !important;
 }
 
 .admin-theme-lightblue input::placeholder,
 .admin-theme-lightblue textarea::placeholder {
-  color: #0284c7 !important;
-  opacity: 0.6;
+  color: #38bdf8 !important;
+  opacity: 0.7;
 }
 
 .admin-theme-lightblue th {
@@ -364,7 +475,7 @@
 
 
 /* =========================================================
-   4. TEMA VERDE ESMERALDA (.admin-theme-green)
+   4. TEMA VERDE MENTA PASTEL & ESMERALDA (.admin-theme-green)
    ========================================================= */
 .admin-theme-green {
   background-color: #f0fdf4 !important;
@@ -374,6 +485,7 @@
 .admin-theme-green aside {
   background-color: #ffffff !important;
   border-right-color: #bbf7d0 !important;
+  box-shadow: 2px 0 16px -4px rgba(16, 185, 129, 0.12) !important;
 }
 
 .admin-theme-green .md\:hidden.bg-slate-900 {
@@ -385,7 +497,8 @@
 .admin-theme-green .bg-slate-900\/90,
 .admin-theme-green .bg-slate-900\/80 {
   background-color: #ffffff !important;
-  box-shadow: 0 1px 3px 0 rgb(22 163 74 / 0.08);
+  box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.1) !important;
+  border-color: #bbf7d0 !important;
 }
 
 .admin-theme-green .bg-slate-950,
@@ -435,6 +548,43 @@
   color: #059669 !important;
 }
 
+/* Dashboard Banner Verde Menta con tonos fuertes y degradados */
+.admin-theme-green .bg-gradient-to-r.from-slate-900 {
+  background: linear-gradient(135deg, #052e16 0%, #065f46 50%, #14532d 100%) !important;
+  border-color: #059669 !important;
+  box-shadow: 0 14px 35px -5px rgba(5, 150, 105, 0.4) !important;
+}
+
+.admin-theme-green .bg-gradient-to-r.from-slate-900 h1,
+.admin-theme-green .bg-gradient-to-r.from-slate-900 .text-white {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+.admin-theme-green .bg-gradient-to-r.from-slate-900 p {
+  color: #dcfce7 !important;
+}
+
+.admin-theme-green .bg-gradient-to-r.from-slate-900 .bg-teal-500\/20,
+.admin-theme-green .bg-gradient-to-r.from-slate-900 .bg-blue-500\/20,
+.admin-theme-green .bg-gradient-to-r.from-slate-900 .bg-indigo-500\/20 {
+  background-color: rgba(5, 150, 105, 0.25) !important;
+  border-color: rgba(52, 211, 153, 0.5) !important;
+  color: #ffffff !important;
+}
+
+.admin-theme-green nav button.bg-gradient-to-r,
+.admin-theme-green button.bg-gradient-to-r.from-blue-600 {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px 0 rgba(16, 185, 129, 0.35) !important;
+}
+
+.admin-theme-green nav button.bg-gradient-to-r *,
+.admin-theme-green button.bg-gradient-to-r.from-blue-600 * {
+  color: #ffffff !important;
+}
+
 .admin-theme-green input,
 .admin-theme-green textarea,
 .admin-theme-green select {
@@ -447,13 +597,13 @@
 .admin-theme-green textarea:focus,
 .admin-theme-green select:focus {
   border-color: #16a34a !important;
-  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2) !important;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2) !important;
 }
 
 .admin-theme-green input::placeholder,
 .admin-theme-green textarea::placeholder {
-  color: #16a34a !important;
-  opacity: 0.6;
+  color: #4ade80 !important;
+  opacity: 0.7;
 }
 
 .admin-theme-green th {
@@ -473,28 +623,30 @@
 
 
 /* =========================================================
-   5. TEMA ROJO CARMESÍ (.admin-theme-red)
+   5. TEMA ROJO CARMESÍ PASTEL & RUBÍ (.admin-theme-red)
    ========================================================= */
 .admin-theme-red {
-  background-color: #fef2f2 !important;
+  background-color: #fff1f2 !important;
   color: #7f1d1d !important;
 }
 
 .admin-theme-red aside {
   background-color: #ffffff !important;
-  border-right-color: #fecaca !important;
+  border-right-color: #fecdd3 !important;
+  box-shadow: 2px 0 16px -4px rgba(225, 29, 72, 0.12) !important;
 }
 
 .admin-theme-red .md\:hidden.bg-slate-900 {
   background-color: #ffffff !important;
-  border-bottom-color: #fecaca !important;
+  border-bottom-color: #fecdd3 !important;
 }
 
 .admin-theme-red .bg-slate-900,
 .admin-theme-red .bg-slate-900\/90,
 .admin-theme-red .bg-slate-900\/80 {
   background-color: #ffffff !important;
-  box-shadow: 0 1px 3px 0 rgb(220 38 38 / 0.08);
+  box-shadow: 0 4px 20px -2px rgba(225, 29, 72, 0.1) !important;
+  border-color: #fecdd3 !important;
 }
 
 .admin-theme-red .bg-slate-950,
@@ -502,13 +654,13 @@
 .admin-theme-red .bg-slate-950\/80,
 .admin-theme-red .bg-slate-950\/40,
 .admin-theme-red .bg-slate-850 {
-  background-color: #fee2e2 !important;
+  background-color: #ffe4e6 !important;
 }
 
 .admin-theme-red .bg-slate-800,
 .admin-theme-red .bg-slate-800\/60,
 .admin-theme-red .bg-slate-800\/80 {
-  background-color: #fecaca !important;
+  background-color: #fecdd3 !important;
 }
 
 .admin-theme-red .border-slate-800,
@@ -516,7 +668,7 @@
 .admin-theme-red .border-slate-800\/80,
 .admin-theme-red .border-slate-700,
 .admin-theme-red .border-slate-700\/80 {
-  border-color: #fecaca !important;
+  border-color: #fecdd3 !important;
 }
 
 .admin-theme-red .text-white {
@@ -544,6 +696,43 @@
   color: #dc2626 !important;
 }
 
+/* Dashboard Banner Rojo Carmesí con tonos fuertes y degradados */
+.admin-theme-red .bg-gradient-to-r.from-slate-900 {
+  background: linear-gradient(135deg, #450a0a 0%, #881337 50%, #7f1d1d 100%) !important;
+  border-color: #e11d48 !important;
+  box-shadow: 0 14px 35px -5px rgba(225, 29, 72, 0.4) !important;
+}
+
+.admin-theme-red .bg-gradient-to-r.from-slate-900 h1,
+.admin-theme-red .bg-gradient-to-r.from-slate-900 .text-white {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+.admin-theme-red .bg-gradient-to-r.from-slate-900 p {
+  color: #ffe4e6 !important;
+}
+
+.admin-theme-red .bg-gradient-to-r.from-slate-900 .bg-teal-500\/20,
+.admin-theme-red .bg-gradient-to-r.from-slate-900 .bg-blue-500\/20,
+.admin-theme-red .bg-gradient-to-r.from-slate-900 .bg-indigo-500\/20 {
+  background-color: rgba(225, 29, 72, 0.25) !important;
+  border-color: rgba(251, 113, 133, 0.5) !important;
+  color: #ffffff !important;
+}
+
+.admin-theme-red nav button.bg-gradient-to-r,
+.admin-theme-red button.bg-gradient-to-r.from-blue-600 {
+  background: linear-gradient(135deg, #dc2626 0%, #e11d48 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px 0 rgba(220, 38, 38, 0.35) !important;
+}
+
+.admin-theme-red nav button.bg-gradient-to-r *,
+.admin-theme-red button.bg-gradient-to-r.from-blue-600 * {
+  color: #ffffff !important;
+}
+
 .admin-theme-red input,
 .admin-theme-red textarea,
 .admin-theme-red select {
@@ -556,13 +745,13 @@
 .admin-theme-red textarea:focus,
 .admin-theme-red select:focus {
   border-color: #dc2626 !important;
-  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2) !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2) !important;
 }
 
 .admin-theme-red input::placeholder,
 .admin-theme-red textarea::placeholder {
-  color: #dc2626 !important;
-  opacity: 0.6;
+  color: #fb7185 !important;
+  opacity: 0.7;
 }
 
 .admin-theme-red th {

@@ -48,11 +48,11 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
 
   const THEMES = [
     { id: 'dark', label: 'Oscuro', icon: <Moon size={14} />, color: 'bg-slate-900 border-teal-400 text-teal-400' },
-    { id: 'light', label: 'Claro', icon: <Sun size={14} />, color: 'bg-slate-100 border-amber-500 text-amber-600' },
-    { id: 'pink', label: 'Rosa', icon: '🌸', color: 'bg-rose-100 border-rose-500 text-rose-600' },
-    { id: 'lightblue', label: 'Azul Cielo', icon: '💧', color: 'bg-sky-100 border-sky-500 text-sky-600' },
-    { id: 'green', label: 'Verde', icon: '🌿', color: 'bg-emerald-100 border-emerald-500 text-emerald-600' },
-    { id: 'red', label: 'Rojo', icon: '🔴', color: 'bg-red-100 border-red-500 text-red-600' },
+    { id: 'light', label: 'Claro', icon: <Sun size={14} />, color: 'bg-slate-100 border-slate-400 text-slate-700' },
+    { id: 'pink', label: 'Rosa Chicle', icon: '🌸', color: 'bg-pink-100 border-pink-400 text-pink-600' },
+    { id: 'lightblue', label: 'Azul Cielo', icon: '💧', color: 'bg-sky-100 border-sky-400 text-sky-600' },
+    { id: 'green', label: 'Verde Menta', icon: '🌿', color: 'bg-emerald-100 border-emerald-400 text-emerald-600' },
+    { id: 'red', label: 'Rojo Carmesí', icon: '🔴', color: 'bg-rose-100 border-rose-400 text-rose-600' },
   ];
 
   return (

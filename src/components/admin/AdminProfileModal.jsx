@@ -303,32 +303,32 @@ export const AdminProfileModal = ({ isOpen, onClose }) => {
                   </div>
                 </div>
 
-                {/* 3. Tema Rosa Biomédico (Pink) */}
+                {/* 3. Tema Rosa Chicle (Pink) */}
                 <div
                   onClick={() => {
                     setAdminTheme('pink');
-                    setMessage('Tema Rosa Biomédico activado');
+                    setMessage('Tema Rosa Chicle activado');
                     setTimeout(() => setMessage(null), 2500);
                   }}
                   className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between min-h-[120px] ${
                     adminTheme === 'pink'
-                      ? 'bg-rose-50 border-rose-500 shadow-md ring-1 ring-rose-500'
+                      ? 'bg-pink-50 border-pink-500 shadow-md ring-1 ring-pink-500'
                       : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-80 hover:opacity-100'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <div className="p-2 rounded-xl bg-rose-100 text-rose-600 border border-rose-200 flex items-center gap-2">
+                    <div className="p-2 rounded-xl bg-pink-100 text-pink-600 border border-pink-200 flex items-center gap-2">
                       <span className="text-sm">🌸</span>
-                      <span className="text-xs font-bold text-rose-900">Rosa Biomédico (Pink)</span>
+                      <span className="text-xs font-bold text-pink-900">Rosa Chicle (Pink)</span>
                     </div>
                     {adminTheme === 'pink' && (
-                      <span className="px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-700 text-[10px] font-bold uppercase border border-rose-500/30">
+                      <span className="px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-700 text-[10px] font-bold uppercase border border-pink-500/30">
                         Activo
                       </span>
                     )}
                   </div>
-                  <div className="text-[11px] text-slate-500">
-                    Tonalidad cálida y elegante inspirada en salud y biomedicina
+                  <div className="text-[11px] text-pink-800 font-medium">
+                    Tonos pasteles y vibrantes inspirados en rosa chicle dulce y moderno
                   </div>
                 </div>
 
