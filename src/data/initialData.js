@@ -895,6 +895,42 @@ export const DEFAULT_USERS = [
     avatar: '/equipo/GabrielPERFIL.jpg',
     cargo: 'Asistente Investigador',
     creadoEl: '08/09/2026'
+  },
+  {
+    id: 'u_clemente',
+    nombre: 'Clemente Uribe',
+    email: 'curibeo@utem.cl',
+    password: 'miembro.latsib.2026',
+    rol: 'member',
+    estado: 'activo',
+    has2FA: false,
+    avatar: '/equipo/ClementePERFIL.jpg',
+    cargo: 'Asistente Investigador',
+    creadoEl: '08/09/2026'
+  },
+  {
+    id: 'u_nicolas',
+    nombre: 'Nicolás Frieri',
+    email: 'nfrieri@utem.cl',
+    password: 'miembro.latsib.2026',
+    rol: 'member',
+    estado: 'activo',
+    has2FA: false,
+    avatar: '/equipo/NicolasPERFIL.png',
+    cargo: 'Asistente Investigador',
+    creadoEl: '08/09/2026'
+  },
+  {
+    id: 'u_lucas',
+    nombre: 'Lucas Valdebenito',
+    email: 'lvaldebenito@utem.cl',
+    password: 'miembro.latsib.2026',
+    rol: 'member',
+    estado: 'activo',
+    has2FA: false,
+    avatar: '/equipo/LucasPERFIL.jpg',
+    cargo: 'Asistente Investigador',
+    creadoEl: '08/09/2026'
   }
 ];
 

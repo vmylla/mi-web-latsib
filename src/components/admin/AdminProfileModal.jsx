@@ -141,28 +141,14 @@ export const AdminProfileModal = ({ isOpen, onClose }) => {
           <button
             type="button"
             onClick={() => { setActiveTab('seguridad'); setError(null); setMessage(null); }}
-            className={`pb-3 px-3 text-xs font-bold transition-all border-b-2 whitespace-nowrap cursor-pointer ${
+            className={`pb-3 px-3 text-xs font-bold transition-all border-b-2 whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'seguridad'
                 ? 'text-teal-400 border-teal-400'
                 : 'text-slate-400 border-transparent hover:text-slate-200'
             }`}
           >
-            Cambiar Contraseña
-          </button>
-
-          <button
-            type="button"
-            onClick={() => { setActiveTab('2fa'); setError(null); setMessage(null); }}
-            className={`pb-3 px-3 text-xs font-bold transition-all border-b-2 whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
-              activeTab === '2fa'
-                ? 'text-teal-400 border-teal-400'
-                : 'text-slate-400 border-transparent hover:text-slate-200'
-            }`}
-          >
-            Seguridad 2FA
-            {currentUser.twoFactorEnabled && (
-              <span className="w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-emerald-400/20"></span>
-            )}
+            <ShieldCheck size={14} />
+            Cuenta Google & Seguridad
           </button>
         </div>
 
@@ -437,129 +423,49 @@ export const AdminProfileModal = ({ isOpen, onClose }) => {
           )}
 
           {activeTab === 'seguridad' && (
-            <form onSubmit={handleChangePassword} className="space-y-4">
-              <div className="p-4 rounded-2xl bg-blue-500/5 border border-blue-500/20 text-blue-300 text-xs leading-relaxed">
-                Para tu seguridad, ingresa tu contraseña actual para autorizar la creación de una nueva clave.
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">Contraseña Actual</label>
-                <div className="relative">
-                  <input
-                    type={showCurrentPass ? 'text' : 'password'}
-                    required
-                    value={currentPass}
-                    onChange={(e) => setCurrentPass(e.target.value)}
-                    placeholder="Tu clave actual"
-                    className="w-full px-4 py-2.5 pr-10 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:border-teal-500 outline-none font-mono"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowCurrentPass(!showCurrentPass)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
-                  >
-                    {showCurrentPass ? <EyeOff size={16} /> : <Eye size={16} />}
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">Nueva Contraseña</label>
-                <div className="relative">
-                  <input
-                    type={showNewPass ? 'text' : 'password'}
-                    required
-                    value={newPass}
-                    onChange={(e) => setNewPass(e.target.value)}
-                    placeholder="Mínimo 6 caracteres"
-                    className="w-full px-4 py-2.5 pr-10 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:border-teal-500 outline-none font-mono"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowNewPass(!showNewPass)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
-                  >
-                    {showNewPass ? <EyeOff size={16} /> : <Eye size={16} />}
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">Confirmar Nueva Contraseña</label>
-                <input
-                  type="password"
-                  required
-                  value={confirmPass}
-                  onChange={(e) => setConfirmPass(e.target.value)}
-                  placeholder="Repite la nueva contraseña"
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:border-teal-500 outline-none font-mono"
-                />
-              </div>
-
-              <div className="pt-2 flex justify-end">
-                <button
-                  type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-500 hover:to-teal-500 text-white font-bold text-xs shadow-lg shadow-blue-900/40 transition-all cursor-pointer flex items-center gap-2"
-                >
-                  <Lock size={14} />
-                  Actualizar Contraseña
-                </button>
-              </div>
-            </form>
-          )}
-
-          {activeTab === '2fa' && (
-            <div className="space-y-5">
-              <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-start gap-3">
-                <Smartphone className="text-teal-400 shrink-0 mt-0.5" size={22} />
-                <div className="space-y-1">
-                  <div className="text-sm font-bold text-white">Autenticación en Dos Pasos (2FA)</div>
-                  <p className="text-xs text-slate-400 leading-relaxed">
-                    Protege tu cuenta de administrador exigiendo un código temporal de 6 dígitos cada vez que inicies sesión.
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
+            <div className="space-y-4">
+              <div className="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-300 text-xs leading-relaxed flex items-start gap-3">
+                <ShieldCheck size={20} className="text-teal-400 shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-xs font-bold text-white uppercase tracking-wider">Estado de 2FA</div>
-                  <div className="text-xs text-slate-400 mt-0.5">
-                    {currentUser.twoFactorEnabled ? (
-                      <span className="text-emerald-400 font-semibold flex items-center gap-1.5">
-                        <CheckCircle2 size={14} /> Activo y protegiendo tu sesión
-                      </span>
-                    ) : (
-                      <span className="text-slate-500">Desactivado (Recomendado activar para administradores)</span>
-                    )}
-                  </div>
+                  <strong className="text-white block font-bold mb-0.5">Autenticación Segura mediante Google Workspace</strong>
+                  Tu acceso al panel está vinculado directamente a tu cuenta de Google institucional (<span className="text-teal-200 font-mono">{currentUser.email}</span>).
                 </div>
-
-                <button
-                  type="button"
-                  onClick={handleToggle2FA}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                    currentUser.twoFactorEnabled
-                      ? 'bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/20'
-                      : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-900/40'
-                  }`}
-                >
-                  {currentUser.twoFactorEnabled ? 'Desactivar 2FA' : 'Activar 2FA'}
-                </button>
               </div>
 
-              {currentUser.twoFactorEnabled && (
-                <div className="p-4 rounded-2xl bg-teal-500/5 border border-teal-500/20 space-y-2 text-xs text-slate-300">
-                  <div className="flex items-center gap-2 text-teal-400 font-bold">
-                    <Sparkles size={16} /> Clave Secreta de Respaldo
-                  </div>
-                  <p className="text-slate-400 text-[11px]">
-                    Al iniciar sesión con 2FA activo, el sistema te solicitará un código de 6 dígitos para validar tu identidad.
-                  </p>
-                  <div className="p-2.5 bg-slate-950 rounded-xl border border-slate-800 font-mono text-xs text-teal-300 select-all">
-                    LATSIB-{currentUser.id.toUpperCase()}-AUTH2FA
-                  </div>
+              <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+                <div className="flex items-center justify-between py-2 border-b border-slate-800/80">
+                  <span className="text-xs text-slate-400 font-medium">Correo Electrónico Vinculado</span>
+                  <span className="text-xs font-mono font-bold text-white">{currentUser.email}</span>
                 </div>
-              )}
+                <div className="flex items-center justify-between py-2 border-b border-slate-800/80">
+                  <span className="text-xs text-slate-400 font-medium">Rol de Administración</span>
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-wider">
+                    {currentUser.rol === 'admin' ? 'Administrador' : currentUser.rol === 'editor' ? 'Editor' : 'Miembro'}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between py-2 border-b border-slate-800/80">
+                  <span className="text-xs text-slate-400 font-medium">Estado de Verificación</span>
+                  <span className="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+                    <CheckCircle2 size={14} /> Integrante Oficial del Equipo
+                  </span>
+                </div>
+                <div className="flex items-center justify-between py-2">
+                  <span className="text-xs text-slate-400 font-medium">Proveedor de Identidad</span>
+                  <span className="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
+                    Google OAuth 2.0 / UTEM SSO
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-blue-950/30 border border-blue-500/20 text-xs text-blue-300 space-y-1">
+                <div className="font-bold text-white flex items-center gap-1.5">
+                  <Sparkles size={14} className="text-blue-400" />
+                  <span>Seguridad de Contraseñas y 2FA</span>
+                </div>
+                <p className="text-[11px] text-slate-300 leading-relaxed">
+                  Al utilizar Google Sign-In, la seguridad de tu contraseña, verificación en dos pasos y recuperación están gestionadas directamente por Google. Para cambiar tu clave de acceso o configurar llaves de seguridad, hazlo desde tu cuenta Google de la UTEM.
+                </p>
+              </div>
             </div>
           )}
         </div>
