@@ -70,13 +70,13 @@ export const AdminProfileModal = ({ isOpen, onClose }) => {
 
     const res = await changePassword(currentUser.id, currentPass, newPass);
     if (res.success) {
-      setMessage('¡Contraseña actualizada con éxito!');
+      setMessage(res.message || '¡Contraseña actualizada con éxito!');
       setCurrentPass('');
       setNewPass('');
       setConfirmPass('');
       setTimeout(() => setMessage(null), 4000);
     } else {
-      setError(res.error || 'Contraseña actual incorrecta');
+      setError(res.message || res.error || 'La contraseña actual ingresada es incorrecta');
     }
   };
 

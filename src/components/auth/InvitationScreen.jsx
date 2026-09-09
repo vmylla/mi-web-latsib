@@ -87,9 +87,9 @@ export const InvitationScreen = ({ mode = 'invitacion', onComplete, onCancel }) 
           setSuccess(true);
           setTimeout(() => {
             if (onComplete) onComplete();
-          }, 2000);
+          }, 1500);
         } else {
-          setError(res.error || 'Error al activar la cuenta');
+          setError(res.message || res.error || 'Error al activar la cuenta');
         }
       } else {
         const res = await resetPassword(token, password);
@@ -97,9 +97,9 @@ export const InvitationScreen = ({ mode = 'invitacion', onComplete, onCancel }) 
           setSuccess(true);
           setTimeout(() => {
             if (onComplete) onComplete();
-          }, 2000);
+          }, 1500);
         } else {
-          setError(res.error || 'Error al restablecer la contraseña');
+          setError(res.message || res.error || 'Error al restablecer la contraseña');
         }
       }
     } catch (err) {

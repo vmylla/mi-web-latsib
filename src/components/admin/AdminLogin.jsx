@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Lock, Mail, KeyRound, ArrowLeft, ShieldCheck, AlertCircle, 
-  Smartphone, CheckCircle2, ArrowRight, HelpCircle, X 
+  Smartphone, CheckCircle2, ArrowRight, HelpCircle, X, Eye, EyeOff 
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import utemLogo from '../../assets/logo-utem.png';
@@ -10,6 +10,7 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
   const { login, verify2FALogin, requestPasswordReset, config } = useData();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [failedAttempts, setFailedAttempts] = useState(0);
@@ -111,18 +112,24 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
     setRecoveryMessage(null);
     setRecoveryData(null);
 
-    if (!recoveryEmail) {
+    const clean = (recoveryEmail || '').trim();
+    if (!clean) {
       setRecoveryError('Por favor ingresa tu correo institucional.');
       return;
     }
 
-    const res = requestPasswordReset(recoveryEmail);
+    const res = requestPasswordReset(clean);
     if (res.success) {
-      setRecoveryMessage(res.message);
+      setRecoveryMessage(res.message || 'Enlace generado con éxito.');
       setRecoveryData(res);
     } else {
-      setRecoveryError(res.message);
+      setRecoveryError(res.message || 'No se pudo generar el enlace de recuperación.');
     }
+  };
+
+  const handleGoToReset = (token) => {
+    setShowRecoveryModal(false);
+    window.location.hash = `recuperar?token=${token}`;
   };
 
   return (
@@ -228,14 +235,23 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
                     <KeyRound size={18} />
                   </div>
                   <input
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••••••"
                     disabled={lockoutSeconds > 0}
-                    className="w-full pl-10 pr-4 py-3 bg-slate-950/80 border border-slate-700/80 rounded-2xl text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all font-mono"
+                    className="w-full pl-10 pr-11 py-3 bg-slate-950/80 border border-slate-700/80 rounded-2xl text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all font-mono"
                     required
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-500 hover:text-slate-300 cursor-pointer"
+                    tabIndex={-1}
+                    aria-label={showPassword ? "Ocultar contraseña" : "Ver contraseña"}
+                  >
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
                 </div>
               </div>
 
@@ -353,22 +369,42 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
                 </div>
 
                 {recoveryData?.token && (
-                  <div className="p-3 bg-slate-950 rounded-2xl border border-slate-800 space-y-2">
-                    <div className="text-[11px] text-slate-400 font-semibold">Enlace directo de recuperación:</div>
-                    <a
-                      href={`#recuperar?token=${recoveryData.token}`}
-                      onClick={() => setShowRecoveryModal(false)}
-                      className="block p-2.5 bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 rounded-xl text-teal-300 text-xs font-mono break-all transition-colors"
+                  <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] text-slate-400 font-semibold">Enlace generado:</span>
+                      {recoveryData.code && (
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-teal-400">
+                          PIN: {recoveryData.code}
+                        </span>
+                      )}
+                    </div>
+                    
+                    <button
+                      type="button"
+                      onClick={() => handleGoToReset(recoveryData.token)}
+                      className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-500 hover:to-blue-500 text-white text-xs font-bold shadow-lg shadow-teal-950 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02]"
                     >
-                      {window.location.origin}/#recuperar?token={recoveryData.token}
-                    </a>
+                      <KeyRound size={16} /> Restablecer mi Contraseña Ahora →
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const link = `${window.location.origin}${window.location.pathname}#recuperar?token=${recoveryData.token}`;
+                        navigator.clipboard.writeText(link);
+                        alert('¡Enlace de recuperación copiado al portapapeles!');
+                      }}
+                      className="w-full py-2 rounded-xl bg-slate-900 hover:bg-slate-850 text-slate-300 hover:text-white text-[11px] font-semibold border border-slate-800 cursor-pointer"
+                    >
+                      Copiar Enlace de Recuperación
+                    </button>
                   </div>
                 )}
 
                 <button
                   type="button"
-                  onClick={() => setShowRecoveryModal(false)}
-                  className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold"
+                  onClick={() => { setShowRecoveryModal(false); setRecoveryMessage(null); }}
+                  className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold cursor-pointer"
                 >
                   Cerrar
                 </button>

@@ -119,14 +119,20 @@ export const DataProvider = ({ children }) => {
   // --- AUTENTICACIÓN Y DOBLE FACTOR (2FA) ---
   const login = (email, password) => {
     const cleanEmail = (email || '').trim().toLowerCase();
-    const user = users.find(u => u.email.toLowerCase() === cleanEmail);
+    const cleanPass = (password || '').trim();
+    const user = users.find(u => 
+      u.email.toLowerCase() === cleanEmail || 
+      u.email.toLowerCase() === `${cleanEmail}@utem.cl` ||
+      u.id.toLowerCase() === cleanEmail ||
+      u.id.toLowerCase() === `u_${cleanEmail}`
+    );
     if (!user) {
-      return { success: false, message: 'El correo electrónico no se encuentra registrado.' };
+      return { success: false, message: 'El correo electrónico o usuario no se encuentra registrado.' };
     }
     if (user.estado === 'inactivo') {
       return { success: false, message: 'Tu cuenta ha sido desactivada. Contacta al administrador.' };
     }
-    if (user.password !== password) {
+    if (user.password !== cleanPass && user.password !== password) {
       return { success: false, message: 'La contraseña ingresada es incorrecta.' };
     }
 
@@ -305,9 +311,17 @@ export const DataProvider = ({ children }) => {
   // --- RECUPERACIÓN AUTÓNOMA DE CONTRASEÑA ---
   const requestPasswordReset = (email) => {
     const cleanEmail = (email || '').trim().toLowerCase();
-    const user = users.find(u => u.email.toLowerCase() === cleanEmail);
+    const user = users.find(u => 
+      u.email.toLowerCase() === cleanEmail || 
+      u.email.toLowerCase() === `${cleanEmail}@utem.cl` ||
+      u.id.toLowerCase() === cleanEmail ||
+      u.id.toLowerCase() === `u_${cleanEmail}`
+    );
     if (!user) {
-      return { success: false, message: 'No existe ninguna cuenta registrada con este correo institucional.' };
+      return { 
+        success: false, 
+        message: 'No existe ninguna cuenta registrada con este correo institucional. Verifica que esté bien escrito.' 
+      };
     }
 
     const token = generateToken('rst');
@@ -330,29 +344,40 @@ export const DataProvider = ({ children }) => {
 
     return {
       success: true,
-      reset: newReset,
+      message: `Se ha generado correctamente el enlace de restablecimiento para ${user.nombre}.`,
+      token,
       link: resetLink,
-      code
+      code,
+      reset: newReset
     };
   };
 
   const getResetByTokenOrCode = (tokenOrCode) => {
-    return resets.find(r => (r.token === tokenOrCode || r.code === tokenOrCode) && !r.usado);
+    const clean = (tokenOrCode || '').trim();
+    return resets.find(r => (r.token === clean || r.code === clean) && !r.usado);
   };
 
   const resetPassword = (tokenOrCode, newPassword) => {
-    const record = resets.find(r => (r.token === tokenOrCode || r.code === tokenOrCode) && !r.usado);
+    const cleanToken = (tokenOrCode || '').trim();
+    const cleanPass = (newPassword || '').trim();
+    const record = resets.find(r => (r.token === cleanToken || r.code === cleanToken) && !r.usado);
     if (!record) {
-      return { success: false, message: 'El enlace o código de recuperación es inválido o ya fue utilizado.' };
+      return { 
+        success: false, 
+        message: 'El enlace o código de recuperación es inválido o ya fue utilizado.' 
+      };
     }
 
-    if (!newPassword || newPassword.length < 6) {
-      return { success: false, message: 'La contraseña debe contener al menos 6 caracteres.' };
+    if (!cleanPass || cleanPass.length < 6) {
+      return { 
+        success: false, 
+        message: 'La contraseña debe contener al menos 6 caracteres.' 
+      };
     }
 
     setUsers(prev => prev.map(u => {
       if (u.email.toLowerCase() === record.email.toLowerCase()) {
-        return { ...u, password: newPassword, estado: 'activo' };
+        return { ...u, password: cleanPass, estado: 'activo' };
       }
       return u;
     }));
@@ -360,23 +385,36 @@ export const DataProvider = ({ children }) => {
     setResets(prev => prev.map(r => (r.token === record.token ? { ...r, usado: true } : r)));
     logAction(`Restableció su contraseña exitosamente`, 'Seguridad', 'edicion', record.nombre);
 
-    return { success: true };
+    return { 
+      success: true, 
+      message: 'Contraseña restablecida exitosamente. Ahora puedes ingresar con tu nueva clave.' 
+    };
   };
 
   // --- AUTOGESTIÓN DE PERFIL Y AJUSTES DE CUENTA ---
   const changePassword = (userId, currentPass, newPass) => {
     const user = users.find(u => u.id === userId);
     if (!user) return { success: false, message: 'Usuario no encontrado.' };
-    if (user.password !== currentPass) {
-      return { success: false, message: 'La contraseña actual ingresada es incorrecta.' };
+    
+    const cleanCurrent = (currentPass || '').trim();
+    const cleanNew = (newPass || '').trim();
+
+    if (user.password !== cleanCurrent && user.password !== currentPass) {
+      return { 
+        success: false, 
+        message: 'La contraseña actual ingresada es incorrecta. Verifica tu clave actual.' 
+      };
     }
-    if (!newPass || newPass.length < 6) {
-      return { success: false, message: 'La nueva contraseña debe tener al menos 6 caracteres.' };
+    if (!cleanNew || cleanNew.length < 6) {
+      return { 
+        success: false, 
+        message: 'La nueva contraseña debe tener al menos 6 caracteres.' 
+      };
     }
 
-    setUsers(prev => prev.map(u => (u.id === userId ? { ...u, password: newPass } : u)));
+    setUsers(prev => prev.map(u => (u.id === userId ? { ...u, password: cleanNew } : u)));
     logAction(`Cambió su contraseña desde los ajustes de perfil`, 'Seguridad', 'edicion', user.nombre);
-    return { success: true, message: 'Contraseña actualizada con éxito.' };
+    return { success: true, message: '¡Contraseña actualizada con éxito!' };
   };
 
   const updateUserProfile = (userId, profileData) => {
