@@ -252,74 +252,184 @@ export const AdminProfileModal = ({ isOpen, onClose }) => {
           {activeTab === 'tema' && (
             <div className="space-y-5">
               <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800">
-                <div className="text-sm font-bold text-white mb-1">Comodidad Visual del Panel</div>
+                <div className="text-sm font-bold text-white mb-1">Paletas y Comodidad Visual del Panel</div>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Elige el tema que mejor se adapte a tu iluminación de trabajo. Tu preferencia se guardará automáticamente en este dispositivo.
+                  Personaliza los colores del panel según tus preferencias visuales. Tu tema se guardará de forma privada y permanente en este dispositivo.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Opción Tema Oscuro */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-h-[50vh] overflow-y-auto pr-1">
+                {/* 1. Tema Oscuro */}
                 <div
                   onClick={() => {
                     setAdminTheme('dark');
-                    setMessage('Tema Oscuro seleccionado');
+                    setMessage('Tema Oscuro activado');
                     setTimeout(() => setMessage(null), 2500);
                   }}
-                  className={`p-5 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between h-40 ${
+                  className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between min-h-[120px] ${
                     adminTheme === 'dark'
-                      ? 'bg-slate-950 border-teal-400 shadow-lg shadow-teal-950/50'
-                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-70'
+                      ? 'bg-slate-950 border-teal-400 shadow-lg shadow-teal-950/50 ring-1 ring-teal-400'
+                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-80 hover:opacity-100'
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="p-2.5 rounded-xl bg-slate-900 text-teal-400 border border-slate-800">
-                      <Moon size={20} />
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="p-2 rounded-xl bg-slate-900 text-teal-400 border border-slate-800 flex items-center gap-2">
+                      <Moon size={16} />
+                      <span className="text-xs font-bold text-white">Oscuro (Dark)</span>
                     </div>
                     {adminTheme === 'dark' && (
-                      <span className="px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-bold uppercase border border-teal-500/30">
+                      <span className="px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-bold uppercase border border-teal-500/30">
                         Activo
                       </span>
                     )}
                   </div>
-                  <div>
-                    <div className="font-bold text-white text-sm">Tema Oscuro (Dark)</div>
-                    <div className="text-[11px] text-slate-400 mt-0.5">
-                      Mayor descanso visual en entornos de poca luz
-                    </div>
+                  <div className="text-[11px] text-slate-400">
+                    Gris pizarra profundo y cian para entornos nocturnos
                   </div>
                 </div>
 
-                {/* Opción Tema Claro */}
+                {/* 2. Tema Claro */}
                 <div
                   onClick={() => {
                     setAdminTheme('light');
-                    setMessage('Tema Claro seleccionado');
+                    setMessage('Tema Claro activado');
                     setTimeout(() => setMessage(null), 2500);
                   }}
-                  className={`p-5 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between h-40 ${
+                  className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between min-h-[120px] ${
                     adminTheme === 'light'
-                      ? 'bg-slate-100 border-amber-500 shadow-lg text-slate-900'
-                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-70'
+                      ? 'bg-slate-100 border-amber-500 shadow-md ring-1 ring-amber-500 text-slate-900'
+                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-80 hover:opacity-100'
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="p-2.5 rounded-xl bg-white text-amber-500 border border-slate-200 shadow-sm">
-                      <Sun size={20} />
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="p-2 rounded-xl bg-white text-amber-500 border border-slate-200 shadow-xs flex items-center gap-2">
+                      <Sun size={16} />
+                      <span className="text-xs font-bold text-slate-900">Claro (Light)</span>
                     </div>
                     {adminTheme === 'light' && (
-                      <span className="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-700 text-[10px] font-bold uppercase border border-amber-500/30">
+                      <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-700 text-[10px] font-bold uppercase border border-amber-500/30">
                         Activo
                       </span>
                     )}
                   </div>
-                  <div>
-                    <div className={`font-bold text-sm ${adminTheme === 'light' ? 'text-slate-900' : 'text-white'}`}>
-                      Tema Claro (Light)
+                  <div className="text-[11px] text-slate-500">
+                    Máxima claridad y alto contraste para trabajo diurno
+                  </div>
+                </div>
+
+                {/* 3. Tema Rosa Biomédico (Pink) */}
+                <div
+                  onClick={() => {
+                    setAdminTheme('pink');
+                    setMessage('Tema Rosa Biomédico activado');
+                    setTimeout(() => setMessage(null), 2500);
+                  }}
+                  className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between min-h-[120px] ${
+                    adminTheme === 'pink'
+                      ? 'bg-rose-50 border-rose-500 shadow-md ring-1 ring-rose-500'
+                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-80 hover:opacity-100'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="p-2 rounded-xl bg-rose-100 text-rose-600 border border-rose-200 flex items-center gap-2">
+                      <span className="text-sm">🌸</span>
+                      <span className="text-xs font-bold text-rose-900">Rosa Biomédico (Pink)</span>
                     </div>
-                    <div className={`text-[11px] mt-0.5 ${adminTheme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>
-                      Alto contraste y claridad para el día
+                    {adminTheme === 'pink' && (
+                      <span className="px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-700 text-[10px] font-bold uppercase border border-rose-500/30">
+                        Activo
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-[11px] text-slate-500">
+                    Tonalidad cálida y elegante inspirada en salud y biomedicina
+                  </div>
+                </div>
+
+                {/* 4. Tema Azul Cielo (Light Blue) */}
+                <div
+                  onClick={() => {
+                    setAdminTheme('lightblue');
+                    setMessage('Tema Azul Cielo activado');
+                    setTimeout(() => setMessage(null), 2500);
+                  }}
+                  className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between min-h-[120px] ${
+                    adminTheme === 'lightblue'
+                      ? 'bg-sky-50 border-sky-500 shadow-md ring-1 ring-sky-500'
+                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-80 hover:opacity-100'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="p-2 rounded-xl bg-sky-100 text-sky-600 border border-sky-200 flex items-center gap-2">
+                      <span className="text-sm">💧</span>
+                      <span className="text-xs font-bold text-sky-900">Azul Cielo (Light Blue)</span>
                     </div>
+                    {adminTheme === 'lightblue' && (
+                      <span className="px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-700 text-[10px] font-bold uppercase border border-sky-500/30">
+                        Activo
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-[11px] text-slate-500">
+                    Ambiente clínico, fresco y relajante de alta pureza
+                  </div>
+                </div>
+
+                {/* 5. Tema Verde Esmeralda (Green) */}
+                <div
+                  onClick={() => {
+                    setAdminTheme('green');
+                    setMessage('Tema Verde Esmeralda activado');
+                    setTimeout(() => setMessage(null), 2500);
+                  }}
+                  className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between min-h-[120px] ${
+                    adminTheme === 'green'
+                      ? 'bg-emerald-50 border-emerald-500 shadow-md ring-1 ring-emerald-500'
+                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-80 hover:opacity-100'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="p-2 rounded-xl bg-emerald-100 text-emerald-600 border border-emerald-200 flex items-center gap-2">
+                      <span className="text-sm">🌿</span>
+                      <span className="text-xs font-bold text-emerald-900">Verde Esmeralda (Green)</span>
+                    </div>
+                    {adminTheme === 'green' && (
+                      <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-700 text-[10px] font-bold uppercase border border-emerald-500/30">
+                        Activo
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-[11px] text-slate-500">
+                    Sensación bio-tecnológica, natural y de investigación
+                  </div>
+                </div>
+
+                {/* 6. Tema Rojo Carmesí (Red) */}
+                <div
+                  onClick={() => {
+                    setAdminTheme('red');
+                    setMessage('Tema Rojo Carmesí activado');
+                    setTimeout(() => setMessage(null), 2500);
+                  }}
+                  className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between min-h-[120px] ${
+                    adminTheme === 'red'
+                      ? 'bg-red-50 border-red-500 shadow-md ring-1 ring-red-500'
+                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 opacity-80 hover:opacity-100'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="p-2 rounded-xl bg-red-100 text-red-600 border border-red-200 flex items-center gap-2">
+                      <span className="text-sm">🔴</span>
+                      <span className="text-xs font-bold text-red-900">Rojo Carmesí (Red)</span>
+                    </div>
+                    {adminTheme === 'red' && (
+                      <span className="px-2 py-0.5 rounded-full bg-red-500/20 text-red-700 text-[10px] font-bold uppercase border border-red-500/30">
+                        Activo
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-[11px] text-slate-500">
+                    Estilo dinámico y enfocado con tonos rubí y corales
                   </div>
                 </div>
               </div>

@@ -46,14 +46,23 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
     { id: 'history', label: 'Historial de Cambios', icon: <Clock size={18} /> },
   ];
 
+  const THEMES = [
+    { id: 'dark', label: 'Oscuro', icon: <Moon size={14} />, color: 'bg-slate-900 border-teal-400 text-teal-400' },
+    { id: 'light', label: 'Claro', icon: <Sun size={14} />, color: 'bg-slate-100 border-amber-500 text-amber-600' },
+    { id: 'pink', label: 'Rosa', icon: '🌸', color: 'bg-rose-100 border-rose-500 text-rose-600' },
+    { id: 'lightblue', label: 'Azul Cielo', icon: '💧', color: 'bg-sky-100 border-sky-500 text-sky-600' },
+    { id: 'green', label: 'Verde', icon: '🌿', color: 'bg-emerald-100 border-emerald-500 text-emerald-600' },
+    { id: 'red', label: 'Rojo', icon: '🔴', color: 'bg-red-100 border-red-500 text-red-600' },
+  ];
+
   return (
-    <div className={`min-h-screen flex flex-col md:flex-row font-sans transition-colors duration-200 ${
-      isLight ? 'admin-theme-light bg-slate-100 text-slate-900' : 'admin-theme-dark bg-slate-950 text-slate-100'
+    <div className={`min-h-screen flex flex-col md:flex-row font-sans transition-colors duration-200 admin-theme-${adminTheme || 'dark'} ${
+      adminTheme === 'dark' ? 'bg-slate-950 text-slate-100' : 'bg-slate-100 text-slate-900'
     }`}>
       {/* SIDEBAR ESCRITORIO */}
       <aside className="hidden md:flex flex-col w-72 bg-slate-900 border-r border-slate-800 shrink-0 p-6">
         {/* Cabecera Sidebar con Logos */}
-        <div className="flex items-center justify-between pb-6 mb-6 border-b border-slate-800">
+        <div className="flex items-center justify-between pb-6 mb-5 border-b border-slate-800">
           <div className="flex items-center gap-2.5">
             <img
               src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'}
@@ -72,28 +81,36 @@ export const AdminLayout = ({ onExitToSite, initialTab = 'dashboard' }) => {
           </div>
         </div>
 
-        {/* Selector Rápido de Tema (Claro / Oscuro) */}
-        <div className="mb-4">
-          <button
-            type="button"
-            onClick={toggleAdminTheme}
-            className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl bg-slate-950/80 border border-slate-800 text-xs font-semibold hover:border-teal-500/40 transition-all cursor-pointer group"
-            title={isLight ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'}
-          >
-            <div className="flex items-center gap-2">
-              {isLight ? (
-                <Sun size={15} className="text-amber-500" />
-              ) : (
-                <Moon size={15} className="text-teal-400" />
-              )}
-              <span className="text-slate-300 text-[11px]">
-                Modo: <strong className="text-white">{isLight ? 'Claro' : 'Oscuro'}</strong>
-              </span>
-            </div>
-            <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-mono">
-              {isLight ? '☀️ Light' : '🌙 Dark'}
+        {/* Selector Rápido de 6 Temas Visuales */}
+        <div className="mb-5 p-3 rounded-2xl bg-slate-950/70 border border-slate-800">
+          <div className="flex items-center justify-between mb-2 px-1">
+            <span className="text-[11px] font-bold text-slate-300 flex items-center gap-1.5">
+              <Sparkles size={12} className="text-teal-400" /> Tema Visual
             </span>
-          </button>
+            <span className="text-[10px] uppercase tracking-wider font-semibold text-teal-400 font-mono">
+              {THEMES.find(t => t.id === adminTheme)?.label || 'Personalizado'}
+            </span>
+          </div>
+          <div className="grid grid-cols-6 gap-1.5">
+            {THEMES.map((th) => {
+              const isSelected = adminTheme === th.id;
+              return (
+                <button
+                  key={th.id}
+                  type="button"
+                  onClick={() => setAdminTheme(th.id)}
+                  title={`Tema ${th.label}`}
+                  className={`h-8 rounded-xl flex items-center justify-center text-xs transition-all cursor-pointer border ${
+                    isSelected
+                      ? 'border-white ring-2 ring-teal-400 scale-105 shadow-md'
+                      : 'border-slate-700/80 hover:scale-105 opacity-70 hover:opacity-100'
+                  } ${th.color}`}
+                >
+                  {typeof th.icon === 'string' ? th.icon : th.icon}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Navegación */}

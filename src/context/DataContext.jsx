@@ -83,8 +83,12 @@ export const DataProvider = ({ children }) => {
   useEffect(() => setStored(STORAGE_KEYS.SESSION, currentUser), [currentUser]);
   useEffect(() => setStored(STORAGE_KEYS.THEME, adminTheme), [adminTheme]);
 
+  const THEME_LIST = ['dark', 'light', 'pink', 'lightblue', 'green', 'red'];
   const toggleAdminTheme = () => {
-    setAdminTheme(prev => prev === 'dark' ? 'light' : 'dark');
+    setAdminTheme(prev => {
+      const idx = THEME_LIST.indexOf(prev);
+      return idx === -1 ? 'light' : THEME_LIST[(idx + 1) % THEME_LIST.length];
+    });
   };
 
   const getNowFormatted = () => {
