@@ -598,20 +598,26 @@ function AppContent() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [selectedMember, setSelectedMember] = useState(null);
 
-  // Parser de ruta seguro
+  // Parser de ruta seguro y flexible (soporta hash, pathname y search query params)
   const parseRoute = () => {
-    const hash = window.location.hash.replace(/^#\/?/, '').trim();
-    if (hash.startsWith('invitacion')) {
+    const rawPath = window.location.pathname.replace(/^\/+/, '').trim();
+    const rawHash = window.location.hash.replace(/^#\/?/, '').trim();
+    const searchParams = new URLSearchParams(window.location.search);
+    
+    // Determinar la clave de ruta principal
+    let pathKey = (rawHash.split('?')[0] || rawPath || '').toLowerCase();
+    
+    if (searchParams.has('invitacion') || searchParams.has('token') || pathKey.startsWith('invitacion') || rawHash.startsWith('invitacion')) {
       return { view: 'invitation', mode: 'invitacion', id: null, section: null };
     }
-    if (hash.startsWith('recuperar')) {
+    if (searchParams.has('recuperar') || pathKey.startsWith('recuperar') || rawHash.startsWith('recuperar')) {
       return { view: 'invitation', mode: 'recuperar', id: null, section: null };
     }
-    if (hash === 'login') {
+    if (pathKey === 'login') {
       return { view: 'login', id: null, section: null };
     }
-    if (hash.startsWith('admin')) {
-      const sub = hash.replace('admin/', '').replace('admin', '').trim();
+    if (pathKey.startsWith('admin')) {
+      const sub = pathKey.replace('admin/', '').replace('admin', '').trim();
       let tab = 'dashboard';
       if (sub === 'equipo' || sub === 'team') tab = 'team';
       else if (sub === 'publicaciones') tab = 'publications';
@@ -621,32 +627,32 @@ function AppContent() {
       else if (sub === 'historial' || sub === 'history') tab = 'history';
       return { view: 'admin', subTab: tab, id: null, section: null };
     }
-    if (!hash || hash === 'about' || hash === 'research' || hash === 'activities' || hash === 'team' || hash === 'publications' || hash === 'contact') {
-      return { view: 'landing', id: null, section: hash || null };
+    if (!pathKey || pathKey === 'about' || pathKey === 'research' || pathKey === 'activities' || pathKey === 'team' || pathKey === 'publications' || pathKey === 'contact') {
+      return { view: 'landing', id: null, section: pathKey || null };
     }
-    if (hash === 'que-hacemos' || hash === 'quehacemos') {
+    if (pathKey === 'que-hacemos' || pathKey === 'quehacemos') {
       return { view: 'what-we-do', id: null, section: null };
     }
-    if (hash === 'investigaciones') {
+    if (pathKey === 'investigaciones') {
       return { view: 'research-list', id: null, section: null };
     }
-    if (hash.startsWith('investigacion/')) {
-      const rawId = hash.replace('investigacion/', '');
+    if (pathKey.startsWith('investigacion/')) {
+      const rawId = pathKey.replace('investigacion/', '');
       const numId = parseInt(rawId, 10);
       return { view: 'research-detail', id: isNaN(numId) ? rawId : numId, section: null };
     }
-    if (hash === 'actividades') {
+    if (pathKey === 'actividades') {
       return { view: 'activities-list', id: null, section: null };
     }
-    if (hash.startsWith('actividad/')) {
-      const rawId = hash.replace('actividad/', '');
+    if (pathKey.startsWith('actividad/')) {
+      const rawId = pathKey.replace('actividad/', '');
       const numId = parseInt(rawId, 10);
       return { view: 'activity-detail', id: isNaN(numId) ? rawId : numId, section: null };
     }
-    if (hash === 'publicaciones') {
+    if (pathKey === 'publicaciones') {
       return { view: 'publications-list', id: null, section: null };
     }
-    if (hash === 'equipo') {
+    if (pathKey === 'equipo') {
       return { view: 'team-list', id: null, section: null };
     }
     return { view: 'landing', id: null, section: null };
@@ -945,6 +951,19 @@ function AppContent() {
                 </div>
                 <span>Publicaciones</span>
               </button>
+
+              <div className="pt-2 mt-2 border-t border-slate-100">
+                <button
+                  type="button"
+                  onClick={() => { setSideDrawerOpen(false); navigateTo(currentUser ? 'admin' : 'login'); }}
+                  className="w-full flex items-center gap-3.5 px-3.5 py-2.5 text-left rounded-xl text-teal-700 hover:bg-teal-50 font-semibold text-xs transition-all cursor-pointer group"
+                >
+                  <div className="p-1.5 rounded-lg bg-teal-100 text-teal-700 group-hover:bg-teal-200 transition-colors">
+                    <ShieldCheck size={15} />
+                  </div>
+                  <span>Panel de Administración</span>
+                </button>
+              </div>
             </div>
 
             <div className="pt-4 border-t border-slate-100 mt-auto">

@@ -27,10 +27,11 @@ export const InvitationScreen = ({ mode = 'invitacion', onComplete, onCancel }) 
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    // Parse token from hash (e.g. #invitacion?token=xxx or #recuperar?token=xxx)
+    // Parse token from hash or query parameters (e.g. #invitacion?token=xxx or ?invitacion=xxx or ?token=xxx)
     const hash = window.location.hash || '';
-    const params = new URLSearchParams(hash.includes('?') ? hash.split('?')[1] : '');
-    const foundToken = params.get('token') || params.get('code') || '';
+    const hashParams = new URLSearchParams(hash.includes('?') ? hash.split('?')[1] : '');
+    const searchParams = new URLSearchParams(window.location.search);
+    const foundToken = hashParams.get('token') || hashParams.get('code') || searchParams.get('token') || searchParams.get('code') || searchParams.get('invitacion') || searchParams.get('recuperar') || '';
     setToken(foundToken);
 
     if (!foundToken) {
