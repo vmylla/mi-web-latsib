@@ -13,10 +13,64 @@ import { InvitationScreen } from './components/auth/InvitationScreen';
 import utemLogo from './assets/logo-utem.png';
 import heroPattern from './assets/hero-pattern.png';
 import heroPatternTransparent from './assets/hero-pattern-transparent.png';
+import heroTeamImg from './assets/hero-team.jpg';
 
 // --- COMPONENTES AUXILIARES DE LA WEB PÚBLICA ---
 
-// Carrusel de imágenes
+// Mini Carrusel exclusivo para la sección Hero (Nosotros) - Automático y Limpio
+const HeroSlider = ({ brainImg, teamImg }) => {
+  const slides = [
+    brainImg || '/image.jpg',
+    teamImg || '/hero-team.jpg'
+  ];
+
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+  return (
+    <div className="relative z-10 bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 p-2.5 rounded-2xl shadow-2xl shadow-cyan-950/60 transform rotate-1 hover:rotate-0 transition-all duration-500 overflow-hidden">
+      <div className="relative overflow-hidden rounded-xl aspect-[16/11]">
+        {/* Contenedor de diapositivas con deslizamiento suave */}
+        <div 
+          className="flex transition-transform ease-in-out duration-1000 h-full w-full"
+          style={{ transform: `translateX(-${current * 100}%)` }}
+        >
+          {slides.map((url, idx) => (
+            <div key={idx} className="relative w-full h-full flex-shrink-0">
+              <img 
+                src={url} 
+                alt={`Diapositiva LaTSIB ${idx + 1}`} 
+                className="w-full h-full object-cover select-none"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Indicadores sutiles de progreso en la parte inferior */}
+        <div className="absolute bottom-3 inset-x-0 flex items-center justify-center gap-2 z-20 pointer-events-none">
+          {slides.map((_, i) => (
+            <div
+              key={i}
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                current === i 
+                  ? 'w-7 bg-cyan-400 shadow-md shadow-cyan-400/80' 
+                  : 'w-2 bg-white/40 backdrop-blur-xs'
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Carrusel de imágenes general
 const ImageSlider = ({ items, autoSlide = true, autoSlideInterval = 3500 }) => {
   const [curr, setCurr] = useState(0);
   const validItems = (items || []).filter(item => item && item.url && item.url.trim() !== '');
@@ -1324,10 +1378,8 @@ function AppContent() {
                   </button>
                 </div>
               </div>
-              <div className="relative hidden lg:block">
-                <div className="relative z-10 bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 p-2.5 rounded-2xl shadow-2xl shadow-cyan-950/60 transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                  <img src={config.imagenes.hero} alt="Lab Vis" className="rounded-xl w-full h-auto object-cover" />
-                </div>
+              <div className="relative mt-8 lg:mt-0 max-w-xl mx-auto lg:max-w-none w-full">
+                <HeroSlider brainImg={config?.imagenes?.hero} teamImg={heroTeamImg || '/hero-team.jpg'} />
               </div>
             </div>
           </header>
