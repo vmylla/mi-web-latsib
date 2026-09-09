@@ -20,7 +20,7 @@ const STORAGE_KEYS = {
   PUBLICACIONES: 'latsib_publicaciones_v3',
   ACTIVIDADES: 'latsib_actividades_v3',
   PROYECTOS: 'latsib_proyectos_v3',
-  HISTORIAL: 'latsib_historial_v3',
+  HISTORIAL: 'latsib_historial_v4',
   USERS: 'latsib_users_v3',
   INVITATIONS: 'latsib_invitations_v3',
   RESETS: 'latsib_resets_v3',
@@ -145,7 +145,6 @@ export const DataProvider = ({ children }) => {
 
     // 1. Restricción de Dominio: Debe ser @utem.cl (o correo oficial del lab)
     if (!cleanEmail.endsWith('@utem.cl') && !isLabEmail) {
-      logAction(`Intento de acceso con dominio no permitido: ${cleanEmail}`, 'Seguridad', 'alerta', cleanEmail);
       return {
         success: false,
         isUnauthorized: true,
@@ -173,7 +172,6 @@ export const DataProvider = ({ children }) => {
 
     // Si NO está en el equipo ni en usuarios autorizados ni es el correo del lab
     if (!teamMember && !userRecord && !isLabEmail) {
-      logAction(`Intento de acceso no autorizado con Google: ${cleanEmail}`, 'Seguridad', 'alerta', cleanEmail);
       return {
         success: false,
         isUnauthorized: true,
@@ -241,7 +239,6 @@ export const DataProvider = ({ children }) => {
     };
 
     setCurrentUser(sessionUser);
-    logAction(`Inició sesión con Google (${resolvedEmail})`, 'Seguridad', 'login', displayName);
     return { success: true, user: sessionUser };
   };
 
@@ -291,7 +288,6 @@ export const DataProvider = ({ children }) => {
 
     // Si NO está en el equipo ni en usuarios autorizados
     if (!user && !teamMember && !isLabEmail) {
-      logAction(`Intento de acceso con usuario no autorizado: ${cleanEmail}`, 'Seguridad', 'alerta', cleanEmail);
       return {
         success: false,
         message: `Acceso denegado: El correo "${cleanEmail}" no pertenece a ningún integrante activo del Equipo de LaTSIB.`
@@ -363,7 +359,6 @@ export const DataProvider = ({ children }) => {
     };
 
     setCurrentUser(sessionUser);
-    logAction(`Inició sesión en el panel`, 'Seguridad', 'login', displayName);
     return { success: true, requires2FA: false, user: sessionUser };
   };
 
@@ -387,7 +382,6 @@ export const DataProvider = ({ children }) => {
         has2FA: Boolean(user.has2FA)
       };
       setCurrentUser(sessionUser);
-      logAction(`Inició sesión con verificación 2FA`, 'Seguridad', 'login', user.nombre);
       return { success: true, user: sessionUser };
     }
 
@@ -395,11 +389,13 @@ export const DataProvider = ({ children }) => {
   };
 
   const logout = () => {
-    if (currentUser) {
-      logAction(`Cerró sesión`, 'Seguridad', 'logout', currentUser.nombre);
-    }
     setCurrentUser(null);
     localStorage.removeItem(STORAGE_KEYS.SESSION);
+  };
+
+  const clearHistorial = () => {
+    setHistorial([]);
+    localStorage.removeItem(STORAGE_KEYS.HISTORIAL);
   };
 
   // --- GESTIÓN DE INVITACIONES Y REGISTRO AUTÓNOMO ---
@@ -857,6 +853,7 @@ export const DataProvider = ({ children }) => {
     verify2FALogin,
     logout,
     logAction,
+    clearHistorial,
     // Invitations & User Management
     createInvitation,
     getInvitationByToken,

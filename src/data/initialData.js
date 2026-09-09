@@ -934,42 +934,6 @@ export const DEFAULT_USERS = [
   }
 ];
 
-export const INITIAL_HISTORIAL = [
-  {
-    id: 'h1',
-    usuario: 'Camila Guajardo',
-    rol: 'admin',
-    accion: 'Publicó el artículo "The Effectiveness of NIRS-Based Wearable Devices"',
-    modulo: 'Publicaciones',
-    fecha: '08/09/2026 18:20',
-    tipo: 'creacion'
-  },
-  {
-    id: 'h2',
-    usuario: 'Andrés Vega',
-    rol: 'admin',
-    accion: 'Actualizó el proyecto "Sistema Inteligente para Laringe Electrónica"',
-    modulo: 'Proyectos',
-    fecha: '08/09/2026 17:45',
-    tipo: 'edicion'
-  },
-  {
-    id: 'h3',
-    usuario: 'Dr. Raúl Caulier',
-    rol: 'admin',
-    accion: 'Incorporó registro de actividad "Workshop BigMedP España 2026"',
-    modulo: 'Actividades',
-    fecha: '07/09/2026 16:10',
-    tipo: 'creacion'
-  },
-  {
-    id: 'h4',
-    usuario: 'Vicente Escudero',
-    rol: 'admin',
-    accion: 'Actualizó biografía de integrantes en el área de machine learning',
-    modulo: 'Equipo',
-    fecha: '06/09/2026 12:30',
-    tipo: 'edicion'
-  }
-];
+export const INITIAL_HISTORIAL = [];
+
 
