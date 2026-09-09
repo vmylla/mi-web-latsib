@@ -11,11 +11,11 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
   const [loading, setLoading] = useState(false);
   const googleBtnContainerRef = useRef(null);
 
-  // Inicializar Google Identity Services (GIS) si está disponible en el navegador
+  // Inicializar Google Identity Services (GIS) si está configurado el Client ID
   useEffect(() => {
-    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '1047123984128-latsib-utem.apps.googleusercontent.com';
+    const clientId = (import.meta.env.VITE_GOOGLE_CLIENT_ID || '').trim();
 
-    if (window.google?.accounts?.id) {
+    if (clientId && window.google?.accounts?.id) {
       try {
         window.google.accounts.id.initialize({
           client_id: clientId,
@@ -68,12 +68,17 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
 
   const handleGoogleSignInClick = () => {
     setError('');
+    const clientId = (import.meta.env.VITE_GOOGLE_CLIENT_ID || '').trim();
+
+    if (!clientId) {
+      setError('Configuración requerida: Debes definir tu VITE_GOOGLE_CLIENT_ID en el archivo .env (creado en Google Cloud Console con orígenes autorizados como http://localhost:5173).');
+      return;
+    }
+
     setLoading(true);
 
-    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-
     // Si Google OAuth2 Token Client está disponible y configurado
-    if (window.google?.accounts?.oauth2 && clientId) {
+    if (window.google?.accounts?.oauth2) {
       try {
         const tokenClient = window.google.accounts.oauth2.initTokenClient({
           client_id: clientId,
@@ -82,7 +87,11 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
           callback: async (tokenResponse) => {
             if (tokenResponse.error) {
               setLoading(false);
-              setError(`Error de autenticación Google: ${tokenResponse.error_description || tokenResponse.error}`);
+              if (tokenResponse.error === 'invalid_client' || tokenResponse.error_description?.includes('invalid_client')) {
+                setError('Error 401 (invalid_client): El VITE_GOOGLE_CLIENT_ID configurado no existe o no coincide con los orígenes autorizados en Google Cloud Console.');
+              } else {
+                setError(`Error de autenticación Google: ${tokenResponse.error_description || tokenResponse.error}`);
+              }
               return;
             }
 
@@ -112,7 +121,6 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
       window.google.accounts.id.prompt((notification) => {
         if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
           setLoading(false);
-          // Si el prompt fue ignorado o no se puede mostrar nativamente
           triggerOAuthPopupFallback();
         }
       });
@@ -124,7 +132,7 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
 
   // Ventana emergente nativa de Google OAuth
   const triggerOAuthPopupFallback = () => {
-    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+    const clientId = (import.meta.env.VITE_GOOGLE_CLIENT_ID || '').trim();
     
     if (clientId) {
       const redirectUri = window.location.origin;
@@ -132,9 +140,8 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
       window.open(oauthUrl, 'google_oauth_popup', 'width=500,height=600');
       setLoading(false);
     } else {
-      // En modo local sin Client ID en .env, simular la verificación con la cuenta activa
       setLoading(false);
-      setError('Para activar Google OAuth nativo en este dominio, configura VITE_GOOGLE_CLIENT_ID en el entorno.');
+      setError('Configuración requerida: Agrega tu VITE_GOOGLE_CLIENT_ID en el archivo .env para habilitar Google OAuth.');
     }
   };
 
