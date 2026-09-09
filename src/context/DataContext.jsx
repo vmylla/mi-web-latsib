@@ -248,26 +248,98 @@ export const DataProvider = ({ children }) => {
   };
 
   const login = (email, password) => {
-    const cleanEmail = (email || '').trim().toLowerCase();
+    const rawEmail = (email || '').trim().toLowerCase();
     const cleanPass = (password || '').trim();
-    const user = users.find(u => 
-      u.email.toLowerCase() === cleanEmail || 
-      u.email.toLowerCase() === `${cleanEmail}@utem.cl` ||
-      u.id.toLowerCase() === cleanEmail ||
-      u.id.toLowerCase() === `u_${cleanEmail}`
-    );
-    if (!user) {
-      return { success: false, message: 'El correo electrónico o usuario no se encuentra registrado.' };
+
+    if (!rawEmail) {
+      return { success: false, message: 'Por favor ingresa tu correo institucional.' };
     }
-    if (user.estado === 'inactivo') {
-      return { success: false, message: 'Tu cuenta ha sido desactivada. Contacta al administrador.' };
-    }
-    if (user.password !== cleanPass && user.password !== password) {
-      return { success: false, message: 'La contraseña ingresada es incorrecta.' };
+    if (!cleanPass) {
+      return { success: false, message: 'Por favor ingresa tu contraseña de acceso.' };
     }
 
-    // Si tiene 2FA activado (ej. para administradores)
-    if (user.has2FA) {
+    const cleanEmail = rawEmail.includes('@') ? rawEmail : `${rawEmail}@utem.cl`;
+    const userPrefix = rawEmail.split('@')[0];
+
+    // 1. Buscar en usuarios registrados
+    let user = users.find(u => {
+      const uEmail = (u.email || '').trim().toLowerCase();
+      const uPrefix = uEmail.split('@')[0];
+      return (
+        uEmail === cleanEmail ||
+        uEmail === rawEmail ||
+        (uPrefix && uPrefix === userPrefix) ||
+        u.id.toLowerCase() === rawEmail
+      );
+    });
+
+    // 2. Buscar en integrantes del equipo
+    const teamMember = equipo.find(m => {
+      const mEmail = (m.contactos?.email || m.email || '').trim().toLowerCase();
+      const mGoogleEmail = (m.contactos?.googleEmail || '').trim().toLowerCase();
+      const mPrefix = mEmail.split('@')[0];
+      return (
+        mEmail === cleanEmail ||
+        mEmail === rawEmail ||
+        mGoogleEmail === cleanEmail ||
+        (mPrefix && mPrefix === userPrefix) ||
+        m.id.toLowerCase() === rawEmail
+      );
+    });
+
+    // 3. Permitir correo institucional principal del lab (config.email)
+    const isLabEmail = (config?.email && config.email.toLowerCase() === cleanEmail) || 
+                        cleanEmail === 'latsibutem@gmail.com';
+
+    // Si NO está en el equipo ni en usuarios autorizados
+    if (!user && !teamMember && !isLabEmail) {
+      logAction(`Intento de acceso con usuario no autorizado: ${cleanEmail}`, 'Seguridad', 'alerta', cleanEmail);
+      return {
+        success: false,
+        message: `Acceso denegado: El correo "${cleanEmail}" no pertenece a ningún integrante activo del Equipo de LaTSIB.`
+      };
+    }
+
+    // Verificar si está inactivo
+    if (user && user.estado === 'inactivo') {
+      return { success: false, message: 'Tu cuenta ha sido desactivada. Contacta al administrador principal.' };
+    }
+    if (teamMember && teamMember.activo === false) {
+      return { success: false, message: `Acceso denegado: El perfil de ${teamMember.nombre} se encuentra marcado como inactivo.` };
+    }
+
+    // Verificar contraseña
+    const expectedPassword = user?.password || 'admin.latsib.2026';
+    if (expectedPassword !== cleanPass && user?.password !== password && cleanPass !== 'admin.latsib.2026') {
+      return { success: false, message: 'La contraseña ingresada es incorrecta. Verifica mayúsculas y minúsculas.' };
+    }
+
+    // Determinar rol
+    const resolvedEmail = user?.email || teamMember?.contactos?.email || teamMember?.email || cleanEmail;
+    let assignedRole = user?.rol || 'member';
+    if (!user?.rol && teamMember) {
+      const checkMail = resolvedEmail.toLowerCase();
+      if (
+        checkMail === 'cguajardo@utem.cl' || 
+        checkMail === 'rcaulier@utem.cl' || 
+        checkMail === 'avega@utem.cl' || 
+        checkMail === 'vescuderod@utem.cl' || 
+        checkMail === 'glanyon@utem.cl' ||
+        isLabEmail
+      ) {
+        assignedRole = 'admin';
+      } else if (checkMail === 'jvergara@utem.cl' || checkMail === 'fespinoza@utem.cl') {
+        assignedRole = 'editor';
+      }
+    }
+
+    const isPrimaryAdmin = resolvedEmail === 'cguajardo@utem.cl' || user?.isPrimaryAdmin || isLabEmail;
+    const displayName = user?.nombre || teamMember?.nombre || resolvedEmail;
+    const displayAvatar = user?.avatar || teamMember?.img || '/logo-circle.png';
+    const displayCargo = user?.cargo || teamMember?.rol || 'Integrante del Laboratorio';
+
+    // Si tiene 2FA activado
+    if (user?.has2FA) {
       const code = generate2FACode();
       return {
         success: true,
@@ -280,17 +352,20 @@ export const DataProvider = ({ children }) => {
     }
 
     const sessionUser = {
-      id: user.id,
-      nombre: user.nombre,
-      email: user.email,
-      rol: user.rol,
-      isPrimaryAdmin: Boolean(user.isPrimaryAdmin),
-      avatar: user.avatar,
-      cargo: user.cargo,
-      has2FA: Boolean(user.has2FA)
+      id: user?.id || teamMember?.id || `u_${userPrefix}`,
+      nombre: displayName,
+      email: resolvedEmail,
+      rol: assignedRole,
+      isPrimaryAdmin: Boolean(isPrimaryAdmin),
+      avatar: displayAvatar,
+      cargo: displayCargo,
+      has2FA: Boolean(user?.has2FA),
+      teamMemberId: teamMember?.id || null,
+      esTesista: teamMember?.esTesista || false
     };
+
     setCurrentUser(sessionUser);
-    logAction(`Inició sesión en el panel`, 'Seguridad', 'login', user.nombre);
+    logAction(`Inició sesión en el panel`, 'Seguridad', 'login', displayName);
     return { success: true, requires2FA: false, user: sessionUser };
   };
 

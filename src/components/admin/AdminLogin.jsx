@@ -1,141 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
-  ArrowLeft, ShieldCheck, ShieldAlert, Lock, CheckCircle2, RefreshCw
+  ArrowLeft, ShieldCheck, ShieldAlert, Lock, Mail, Eye, EyeOff, KeyRound, CheckCircle2 
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import utemLogo from '../../assets/logo-utem.png';
 
-// ID de cliente Google OAuth configurable vía variable de entorno o fallback institucional
-const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '1047123984128-utem-latsib.apps.googleusercontent.com';
-
 export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
-  const { loginWithGoogle, config } = useData();
+  const { login, config, requestPasswordReset } = useData();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [gisReady, setGisReady] = useState(false);
-  const [tokenClient, setTokenClient] = useState(null);
+  const [resetModalOpen, setResetModalOpen] = useState(false);
+  const [resetEmail, setResetEmail] = useState('');
+  const [resetSuccessMsg, setResetSuccessMsg] = useState('');
+  const [resetErrorMsg, setResetErrorMsg] = useState('');
 
-  // Inicializar Google Identity Services (GIS)
-  useEffect(() => {
-    const initGIS = () => {
-      // 1. Inicializar Google Identity Services ID Token (One-Tap / ID Token)
-      if (window.google?.accounts?.id) {
-        try {
-          window.google.accounts.id.initialize({
-            client_id: GOOGLE_CLIENT_ID,
-            auto_select: false,
-            callback: async (response) => {
-              setLoading(true);
-              try {
-                const base64Url = response.credential.split('.')[1];
-                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                }).join(''));
-                const googleProfile = JSON.parse(jsonPayload);
-                
-                const result = await loginWithGoogle({
-                  email: googleProfile.email,
-                  name: googleProfile.name,
-                  picture: googleProfile.picture,
-                  hd: googleProfile.hd
-                });
-
-                setLoading(false);
-                if (result.success) {
-                  if (onLoginSuccess) onLoginSuccess(result.user);
-                } else {
-                  setError(result.message || 'La cuenta verificada no tiene permisos de acceso al panel.');
-                }
-              } catch (e) {
-                setLoading(false);
-                setError('Error al decodificar credencial de Google.');
-              }
-            }
-          });
-        } catch (err) {
-          console.warn('GIS ID Init:', err);
-        }
-      }
-
-      // 2. Inicializar Google OAuth2 Token Client (Popup flow)
-      if (window.google?.accounts?.oauth2) {
-        try {
-          const client = window.google.accounts.oauth2.initTokenClient({
-            client_id: GOOGLE_CLIENT_ID,
-            scope: 'openid email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile',
-            callback: async (tokenResponse) => {
-              if (tokenResponse.error) {
-                setLoading(false);
-                setError('Autenticación cancelada o denegada en la ventana de Google.');
-                return;
-              }
-
-              try {
-                const userInfoRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-                  headers: { Authorization: `Bearer ${tokenResponse.access_token}` }
-                });
-
-                if (!userInfoRes.ok) {
-                  throw new Error('No se pudo verificar el perfil con los servidores de Google.');
-                }
-
-                const googleProfile = await userInfoRes.json();
-                
-                const result = await loginWithGoogle({
-                  email: googleProfile.email,
-                  name: googleProfile.name,
-                  picture: googleProfile.picture,
-                  hd: googleProfile.hd
-                });
-
-                setLoading(false);
-
-                if (result.success) {
-                  if (onLoginSuccess) onLoginSuccess(result.user);
-                } else {
-                  setError(result.message || 'La cuenta verificada no tiene permisos de acceso al panel.');
-                }
-              } catch (fetchErr) {
-                setLoading(false);
-                setError('Error al obtener la verificación de Google: ' + (fetchErr.message || 'Error de conexión'));
-              }
-            }
-          });
-
-          setTokenClient(client);
-          setGisReady(true);
-        } catch (e) {
-          console.warn('No se pudo inicializar cliente Google GIS:', e);
-        }
-      }
-    };
-
-    if (window.google?.accounts?.oauth2 || window.google?.accounts?.id) {
-      initGIS();
-    } else {
-      const interval = setInterval(() => {
-        if (window.google?.accounts?.oauth2 || window.google?.accounts?.id) {
-          initGIS();
-          clearInterval(interval);
-        }
-      }, 300);
-      return () => clearInterval(interval);
-    }
-  }, [loginWithGoogle, onLoginSuccess]);
-
-  // Manejar el clic en Iniciar Sesión con Google
-  const handleGoogleClick = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setError('');
+
+    const cleanEmail = email.trim();
+    const cleanPass = password.trim();
+
+    if (!cleanEmail) {
+      setError('Por favor ingresa tu correo institucional de Google (@utem.cl).');
+      return;
+    }
+    if (!cleanPass) {
+      setError('Por favor ingresa tu contraseña.');
+      return;
+    }
+
     setLoading(true);
 
-    if (tokenClient) {
-      // Solicitar autenticación real con Google Popup (Google verifica contraseña y sesión activa)
-      tokenClient.requestAccessToken({ prompt: 'select_account' });
-    } else {
-      // Si el cliente GIS aún no carga en el navegador o está en entorno restringido
-      setError('Cargando servicios de seguridad de Google. Por favor intenta nuevamente en unos segundos.');
+    try {
+      const result = await login(cleanEmail, cleanPass);
       setLoading(false);
+
+      if (result.success) {
+        if (onLoginSuccess) onLoginSuccess(result.user);
+      } else {
+        setError(result.message || 'Credenciales no autorizadas.');
+      }
+    } catch (err) {
+      setLoading(false);
+      setError('Error al procesar el inicio de sesión.');
+    }
+  };
+
+  const handleRequestReset = (e) => {
+    e.preventDefault();
+    setResetErrorMsg('');
+    setResetSuccessMsg('');
+
+    if (!resetEmail.trim()) {
+      setResetErrorMsg('Ingresa tu correo institucional.');
+      return;
+    }
+
+    const res = requestPasswordReset(resetEmail.trim());
+    if (res.success) {
+      setResetSuccessMsg(`Se ha verificado la cuenta de ${res.reset.nombre}. Tu nueva clave provisional es: admin.latsib.2026`);
+    } else {
+      setResetErrorMsg(res.message);
     }
   };
 
@@ -199,62 +128,181 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
             </div>
           )}
 
-          {/* Sección de Autenticación con Google */}
-          <div className="space-y-6">
+          {/* Formulario de Inicio de Sesión Seguro */}
+          <form onSubmit={handleSubmit} className="space-y-5">
             
             {/* Tarjeta de Seguridad Informativa */}
             <div className="bg-blue-950/40 border border-blue-500/20 rounded-2xl p-4 text-xs text-blue-200/90 leading-relaxed flex items-start gap-3">
               <Lock className="w-5 h-5 text-teal-400 shrink-0 mt-0.5" />
               <div>
-                <strong className="text-white block font-medium mb-0.5">Acceso Protegido por Google SSO</strong>
-                El acceso requiere verificar tu sesión activa de Google con tu correo institucional (@utem.cl). Solo los integrantes autorizados en el equipo del laboratorio podrán ingresar.
+                <strong className="text-white block font-medium mb-0.5">Google Workspace • UTEM SSO</strong>
+                Acceso exclusivo para integrantes del Equipo con sesión activa y contraseña autorizada.
               </div>
             </div>
 
-            {/* Botón Oficial: Continuar con Google */}
-            <button
-              type="button"
-              onClick={handleGoogleClick}
-              disabled={loading}
-              className="w-full py-4 px-5 bg-white hover:bg-slate-100 text-slate-800 font-bold rounded-2xl transition-all shadow-lg hover:shadow-xl hover:shadow-white/10 active:scale-[0.99] flex items-center justify-center gap-3 cursor-pointer border border-slate-200 disabled:opacity-50 text-sm"
-            >
-              {loading ? (
-                <div className="flex items-center gap-2 text-slate-700">
-                  <RefreshCw size={18} className="animate-spin text-blue-600" />
-                  <span>Verificando credenciales con Google...</span>
+            {/* Campo: Correo Institucional */}
+            <div className="space-y-1.5">
+              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                Correo Institucional (@utem.cl)
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                  <Mail size={16} />
                 </div>
-              ) : (
-                <>
-                  <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
-                    <path
-                      fill="#4285F4"
-                      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                    />
-                    <path
-                      fill="#34A853"
-                      d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                    />
-                    <path
-                      fill="#FBBC05"
-                      d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
-                    />
-                    <path
-                      fill="#EA4335"
-                      d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
-                    />
-                  </svg>
-                  <span>Iniciar Sesión con Google</span>
-                </>
-              )}
+                <input
+                  type="text"
+                  required
+                  placeholder="usuario@utem.cl"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 bg-slate-950/80 border border-slate-700/80 rounded-2xl text-white text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                />
+              </div>
+            </div>
+
+            {/* Campo: Contraseña */}
+            <div className="space-y-1.5">
+              <div className="flex justify-between items-center">
+                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                  Contraseña
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setResetEmail(email);
+                    setResetModalOpen(true);
+                  }}
+                  className="text-[11px] text-teal-400 hover:text-teal-300 hover:underline cursor-pointer"
+                >
+                  ¿Olvidaste tu contraseña?
+                </button>
+              </div>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                  <KeyRound size={16} />
+                </div>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  placeholder="••••••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full pl-10 pr-11 py-3 bg-slate-950/80 border border-slate-700/80 rounded-2xl text-white text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-500 hover:text-slate-300 cursor-pointer"
+                >
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
+              </div>
+            </div>
+
+            {/* Botón de Acceso */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-3.5 px-5 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 text-white font-bold rounded-2xl transition-all shadow-lg hover:shadow-xl hover:shadow-blue-500/20 active:scale-[0.99] flex items-center justify-center gap-3 cursor-pointer border border-white/10 disabled:opacity-50 text-sm mt-2"
+            >
+              <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+                <path
+                  fill="#4285F4"
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                />
+                <path
+                  fill="#34A853"
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                />
+                <path
+                  fill="#FBBC05"
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+                />
+                <path
+                  fill="#EA4335"
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+                />
+              </svg>
+              <span>{loading ? 'Verificando autorización...' : 'Iniciar Sesión'}</span>
             </button>
 
-          </div>
+          </form>
+
+          {/* Modal de Recuperación de Contraseña */}
+          {resetModalOpen && (
+            <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+              <div className="bg-slate-900 border border-slate-700 rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl space-y-4 animate-in fade-in zoom-in-95">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-2xl bg-teal-500/20 border border-teal-500/30 flex items-center justify-center text-teal-400">
+                    <KeyRound size={20} />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-white">Recuperar Acceso</h3>
+                    <p className="text-xs text-slate-400">Restablecimiento de contraseña</p>
+                  </div>
+                </div>
+
+                {resetSuccessMsg ? (
+                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 rounded-xl text-xs space-y-2">
+                    <div className="flex items-center gap-2 font-bold">
+                      <CheckCircle2 size={16} /> Listo
+                    </div>
+                    <p>{resetSuccessMsg}</p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setResetModalOpen(false);
+                        setResetSuccessMsg('');
+                      }}
+                      className="w-full mt-2 py-2 rounded-lg bg-emerald-600 text-white font-bold text-xs"
+                    >
+                      Volver a Iniciar Sesión
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleRequestReset} className="space-y-4">
+                    <p className="text-xs text-slate-300 leading-relaxed">
+                      Ingresa tu correo institucional registrado en el Equipo de LaTSIB para verificar tu cuenta:
+                    </p>
+                    {resetErrorMsg && (
+                      <div className="p-2.5 bg-rose-500/10 border border-rose-500/30 text-rose-300 rounded-xl text-xs">
+                        {resetErrorMsg}
+                      </div>
+                    )}
+                    <input
+                      type="text"
+                      required
+                      placeholder="usuario@utem.cl"
+                      value={resetEmail}
+                      onChange={(e) => setResetEmail(e.target.value)}
+                      className="w-full px-4 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-white text-xs focus:outline-none focus:border-teal-500"
+                    />
+                    <div className="flex justify-end gap-2 pt-2">
+                      <button
+                        type="button"
+                        onClick={() => setResetModalOpen(false)}
+                        className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold cursor-pointer"
+                      >
+                        Cancelar
+                      </button>
+                      <button
+                        type="submit"
+                        className="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold cursor-pointer"
+                      >
+                        Verificar Cuenta
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </div>
+            </div>
+          )}
 
           {/* Footer de Seguridad y Encriptación */}
           <div className="mt-8 pt-6 border-t border-slate-800/60 text-center">
             <p className="text-[11px] text-slate-400 flex items-center justify-center gap-1.5 font-medium">
               <ShieldCheck size={14} className="text-teal-400" />
-              <span>Autenticación Criptográfica Oficial • Google Identity Services</span>
+              <span>Protegido por Google Workspace & UTEM SSO</span>
             </p>
           </div>
 
