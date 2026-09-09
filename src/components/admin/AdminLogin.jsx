@@ -69,14 +69,6 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
       <div className="w-full max-w-md relative z-10 my-8">
         <div className="bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl shadow-blue-950/50">
           
-          {/* Badge de Seguridad: SOLO PERSONAL AUTORIZADO */}
-          <div className="mb-6 flex justify-center">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[11px] font-bold tracking-wider uppercase shadow-inner">
-              <Lock size={12} className="text-amber-400" />
-              <span>SOLO PERSONAL AUTORIZADO • EQUIPO LaTSIB</span>
-            </div>
-          </div>
-
           {/* Logo Principal e Identidad */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-4">
