@@ -1,29 +1,22 @@
 import React, { useState } from 'react';
 import { 
-  ArrowLeft, ShieldCheck, Mail, ShieldAlert, 
-  Users, ChevronRight 
+  ArrowLeft, ShieldCheck, Mail, ShieldAlert 
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import utemLogo from '../../assets/logo-utem.png';
 
 export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
-  const { loginWithGoogle, equipo, config } = useData();
+  const { loginWithGoogle, config } = useData();
   const [emailInput, setEmailInput] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showTeamSelector, setShowTeamSelector] = useState(false);
-
-  // Lista de miembros activos del equipo con correo válido
-  const teamMembers = (Array.isArray(equipo) ? equipo : []).filter(
-    (m) => m.activo !== false && (m.contactos?.email || m.email)
-  );
 
   const handleGoogleSubmit = async (targetEmail) => {
     setError('');
     const emailToAuth = (targetEmail || emailInput || '').trim();
 
     if (!emailToAuth) {
-      setError('Por favor ingresa o selecciona tu correo institucional de Google.');
+      setError('Por favor ingresa tu correo institucional de Google.');
       return;
     }
 
@@ -145,7 +138,7 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
               <span>{loading ? 'Verificando autorización...' : 'Iniciar Sesión con Google'}</span>
             </button>
 
-            {/* Input de Correo Google / Prueba Directa */}
+            {/* Input de Correo Google / Acceso Directo */}
             <div className="pt-2 border-t border-slate-800">
               <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                 Ingresa tu Correo Google (@utem.cl)
@@ -173,62 +166,6 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
                   Entrar
                 </button>
               </div>
-            </div>
-
-            {/* Acceso Rápido para Integrantes del Laboratorio */}
-            <div className="pt-2">
-              <button
-                type="button"
-                onClick={() => setShowTeamSelector(!showTeamSelector)}
-                className="w-full py-2.5 px-3 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-medium border border-slate-700/60 transition-all flex items-center justify-between cursor-pointer"
-              >
-                <span className="flex items-center gap-2">
-                  <Users size={15} className="text-teal-400" />
-                  <span>Ver Integrantes con Acceso Permitido ({teamMembers.length})</span>
-                </span>
-                <ChevronRight size={15} className={`transition-transform duration-200 ${showTeamSelector ? 'rotate-90' : ''}`} />
-              </button>
-
-              {showTeamSelector && (
-                <div className="mt-3 p-3 bg-slate-950/80 rounded-2xl border border-slate-800 max-h-56 overflow-y-auto space-y-1.5 custom-scrollbar">
-                  <p className="text-[11px] text-slate-400 px-2 py-1">
-                    Haz clic en tu perfil para ingresar con tu cuenta institucional:
-                  </p>
-                  {teamMembers.map((member) => {
-                    const memberEmail = member.contactos?.email || member.email;
-                    return (
-                      <button
-                        key={member.id}
-                        type="button"
-                        onClick={() => {
-                          setEmailInput(memberEmail);
-                          handleGoogleSubmit(memberEmail);
-                        }}
-                        className="w-full text-left p-2 rounded-xl hover:bg-slate-800/80 transition-colors flex items-center justify-between gap-3 group cursor-pointer"
-                      >
-                        <div className="flex items-center gap-2.5 min-w-0">
-                          <img
-                            src={member.img || '/logo-circle.png'}
-                            alt={member.nombre}
-                            className="w-7 h-7 rounded-full object-cover border border-slate-700 shrink-0"
-                          />
-                          <div className="truncate">
-                            <span className="text-xs font-medium text-slate-200 group-hover:text-teal-300 block truncate">
-                              {member.nombre}
-                            </span>
-                            <span className="text-[10px] text-slate-400 block truncate">
-                              {memberEmail}
-                            </span>
-                          </div>
-                        </div>
-                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 shrink-0">
-                          {member.rol || 'Miembro'}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
             </div>
 
           </div>
