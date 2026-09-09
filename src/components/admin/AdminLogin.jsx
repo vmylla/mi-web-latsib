@@ -10,24 +10,28 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
   const [emailInput, setEmailInput] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPromptModal, setShowPromptModal] = useState(false);
+  const [promptEmail, setPromptEmail] = useState('');
 
   const handleGoogleSubmit = async (targetEmail) => {
     setError('');
-    const emailToAuth = (targetEmail || emailInput || '').trim();
+    const emailToAuth = (targetEmail || emailInput || promptEmail || '').trim();
 
     if (!emailToAuth) {
-      setError('Por favor ingresa tu correo institucional de Google.');
+      // Si no ha ingresado correo, abrimos el modal de Google para que seleccione o ingrese su cuenta
+      setShowPromptModal(true);
       return;
     }
 
     setLoading(true);
 
     try {
-      // Autenticación con Google y validación estricta de Whitelist contra integrantes
+      // Intentar autenticación con Google y validación estricta de Whitelist contra integrantes
       const result = await loginWithGoogle(emailToAuth);
       setLoading(false);
 
       if (result.success) {
+        setShowPromptModal(false);
         if (onLoginSuccess) onLoginSuccess(result.user);
       } else {
         setError(result.message || 'No se pudo autenticar la cuenta de Google.');
@@ -35,6 +39,13 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
     } catch (err) {
       setLoading(false);
       setError('Error al procesar el inicio de sesión con Google.');
+    }
+  };
+
+  const handlePromptSubmit = (e) => {
+    e.preventDefault();
+    if (promptEmail.trim()) {
+      handleGoogleSubmit(promptEmail.trim());
     }
   };
 
@@ -106,7 +117,7 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
               <ShieldCheck className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
               <div>
                 <strong className="text-white block font-medium mb-0.5">Acceso Exclusivo para el Equipo</strong>
-                Solo las cuentas de Google registradas en la sección <strong>Equipo</strong> de esta página tienen permiso para ingresar.
+                Solo las cuentas institucionales de Google (@utem.cl) registradas en el <strong>Equipo</strong> de esta página tienen permiso para ingresar.
               </div>
             </div>
 
@@ -141,7 +152,7 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
             {/* Input de Correo Google / Acceso Directo */}
             <div className="pt-2 border-t border-slate-800">
               <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                Ingresa tu Correo Google (@utem.cl)
+                O ingresa tu Correo Google (@utem.cl)
               </label>
               <div className="flex gap-2">
                 <div className="relative flex-1">
@@ -149,8 +160,8 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
                     <Mail size={16} />
                   </div>
                   <input
-                    type="email"
-                    placeholder="nombre@utem.cl"
+                    type="text"
+                    placeholder="usuario@utem.cl"
                     value={emailInput}
                     onChange={(e) => setEmailInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleGoogleSubmit()}
@@ -166,9 +177,84 @@ export const AdminLogin = ({ onLoginSuccess, onBackToSite }) => {
                   Entrar
                 </button>
               </div>
+              <p className="text-[11px] text-slate-500 mt-2">
+                Ej: <code className="text-teal-400 font-mono">rcaulier@utem.cl</code> o tu usuario asignado en el Equipo.
+              </p>
             </div>
 
           </div>
+
+          {/* Modal Emergente de Selección de Cuenta Google */}
+          {showPromptModal && (
+            <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+              <div className="bg-slate-900 border border-slate-700 rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl space-y-5 animate-in fade-in zoom-in-95">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center shadow-md shrink-0">
+                    <svg className="w-6 h-6" viewBox="0 0 24 24">
+                      <path
+                        fill="#4285F4"
+                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                      />
+                      <path
+                        fill="#34A853"
+                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                      />
+                      <path
+                        fill="#FBBC05"
+                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+                      />
+                      <path
+                        fill="#EA4335"
+                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-white">Google Workspace</h3>
+                    <p className="text-xs text-slate-400">Verificación de Integrante LaTSIB</p>
+                  </div>
+                </div>
+
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Ingresa tu cuenta de correo de Google o institucional con la que formas parte del equipo:
+                </p>
+
+                <form onSubmit={handlePromptSubmit} className="space-y-4">
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                      <Mail size={16} />
+                    </div>
+                    <input
+                      type="text"
+                      autoFocus
+                      required
+                      placeholder="ejemplo@utem.cl"
+                      value={promptEmail}
+                      onChange={(e) => setPromptEmail(e.target.value)}
+                      className="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:border-blue-500"
+                    />
+                  </div>
+
+                  <div className="flex gap-2 justify-end pt-2">
+                    <button
+                      type="button"
+                      onClick={() => setShowPromptModal(false)}
+                      className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold cursor-pointer"
+                    >
+                      Cancelar
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-lg shadow-blue-900/40 cursor-pointer disabled:opacity-50"
+                    >
+                      {loading ? 'Verificando...' : 'Verificar e Ingresar'}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
 
           {/* Footer de Seguridad y Encriptación */}
           <div className="mt-8 pt-6 border-t border-slate-800/60 text-center">
