@@ -12,6 +12,7 @@ import { AdminLayout } from './components/admin/AdminLayout';
 import { InvitationScreen } from './components/auth/InvitationScreen';
 import utemLogo from './assets/logo-utem.png';
 import heroPattern from './assets/hero-pattern.png';
+import heroPatternTransparent from './assets/hero-pattern-transparent.png';
 
 // --- COMPONENTES AUXILIARES DE LA WEB PÚBLICA ---
 
@@ -1249,63 +1250,63 @@ function AppContent() {
       ) : (
         /* VISTA: PORTADA (LANDING) */
         <>
-          <header className="relative pt-32 pb-20 lg:min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900" id="about">
-            {/* Luces sutiles de fondo */}
-            <div className="absolute inset-0 z-0 opacity-25 pointer-events-none">
-              <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-500 rounded-full blur-[130px]"></div>
-              <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-400 rounded-full blur-[110px]"></div>
+          <header className="relative pt-32 pb-20 lg:min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#08182b] via-[#0d2a45] to-[#0a3853]" id="about">
+            {/* Luces y brillos ambientales de fondo */}
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+              <div className="absolute top-[-15%] right-[-5%] w-[620px] h-[620px] bg-cyan-500/20 rounded-full blur-[130px]" />
+              <div className="absolute bottom-[-10%] left-[-10%] w-[550px] h-[550px] bg-blue-600/25 rounded-full blur-[120px]" />
+              <div className="absolute top-[40%] left-[30%] w-[350px] h-[350px] bg-teal-400/15 rounded-full blur-[100px]" />
             </div>
 
-            {/* Patrón Biomédico Ilustrado con 60% de transparencia */}
+            {/* Patrón Biomédico Ilustrado con 60% de opacidad */}
             <div
               className="absolute inset-0 z-0 opacity-60 pointer-events-none bg-repeat bg-center"
               style={{
-                backgroundImage: `url(${heroPattern || '/hero-pattern.png'})`,
-                backgroundSize: '520px auto',
-                mixBlendMode: 'soft-light'
+                backgroundImage: `url(${heroPatternTransparent || heroPattern || '/hero-pattern.png'})`,
+                backgroundSize: '460px auto'
               }}
             />
 
-            {/* Máscara suave para garantizar máxima legibilidad de tipografía y logos */}
-            <div className="absolute inset-0 z-0 bg-gradient-to-r from-slate-900/50 via-slate-850/30 to-transparent pointer-events-none" />
+            {/* Máscara suave para garantizar máxima legibilidad y armonía visual */}
+            <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#08182b]/80 via-[#08182b]/50 to-transparent pointer-events-none" />
 
             <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
               <div className="text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-900/50 border border-blue-700 text-blue-200 text-xs font-semibold mb-6 shadow-sm">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-cyan-200 text-xs font-semibold mb-6 shadow-sm backdrop-blur-md">
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
                   </span>
                   Investigación Activa {config.year}
                 </div>
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight drop-shadow-sm">
                   Donde la ciencia <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-cyan-200 to-sky-300">
                     se encuentra con la tecnología
                   </span>
                 </h1>
-                <p className="text-base sm:text-lg text-slate-300 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light">
+                <p className="text-base sm:text-lg text-slate-200/90 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-normal drop-shadow-sm">
                   {config.mision}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start w-full sm:w-auto">
                   <button
                     type="button"
                     onClick={() => scrollToSection('research')}
-                    className="w-full sm:w-auto px-7 py-3.5 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 group shadow-lg shadow-blue-900/30 cursor-pointer text-sm sm:text-base"
+                    className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 group shadow-lg shadow-cyan-950/50 border border-cyan-400/30 cursor-pointer text-sm sm:text-base hover:scale-[1.02] active:scale-[0.98]"
                   >
                     Nuestras Líneas <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </button>
                   <button
                     type="button"
                     onClick={() => scrollToSection('publications')}
-                    className="w-full sm:w-auto px-7 py-3.5 bg-slate-800 text-white border border-slate-700 rounded-xl font-bold hover:bg-slate-700 transition-all shadow-sm cursor-pointer text-sm sm:text-base"
+                    className="w-full sm:w-auto px-7 py-3.5 bg-slate-900/60 hover:bg-slate-800/80 text-white border border-slate-600/60 backdrop-blur-md rounded-xl font-bold transition-all shadow-sm cursor-pointer text-sm sm:text-base hover:border-slate-400/70"
                   >
                     Ver Publicaciones
                   </button>
                 </div>
               </div>
               <div className="relative hidden lg:block">
-                <div className="relative z-10 bg-slate-800/50 backdrop-blur-xl border border-slate-700 p-2 rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                <div className="relative z-10 bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 p-2.5 rounded-2xl shadow-2xl shadow-cyan-950/60 transform rotate-1 hover:rotate-0 transition-transform duration-500">
                   <img src={config.imagenes.hero} alt="Lab Vis" className="rounded-xl w-full h-auto object-cover" />
                 </div>
               </div>
