@@ -35,6 +35,7 @@ export const AdminTeam = ({ initialOpenModal = false }) => {
     activo: true,
     orden: 1,
     email: '',
+    permisoRol: 'member',
     linkedin: '',
     github: '',
     orcid: '',
@@ -85,7 +86,8 @@ export const AdminTeam = ({ initialOpenModal = false }) => {
       esTesista: Boolean(miembro.esTesista),
       activo: miembro.activo !== false,
       orden: miembro.orden || 1,
-      email: miembro.contactos?.email || '',
+      email: miembro.contactos?.email || miembro.email || '',
+      permisoRol: miembro.permisoRol || (miembro.contactos?.email === 'rcaulier@utem.cl' || miembro.contactos?.email === 'cguajardo@utem.cl' ? 'admin' : 'member'),
       linkedin: miembro.contactos?.linkedin || '',
       github: miembro.contactos?.github || '',
       orcid: miembro.contactos?.orcid || '',
@@ -113,6 +115,8 @@ export const AdminTeam = ({ initialOpenModal = false }) => {
       esTesista: formData.esTesista,
       activo: formData.activo,
       orden: Number(formData.orden) || 1,
+      permisoRol: formData.permisoRol || 'member',
+      email: formData.email.trim(),
       contactos: {
         email: formData.email.trim(),
         linkedin: formData.linkedin.trim(),
@@ -484,15 +488,36 @@ export const AdminTeam = ({ initialOpenModal = false }) => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 font-bold uppercase tracking-wider mb-1">Correo Institucional</label>
+                  <label className="block text-slate-300 font-bold uppercase tracking-wider mb-1">
+                    Correo Oficial (Google / UTEM) <span className="text-teal-400">*</span>
+                  </label>
                   <input
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="usuario@utem.cl"
-                    className="w-full p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="nombre.apellido@utem.cl"
+                    className="w-full p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                    required
                   />
+                  <p className="text-[10px] text-slate-400 mt-1">Obligatorio para habilitar el inicio de sesión con Google.</p>
                 </div>
+              </div>
+
+              {/* Rol de Acceso al Panel del Sistema */}
+              <div className="p-3.5 rounded-2xl bg-blue-950/30 border border-blue-500/20">
+                <label className="block text-slate-200 font-bold uppercase tracking-wider mb-1.5 flex items-center justify-between">
+                  <span>Permisos de Acceso al Panel (con Google)</span>
+                  <span className="text-[10px] font-normal text-teal-400">Mapeo Automático Backend</span>
+                </label>
+                <select
+                  value={formData.permisoRol}
+                  onChange={(e) => setFormData({ ...formData, permisoRol: e.target.value })}
+                  className="w-full p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-teal-400 text-xs"
+                >
+                  <option value="admin">Administrador (Acceso total al sistema, invitaciones y gestión completa)</option>
+                  <option value="editor">Editor (Puede crear y editar publicaciones, actividades y proyectos)</option>
+                  <option value="member">Integrante / Investigador / Tesista (Edición de su propio perfil y actividades)</option>
+                </select>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">

@@ -182,7 +182,7 @@ export const DataProvider = ({ children }) => {
         success: false,
         isUnauthorized: true,
         email: cleanEmail,
-        message: `Acceso denegado: La cuenta Google (${cleanEmail}) no se encuentra registrada en el Equipo del Laboratorio. Solo los integrantes activos de la página tienen permiso de acceso.`
+        message: `Este correo (${cleanEmail}) no está registrado como integrante activo del LaTSIB.`
       };
     }
 
@@ -200,10 +200,12 @@ export const DataProvider = ({ children }) => {
       };
     }
 
-    // Determinar rol del usuario
+    // Determinar rol del usuario según la ficha del integrante o registro
     const resolvedEmail = teamMember?.contactos?.email || teamMember?.email || userRecord?.email || emailWithDomain;
     let assignedRole = 'member';
-    if (userRecord?.rol) {
+    if (teamMember?.permisoRol) {
+      assignedRole = teamMember.permisoRol;
+    } else if (userRecord?.rol) {
       assignedRole = userRecord.rol;
     } else if (teamMember) {
       const checkMail = resolvedEmail.toLowerCase();
