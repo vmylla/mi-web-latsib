@@ -85,20 +85,20 @@ export const INITIAL_EQUIPO = [
     }
   },
   {
-    id: 'm4',
-    nombre: "David Sepúlveda Velásquez",
+    id: 'm8',
+    nombre: "Catalina Araniz Arancibia",
     categoria: "asistentes",
-    rol: "Asistente Investigador",
-    bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
-    img: "/equipo/DavidPERFIL.jpg",
+    rol: "Asistente Investigadora",
+    bio: "Estudiante de Ingeniería Civil en Computación mención Informática",
+    img: "/equipo/CatalinaPERFIL.jpg",
     esTesista: false,
     activo: true,
     orden: 4,
-    actividadesLab: "Investigación aplicada al procesamiento de señales fNIRS y caracterización de nuevos biomarcadores funcionales para el estudio de la médula espinal humana.",
+    actividadesLab: "El trabajo de Catalina se enfoca en la creación de soluciones tecnológicas que conectan el desarrollo de software con la investigación biomédica, buscando facilitar el manejo, análisis y aprovechamiento de grandes volúmenes de información clínica.\n\nParticipa en el desarrollo de DataLab, una herramienta web diseñada para trabajar de manera eficiente con grandes bases de datos clínicas. Además, desarrolla software para la integración y utilización de tecnologías como EEG Bitbrain y eye-tracking Tobii.",
     contactos: {
-      linkedin: "https://www.linkedin.com/in/david-sepulveda-vel%C3%A1squez-6311602a8/",
-      github: "",
-      email: "svelasquez@utem.cl",
+      linkedin: "",
+      github: "https://github.com/cataaraniz",
+      email: "caraniz@utem.cl",
       orcid: "",
       scholar: ""
     }
@@ -161,20 +161,20 @@ export const INITIAL_EQUIPO = [
     }
   },
   {
-    id: 'm8',
-    nombre: "Catalina Araniz Arancibia",
+    id: 'm4',
+    nombre: "David Sepúlveda Velásquez",
     categoria: "asistentes",
-    rol: "Asistente Investigadora",
-    bio: "Estudiante de Ingeniería Civil en Computación mención Informática",
-    img: "/equipo/CatalinaPERFIL.jpg",
+    rol: "Asistente Investigador",
+    bio: "Estudiante de Ingeniería Civil en Ciencia de Datos",
+    img: "/equipo/DavidPERFIL.jpg",
     esTesista: false,
     activo: true,
     orden: 8,
-    actividadesLab: "El trabajo de Catalina se enfoca en la creación de soluciones tecnológicas que conectan el desarrollo de software con la investigación biomédica, buscando facilitar el manejo, análisis y aprovechamiento de grandes volúmenes de información clínica.\n\nParticipa en el desarrollo de DataLab, una herramienta web diseñada para trabajar de manera eficiente con grandes bases de datos clínicas. Además, desarrolla software para la integración y utilización de tecnologías como EEG Bitbrain y eye-tracking Tobii.",
+    actividadesLab: "Investigación aplicada al procesamiento de señales fNIRS y caracterización de nuevos biomarcadores funcionales para el estudio de la médula espinal humana.",
     contactos: {
-      linkedin: "",
-      github: "https://github.com/cataaraniz",
-      email: "caraniz@utem.cl",
+      linkedin: "https://www.linkedin.com/in/david-sepulveda-vel%C3%A1squez-6311602a8/",
+      github: "",
+      email: "svelasquez@utem.cl",
       orcid: "",
       scholar: ""
     }
