@@ -3,13 +3,10 @@ import {
   Atom, Cpu, Globe, Users, FileText, Mail, MapPin, 
   ChevronRight, ChevronLeft, Menu, X, Linkedin, Github, 
   ExternalLink, BookOpen, Calendar, ArrowLeft, LayoutGrid, Info, Download, 
-  Instagram, Youtube, Maximize2, Lock, ShieldCheck
+  Instagram, Youtube, Maximize2
 } from 'lucide-react';
 import ContactModal from './components/ContactModal';
 import { DataProvider, useData } from './context/DataContext';
-import { AdminLogin } from './components/admin/AdminLogin';
-import { AdminLayout } from './components/admin/AdminLayout';
-import { InvitationScreen } from './components/auth/InvitationScreen';
 import utemLogo from './assets/logo-utem.png';
 import heroPattern from './assets/hero-pattern.png';
 import heroPatternTransparent from './assets/hero-pattern-transparent.png';
@@ -661,26 +658,6 @@ function AppContent() {
     // Determinar la clave de ruta principal
     let pathKey = (rawHash.split('?')[0] || rawPath || '').toLowerCase();
     
-    if (searchParams.has('invitacion') || searchParams.has('token') || pathKey.startsWith('invitacion') || rawHash.startsWith('invitacion')) {
-      return { view: 'invitation', mode: 'invitacion', id: null, section: null };
-    }
-    if (searchParams.has('recuperar') || pathKey.startsWith('recuperar') || rawHash.startsWith('recuperar')) {
-      return { view: 'invitation', mode: 'recuperar', id: null, section: null };
-    }
-    if (pathKey === 'login') {
-      return { view: 'login', id: null, section: null };
-    }
-    if (pathKey.startsWith('admin')) {
-      const sub = pathKey.replace('admin/', '').replace('admin', '').trim();
-      let tab = 'dashboard';
-      if (sub === 'equipo' || sub === 'team') tab = 'team';
-      else if (sub === 'publicaciones') tab = 'publications';
-      else if (sub === 'actividades') tab = 'activities';
-      else if (sub === 'que-hacemos' || sub === 'quehacemos' || sub === 'proyectos') tab = 'projects';
-      else if (sub === 'usuarios' || sub === 'users' || sub === 'invitaciones') tab = 'users';
-      else if (sub === 'historial' || sub === 'history') tab = 'history';
-      return { view: 'admin', subTab: tab, id: null, section: null };
-    }
     if (!pathKey || pathKey === 'about' || pathKey === 'research' || pathKey === 'activities' || pathKey === 'team' || pathKey === 'publications' || pathKey === 'contact') {
       return { view: 'landing', id: null, section: pathKey || null };
     }
@@ -753,8 +730,6 @@ function AppContent() {
   const navigateTo = (targetView, id = null) => {
     let newHash = '';
     if (targetView === 'landing') newHash = '';
-    else if (targetView === 'login') newHash = 'login';
-    else if (targetView === 'admin') newHash = 'admin';
     else if (targetView === 'what-we-do') newHash = 'que-hacemos';
     else if (targetView === 'research-list') newHash = 'investigaciones';
     else if (targetView === 'research-detail') newHash = `investigacion/${id}`;
@@ -813,32 +788,6 @@ function AppContent() {
 
   // Integrantes visibles (no ocultos)
   const equipoVisible = equipo.filter((m) => m.activo !== false);
-
-  // --- VISTAS PRIVADAS DE ADMINISTRACIÓN, INVITACIONES Y LOGIN ---
-
-  if (route.view === 'invitation') {
-    return (
-      <InvitationScreen
-        mode={route.mode || 'invitacion'}
-        onComplete={() => navigateTo('admin')}
-        onCancel={() => navigateTo('landing')}
-      />
-    );
-  }
-
-  if (route.view === 'login') {
-    if (currentUser) {
-      return <AdminLayout onExitToSite={() => navigateTo('landing')} initialTab="dashboard" />;
-    }
-    return <AdminLogin onLoginSuccess={() => navigateTo('admin')} onBackToSite={() => navigateTo('landing')} />;
-  }
-
-  if (route.view === 'admin') {
-    if (!currentUser) {
-      return <AdminLogin onLoginSuccess={() => navigateTo('admin')} onBackToSite={() => navigateTo('landing')} />;
-    }
-    return <AdminLayout onExitToSite={() => navigateTo('landing')} initialTab={route.subTab || 'dashboard'} />;
-  }
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
@@ -1625,23 +1574,13 @@ function AppContent() {
               </div>
             </div>
 
-            {/* PIE DE PÁGINA INFERIOR CON ENLACE DISCRETO DE ACCESO */}
+            {/* PIE DE PÁGINA INFERIOR */}
             <div className="container mx-auto px-6 mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
               <div>
                 © {config.year} {config.nombreCompleto}. Todos los derechos reservados.
               </div>
-              
-              {/* ENLACE DISCRETO / BOTÓN CANDADO */}
-              <div>
-                <button
-                  type="button"
-                  onClick={() => navigateTo(currentUser ? 'admin' : 'login')}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-500 hover:text-teal-400 hover:bg-slate-800/80 transition-all cursor-pointer font-medium"
-                  title="Acceso exclusivo para integrantes autorizados de LaTSIB"
-                >
-                  <Lock size={13} className="text-slate-500 group-hover:text-teal-400" />
-                  <span>Acceso Miembros / Admin</span>
-                </button>
+              <div className="text-slate-500">
+                Universidad Tecnológica Metropolitana (UTEM)
               </div>
             </div>
           </footer>
