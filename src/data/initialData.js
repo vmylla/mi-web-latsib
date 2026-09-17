@@ -33,7 +33,7 @@ export const INITIAL_EQUIPO = [
     categoria: "academicos",
     rol: "Director e Investigador Principal del Laboratorio LaTSIB",
     bio: "PhD en Multimedia y Comunicaciones, Especialista en Biomédica, Machine Learning, Análisis de Señales y Datos",
-    img: "https://fing.utem.cl/wp-content/uploads/sites/6/2023/11/Raul-Paul-Caulier-Cisterna.jpg",
+    img: "/equipo/RaulPERFIL.png",
     actividadesLab: "Dirección general e investigación principal en el Laboratorio LaTSIB. Liderazgo de proyectos en procesamiento de señales biomédicas (fNIRS, EMG, EEG), machine learning aplicado al diagnóstico clínico y colaboración interdisciplinaria.",
     esTesista: false,
     activo: true,
