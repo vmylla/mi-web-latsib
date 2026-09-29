@@ -812,8 +812,8 @@ function AppContent() {
               className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none group min-w-0"
               onClick={() => { navigateTo('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             >
-              <img src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300 shrink-0" />
-              <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 object-cover rounded-full shadow-md group-hover:scale-105 transition-transform duration-300 shrink-0" />
+              <img src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-11 sm:h-13 md:h-14 lg:h-16 w-auto max-w-[140px] sm:max-w-[170px] md:max-w-[200px] object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300 shrink-0" />
+              <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-9 w-9 sm:h-10 sm:w-10 md:h-11 md:w-11 object-cover rounded-full shadow-md group-hover:scale-105 transition-transform duration-300 shrink-0" />
               <span className={`text-xl sm:text-2xl font-extrabold tracking-tight truncate ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
                 {config.nombreGrupo}
               </span>
@@ -869,8 +869,8 @@ function AppContent() {
                 className="flex items-center gap-2.5 cursor-pointer"
                 onClick={() => { setSideDrawerOpen(false); navigateTo('landing'); }}
               >
-                <img src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-10 w-10 object-contain drop-shadow-xs" />
-                <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-10 w-10 object-cover rounded-full shadow-sm" />
+                <img src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-11 w-auto max-w-[110px] object-contain drop-shadow-xs" />
+                <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-8 w-8 object-cover rounded-full shadow-sm" />
                 <div>
                   <span className="font-extrabold text-xl text-slate-900 tracking-tight block leading-tight">{config.nombreGrupo}</span>
                   <span className="text-[10px] text-slate-400 font-medium">Laboratorio LaTSIB · UTEM</span>
