@@ -812,12 +812,12 @@ function AppContent() {
               className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none group min-w-0"
               onClick={() => { navigateTo('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             >
-              {/* Contenedor destacado para el logo de la UTEM */}
-              <div className="bg-white px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl sm:rounded-2xl shadow-md border border-slate-200/80 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+              {/* Contenedor destacado y visible para el logo oficial de la UTEM */}
+              <div className="bg-white p-2 sm:p-2.5 rounded-2xl shadow-lg border border-slate-200/90 flex items-center justify-center shrink-0 group-hover:scale-105 transition-all duration-300">
                 <img 
                   src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} 
-                  alt="Logo UTEM" 
-                  className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto max-w-[130px] sm:max-w-[170px] md:max-w-[210px] object-contain shrink-0" 
+                  alt="Logo Universidad Tecnológica Metropolitana" 
+                  className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto max-w-[160px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[280px] object-contain shrink-0" 
                 />
               </div>
 
@@ -825,9 +825,9 @@ function AppContent() {
               <img 
                 src={config?.imagenes?.logo || '/logo-circle.png'} 
                 alt="Logo LaTSIB" 
-                className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 object-cover rounded-full shadow-md border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0" 
+                className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 object-cover rounded-full shadow-md border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0" 
               />
-              <span className={`text-xl sm:text-2xl font-extrabold tracking-tight truncate ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
+              <span className={`text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight truncate ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
                 {config.nombreGrupo}
               </span>
             </div>
@@ -879,13 +879,13 @@ function AppContent() {
           <div className="relative w-full max-w-xs sm:max-w-sm bg-white h-full shadow-2xl z-10 flex flex-col p-6 animate-in slide-in-from-left duration-300 border-r border-slate-100">
             <div className="flex items-center justify-between pb-5 border-b border-slate-100 mb-6">
               <div
-                className="flex items-center gap-2.5 cursor-pointer"
+                className="flex items-center gap-3 cursor-pointer"
                 onClick={() => { setSideDrawerOpen(false); navigateTo('landing'); }}
               >
-                <div className="bg-white px-2 py-1 rounded-xl shadow-xs border border-slate-100 flex items-center justify-center shrink-0">
-                  <img src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-10 w-auto max-w-[110px] object-contain" />
+                <div className="bg-white p-2 rounded-xl shadow-md border border-slate-100 flex items-center justify-center shrink-0">
+                  <img src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-16 sm:h-20 w-auto max-w-[140px] object-contain" />
                 </div>
-                <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-8 w-8 object-cover rounded-full shadow-sm" />
+                <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-10 w-10 object-cover rounded-full shadow-sm" />
                 <div>
                   <span className="font-extrabold text-xl text-slate-900 tracking-tight block leading-tight">{config.nombreGrupo}</span>
                   <span className="text-[10px] text-slate-400 font-medium">Laboratorio LaTSIB · UTEM</span>
