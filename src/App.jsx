@@ -11,15 +11,19 @@ import utemLogo from './assets/logo-utem.png';
 import heroPattern from './assets/hero-pattern.png';
 import heroPatternTransparent from './assets/hero-pattern-transparent.png';
 import heroTeamImg from './assets/hero-team.jpg';
+import heroTeamImg2 from './assets/hero-team-2.jpg';
+import heroTeamImg3 from './assets/hero-team-3.jpg';
 
 // --- COMPONENTES AUXILIARES DE LA WEB PÚBLICA ---
 
 // Mini Carrusel exclusivo para la sección Hero (Nosotros) - Automático y Limpio
-const HeroSlider = ({ brainImg, teamImg }) => {
-  const slides = [
+const HeroSlider = ({ brainImg, teamImg, teamImg2, teamImg3, customSlides }) => {
+  const slides = customSlides || [
     brainImg || '/image.jpg',
-    teamImg || '/hero-team.jpg'
-  ];
+    teamImg || '/hero-team.jpg',
+    teamImg2 || '/hero-team-2.jpg',
+    teamImg3 || '/hero-team-3.jpg'
+  ].filter(Boolean);
 
   const [current, setCurrent] = useState(0);
 
@@ -31,7 +35,7 @@ const HeroSlider = ({ brainImg, teamImg }) => {
   }, [slides.length]);
 
   return (
-    <div className="relative z-10 bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 p-2.5 rounded-2xl shadow-2xl shadow-cyan-950/60 transform rotate-1 hover:rotate-0 transition-all duration-500 overflow-hidden">
+    <div className="relative z-10 bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 p-2.5 rounded-2xl shadow-2xl shadow-cyan-950/60 transform rotate-1 hover:rotate-0 transition-all duration-500 overflow-hidden group">
       <div className="relative overflow-hidden rounded-xl aspect-[16/11]">
         {/* Contenedor de diapositivas con deslizamiento suave */}
         <div 
@@ -49,15 +53,40 @@ const HeroSlider = ({ brainImg, teamImg }) => {
           ))}
         </div>
 
-        {/* Indicadores sutiles de progreso en la parte inferior */}
-        <div className="absolute bottom-3 inset-x-0 flex items-center justify-center gap-2 z-20 pointer-events-none">
+        {/* Flechas de navegación en hover */}
+        {slides.length > 1 && (
+          <div className="absolute inset-0 flex items-center justify-between p-2.5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            <button
+              type="button"
+              aria-label="Anterior diapositiva"
+              onClick={(e) => { e.stopPropagation(); setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1)); }}
+              className="p-2 rounded-full bg-slate-900/80 text-white hover:bg-cyan-600 transition-all pointer-events-auto cursor-pointer backdrop-blur-sm shadow-md"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              type="button"
+              aria-label="Siguiente diapositiva"
+              onClick={(e) => { e.stopPropagation(); setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1)); }}
+              className="p-2 rounded-full bg-slate-900/80 text-white hover:bg-cyan-600 transition-all pointer-events-auto cursor-pointer backdrop-blur-sm shadow-md"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        )}
+
+        {/* Indicadores interactivos de progreso en la parte inferior */}
+        <div className="absolute bottom-3 inset-x-0 flex items-center justify-center gap-2 z-20">
           {slides.map((_, i) => (
-            <div
+            <button
               key={i}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
+              type="button"
+              onClick={() => setCurrent(i)}
+              aria-label={`Ir a diapositiva ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${
                 current === i 
                   ? 'w-7 bg-cyan-400 shadow-md shadow-cyan-400/80' 
-                  : 'w-2 bg-white/40 backdrop-blur-xs'
+                  : 'w-2 bg-white/50 hover:bg-white/80 backdrop-blur-xs'
               }`}
             />
           ))}
@@ -1330,7 +1359,12 @@ function AppContent() {
                 </div>
               </div>
               <div className="relative mt-8 lg:mt-0 max-w-xl mx-auto lg:max-w-none w-full">
-                <HeroSlider brainImg={config?.imagenes?.hero} teamImg={heroTeamImg || '/hero-team.jpg'} />
+                <HeroSlider 
+                  brainImg={config?.imagenes?.hero} 
+                  teamImg={heroTeamImg || '/hero-team.jpg'} 
+                  teamImg2={heroTeamImg2 || '/hero-team-2.jpg'} 
+                  teamImg3={heroTeamImg3 || '/hero-team-3.jpg'} 
+                />
               </div>
             </div>
           </header>
