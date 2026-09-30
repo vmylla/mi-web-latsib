@@ -812,8 +812,21 @@ function AppContent() {
               className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none group min-w-0"
               onClick={() => { navigateTo('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             >
-              <img src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-11 sm:h-13 md:h-14 lg:h-16 w-auto max-w-[140px] sm:max-w-[170px] md:max-w-[200px] object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300 shrink-0" />
-              <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-9 w-9 sm:h-10 sm:w-10 md:h-11 md:w-11 object-cover rounded-full shadow-md group-hover:scale-105 transition-transform duration-300 shrink-0" />
+              {/* Contenedor destacado para el logo de la UTEM */}
+              <div className="bg-white px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl sm:rounded-2xl shadow-md border border-slate-200/80 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} 
+                  alt="Logo UTEM" 
+                  className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto max-w-[130px] sm:max-w-[170px] md:max-w-[210px] object-contain shrink-0" 
+                />
+              </div>
+
+              {/* Logo LaTSIB */}
+              <img 
+                src={config?.imagenes?.logo || '/logo-circle.png'} 
+                alt="Logo LaTSIB" 
+                className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 object-cover rounded-full shadow-md border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0" 
+              />
               <span className={`text-xl sm:text-2xl font-extrabold tracking-tight truncate ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
                 {config.nombreGrupo}
               </span>
@@ -869,7 +882,9 @@ function AppContent() {
                 className="flex items-center gap-2.5 cursor-pointer"
                 onClick={() => { setSideDrawerOpen(false); navigateTo('landing'); }}
               >
-                <img src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-11 w-auto max-w-[110px] object-contain drop-shadow-xs" />
+                <div className="bg-white px-2 py-1 rounded-xl shadow-xs border border-slate-100 flex items-center justify-center shrink-0">
+                  <img src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-10 w-auto max-w-[110px] object-contain" />
+                </div>
                 <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-8 w-8 object-cover rounded-full shadow-sm" />
                 <div>
                   <span className="font-extrabold text-xl text-slate-900 tracking-tight block leading-tight">{config.nombreGrupo}</span>
