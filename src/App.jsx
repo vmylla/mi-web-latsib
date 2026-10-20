@@ -20,9 +20,9 @@ import heroTeamImg3 from './assets/hero-team-3.jpg';
 const HeroSlider = ({ brainImg, teamImg, teamImg2, teamImg3, customSlides }) => {
   const slides = customSlides || [
     brainImg || '/image.jpg',
-    teamImg || '/hero-team.jpg',
-    teamImg2 || '/hero-team-2.jpg',
-    teamImg3 || '/hero-team-3.jpg'
+    teamImg || heroTeamImg || '/hero-team.jpg',
+    teamImg2 || heroTeamImg2 || '/hero-team-2.jpg',
+    teamImg3 || heroTeamImg3 || '/hero-team-3.jpg'
   ].filter(Boolean);
 
   const [current, setCurrent] = useState(0);
@@ -30,16 +30,16 @@ const HeroSlider = ({ brainImg, teamImg, teamImg2, teamImg3, customSlides }) => 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 4500);
+    }, 3500);
     return () => clearInterval(interval);
   }, [slides.length]);
 
   return (
     <div className="relative z-10 bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 p-2.5 rounded-2xl shadow-2xl shadow-cyan-950/60 transform rotate-1 hover:rotate-0 transition-all duration-500 overflow-hidden group">
-      <div className="relative overflow-hidden rounded-xl aspect-[16/11]">
+      <div className="relative overflow-hidden rounded-xl w-full aspect-[16/11]">
         {/* Contenedor de diapositivas con deslizamiento suave */}
         <div 
-          className="flex transition-transform ease-in-out duration-1000 h-full w-full"
+          className="absolute inset-0 flex transition-transform ease-in-out duration-1000 w-full h-full"
           style={{ transform: `translateX(-${current * 100}%)` }}
         >
           {slides.map((url, idx) => (
@@ -838,15 +838,15 @@ function AppContent() {
               <Menu size={24} />
             </button>
             <div
-              className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none group min-w-0"
+              className="flex items-center gap-2.5 sm:gap-3.5 cursor-pointer select-none group min-w-0"
               onClick={() => { navigateTo('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             >
               {/* Contenedor destacado y visible para el logo oficial de la UTEM */}
-              <div className="bg-white p-2 sm:p-2.5 rounded-2xl shadow-lg border border-slate-200/90 flex items-center justify-center shrink-0 group-hover:scale-105 transition-all duration-300">
+              <div className="bg-white px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-2xl shadow-lg border border-slate-200/90 flex items-center justify-center shrink-0 group-hover:scale-105 transition-all duration-300">
                 <img 
-                  src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} 
+                  src={utemLogo} 
                   alt="Logo Universidad Tecnológica Metropolitana" 
-                  className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto max-w-[160px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[280px] object-contain shrink-0" 
+                  className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto object-contain shrink-0" 
                 />
               </div>
 
@@ -911,8 +911,8 @@ function AppContent() {
                 className="flex items-center gap-3 cursor-pointer"
                 onClick={() => { setSideDrawerOpen(false); navigateTo('landing'); }}
               >
-                <div className="bg-white p-2 rounded-xl shadow-md border border-slate-100 flex items-center justify-center shrink-0">
-                  <img src={utemLogo || config?.imagenes?.logoUtem || '/logo-utem.png'} alt="Logo UTEM" className="h-16 sm:h-20 w-auto max-w-[140px] object-contain" />
+                <div className="bg-white px-2 py-1.5 rounded-xl shadow-md border border-slate-100 flex items-center justify-center shrink-0">
+                  <img src={utemLogo} alt="Logo UTEM" className="h-14 sm:h-16 w-auto object-contain" />
                 </div>
                 <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-10 w-10 object-cover rounded-full shadow-sm" />
                 <div>

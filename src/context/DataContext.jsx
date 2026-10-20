@@ -15,7 +15,7 @@ import { generateToken, generate2FACode } from '../utils/security';
 const DataContext = createContext(null);
 
 const STORAGE_KEYS = {
-  CONFIG: 'latsib_config_v3',
+  CONFIG: 'latsib_config_v6',
   EQUIPO: 'latsib_equipo_v5',
   PUBLICACIONES: 'latsib_publicaciones_v3',
   ACTIVIDADES: 'latsib_actividades_v3',
