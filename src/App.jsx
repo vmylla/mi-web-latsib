@@ -13,8 +13,6 @@ import heroPatternTransparent from './assets/hero-pattern-transparent.png';
 import heroTeamImg from './assets/hero-team.jpg';
 import heroTeamImg2 from './assets/hero-team-2.jpg';
 import heroTeamImg3 from './assets/hero-team-3.jpg';
-import heroTeamImg4 from './assets/hero-team-4.jpg';
-import heroTeamImg5 from './assets/hero-team-5.jpg';
 
 // --- COMPONENTES AUXILIARES DE LA WEB PÚBLICA ---
 
@@ -24,9 +22,7 @@ const HeroSlider = ({ brainImg, teamImg, teamImg2, teamImg3, customSlides }) => 
     brainImg || '/image.jpg',
     teamImg || heroTeamImg || '/hero-team.jpg',
     teamImg2 || heroTeamImg2 || '/hero-team-2.jpg',
-    teamImg3 || heroTeamImg3 || '/hero-team-3.jpg',
-    heroTeamImg4,
-    heroTeamImg5
+    teamImg3 || heroTeamImg3 || '/hero-team-3.jpg'
   ].filter(Boolean);
 
   const [current, setCurrent] = useState(0);
@@ -845,20 +841,14 @@ function AppContent() {
               className="flex items-center gap-2.5 sm:gap-3.5 cursor-pointer select-none group min-w-0"
               onClick={() => { navigateTo('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             >
-              {/* Contenedor destacado y legible para el logo oficial de la UTEM */}
-              <div className="bg-white px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-xl shadow-md border border-slate-200/90 flex items-center justify-center shrink-0 group-hover:scale-105 transition-all duration-300">
-                <img 
-                  src={utemLogo} 
-                  alt="Logo Universidad Tecnológica Metropolitana" 
-                  className="h-14 sm:h-[72px] md:h-20 lg:h-24 w-auto object-contain shrink-0" 
-                />
-              </div>
+              {/* Logo UTEM (sin fondo) */}
+              <img src={utemLogo} alt="Logo Universidad Tecnológica Metropolitana" className="h-14 sm:h-16 md:h-[72px] w-auto object-contain drop-shadow-md shrink-0 group-hover:scale-105 transition-transform duration-300" />
 
               {/* Logo LaTSIB */}
               <img 
                 src={config?.imagenes?.logo || '/logo-circle.png'} 
                 alt="Logo LaTSIB" 
-                className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 object-cover rounded-full shadow-md border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0" 
+                className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300 shrink-0" 
               />
               <span className={`text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight truncate ${isScrolled || route.view !== 'landing' ? 'text-slate-900' : 'text-slate-900 lg:text-white'} transition-colors`}>
                 {config.nombreGrupo}
@@ -915,10 +905,8 @@ function AppContent() {
                 className="flex items-center gap-3 cursor-pointer"
                 onClick={() => { setSideDrawerOpen(false); navigateTo('landing'); }}
               >
-                <div className="bg-white px-2 py-1.5 rounded-xl shadow-md border border-slate-100 flex items-center justify-center shrink-0">
-                  <img src={utemLogo} alt="Logo UTEM" className="h-14 sm:h-16 w-auto object-contain" />
-                </div>
-                <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-10 w-10 object-cover rounded-full shadow-sm" />
+                <img src={utemLogo} alt="Logo UTEM" className="h-12 w-auto object-contain shrink-0" />
+                <img src={config?.imagenes?.logo || '/logo-circle.png'} alt="Logo LaTSIB" className="h-10 w-10 object-contain" />
                 <div>
                   <span className="font-extrabold text-xl text-slate-900 tracking-tight block leading-tight">{config.nombreGrupo}</span>
                   <span className="text-[10px] text-slate-400 font-medium">Laboratorio LaTSIB · UTEM</span>
