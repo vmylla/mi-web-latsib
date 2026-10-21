@@ -598,6 +598,23 @@ export const INITIAL_ACTIVIDADES = [
       { url: "/actividades/ciclodeseminarios/Juan1.JPG", descripcion: "Juan Toledo presentó: Generación de señales biomédicas usando deep learning." }
     ],
     participantes: ["Marcelo Andia", "Juan Toledo", "Cristopher Retamales", "Fausto Cabezas"]
+  },
+  {
+    id: 15,
+    titulo: "XLIX Congreso Nacional de Ingeniería Biomédica (CNIB 2026)",
+    fecha: "15 al 17 de Octubre 2026",
+    lugar: "Oaxaca de Juárez, Oaxaca, México",
+    tipo: "Internacional",
+    descripcion: "Participación de Andrés Vega, Juan Toledo y Glenn Lanyon en el principal evento académico y científico organizado por la Sociedad Mexicana de Ingeniería Biomédica (SOMIB). Nuestros integrantes representaron al LaTSIB y a la UTEM, conectando con investigadores y profesionales del sector a nivel internacional y presentando sus propios trabajos de investigación con un alto nivel de excelencia.",
+    galeria: [
+      { url: "/actividades/cnib/grupal-banner.jpg", descripcion: "Andrés Vega, Juan Toledo y Glenn Lanyon, integrantes del LaTSIB, en el XLIX Congreso Nacional de Ingeniería Biomédica, Oaxaca de Juárez, México." },
+      { url: "/actividades/cnib/grupal-oaxaca.jpg", descripcion: "Fotografía grupal de los tres integrantes del laboratorio junto a las esculturas de colores de Oaxaca de Juárez, México." },
+      { url: "/actividades/cnib/juan-andres-congreso.jpg", descripcion: "Juan Toledo y Andrés Vega participando en las actividades y espacios de networking del congreso." },
+      { url: "/actividades/cnib/juan-presentacion.jpg", descripcion: "Juan Toledo: Generation of arrhythmic ECG signals using deep learning: A comparison of generative methods." },
+      { url: "/actividades/cnib/glenn-presentacion.jpg", descripcion: "Glenn Lanyon: Analysis of latent spaces and morphological biomarkers of O₂Hb for the identification of refractoriness and potentiation in spinal fNIRS signals." }
+      // Espacio reservado: fotografía de la presentación de Andrés Vega (agregar aquí con su url y descripción).
+    ],
+    participantes: ["Andrés Vega", "Juan Toledo", "Glenn Lanyon"]
   }
 ];
 

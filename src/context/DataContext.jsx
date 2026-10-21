@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+﻿import React, { createContext, useContext, useState, useEffect } from 'react';
 import {
   INITIAL_CONFIG,
   INITIAL_CATEGORIAS_EQUIPO,
@@ -18,7 +18,7 @@ const STORAGE_KEYS = {
   CONFIG: 'latsib_config_v6',
   EQUIPO: 'latsib_equipo_v5',
   PUBLICACIONES: 'latsib_publicaciones_v3',
-  ACTIVIDADES: 'latsib_actividades_v3',
+  ACTIVIDADES: 'latsib_actividades_v4',
   PROYECTOS: 'latsib_proyectos_v3',
   HISTORIAL: 'latsib_historial_v4',
   USERS: 'latsib_users_v3',
