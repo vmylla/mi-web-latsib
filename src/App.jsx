@@ -841,12 +841,12 @@ function AppContent() {
               className="flex items-center gap-2.5 sm:gap-3.5 cursor-pointer select-none group min-w-0"
               onClick={() => { navigateTo('landing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             >
-              {/* Contenedor destacado y visible para el logo oficial de la UTEM */}
-              <div className="bg-white px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-2xl shadow-lg border border-slate-200/90 flex items-center justify-center shrink-0 group-hover:scale-105 transition-all duration-300">
+              {/* Contenedor destacado y legible para el logo oficial de la UTEM */}
+              <div className="bg-white px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-xl shadow-md border border-slate-200/90 flex items-center justify-center shrink-0 group-hover:scale-105 transition-all duration-300">
                 <img 
                   src={utemLogo} 
                   alt="Logo Universidad Tecnológica Metropolitana" 
-                  className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto object-contain shrink-0" 
+                  className="h-12 sm:h-14 md:h-16 lg:h-[68px] w-auto object-contain shrink-0" 
                 />
               </div>
 
