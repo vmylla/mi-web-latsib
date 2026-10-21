@@ -13,6 +13,8 @@ import heroPatternTransparent from './assets/hero-pattern-transparent.png';
 import heroTeamImg from './assets/hero-team.jpg';
 import heroTeamImg2 from './assets/hero-team-2.jpg';
 import heroTeamImg3 from './assets/hero-team-3.jpg';
+import heroTeamImg4 from './assets/hero-team-4.jpg';
+import heroTeamImg5 from './assets/hero-team-5.jpg';
 
 // --- COMPONENTES AUXILIARES DE LA WEB PÚBLICA ---
 
@@ -22,7 +24,9 @@ const HeroSlider = ({ brainImg, teamImg, teamImg2, teamImg3, customSlides }) => 
     brainImg || '/image.jpg',
     teamImg || heroTeamImg || '/hero-team.jpg',
     teamImg2 || heroTeamImg2 || '/hero-team-2.jpg',
-    teamImg3 || heroTeamImg3 || '/hero-team-3.jpg'
+    teamImg3 || heroTeamImg3 || '/hero-team-3.jpg',
+    heroTeamImg4,
+    heroTeamImg5
   ].filter(Boolean);
 
   const [current, setCurrent] = useState(0);
