@@ -850,7 +850,7 @@ function AppContent() {
                 <img 
                   src={utemLogo} 
                   alt="Logo Universidad Tecnológica Metropolitana" 
-                  className="h-12 sm:h-14 md:h-16 lg:h-[68px] w-auto object-contain shrink-0" 
+                  className="h-14 sm:h-[72px] md:h-20 lg:h-24 w-auto object-contain shrink-0" 
                 />
               </div>
 
