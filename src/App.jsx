@@ -513,8 +513,8 @@ const MemberDetailModal = ({ member, onClose }) => {
                   {member.categoria === 'academicos' ? 'Académico' : member.categoria === 'exintegrantes' ? 'Exintegrante' : 'Asistente de Investigación'}
                 </span>
                 {member.esTesista && (
-                  <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-teal-50 text-teal-700 border border-teal-200">
-                    Tesista
+                  <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#7952A0] text-white border border-[#7952A0]">
+                    Egresado
                   </span>
                 )}
               </div>
@@ -590,8 +590,8 @@ const TeamMemberCard = ({ miembro, onSelect }) => (
     <div className="h-48 overflow-hidden relative bg-slate-200">
       <img src={miembro.img || '/logo-circle.png'} alt={miembro.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
       {miembro.esTesista && (
-        <div className="absolute top-3 right-3 bg-teal-600/90 backdrop-blur-sm text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-teal-400 z-10 shadow-sm">
-          Tesista
+        <div className="absolute top-3 right-3 bg-[#7952A0] backdrop-blur-sm text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-[#7952A0] z-10 shadow-sm">
+          Egresado
         </div>
       )}
       <div className="absolute inset-0 bg-blue-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end justify-center pb-3">

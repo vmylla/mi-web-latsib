@@ -70,7 +70,7 @@ export const INITIAL_EQUIPO = [
     nombre: "Juan Toledo Fierro",
     categoria: "asistentes",
     rol: "Asistente Investigador",
-    bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
+    bio: "Egresado de Ingeniería Civil en Ciencia de Datos de la UTEM. Asistente de investigación del LaTSIB, vinculado al laboratorio como egresado.",
     img: "/equipo/JuanPERFIL.jpg",
     esTesista: true,
     activo: true,
@@ -108,7 +108,7 @@ export const INITIAL_EQUIPO = [
     nombre: "Andrés Vega Moraga",
     categoria: "asistentes",
     rol: "Asistente Investigador",
-    bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
+    bio: "Egresado de Ingeniería Civil en Ciencia de Datos de la UTEM. Asistente de investigación del LaTSIB, vinculado al laboratorio como egresado.",
     img: "/equipo/AndrésPERFIL.jpg",
     esTesista: true,
     activo: true,
@@ -146,7 +146,7 @@ export const INITIAL_EQUIPO = [
     nombre: "Glenn Lanyon Lanyon",
     categoria: "asistentes",
     rol: "Asistente Investigador",
-    bio: "Egresado de Ingeniería Civil en Ciencia de Datos",
+    bio: "Egresado de Ingeniería Civil en Ciencia de Datos de la UTEM. Asistente de investigación del LaTSIB, vinculado al laboratorio como egresado.",
     img: "/equipo/GlennPERFIL.jpg",
     esTesista: true,
     activo: true,
@@ -800,7 +800,7 @@ export const DEFAULT_USERS = [
     estado: 'activo',
     has2FA: false,
     avatar: '/equipo/AndrésPERFIL.jpg',
-    cargo: 'Asistente Investigador / Tesista',
+    cargo: 'Asistente Investigador / Egresado',
     creadoEl: '08/09/2026'
   },
   {
@@ -824,7 +824,7 @@ export const DEFAULT_USERS = [
     estado: 'activo',
     has2FA: false,
     avatar: '/equipo/GlennPERFIL.jpg',
-    cargo: 'Asistente Investigador / Tesista',
+    cargo: 'Asistente Investigador / Egresado',
     creadoEl: '08/09/2026'
   },
   // Editores (Colaboradores y Doctorandos)
@@ -874,7 +874,7 @@ export const DEFAULT_USERS = [
     estado: 'activo',
     has2FA: false,
     avatar: '/equipo/JuanPERFIL.jpg',
-    cargo: 'Asistente Investigador / Tesista',
+    cargo: 'Asistente Investigador / Egresado',
     creadoEl: '08/09/2026'
   },
   {
