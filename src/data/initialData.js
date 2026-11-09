@@ -278,6 +278,16 @@ export const INITIAL_EQUIPO = [
 
 export const INITIAL_PUBLICACIONES = [
   {
+    id: 'p10',
+    titulo: "A new approach to the intracardiac inverse problem using Laplacian distance kernel",
+    revista: "BioMedical Engineering OnLine",
+    year: "2018",
+    autor: "Raúl Caulier-Cisterna, Sergio Muñoz-Romero, Margarita Sanromán-Junquera, Arcadi García-Alberola y José Luis Rojo-Álvarez.",
+    link: "https://link.springer.com/article/10.1186/s12938-018-0519-z",
+    instagram: "https://www.instagram.com/p/DdsE__MEdmd/?img_index=1",
+    pdf: ""
+  },
+  {
     id: 'p1',
     titulo: "The Effectiveness of NIRS-Based Wearable Devices in Estimating Physical Activity Intensity in Patients with Chronic Non-Communicable Diseases: A Structured Narrative Review",
     revista: "Medical Sciences",
