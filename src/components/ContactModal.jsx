@@ -149,8 +149,9 @@ export default function ContactModal({ isOpen, onClose }) {
       <div className="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden z-10 animate-in zoom-in-95 duration-200 my-auto">
         
         {/* Cabecera del Modal */}
-        <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-teal-600 px-6 py-5 text-white flex items-center justify-between">
-          <div>
+        <div className="bg-gradient-to-br from-[#08182b] via-[#0d2a45] to-[#0a3853] px-6 py-5 text-white flex items-center justify-between gap-4">
+          <img src="/logo-circle.png" alt="Logo LaTSIB" className="h-14 w-14 sm:h-16 sm:w-16 object-contain shrink-0 self-start drop-shadow-md" />
+          <div className="flex-1 min-w-0">
             <span className="inline-block text-xs uppercase tracking-widest text-blue-200 font-bold mb-1">
               Laboratorio de Biomédica Traslacional
             </span>
@@ -159,7 +160,7 @@ export default function ContactModal({ isOpen, onClose }) {
           <button
             type="button"
             onClick={handleClose}
-            className="p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            className="p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer shrink-0 self-start"
             aria-label="Cerrar ventana"
           >
             <X size={22} />
