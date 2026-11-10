@@ -19,7 +19,7 @@ export const INITIAL_CONFIG = {
 };
 
 export const INITIAL_CATEGORIAS_EQUIPO = [
-  { id: 'academicos', titulo: 'Académicos' },
+  { id: 'academicos', titulo: 'Equipo Científico y Profesional' },
   { id: 'colaboradores', titulo: 'Colaboradores' },
   { id: 'asistentes', titulo: 'Asistentes de Investigación' },
   { id: 'doctorandos', titulo: 'Doctorandos' },
@@ -106,13 +106,13 @@ export const INITIAL_EQUIPO = [
   {
     id: 'm5',
     nombre: "Andrés Vega Moraga",
-    categoria: "asistentes",
-    rol: "Asistente Investigador",
-    bio: "Egresado de Ingeniería Civil en Ciencia de Datos de la UTEM. Asistente de investigación del LaTSIB, vinculado al laboratorio como egresado.",
+    categoria: "academicos",
+    rol: "Co-Director del Laboratorio LaTSIB",
+    bio: "Co-Director del Laboratorio LaTSIB, Egresado de Ingeniería Civil en Ciencia de Datos de la UTEM y Asistente de Investigación, con foco en inteligencia artificial aplicada a señales biomédicas.",
     img: "/equipo/AndresPERFIL.jpg",
     esTesista: true,
     activo: true,
-    orden: 5,
+    orden: 2,
     actividadesLab: "El trabajo de Andrés se desarrolla en dos áreas principales de desarrollo, combinando la investigación en inteligencia artificial aplicada a señales biomédicas con el desarrollo de herramientas tecnológicas para la educación.\n\nPor un lado, se dedica al desarrollo de Machine Learning y Deep Learning en la investigación de fNIRS en la médula espinal, buscando modelos autoencoder capaces de encontrar características dentro del espacio latente. Esto permite detectar patrones y explorar nuevas aplicaciones, como la modulación de señales y el análisis de cómo variables antropométricas como la edad, el sexo y el IMC pueden inducir cambios en las señales fNIRS.\n\nPor otro lado, trabaja en el desarrollo de una App para el ámbito de la educación, pensada para la planificación de clases de un semestre o año escolar de manera contextualizada. Esta herramienta integra las bases de datos de Objetivos de Aprendizaje (OAs) con la información complementaria proporcionada por el profesor, con el objetivo directo de reducir sus tiempos de trabajo y facilitar el proceso de planificación, utilizando la tecnología como un apoyo concreto para la labor docente.",
     contactos: {
       linkedin: "https://www.linkedin.com/in/andres-nicolas-vega-moraga-950b3128b/",
@@ -248,7 +248,7 @@ export const INITIAL_EQUIPO = [
     orden: 12,
     actividadesLab: "El trabajo de Nicolás se centra en la investigación y aplicación de inteligencia artificial dentro del proyecto Nuevo Paradigma, contribuyendo al desarrollo y exploración de soluciones basadas en IA.\n\nParticipa como ayudante de investigación, apoyando las distintas etapas del proyecto y colaborando en la incorporación de herramientas de inteligencia artificial a los procesos de investigación e innovación del laboratorio.",
     contactos: {
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/nicolasfrierib/",
       github: "",
       email: "nfrieri@utem.cl",
       orcid: "",

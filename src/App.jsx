@@ -510,7 +510,7 @@ const MemberDetailModal = ({ member, onClose }) => {
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-2 justify-center sm:justify-start">
                 <span className="inline-block px-3 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-100">
-                  {member.categoria === 'academicos' ? 'Académico' : member.categoria === 'exintegrantes' ? 'Exintegrante' : 'Asistente de Investigación'}
+                  {member.categoria === 'academicos' ? 'Equipo Científico y Profesional' : member.categoria === 'exintegrantes' ? 'Exintegrante' : 'Asistente de Investigación'}
                 </span>
                 {member.esTesista && (
                   <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#7952A0] text-white border border-[#7952A0]">
