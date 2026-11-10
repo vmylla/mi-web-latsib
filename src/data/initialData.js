@@ -109,7 +109,7 @@ export const INITIAL_EQUIPO = [
     categoria: "asistentes",
     rol: "Asistente Investigador",
     bio: "Egresado de Ingeniería Civil en Ciencia de Datos de la UTEM. Asistente de investigación del LaTSIB, vinculado al laboratorio como egresado.",
-    img: "/equipo/AndrésPERFIL.jpg",
+    img: "/equipo/AndresPERFIL.jpg",
     esTesista: true,
     activo: true,
     orden: 5,
@@ -809,7 +809,7 @@ export const DEFAULT_USERS = [
     rol: 'admin',
     estado: 'activo',
     has2FA: false,
-    avatar: '/equipo/AndrésPERFIL.jpg',
+    avatar: '/equipo/AndresPERFIL.jpg',
     cargo: 'Asistente Investigador / Egresado',
     creadoEl: '08/09/2026'
   },
