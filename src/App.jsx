@@ -3,9 +3,10 @@ import {
   Atom, Cpu, Globe, Users, FileText, Mail, MapPin, 
   ChevronRight, ChevronLeft, Menu, X, Linkedin, Github, 
   ExternalLink, BookOpen, Calendar, ArrowLeft, LayoutGrid, Info, Download, 
-  Instagram, Youtube, Maximize2
+  Instagram, Youtube, Maximize2, Shield
 } from 'lucide-react';
 import ContactModal from './components/ContactModal';
+import { LegalPageView, CookieConsentBanner } from './components/LegalCompliance';
 import { DataProvider, useData } from './context/DataContext';
 import utemLogo from './assets/logo-utem.png';
 import heroPattern from './assets/hero-pattern.png';
@@ -715,6 +716,18 @@ function AppContent() {
     if (pathKey === 'equipo') {
       return { view: 'team-list', id: null, section: null };
     }
+    if (pathKey === 'privacidad' || pathKey === 'politica-privacidad') {
+      return { view: 'legal', id: 'privacidad', section: null };
+    }
+    if (pathKey === 'terminos' || pathKey === 'terminos-y-condiciones') {
+      return { view: 'legal', id: 'terminos', section: null };
+    }
+    if (pathKey === 'cookies' || pathKey === 'politica-cookies') {
+      return { view: 'legal', id: 'cookies', section: null };
+    }
+    if (pathKey === 'registro-consentimiento' || pathKey === 'derechos-arcop') {
+      return { view: 'legal', id: 'registro', section: null };
+    }
     return { view: 'landing', id: null, section: null };
   };
 
@@ -766,6 +779,12 @@ function AppContent() {
     else if (targetView === 'activity-detail') newHash = `actividad/${id}`;
     else if (targetView === 'publications-list') newHash = 'publicaciones';
     else if (targetView === 'team-list') newHash = 'equipo';
+    else if (targetView === 'legal') {
+      if (id === 'terminos') newHash = 'terminos';
+      else if (id === 'cookies') newHash = 'cookies';
+      else if (id === 'registro') newHash = 'registro-consentimiento';
+      else newHash = 'privacidad';
+    }
 
     const fullNewHash = newHash ? `#${newHash}` : '#';
     if (window.location.hash === fullNewHash || (!window.location.hash && fullNewHash === '#')) {
@@ -989,6 +1008,17 @@ function AppContent() {
                   <BookOpen size={16} />
                 </div>
                 <span>Publicaciones</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => { setSideDrawerOpen(false); navigateTo('legal', 'privacidad'); }}
+                className="flex items-center gap-3.5 px-3.5 py-3 text-left rounded-xl text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 font-semibold text-sm transition-all cursor-pointer group"
+              >
+                <div className="p-1.5 rounded-lg bg-slate-100 text-slate-600 group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
+                  <Shield size={16} />
+                </div>
+                <span>Privacidad y Legal (Ley 21.719)</span>
               </button>
             </div>
 
@@ -1292,6 +1322,11 @@ function AppContent() {
             </div>
           </div>
         </div>
+      ) : route.view === 'legal' ? (
+        <LegalPageView
+          initialTab={route.id || 'privacidad'}
+          onBack={() => navigateTo('landing')}
+        />
       ) : (
         /* VISTA: PORTADA (LANDING) */
         <>
@@ -1615,18 +1650,56 @@ function AppContent() {
               </div>
             </div>
 
-            {/* PIE DE PÁGINA INFERIOR */}
-            <div className="container mx-auto px-6 mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-              <div>
-                © {config.year} {config.nombreCompleto}. Todos los derechos reservados.
+            {/* PIE DE PÁGINA INFERIOR CON ENLACES LEGALES (LEY 21.719 CHILE) */}
+            <div className="container mx-auto px-6 mt-12 pt-8 border-t border-slate-800 flex flex-col gap-4 text-xs text-slate-400">
+              <div className="flex flex-wrap items-center justify-center sm:justify-between gap-4">
+                <div className="flex flex-wrap items-center gap-4">
+                  <button
+                    type="button"
+                    onClick={() => navigateTo('legal', 'privacidad')}
+                    className="hover:text-teal-300 transition-colors underline cursor-pointer"
+                  >
+                    Política de Privacidad (Ley N° 21.719)
+                  </button>
+                  <span className="text-slate-700">•</span>
+                  <button
+                    type="button"
+                    onClick={() => navigateTo('legal', 'terminos')}
+                    className="hover:text-teal-300 transition-colors underline cursor-pointer"
+                  >
+                    Términos y Condiciones
+                  </button>
+                  <span className="text-slate-700">•</span>
+                  <button
+                    type="button"
+                    onClick={() => navigateTo('legal', 'cookies')}
+                    className="hover:text-teal-300 transition-colors underline cursor-pointer"
+                  >
+                    Política de Cookies
+                  </button>
+                  <span className="text-slate-700">•</span>
+                  <button
+                    type="button"
+                    onClick={() => navigateTo('legal', 'registro')}
+                    className="hover:text-teal-300 transition-colors underline cursor-pointer"
+                  >
+                    Derechos ARCOP y Registro de Consentimiento
+                  </button>
+                </div>
+                <div className="text-slate-500">
+                  Universidad Tecnológica Metropolitana (UTEM) · Chile
+                </div>
               </div>
-              <div className="text-slate-500">
-                Universidad Tecnológica Metropolitana (UTEM)
+              <div className="text-center sm:text-left text-slate-500">
+                © {config.year} {config.nombreCompleto}. Todos los derechos reservados. Cumplimiento Ley N° 21.719 sobre Protección de Datos Personales.
               </div>
             </div>
           </footer>
         </>
       )}
+
+      {/* BANNER DE CONSENTIMIENTO DE COOKIES (LEY 21.719 CHILE) */}
+      <CookieConsentBanner onOpenLegal={(tab) => navigateTo('legal', tab)} />
 
       {/* FORMULARIO MODAL DE CONTACTO */}
       <ContactModal
